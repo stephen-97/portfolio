@@ -1,8 +1,8 @@
 import React, { CSSProperties} from 'react';
 import CSS from 'csstype'
-import  profile from './constants/img'
 import imagetoAdd from './assets/shanks.png'
 import './App.css';
+import Link from "./components/Link";
 
 function App() {
   return (
@@ -10,6 +10,11 @@ function App() {
       <div style={content}>
           <img src={imagetoAdd} style={image} alt=""/>
           <span style={text}> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis interdum, urna vitae aliquam venenatis, nunc arcu hendrerit felis, a fermentum nulla felis eget nibh. Pellentesque non lacus ornare, mattis leo et, dignissim erat. Sed vel metus purus. Maecenas mattis tellus sit amet nibh ornare, ac posuere odio rutrum.</span>
+      </div>
+      <div style={linksContainer}>
+          <Link iconName={"Github"}/>
+          <Link iconName={"Linkedin"} />
+          <Link iconName={"Github"}/>
       </div>
     </div>
   );
@@ -46,5 +51,12 @@ const text: CSS.Properties = {
     paddingLeft: "30px"
 }
 
+const linksContainer: CSS.Properties = {
+    position: "absolute",
+    right: "300px",
+    top: "50%",
+    transform: "translateY(-50%)"
+
+}
 
 export default App;
