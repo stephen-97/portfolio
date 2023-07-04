@@ -1,0 +1,26 @@
+import React from 'react';
+import "./style.scss"
+
+
+
+const Description = () =>  {
+
+    return(
+        <div id={'containerPresentation'}>
+            <span className={"Name"}>STEPHEN LOIOLA BASTOS</span>
+            <span className={"firstDescription"}>Software Engineer - Team Typescript  </span>
+            <span className={"Description"}>
+                    Saraceni tamen nec amici nobis umquam nec hostes optandi, ultro citroque
+                    discursantes quicquid inveniri poterat momento temporis parvi vastabant milvorum
+                    rapacium similes, qui si praedam dispexerint celsius, volatu rapiunt celeri, aut
+                    nisi impetraverint, non inmorantur.
+                </span>
+        </div>
+);
+}
+
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+export default Description;

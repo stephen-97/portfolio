@@ -1,3 +1,7 @@
+$customGrayColor : #3b3a3a;
+$descriptionLeftMargin : 50px;
+
+
 .block{
     background-color:  whitesmoke;
     position: relative;
@@ -40,13 +44,84 @@
     transform: scale(1.1);
     box-shadow: 0px 0px 32px -8px #000000;
 }
+
+#container {
+    display: inline-flex;
+}
 .blockContainer {
     position: relative;
-    right: 0%;
+    background-color: pink;
+    right: 0px;
+    margin-left: auto;
     width: 50%;
     padding: 3%;
 }
 
 #container {
     background-color: #f4f4f4;
+}
+
+
+#containerPresentation {
+    position: absolute;
+    width: 550px;
+    height: 500px;
+}
+
+.Description {
+    @extend #containerPresentation;
+    font-size: 20px;
+    color: $customGrayColor;
+    top: 200px;
+    left: $descriptionLeftMargin;
+}
+
+.firstDescription  {
+    @extend #containerPresentation;
+    font-weight: bolder;
+    padding: 5px;
+    border-radius: 5px;
+    height: auto;
+    width: auto;
+    top: 130px;
+    left: $descriptionLeftMargin;
+    font-size: 23px;
+    color: #282c34;
+}
+
+.Name {
+    @extend #containerPresentation;
+    font-weight: bolder;
+    font-size: 40px;
+    color: $customGrayColor;
+    top: 70px;
+    left: $descriptionLeftMargin;
+}
+
+
+.smallBlocksContainer {
+    position: absolute;
+    top: 400px;
+    left: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.smallBlock {
+    background-color:  whitesmoke;
+    width: 350px;
+    border-radius: 10px;
+    padding: 30px;
+    display: flex;
+    flex-direction: row;
+    border-width: 1px;
+    border-color: #282c34;
+    justify-content: space-evenly;
+    transition: all .2s ease-in-out;
+    box-shadow: 0px 0px 26px -5px rgba(0,0,0,0.51);
+    margin: 15px 0px 15px 0px;
+    &:hover {
+        background-color: #cbded9;
+        transform: scale(1.1);
+    }
 }

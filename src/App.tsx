@@ -6,10 +6,20 @@ import Link from "./components/Link";
 import Block from "./components/Block";
 import ReactDOM from "react-dom";
 import ReactFullpage from "@fullpage/react-fullpage";
+import Description from "./components/Description";
+import SmallBlock from "./components/SmallBlock";
 
 function App() {
     return (
         <div id={'container'}>
+            <div>
+                <Description />
+                <div className={"smallBlocksContainer"}>
+                    <SmallBlock description={"EXPERIENCES PRO"}/>
+                    <SmallBlock description={"PROJETS PERSO"} />
+                    <SmallBlock description={"CONTACTEZ MOI"}/>
+                </div>
+            </div>
             <div className={"blockContainer"}>
                 <Block />
                 <Block />
