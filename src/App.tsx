@@ -2,31 +2,60 @@ import React, { CSSProperties} from 'react';
 import CSS from 'csstype'
 import '../src/components/style.scss'
 import './App.css';
-import Link from "./components/Link";
 import Block from "./components/Block";
-import ReactDOM from "react-dom";
-import ReactFullpage from "@fullpage/react-fullpage";
 import Description from "./components/Description";
 import SmallBlock from "./components/SmallBlock";
 
+import manIcon from "./assets/man.svg"
+import laptopIcon from "./assets/laptop.svg"
+import ideaIcon from "./assets/idea.svg"
+
+import { store } from './redux/redux'
+import { Provider} from "react-redux";
+import {connect} from "react-redux";
+
+interface IButton{
+    name: string
+    type: string
+}
+
+const buttonTabs = [
+    {
+        description: "EXPÉRIENCE PRO",
+        icons: laptopIcon,
+        pageName: "working",
+    },
+    {
+        description: "PROJETS PERSO",
+        icons: ideaIcon,
+        pageName: "projects"
+    },
+    {
+        description: "CONTACTEZ MOI",
+        icons: manIcon,
+        pageName: "contact"
+    }
+]
+
+
 function App() {
     return (
-        <div id={'container'}>
-            <div>
-                <Description />
-                <div className={"smallBlocksContainer"}>
-                    <SmallBlock description={"EXPERIENCES PRO"}/>
-                    <SmallBlock description={"PROJETS PERSO"} />
-                    <SmallBlock description={"CONTACTEZ MOI"}/>
+        <Provider store={store}>
+            <div className={'container'}>
+                <div>
+                    <Description />
+                    <div className={"smallBlocksContainer"}>
+                        {buttonTabs.map((item) => <SmallBlock description={item.description} icon={item.icons} pageName={item.pageName}/>)}
+                    </div>
+                </div>
+                <div className={"blockContainer"}>
+                    <Block />
+                    <Block />
+                    <Block />
+                    <Block />
                 </div>
             </div>
-            <div className={"blockContainer"}>
-                <Block />
-                <Block />
-                <Block />
-                <Block />
-            </div>
-        </div>
+        </Provider>
     );
 }
 
