@@ -4,7 +4,7 @@ import { ReactComponent as GithubLogo} from "../assets/github.svg"
 import './style.scss'
 import PropTypes from "prop-types";
 
-const Link = (props: any) => {
+const Link = (props: any): ReactElement => {
 
     const renderSwitchIcon = (): ReactElement=> {
         switch(props.iconName) {

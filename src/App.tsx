@@ -12,7 +12,9 @@ import ideaIcon from "./assets/idea.svg"
 
 import { store } from './redux/redux'
 import { Provider} from "react-redux";
-import {connect} from "react-redux";
+import Page from "./utility/page";
+import RightSectionBlock from "./components/RightSectionBlock";
+import LeftSectionBlock from "./components/LeftSectionBlock";
 
 interface IButton{
     name: string
@@ -42,43 +44,13 @@ function App() {
     return (
         <Provider store={store}>
             <div className={'container'}>
-                <div>
-                    <Description />
-                    <div className={"smallBlocksContainer"}>
-                        {buttonTabs.map((item) => <SmallBlock description={item.description} icon={item.icons} pageName={item.pageName}/>)}
-                    </div>
-                </div>
-                <div className={"blockContainer"}>
-                    <Block />
-                    <Block />
-                    <Block />
-                    <Block />
-                </div>
+                <LeftSectionBlock />
+                <RightSectionBlock />
             </div>
         </Provider>
     );
 }
 
 
-/**
- *
- * <div style={linksContainer}>
- *           <Link iconName={"Github"}/>
- *           <Link iconName={"Linkedin"} />
- *           <Link iconName={"Github"}/>
- *       </div>
- */
-const container: CSS.Properties = {
-    height: "100vh",
-    width: "100%",
-    backgroundColor: "gray"
-}
-
-const linksContainer: CSS.Properties = {
-    position: "absolute",
-    right: "300px",
-    top: "50%",
-    transform: "translateY(-50%)"
-}
 
 export default App;

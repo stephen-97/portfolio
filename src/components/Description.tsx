@@ -6,15 +6,19 @@ import "./style.scss"
 const Description = () =>  {
 
     return(
-        <div id={'containerPresentation'}>
-            <span className={"Name"}>STEPHEN LOIOLA BASTOS</span>
-            <span className={"firstDescription"}>Software Engineer - Team Typescript  </span>
-            <span className={"Description"}>
+        <div id={'leftContainerPresentation'}>
+            <h1>
+                STEPHEN LOIOLA BASTOS
+            </h1>
+            <h2>
+                Software Engineer - Team Typescript
+            </h2>
+            <div className={"Description"}>
                     Saraceni tamen nec amici nobis umquam nec hostes optandi, ultro citroque
                     discursantes quicquid inveniri poterat momento temporis parvi vastabant milvorum
                     rapacium similes, qui si praedam dispexerint celsius, volatu rapiunt celeri, aut
                     nisi impetraverint, non inmorantur.
-                </span>
+            </div>
         </div>
 );
 }

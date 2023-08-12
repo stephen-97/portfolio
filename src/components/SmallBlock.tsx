@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import "./style.scss"
-import {connect, useSelector} from "react-redux";
-import {RootState} from "../redux/redux";
+import {connect, useDispatch, useSelector} from "react-redux";
+import {setPage} from "../redux/redux";
+import {AppDispatch, RootState} from "../redux/redux";
 
 
 type SmallBlockProps = {
@@ -13,15 +14,16 @@ type SmallBlockProps = {
 const SmallBlock = (props : SmallBlockProps) =>  {
 
     const page = useSelector((state: RootState) => state.page)
+    const dispatch: AppDispatch = useDispatch();
+    const ref = useRef<null | HTMLDivElement>(null);
 
     const checkSelectedPage = () :boolean => {
         return page.name === props.pageName;
     }
 
-    const [selected, SetSelected] = useState()
-    console.error(page)
+
     return(
-        <div className={`${checkSelectedPage() ? 'smallBlock' : 'smallBlockClicked'}`} onClick={() => null}>
+        <div className={`${checkSelectedPage() ? 'smallBlockClicked' : 'smallBlock'}`} onClick={() => dispatch(setPage({name : props.pageName})) }>
             <span> {props.description}</span>
             <img src={props.icon} alt="React Logo" />
         </div>
@@ -29,7 +31,13 @@ const SmallBlock = (props : SmallBlockProps) =>  {
 }
 
 const mapState = (state: RootState) => state.page
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+
 export default connect(mapState)(SmallBlock);
+
+/**
+ *
+ * <div className={`${checkSelectedPage() ? 'smallBlockClicked' : 'smallBlock'}`} onClick={() => dispatch(setPage({name : props.pageName}))}>
+ *             <span> {props.description}</span>
+ *             <img src={props.icon} alt="React Logo" />
+ *         </div>
+ */

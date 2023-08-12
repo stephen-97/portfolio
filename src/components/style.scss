@@ -1,13 +1,37 @@
 $customGrayColor : #3b3a3a;
 $descriptionLeftMargin : 50px;
+@import url('https://fonts.googleapis.com/css2?family=Asap&display=swap');
+@import "../style/studendentFace";
+@import "../style/experienceFace";
 
+
+* {
+    font-family: "Roboto Mono",Sans-serif;
+}
+
+h1 {
+    margin-top: 50px;
+    font-weight: bolder;
+    font-size: 33px;
+    color: $customGrayColor;
+
+}
+
+h2 {
+    font-weight: bolder;
+    padding: 5px;
+    border-radius: 5px;
+    height: auto;
+    width: auto;
+    top: 130px;
+    left: $descriptionLeftMargin;
+    font-size: 23px;
+    color: lightslategray;
+}
 .container {
-    display: inline-flex;
-    background: linear-gradient(to right, white, #f0f0f0);
-    position: absolute;
-    left: 0px;
-    right: 0px;
-    top: 0px;
+    //background: linear-gradient(to right, white, #f0f0f0);
+    position:relative;
+    display: flex;
 }
 
 .block{
@@ -23,7 +47,7 @@ $descriptionLeftMargin : 50px;
     margin: 30px 0px 30px 0px;
     &:hover {
         background-color: #cbded9;
-        transform: scale(1.1);
+        transform: scale(1.05);
     }
 }
 
@@ -54,58 +78,103 @@ $descriptionLeftMargin : 50px;
 }
 
 
-.blockContainer {
+.leftBlockContainer {
     position: relative;
-    right: 0px;
+    z-index: 2;
+    transition: all .2s ease-in-out;
+    flex: 0.45;
+    height: auto;
+}
+
+#leftBlockContent {
+    margin: 0px 10%;
+    position: sticky;
+    padding: 0px 20px 0px 50px;
+    top: 0;
+    bottom: 0;
+}
+
+
+#leftContainerPresentation {
+    padding: 2% 0px;
+
+    .Name {
+        margin-top: 50px;
+        font-weight: bolder;
+        font-size: 40px;
+        color: $customGrayColor;
+    }
+
+    .Description {
+        @extend #leftContainerPresentation;
+        font-size: 20px;
+        color: $customGrayColor;
+        top: 200px;
+        left: $descriptionLeftMargin;
+    }
+
+    .firstDescription  {
+        @extend #leftContainerPresentation;
+        font-weight: bolder;
+        padding: 5px;
+        border-radius: 5px;
+        height: auto;
+        width: auto;
+        top: 130px;
+        left: $descriptionLeftMargin;
+        font-size: 23px;
+        color: lightslategray;
+    }
+
+}
+
+.rightBlockContainer {
+    position: relative;
+    transition: all .2s ease-in-out;
+    border: 1px solid black;
     margin-left: auto;
-    width: 50%;
-    padding: 3%;
+    flex: 0.55;
+    min-height: 100vh;
+}
+
+
+// Block container Right hidde and Show
+.blockContainerContent {
+    margin : 200px;
+    transition: all .2s ;
+    opacity: 0;
+    background-color: red;
+    transform: translateX(+100%);
+}
+@media (prefers-reduced-motion) {
+    .blockContainerContent {
+        transition: none;
+    }
+}
+.hidden {
+    opacity: 0;
+    transition: all 5s ease;
+    height: 500px;
+    margin: 10px;
+    background-color: #3b3a3a;
 }
 
 #container {
     background-color: #f4f4f4;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
 }
 
-
-#containerPresentation {
-    position: absolute;
-    width: 550px;
-    height: 500px;
-}
-
-.Description {
-    @extend #containerPresentation;
-    font-size: 20px;
-    color: $customGrayColor;
-    top: 200px;
-    left: $descriptionLeftMargin;
-}
-
-.firstDescription  {
-    @extend #containerPresentation;
-    font-weight: bolder;
-    padding: 5px;
-    border-radius: 5px;
-    height: auto;
-    width: auto;
-    top: 130px;
-    left: $descriptionLeftMargin;
-    font-size: 23px;
-    color: #282c34;
-}
-
-.Name {
-    @extend #containerPresentation;
-    font-weight: bolder;
-    font-size: 40px;
-    color: $customGrayColor;
-    top: 70px;
-    left: $descriptionLeftMargin;
+#test {
+    position: relative;
+    align-self: self-start;
+    height: 100vh;
+    width: 300px;
 }
 
 
 .smallBlocksContainer {
-    position: absolute;
     top: 400px;
     left: 50px;
     display: flex;
@@ -115,7 +184,7 @@ $descriptionLeftMargin : 50px;
 .smallBlock {
     position: relative;
     background-color:  white;
-    width: 350px;
+    width: 300px;
     border-radius: 10px;
     padding: 30px;
     display: flex;
@@ -146,7 +215,7 @@ $descriptionLeftMargin : 50px;
         color: #000
     }
     &:active:after {
-        background: transparent;
+        background: white;
     }
     &:before {
         opacity: 1;
@@ -157,7 +226,7 @@ $descriptionLeftMargin : 50px;
         position: absolute;
         width: 100%;
         height: 100%;
-        background-color: #cbded9;
+        background-color: white;
         left: 0;
         top: 0;
         border-radius: 10px;
@@ -194,17 +263,16 @@ $descriptionLeftMargin : 50px;
 
 .smallBlockClicked {
     position: relative;
-    background-color:  white;
-    width: 350px;
+    background-color: white;
+    width: 300px;
     border-radius: 10px;
     padding: 30px;
     display: flex;
     flex-direction: row;
-    border: 1px black solid;
     justify-content: space-evenly;
-    transition: all .2s ease-in-out;
     //box-shadow: 0px 0px 26px -5px rgba(0,0,0,0.51);
     margin: 15px 0px 15px 0px;
+    transform: scale(1.05);
 
     &:before {
         content: '';
@@ -218,26 +286,20 @@ $descriptionLeftMargin : 50px;
         width: calc(100% + 4px);
         height: calc(100% + 4px);
         animation: glowing 20s linear infinite;
-        opacity: 0;
+        opacity: 1;
         transition: opacity .3s ease-in-out;
         border-radius: 10px;
     }
-    &:active {
-        color: #000
-    }
-    &:active:after {
-        background: transparent;
-    }
-    &:before {
-        opacity: 1;
-    }
-    &:hover {
-        border: 1px transparent solid;
-        transform: scale(1.1);
-
-        img {
-            opacity: 1;
-        }
+    &:after {
+        z-index: -1;
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        left: 0;
+        top: 0;
+        border-radius: 10px;
     }
     @keyframes glowing {
         0% { background-position: 0 0; }
@@ -251,12 +313,324 @@ $descriptionLeftMargin : 50px;
         transform: translate(-50%,-50%);
         height: 50px;
         width: 50px;
-        opacity: 0;
+        opacity: 1;
         transition: all 0.3s ease-in-out;
     }
     span {
         font-weight: bold;
         color: #282c34;
         align-self: flex-start;
+    }
+}
+
+.showThis {
+    opacity: 1;
+    font-size: 30px;
+    transition: all .3s ease-in-out;
+    position: absolute;
+}
+
+.hideThis {
+    opacity: 0;
+    font-size: 20px;
+    transition: all .1s ease-in-out;
+    position: absolute;
+}
+
+
+// BLOCK POUR L'EXPERIENCE PROFESIONNELLE
+.professional-experience {
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0px 0px 26px -5px rgba(0,0,0,0.51);
+    background-color: white;
+    width: 80%;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 10px;
+    //background-color: #282c34;
+
+    div {
+        padding: 10px;
+    }
+    // div de la date
+    div:nth-child(1) {
+        font-size: 22px;
+    }
+
+    // block titre / poste / desription  de l'expérience
+    div:nth-child(2){
+        font-size: 23px;
+
+        div {
+            padding: 0;
+        }
+        #companyName {
+            font-size: 25px;
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+        #postName {
+            font-size: 18px;
+            color: #6a6a6a
+        }
+        #description {
+            padding: 12px 0px;
+            font-size: 15px;
+        }
+        #technoContainer {
+            display: flex;
+            flex-wrap: wrap;
+
+            span {
+                border-radius: 20px;
+                background-color: #868686;
+                padding: 10px;
+                font-size: 12px;
+                font-weight: bolder;
+                color: whitesmoke;
+                margin: 3px 5px;
+            }
+        }
+
+    }
+}
+
+
+// BOX TEST
+
+.containerBox {
+    position: relative;
+    height: 800px;
+    width: 800px;
+    background-color: red;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#box {
+    height: inherit;
+    width: inherit;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: all .5s ease;
+    transform: rotateX(45deg) rotate3d(5,5, 5, 45deg);
+}
+
+.card {
+    height: 800px;
+    width: 800px;
+    text-align: center;
+    padding: 50px 0px;
+    color: white;
+    background-color: #cbd1d2;
+    font-size: 32px;
+    box-sizing: border-box;
+    position: absolute;
+    box-shadow: inset 0px 0px 28px -10px rgba(0,0,0,0.94);
+}
+#front {
+    transform: translateZ(400px);
+}
+
+#back {
+    transform: translateZ(-400px);
+}
+#right {
+    left: 400px;
+    transform: rotateY(90deg);
+    background-color: #496e74;
+}
+#left {
+    right: 400px;
+    transform: rotateY(-90deg);
+}
+#top {
+    bottom: 400px;
+    transform: rotateX(90deg);
+}
+#bottom {
+    top: 400px;
+    transform: rotateX(90deg);
+}
+
+
+
+// BLOCK PROJECT
+
+#rightContainer {
+    .rightContainerTitle {
+        font-size: 25px;
+        font-family: "DejaVu Sans Mono", serif ;
+
+        .styledBalise {
+            color: #282c34;
+            font-weight: bolder;
+        }
+    }
+    .projectContainer {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+
+        .project {
+            margin: 20px;
+            height: 300px;
+            width: 240px;
+            border-radius: 10px;
+            background-color: #282c34;
+            overflow: hidden;
+
+             > img {
+                height: 100%;
+                width: 100%;
+                z-index: 5;
+            }
+
+            &:hover {
+                transition: all .4s ease;
+                background-color: #dfdddd;
+                border: 1px solid #4b4b4b;
+
+                .dateExperience {
+                    color: #284d53;
+                }
+
+                .titleExperience {
+                    font-size: 18px;
+                    font-weight: bolder;
+                    color: black;
+                }
+            }
+        }
+
+
+    }
+}
+// PRESENTATION BLOCK
+
+.presentationFaceContainer {
+    p {
+        font-size: 22px;
+        text-align: left;
+        margin: 0px 30px;
+        color: #3b3a3a;
+    }
+}
+
+
+
+// RIGHT CONTAINER
+
+
+.rightBlockContainer {
+    position: relative;
+    transition: all .2s ease-in-out;
+    border: 1px solid black;
+    margin-left: auto;
+    flex: 0.55;
+    min-height: 100vh;
+
+    .blockStudy {
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid gray;
+        width: 80%;
+        font-size: 16px;
+        text-align: left;
+        margin-bottom: 50px;
+
+        h2 {
+            font-size: 18px;
+            margin: 5px 0px;
+            color: #3b3a3a;
+            font-weight: 500;
+        }
+        p {
+            margin: 10px 0;
+            color: #282c34;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0;
+
+            > span {
+                margin: 2px 3px 0 2px;
+                background-color: #3b3a3a;
+                padding: 5px ;
+                border-radius: 10px;
+                color: whitesmoke;
+                font-size: 13px;
+            }
+        }
+        > div {
+            color: #282c34;
+            font-weight: 200;
+        }
+    }
+
+    .item {
+        opacity: 0;
+        transition: all .4s ease;
+        margin: 0 90px 70px 90px;
+    }
+
+    .item.active {
+        opacity: 1;
+        transition: all 1s ease;
+        margin: 0 90px 70px 90px;
+    }
+    h2 {
+        margin: 30px 0px;
+        padding: 0;
+        font-size: 25px;
+    }
+
+    p {
+        font-size: 18px;
+        text-align: left;
+        margin: 20px 0px;
+        color: #3b3a3a;
+    }
+
+    .projectItemContainer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: left;
+
+        .project {
+            margin: 20px;
+            height: 300px;
+            width: 240px;
+            border-radius: 10px;
+            background-color: #282c34;
+            overflow: hidden;
+
+            > img {
+                height: 100%;
+                width: 100%;
+                z-index: 5;
+            }
+
+            &:hover {
+                transition: all .4s ease;
+                background-color: #dfdddd;
+                border: 1px solid #4b4b4b;
+
+                .dateExperience {
+                    color: #284d53;
+                }
+
+                .titleExperience {
+                    font-size: 18px;
+                    font-weight: bolder;
+                    color: black;
+                }
+            }
+        }
+
+
+
     }
 }
