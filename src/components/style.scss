@@ -533,6 +533,33 @@ h2 {
     flex: 0.55;
     min-height: 100vh;
 
+
+    // Principaux éléments
+    .item {
+        opacity: 0;
+        transition: all .4s ease;
+        margin: 0 90px 70px 90px;
+    }
+
+    .item.active {
+        opacity: 1;
+        transition: all 1s ease;
+        margin: 0 90px 70px 90px;
+    }
+    h2 {
+        margin: 30px 0px;
+        padding: 0;
+        font-size: 25px;
+    }
+
+    p {
+        font-size: 18px;
+        text-align: left;
+        margin: 20px 0px;
+        color: #3b3a3a;
+    }
+
+    // STUDY
     .blockStudy {
         padding: 10px;
         border-radius: 10px;
@@ -541,6 +568,7 @@ h2 {
         font-size: 16px;
         text-align: left;
         margin-bottom: 50px;
+        opacity: 0;
 
         h2 {
             font-size: 18px;
@@ -569,37 +597,39 @@ h2 {
             font-weight: 200;
         }
     }
+    .active-blockStudy {
+        @for $i from 1 through 5 {
+            &:nth-child(#{$i}) {
+                transform: translateX(-25%);
+                animation: animateBlockStudy 0.5s ease 200ms*calc($i - 1) forwards;
+            }
+            &:nth-child(2n) {
+                transform: translateX(25%);
+            }
+        }
 
-    .item {
-        opacity: 0;
-        transition: all .4s ease;
-        margin: 0 90px 70px 90px;
+        @keyframes animateBlockStudy {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0%);
+            }
+        }
     }
 
-    .item.active {
-        opacity: 1;
-        transition: all 1s ease;
-        margin: 0 90px 70px 90px;
-    }
-    h2 {
-        margin: 30px 0px;
-        padding: 0;
-        font-size: 25px;
-    }
 
-    p {
-        font-size: 18px;
-        text-align: left;
-        margin: 20px 0px;
-        color: #3b3a3a;
-    }
 
+
+    // PROJECT
     .projectItemContainer {
         display: flex;
         flex-wrap: wrap;
         justify-content: left;
 
         .project {
+            opacity: 0;
             margin: 20px;
             height: 300px;
             width: 240px;
@@ -631,6 +661,106 @@ h2 {
         }
 
 
+        .active-project {
+            transform: scale(0);
 
+            @for $i from 1 through 3 {
+                &:nth-child(#{$i}) {
+                    opacity: 1;
+                    animation: scalingBox 0.5s ease 500ms*calc($i - 1) forwards;
+                    background-color: green;
+                }
+            }
+
+            @keyframes scalingBox {
+                from {
+                    transform: scale(0);
+                }
+                to {
+                    transform: scale(1);
+                }
+            }
+        }
+    }
+
+
+
+    // EXPERIENCE
+    .blockExperience {
+        display: inline-block;
+        border: 1px darkslategray solid;
+        position: relative;
+        padding: 20px;
+        font-size: 25px;
+        border-radius: 10px;
+        width: 80%;
+        transform-origin: left center;
+
+        > div {
+            color: gray;
+            display: flex;
+            flex-direction: row;
+
+            // Div pour le titre et la description
+            > div  {
+                font-size: 15px;
+                text-align: left;
+            }
+            .dateExperience {
+                font-size: 15px;
+                margin: 10px;
+                min-width: 100px;
+            }
+            .titleExperience {
+                font-size: 18px;
+                font-weight: bold;
+            }
+
+            .descriptionExperience {
+                margin: 10px 0px;
+            }
+
+            // Container des Tags
+            .tagsExperience {
+                margin-top: 15px;
+
+                // TAGs
+                span {
+                    padding: 5px 10px 5px 10px;
+                    background-color: #282c34;
+                    border-radius: 10px;
+                    margin: 0px 10px 0px 0px;
+                    color: white;
+                }
+            }
+
+        }
+        &:hover {
+            transition: all .4s ease;
+            background-color: #dfdddd;
+            border: 1px solid #4b4b4b;
+
+            .dateExperience {
+                color: #284d53;
+            }
+
+            .titleExperience {
+                font-size: 18px;
+                font-weight: bolder;
+                color: black;
+            }
+        }
+
+    }
+    .active-blockExperience {
+        animation: scalingBlockExperience 1s ease forwards;
+        @keyframes scalingBlockExperience {
+            from {
+                transform: scaleX(0);
+            }
+            to {
+                transform: scaleX(1);
+            }
+        }
     }
 }

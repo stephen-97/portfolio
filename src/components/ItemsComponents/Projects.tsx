@@ -16,12 +16,7 @@ const Projects = (props : ProjectProps) =>  {
         <>
             <h2>Projets ! </h2>
             <div className={'projectItemContainer'}>
-                <div className={'project'}>
-                    <img
-                        className="project-img"
-                        alt="Logo application Addoptez moi"
-                    />
-                </div>
+                <div className={'project'}></div>
                 <div className={'project'}></div>
             </div>
         </>

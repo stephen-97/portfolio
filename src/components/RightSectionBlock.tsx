@@ -1,6 +1,6 @@
 import {connect, useDispatch, useSelector} from "react-redux";
 import {RefObject, useState} from "react";
-import {AppDispatch, RootState} from "../redux/redux";
+import {AppDispatch, RootState, setPage} from "../redux/redux";
 import React, {useEffect, useRef} from "react";
 import ExperienceFace from "./CubeComponents/ExperienceFace";
 import AdoptezMoiLogo from "../assets/AdoptezMoiLogo.png";
@@ -26,8 +26,7 @@ const RightSectionBlock = (props : SmallBlockProps) =>  {
     const refContact= useRef<null | HTMLDivElement>(null);
     const refStudy= useRef<null | HTMLDivElement>(null);
 
-    const [scrollTop, setScrollTop] = useState(0);
-
+    const dispatch: AppDispatch = useDispatch();
 
     useEffect(() => {
         let e: HTMLElement | null= document.getElementById("box");
@@ -90,18 +89,66 @@ const RightSectionBlock = (props : SmallBlockProps) =>  {
 
     const observer: IntersectionObserver = new IntersectionObserver((entries: IntersectionObserverEntry[]) => {
         //console.log(entries)
-        entries.forEach((entry: IntersectionObserverEntry) => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active')
+        entries.forEach((entry: IntersectionObserverEntry, index: number) => {
+            if (entry.isIntersecting ) {
+                if(entry.target.classList.contains('item')) entry.target.classList.add('active')
+                if(entry.target.classList.contains('project')) entry.target.classList.add('active-project');
+                if(entry.target.classList.contains('blockStudy')) entry.target.classList.add('active-blockStudy')
+                if(entry.target.classList.contains('blockExperience')) entry.target.classList.add('active-blockExperience')
             }
         })
     })
 
 
+    const observerRef: IntersectionObserver = new IntersectionObserver((entries: IntersectionObserverEntry[]) => {
+        let refArray = {
+             "refPresentation" : false,
+             "refExperience": false,
+             "refStudy": false,
+             "refProjects": false,
+        };
+        entries.forEach((entry: IntersectionObserverEntry, index: number) => {
+
+            if(entry.isIntersecting) refArray["refPresentation"] = true
+            /**
+             *
+             * if(entry.target === refProjects.current) {
+             *                 if(entry.isIntersecting) refArray["refPresentation"] = true
+             *             }
+             *             else refArray["refPresentation"] = false
+             *
+             *             if (entry.isIntersecting) {
+             *                 console.log("yo")
+             *             } else {
+             *                 console.log("no")
+             *             }
+             */
+
+        })
+    })
+
+    //project
+
     useEffect(() => {
-        const hiddenElements = document.querySelectorAll(".item")
-        hiddenElements.forEach((el) => observer.observe((el)))
-        if(refExperience.current) observer.observe(refExperience.current)
+        console.error(page)
+        // Items : Expériences, présentations, ect...
+        const itemsElements = document.querySelectorAll(".item")
+        // Block des projets :
+        const projectElements = document.querySelectorAll(".project")
+        // Block des études
+        const studyElements = document.querySelectorAll(".blockStudy")
+        // Block des experiences
+        const experienceElements = document.querySelectorAll(".blockExperience")
+
+        itemsElements.forEach((el: Element) => observer.observe((el)))
+        projectElements.forEach((el: Element) => observer.observe((el)))
+        studyElements.forEach((el: Element) => observer.observe((el)))
+        experienceElements.forEach((el: Element) => observer.observe((el)))
+
+        const onScroll = () => observerRef.observe(refProjects.current! as Element)
+        window.addEventListener('scroll', onScroll);
+
+        onScroll()
     }, [] )
 
     return(
