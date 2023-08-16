@@ -1,7 +1,9 @@
 import {connect, useDispatch, useSelector} from "react-redux";
 import {RefObject, useState} from "react";
-import {AppDispatch, RootState, setPage} from "../redux/redux";
+import {AppDispatch, RootState, setPage, setPageSliceScroll} from "../redux/redux";
 import React, {useEffect, useRef} from "react";
+import gsap from "gsap";
+import {ScrollTrigger} from "gsap/ScrollTrigger";
 import ExperienceFace from "./CubeComponents/ExperienceFace";
 import AdoptezMoiLogo from "../assets/AdoptezMoiLogo.png";
 import StudyFace from "./CubeComponents/StudyFace";
@@ -10,12 +12,14 @@ import Presentation from "./ItemsComponents/Presentation";
 import Experience from "./ItemsComponents/Experience";
 import Projects from "./ItemsComponents/Projects";
 import Study from "./ItemsComponents/Study";
+import DOMTarget = gsap.DOMTarget;
 
 
 
 type SmallBlockProps = {
 }
 
+gsap.registerPlugin(ScrollTrigger);
 
 const RightSectionBlock = (props : SmallBlockProps) =>  {
 
@@ -25,8 +29,6 @@ const RightSectionBlock = (props : SmallBlockProps) =>  {
     const refProjects= useRef<null | HTMLDivElement>(null);
     const refContact= useRef<null | HTMLDivElement>(null);
     const refStudy= useRef<null | HTMLDivElement>(null);
-
-    const dispatch: AppDispatch = useDispatch();
 
     useEffect(() => {
         let e: HTMLElement | null= document.getElementById("box");
@@ -54,41 +56,7 @@ const RightSectionBlock = (props : SmallBlockProps) =>  {
             }
         }, [page])
 
-    /**
-     *
-     *     useEffect(() => {
-     *         let e: HTMLElement | null= document.getElementById("box");
-     *         switch (page.name) {
-     *             case "working" :
-     *                 refWorking.current?.scrollIntoView({behavior: 'smooth'});
-     *                 break;
-     *             case "projects":
-     *                 if(e!== null) e.style.transform = "rotateY(90deg)";
-     *                 refProjects.current?.scrollIntoView({behavior: 'smooth'});
-     *                 break;
-     *             case "contact" :
-     *                 if(e!== null) e.style.transform = "rotateY(-90deg)";
-     *                 refContact.current?.scrollIntoView({behavior: 'smooth'});
-     *                 break;
-     *             }
-     *         }, [page])
-      */
-
-
-    /**
-     * OBSERVER DE BASE
-     *
-     * const observer: IntersectionObserver = new IntersectionObserver((entries: IntersectionObserverEntry[]) => {
-     *         entries.forEach((entry: IntersectionObserverEntry) => {
-     *             if (entry.isIntersecting) {
-     *                 entry.target.classList.toggle('item')
-     *             }
-     *         })
-     *     })
-     */
-
     const observer: IntersectionObserver = new IntersectionObserver((entries: IntersectionObserverEntry[]) => {
-        //console.log(entries)
         entries.forEach((entry: IntersectionObserverEntry, index: number) => {
             if (entry.isIntersecting ) {
                 if(entry.target.classList.contains('item')) entry.target.classList.add('active')
@@ -100,37 +68,8 @@ const RightSectionBlock = (props : SmallBlockProps) =>  {
     })
 
 
-    const observerRef: IntersectionObserver = new IntersectionObserver((entries: IntersectionObserverEntry[]) => {
-        let refArray = {
-             "refPresentation" : false,
-             "refExperience": false,
-             "refStudy": false,
-             "refProjects": false,
-        };
-        entries.forEach((entry: IntersectionObserverEntry, index: number) => {
-
-            if(entry.isIntersecting) refArray["refPresentation"] = true
-            /**
-             *
-             * if(entry.target === refProjects.current) {
-             *                 if(entry.isIntersecting) refArray["refPresentation"] = true
-             *             }
-             *             else refArray["refPresentation"] = false
-             *
-             *             if (entry.isIntersecting) {
-             *                 console.log("yo")
-             *             } else {
-             *                 console.log("no")
-             *             }
-             */
-
-        })
-    })
-
-    //project
-
     useEffect(() => {
-        console.error(page)
+
         // Items : Expériences, présentations, ect...
         const itemsElements = document.querySelectorAll(".item")
         // Block des projets :
@@ -145,38 +84,79 @@ const RightSectionBlock = (props : SmallBlockProps) =>  {
         studyElements.forEach((el: Element) => observer.observe((el)))
         experienceElements.forEach((el: Element) => observer.observe((el)))
 
-        const onScroll = () => observerRef.observe(refProjects.current! as Element)
-        window.addEventListener('scroll', onScroll);
-
-        onScroll()
     }, [] )
 
+
+
+
+    useEffect(() => {
+        /// TEST INSPIRATION DISCORD
+
+        const buttonContainer= document.querySelector('.buttonContainer')
+        const items = gsap.utils.toArray<HTMLElement>('.item')
+        const buttons = Array.from(document.querySelectorAll(".button"));
+        const itemsMap = new Map();
+        const buttonsMap = new Map();
+
+        items.forEach((item: HTMLElement, index: number) => {
+            itemsMap.set(item, buttons[index])
+        });
+
+        buttons.forEach((button: Element, index: number) => {
+            buttonsMap.set(button, items[index] )
+        })
+
+        items.forEach((section: HTMLElement, i: number) => {
+            ScrollTrigger.create({
+                trigger: section,
+                start: "top center",
+                onEnter: () => {
+                    setActive(itemsMap.get(items[i]));
+                },
+                onLeaveBack: () => {
+                    setActive(itemsMap.get(items[i - 1]));
+                }
+            });
+        }, []);
+
+        buttonContainer!.addEventListener("click", (e: Event) => {
+            const target =( e.target! as HTMLElement).closest(".button");
+            console.error(target)
+            if (buttonsMap.has(target)) {
+                buttonsMap.get(target).scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        });
+
+        const setActive = (element: Element) => {
+            buttons.forEach((item: Element) => {
+                if (element === item) {
+                    item.classList.add("activeButton");
+                } else {
+                    item.classList.remove("activeButton");
+                }
+            });
+
+        }
+    })
     return(
-        <div className={"rightBlockContainer"}>
-            <div ref={refPresentation} className={'item'}>
+        <main className={"rightBlockContainer"}>
+            <section ref={refPresentation} className={'item item1'}>
                 <Presentation />
-            </div>
-            <div ref={refExperience} className={'item'}>
+            </section>
+            <section ref={refExperience} className={'item item2'}>
                 <Experience />
-            </div>
-            <div ref={refStudy} className={'item'}>
+            </section>
+            <section ref={refStudy} className={'item item3'}>
                 <Study />
-            </div>
-            <div ref={refProjects} className={'item'}>
+            </section>
+            <section ref={refProjects} className={'item item4'}>
                 <Projects />
-            </div>
-        </div>
+            </section>
+        </main>
 
     );
 }
 
-/**
- * <Presentation />
- *             <Experience />
- *             <Projects />
- *             <Study />
- * @param state
- */
 const mapState = (state: RootState) => state.page
 
 export default connect(mapState)(RightSectionBlock);

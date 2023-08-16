@@ -1,5 +1,6 @@
 import {connect, useDispatch, useSelector} from "react-redux";
 import {AppDispatch, RootState} from "../redux/redux";
+import { styled} from "styled-components";
 import React from "react";
 import Description from "./Description";
 import SmallBlock from "./SmallBlock";
@@ -11,12 +12,31 @@ import manIcon from "../assets/man.svg";
 type SmallBlockProps = {
 }
 
+const StyledButtonContainer = styled.section`
+  .buttonContainer {
+    top: 400px;
+    left: 50px;
+    display: flex;
+    flex-direction: column;
+  }
+`
+
 
 const buttonTabs = [
+    {
+        description: "PRESENTATION",
+        icons: manIcon,
+        pageName: "presentation"
+    },
     {
         description: "EXPÉRIENCE PRO",
         icons: laptopIcon,
         pageName: "working",
+    },
+    {
+        description: "ETUDES",
+        icons: manIcon,
+        pageName: "study"
     },
     {
         description: "PROJETS PERSO",
@@ -28,11 +48,6 @@ const buttonTabs = [
         icons: manIcon,
         pageName: "contact"
     },
-    {
-        description: "Presentation",
-        icons: manIcon,
-        pageName: "presentation"
-    }
 ]
 
 const LeftSectionBlock = (props : SmallBlockProps) =>  {
@@ -40,10 +55,12 @@ const LeftSectionBlock = (props : SmallBlockProps) =>  {
     return(
         <div className={"leftBlockContainer"}>
             <div id={"leftBlockContent"}>
-                <Description />
-                <div className={"smallBlocksContainer"}>
-                    {buttonTabs.map((item) => <SmallBlock description={item.description} icon={item.icons} pageName={item.pageName}/>)}
-                </div>
+                <StyledButtonContainer>
+                    <Description />
+                    <div className={"buttonContainer"}>
+                        {buttonTabs.map((item, index: number) => <SmallBlock key={index} index={index} description={item.description} icon={item.icons} pageName={item.pageName}/>)}
+                    </div>
+                </StyledButtonContainer>
             </div>
         </div>
     );

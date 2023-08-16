@@ -3,6 +3,7 @@ import {pageSlice } from "./slices/pageSlice";
 import {pageSliceWhileScrolling} from "./slices/pageSlice";
 
 export const {setPage} = pageSlice.actions
+export const {setPageSliceScroll} = pageSliceWhileScrolling.actions
 
 export const store = configureStore({
   reducer: {
