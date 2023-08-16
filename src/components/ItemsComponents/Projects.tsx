@@ -13,13 +13,12 @@ type ProjectProps = {
 const Projects = (props : ProjectProps) =>  {
 
     return(
-        <>
-            <h2>Projets ! </h2>
+        <div className={'ProjectContainer'}>
             <div className={'projectItemContainer'}>
                 <div className={'project'}></div>
                 <div className={'project'}></div>
             </div>
-        </>
+        </div>
     );
 }
 

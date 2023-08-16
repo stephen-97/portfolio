@@ -12,7 +12,11 @@ import Presentation from "./ItemsComponents/Presentation";
 import Experience from "./ItemsComponents/Experience";
 import Projects from "./ItemsComponents/Projects";
 import Study from "./ItemsComponents/Study";
-import DOMTarget = gsap.DOMTarget;
+import Wave from "../assets/wave.svg";
+import BriefCase from "../assets/briefcase.svg"
+import Graduation from "../assets/casquette-de-graduation.svg"
+import Idea from "../assets/exchange-ideas.svg"
+import {styled} from "styled-components";
 
 
 
@@ -20,6 +24,33 @@ type SmallBlockProps = {
 }
 
 gsap.registerPlugin(ScrollTrigger);
+
+
+const StyledHeaderItem = styled.section`
+  // PRESENTATION BLOCK
+
+  .title {
+    height: 100px;
+    position: relative;
+    
+    .line {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      border-bottom: 1px solid black;
+      width: 85%;
+      
+    }
+    > img {
+      position: absolute;
+      height: 4em;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 0;
+    }
+  }
+`
+
 
 const RightSectionBlock = (props : SmallBlockProps) =>  {
 
@@ -141,16 +172,48 @@ const RightSectionBlock = (props : SmallBlockProps) =>  {
     return(
         <main className={"rightBlockContainer"}>
             <section ref={refPresentation} className={'item item1'}>
+
+                <StyledHeaderItem>
+                    <div className={'title'}>
+                        <div className={'line'}></div>
+                        <img src={Wave} alt="React Logo" />
+                    </div>
+                </StyledHeaderItem>
                 <Presentation />
+
             </section>
             <section ref={refExperience} className={'item item2'}>
+
+                <StyledHeaderItem>
+                    <div className={'title'}>
+                        <div className={'line'}></div>
+                        <img src={BriefCase} alt="React Logo" />
+                    </div>
+                </StyledHeaderItem>
                 <Experience />
+
             </section>
             <section ref={refStudy} className={'item item3'}>
+
+                <StyledHeaderItem>
+                    <div className={'title'}>
+                        <div className={'line'}></div>
+                        <img src={Graduation} alt="React Logo" />
+                    </div>
+                </StyledHeaderItem>
                 <Study />
+
             </section>
             <section ref={refProjects} className={'item item4'}>
+
+                <StyledHeaderItem>
+                    <div className={'title'}>
+                        <div className={'line'}></div>
+                        <img src={Idea} alt="React Logo" />
+                    </div>
+                </StyledHeaderItem>
                 <Projects />
+
             </section>
         </main>
 

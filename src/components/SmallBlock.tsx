@@ -15,16 +15,55 @@ type SmallBlockProps = {
 
 const StyledButton = styled.section`
   .button {
-    height: 50px;
+    position: relative;
+    line-height: 50px;
     width: 200px;
     border-radius: 20px;
     background-color: #cbded9;
     margin: 15px 0px;
+    overflow: hidden;
+
+    .titleButton {
+      display: inline-block;
+      vert-align: middle;
+      line-height: normal;
+      margin-left: 1vw;
+      position: relative;
+      z-index: 1;
+      transition: 0.3s ease;
+    }
   }
 
   .activeButton {
-    border-bottom: 5px solid firebrick;
+
+    .buttonColorContainer {
+      top:0;
+      left: 0;
+      background-color: #4b4b4b;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      animation: scalingBackgroundButton 0.3s ease forwards;
+      transform-origin: 0;
+
+      @keyframes scalingBackgroundButton {
+        from {
+          transform: scaleX(0);
+        }
+        to {
+          transform: scaleX(1);
+        }
+      }
+    }
+
+    .titleButton {
+      color: white;
+      transition: 0.3s ease;
+    }
+    
   }
+  
+  
 `
 
 const SmallBlock = (props : SmallBlockProps) =>  {
@@ -39,7 +78,8 @@ const SmallBlock = (props : SmallBlockProps) =>  {
     return(
         <StyledButton>
             <div className={`button button${props.index + 1}`} onClick={() => dispatchPage() }>
-                <span> {props.description}</span>
+                <div className={`buttonColorContainer`}></div>
+                <span className={'titleButton'}> {props.description}</span>
             </div>
         </StyledButton>
     );

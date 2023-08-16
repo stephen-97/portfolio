@@ -12,8 +12,9 @@ type ExperienceProps = {
 
 const StyledExperience = styled.section`
 
-  .experienceFaceContainer {
-
+  .experienceContainer {
+    
+    margin-top: 15px;
 
     .blockExperience {
       display: inline-block;
@@ -22,6 +23,8 @@ const StyledExperience = styled.section`
       padding: 20px;
       font-size: 25px;
       border-radius: 10px;
+      transform-origin: 0 ;
+      
 
       > div {
         color: gray;
@@ -129,8 +132,7 @@ const Experience = forwardRef<HTMLDivElement, ExperienceProps>((props: Experienc
 
     return(
         <StyledExperience>
-            <div className={"experienceFaceContainer"}>
-                <h2>Experience Profesionnelle</h2>
+            <div className={"experienceContainer"}>
                 <ExperienceBlock
                     date1={2020}
                     date2={2023}

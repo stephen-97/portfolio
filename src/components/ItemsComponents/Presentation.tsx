@@ -1,18 +1,45 @@
 import React from 'react';
 import "../style.scss"
 import {connect, useSelector} from "react-redux";
-
 import { RootState} from "../../redux/redux";
+import {styled} from "styled-components";
+import Briefcase from "../../assets/briefcase.svg";
+import Wave from "../../assets/wave.svg"
 
 type PresentationProps = {
+
 }
+
+const StyledPresentation = styled.section`
+  // PRESENTATION BLOCK
+
+  .title {
+    height: 100px;
+    position: relative;
+    
+    .line {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      border-bottom: 1px solid black;
+      width: 75%;
+      
+    }
+    > img {
+      position: absolute;
+      height: 4em;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 10%;
+    }
+  }
+`
 
 const Presentation = (props : PresentationProps) =>  {
 
 
     return(
-        < >
-            <h2>Présentation ! </h2>
+        <StyledPresentation>
             <p>
                 Bienvenu dans mon monde, vous l'avez devinez ? Je suis
                 jeune développeur TypeScript Junior
@@ -30,7 +57,7 @@ const Presentation = (props : PresentationProps) =>  {
                 Néanmoins l'interface est responsive design, si vous réduisez la fenêtre le cube
                 disparaîtra !<br/>
             </p>
-        </>
+        </StyledPresentation>
     );
 }
 
