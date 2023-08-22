@@ -13,25 +13,8 @@ type PresentationProps = {
 const StyledPresentation = styled.section`
   // PRESENTATION BLOCK
 
-  .title {
-    height: 100px;
-    position: relative;
-    
-    .line {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      border-bottom: 1px solid black;
-      width: 75%;
-      
-    }
-    > img {
-      position: absolute;
-      height: 4em;
-      top: 50%;
-      transform: translateY(-50%);
-      right: 10%;
-    }
+  p {
+    font-size: 17px;
   }
 `
 
@@ -41,21 +24,22 @@ const Presentation = (props : PresentationProps) =>  {
     return(
         <StyledPresentation>
             <p>
-                Bienvenu dans mon monde, vous l'avez devinez ? Je suis
-                jeune développeur TypeScript Junior
-                et j'ai une énorme préférence pour les technologies React (Js et Native)!
+                Bonjour et bienvenu sur mon portefolio! Je suis jeune développeur TypeScript Junior ayant
+                suivi des formations en alternance à Paris du bac jusqu'au bac+5.
+                Je maîtrise plusieurs langages de programmation comme HTML, CSS, TypeScript, PHP.. Par contre j'ai
+                une grande préférence énorme préférence pour le TypeScript et les bibliothèques comme
+                React et React Native !
                 <br/>
             </p>
 
             <p>
-                Pour ajouter un peu d'origanilité à ce portefolio, j'ai rajouté ce cube
-                où chaque face représente un détail concernant ma personne (expérience pro -
-                projet personnels...). Vous pouvez vous amusez et intéragir avec.<br/>
+                Je suis actuellement en quête de nouvelles opportunités pour développer mes compétences dans
+                le développement web et mobile.<br/>
             </p>
 
             <p>
-                Néanmoins l'interface est responsive design, si vous réduisez la fenêtre le cube
-                disparaîtra !<br/>
+                En dehors de l'aspect profesionnel, je suis un jeune homme de 25 ans qui a plusieurs passions comme les
+                jeux vidéos, les sports de combats et les mangas.<br/>
             </p>
         </StyledPresentation>
     );

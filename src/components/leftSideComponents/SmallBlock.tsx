@@ -1,9 +1,6 @@
-import React, {useState, useRef, useEffect} from 'react';
-import "./style.scss"
+import React from 'react';
+import "../style.scss"
 import styled from "styled-components";
-import {connect, useDispatch, useSelector} from "react-redux";
-import {setPage, setPageSliceScroll} from "../redux/redux";
-import {AppDispatch, RootState} from "../redux/redux";
 
 
 type SmallBlockProps = {
@@ -19,9 +16,10 @@ const StyledButton = styled.section`
     line-height: 50px;
     width: 200px;
     border-radius: 20px;
-    background-color: #cbded9;
-    margin: 15px 0px;
+    border: 1px solid black;
+    margin: 15px 0;
     overflow: hidden;
+    cursor:  pointer;
 
     .titleButton {
       display: inline-block;
@@ -32,9 +30,19 @@ const StyledButton = styled.section`
       z-index: 1;
       transition: 0.3s ease;
     }
+
+    .buttonColorContainer {
+      top:0;
+      left: 0;
+      position: absolute;
+      height: 100%;
+      width: 0;
+      transform-origin: 0;
+      transition: 0.3s ease;
+    }
   }
 
-  .activeButton {
+  .activeButton, .button:hover {
 
     .buttonColorContainer {
       top:0;
@@ -68,16 +76,10 @@ const StyledButton = styled.section`
 
 const SmallBlock = (props : SmallBlockProps) =>  {
 
-    const page = useSelector((state: RootState) => state.page)
-    const dispatch: AppDispatch = useDispatch();
-
-    const dispatchPage = () => {
-        dispatch(setPage({name: props.pageName}))
-    }
 
     return(
         <StyledButton>
-            <div className={`button button${props.index + 1}`} onClick={() => dispatchPage() }>
+            <div className={`button button${props.index + 1}`}>
                 <div className={`buttonColorContainer`}></div>
                 <span className={'titleButton'}> {props.description}</span>
             </div>
@@ -85,9 +87,8 @@ const SmallBlock = (props : SmallBlockProps) =>  {
     );
 }
 
-const mapState = (state: RootState) => state.page
 
-export default connect(mapState)(SmallBlock);
+export default SmallBlock;
 
 /**
  *

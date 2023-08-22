@@ -1,6 +1,5 @@
 import {connect, useDispatch, useSelector} from "react-redux";
-import {RefObject, useState} from "react";
-import {AppDispatch, RootState, setPage, setPageSliceScroll} from "../redux/redux";
+import {AppDispatch, RootState} from "../redux/redux";
 import React, {useEffect, useRef} from "react";
 import gsap from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
@@ -37,7 +36,7 @@ const StyledHeaderItem = styled.section`
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      border-bottom: 1px solid black;
+      border-bottom: 4px dashed black;
       width: 85%;
       
     }
@@ -51,6 +50,11 @@ const StyledHeaderItem = styled.section`
   }
 `
 
+const StyledRightComponent = styled.section`
+
+  
+
+`
 
 const RightSectionBlock = (props : SmallBlockProps) =>  {
 
@@ -60,32 +64,6 @@ const RightSectionBlock = (props : SmallBlockProps) =>  {
     const refProjects= useRef<null | HTMLDivElement>(null);
     const refContact= useRef<null | HTMLDivElement>(null);
     const refStudy= useRef<null | HTMLDivElement>(null);
-
-    useEffect(() => {
-        let e: HTMLElement | null= document.getElementById("box");
-        switch (page.name) {
-            case "working" :
-                if(e!== null) e.style.transform = "rotate3d(0,0, 0, 90deg)";
-                refExperience.current?.scrollIntoView({behavior: 'smooth'});
-                break;
-            case "projects":
-                if(e!== null) e.style.transform = "rotate3d(0,-90,0 , 90deg)";
-                refProjects.current?.scrollIntoView({behavior: 'smooth'});
-                break;
-            case "contact" :
-                if(e!== null) e.style.transform = "rotate3d(0,90, 0, 90deg)";
-                refContact.current?.scrollIntoView({behavior: 'smooth'});
-                break;
-            case "presentation" :
-                if(e!== null) e.style.transform = "rotate3d(-45, 0, 0, 90deg)";
-                refPresentation.current?.scrollIntoView({behavior: 'smooth'});
-                break;
-            case "study" :
-                if(e!== null) e.style.transform = "rotate3d(-45, 0, 0, 90deg)";
-                refStudy.current?.scrollIntoView({behavior: 'smooth'});
-                break;
-            }
-        }, [page])
 
     const observer: IntersectionObserver = new IntersectionObserver((entries: IntersectionObserverEntry[]) => {
         entries.forEach((entry: IntersectionObserverEntry, index: number) => {
@@ -170,59 +148,57 @@ const RightSectionBlock = (props : SmallBlockProps) =>  {
         }
     })
     return(
-        <main className={"rightBlockContainer"}>
-            <section ref={refPresentation} className={'item item1'}>
+            <main className={"rightBlockContainer"}>
+                <section ref={refPresentation} className={'item item1'}>
 
-                <StyledHeaderItem>
-                    <div className={'title'}>
-                        <div className={'line'}></div>
-                        <img src={Wave} alt="React Logo" />
-                    </div>
-                </StyledHeaderItem>
-                <Presentation />
+                    <StyledHeaderItem>
+                        <div className={'title'}>
+                            <div className={'line'}></div>
+                            <img src={Wave} alt="React Logo" />
+                        </div>
+                    </StyledHeaderItem>
+                    <Presentation />
 
-            </section>
-            <section ref={refExperience} className={'item item2'}>
+                </section>
+                <section ref={refExperience} className={'item item2'}>
 
-                <StyledHeaderItem>
-                    <div className={'title'}>
-                        <div className={'line'}></div>
-                        <img src={BriefCase} alt="React Logo" />
-                    </div>
-                </StyledHeaderItem>
-                <Experience />
+                    <StyledHeaderItem>
+                        <div className={'title'}>
+                            <div className={'line'}></div>
+                            <img src={BriefCase} alt="React Logo" />
+                        </div>
+                    </StyledHeaderItem>
+                    <Experience />
 
-            </section>
-            <section ref={refStudy} className={'item item3'}>
+                </section>
+                <section ref={refStudy} className={'item item3'}>
 
-                <StyledHeaderItem>
-                    <div className={'title'}>
-                        <div className={'line'}></div>
-                        <img src={Graduation} alt="React Logo" />
-                    </div>
-                </StyledHeaderItem>
-                <Study />
+                    <StyledHeaderItem>
+                        <div className={'title'}>
+                            <div className={'line'}></div>
+                            <img src={Graduation} alt="React Logo" />
+                        </div>
+                    </StyledHeaderItem>
+                    <Study />
 
-            </section>
-            <section ref={refProjects} className={'item item4'}>
+                </section>
+                <section ref={refProjects} className={'item item4'}>
 
-                <StyledHeaderItem>
-                    <div className={'title'}>
-                        <div className={'line'}></div>
-                        <img src={Idea} alt="React Logo" />
-                    </div>
-                </StyledHeaderItem>
-                <Projects />
+                    <StyledHeaderItem>
+                        <div className={'title'}>
+                            <div className={'line'}></div>
+                            <img src={Idea} alt="React Logo" />
+                        </div>
+                    </StyledHeaderItem>
+                    <Projects />
 
-            </section>
-        </main>
-
+                </section>
+            </main>
     );
 }
 
-const mapState = (state: RootState) => state.page
 
-export default connect(mapState)(RightSectionBlock);
+export default RightSectionBlock;
 
 /**
  *
@@ -392,4 +368,34 @@ export default connect(mapState)(RightSectionBlock);
  *                     <div className={'card'} id={'bottom'}>Bottom</div>
  *                 </div>
  *             </div>
+ *
+ *
+ *
+ *             CUBE
+ *
+ *              useEffect(() => {
+ *         let e: HTMLElement | null= document.getElementById("box");
+ *         switch (page.name) {
+ *             case "working" :
+ *                 if(e!== null) e.style.transform = "rotate3d(0,0, 0, 90deg)";
+ *                 refExperience.current?.scrollIntoView({behavior: 'smooth'});
+ *                 break;
+ *             case "projects":
+ *                 if(e!== null) e.style.transform = "rotate3d(0,-90,0 , 90deg)";
+ *                 refProjects.current?.scrollIntoView({behavior: 'smooth'});
+ *                 break;
+ *             case "contact" :
+ *                 if(e!== null) e.style.transform = "rotate3d(0,90, 0, 90deg)";
+ *                 refContact.current?.scrollIntoView({behavior: 'smooth'});
+ *                 break;
+ *             case "presentation" :
+ *                 if(e!== null) e.style.transform = "rotate3d(-45, 0, 0, 90deg)";
+ *                 refPresentation.current?.scrollIntoView({behavior: 'smooth'});
+ *                 break;
+ *             case "study" :
+ *                 if(e!== null) e.style.transform = "rotate3d(-45, 0, 0, 90deg)";
+ *                 refStudy.current?.scrollIntoView({behavior: 'smooth'});
+ *                 break;
+ *             }
+ *         }, [page])
  */

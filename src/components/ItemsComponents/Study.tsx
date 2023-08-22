@@ -49,7 +49,7 @@ const createLoopCSS = styled.div`
 const StyledSectionStudy = styled.section`
   
   .containerStudy{
-    margin-top: 25px;
+    margin-top: 30px;
   }
   // STUDY
   .blockStudy {

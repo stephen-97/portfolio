@@ -3,8 +3,8 @@ import CSS from 'csstype'
 import '../src/components/style.scss'
 import './App.css';
 import Block from "./components/Block";
-import Description from "./components/Description";
-import SmallBlock from "./components/SmallBlock";
+import Description from "./components/leftSideComponents/Description";
+import SmallBlock from "./components/leftSideComponents/SmallBlock";
 
 import manIcon from "./assets/man.svg"
 import laptopIcon from "./assets/laptop.svg"
@@ -14,7 +14,7 @@ import { store } from './redux/redux'
 import { Provider} from "react-redux";
 import Page from "./utility/page";
 import RightSectionBlock from "./components/RightSectionBlock";
-import LeftSectionBlock from "./components/LeftSectionBlock";
+import LeftSectionBlock from "./components/leftSideComponents/LeftSectionBlock";
 
 interface IButton{
     name: string

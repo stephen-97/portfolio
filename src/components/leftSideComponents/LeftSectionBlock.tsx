@@ -1,21 +1,25 @@
 import {connect, useDispatch, useSelector} from "react-redux";
-import {AppDispatch, RootState} from "../redux/redux";
+import {AppDispatch, RootState} from "../../redux/redux";
 import { styled} from "styled-components";
 import React from "react";
 import Description from "./Description";
 import SmallBlock from "./SmallBlock";
-import laptopIcon from "../assets/laptop.svg";
-import ideaIcon from "../assets/idea.svg";
-import manIcon from "../assets/man.svg";
+import laptopIcon from "../../assets/laptop.svg";
+import ideaIcon from "../../assets/idea.svg";
+import manIcon from "../../assets/man.svg";
+import ButtonLinksContainer from "./ButtonLinksContainer";
 
 
 type SmallBlockProps = {
 }
 
+
+const StyledLeftContainer = styled.section`
+
+
+`
 const StyledButtonContainer = styled.section`
   .buttonContainer {
-    top: 400px;
-    left: 50px;
     display: flex;
     flex-direction: column;
   }

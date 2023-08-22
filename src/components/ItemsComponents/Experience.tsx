@@ -13,8 +13,7 @@ type ExperienceProps = {
 const StyledExperience = styled.section`
 
   .experienceContainer {
-    
-    margin-top: 15px;
+    margin-top: 30px;
 
     .blockExperience {
       display: inline-block;
@@ -24,9 +23,10 @@ const StyledExperience = styled.section`
       font-size: 25px;
       border-radius: 10px;
       transform-origin: 0 ;
+      background-color: #dfdfdf;
       
-
-      > div {
+      .experienceContent{
+        opacity: 0;
         color: gray;
         display: flex;
         flex-direction: row;
@@ -63,8 +63,8 @@ const StyledExperience = styled.section`
             color: white;
           }
         }
-
       }
+      
       &:hover {
         transition: all .4s ease;
         background-color: #dfdddd;
@@ -92,6 +92,18 @@ const StyledExperience = styled.section`
           transform: scaleX(1);
         }
       }
+
+      .experienceContent{
+        animation: changeOpacity 1s ease 1s forwards;
+        @keyframes changeOpacity {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+      }
     }
   }
 
@@ -111,7 +123,7 @@ const Experience = forwardRef<HTMLDivElement, ExperienceProps>((props: Experienc
     const ExperienceBlock = (props: ExperienceBlockProps) => {
         return (
             <div className={'blockExperience'}>
-                <div className={'titleAndDate'}>
+                <div className={'experienceContent'}>
                     <span className={'dateExperience'}>{`${props.date1} ${props.date2}`}</span>
                     <div>
                         <div className={'titleExperience'}>{`${props.title}`}</div>
