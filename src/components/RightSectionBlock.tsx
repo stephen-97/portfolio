@@ -58,7 +58,6 @@ const StyledRightComponent = styled.section`
 
 const RightSectionBlock = (props : SmallBlockProps) =>  {
 
-    const page = useSelector((state: RootState) => state.page)
     const refPresentation= useRef<null | HTMLDivElement>(null);
     const refExperience = useRef<null | HTMLDivElement>(null);
     const refProjects= useRef<null | HTMLDivElement>(null);
@@ -98,6 +97,12 @@ const RightSectionBlock = (props : SmallBlockProps) =>  {
 
 
 
+
+    useEffect(() => {
+        let e: HTMLElement | null= document.getElementById("box");
+
+    }, [])
+
     useEffect(() => {
         /// TEST INSPIRATION DISCORD
 
@@ -130,7 +135,6 @@ const RightSectionBlock = (props : SmallBlockProps) =>  {
 
         buttonContainer!.addEventListener("click", (e: Event) => {
             const target =( e.target! as HTMLElement).closest(".button");
-            console.error(target)
             if (buttonsMap.has(target)) {
                 buttonsMap.get(target).scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
@@ -140,6 +144,12 @@ const RightSectionBlock = (props : SmallBlockProps) =>  {
             buttons.forEach((item: Element) => {
                 if (element === item) {
                     item.classList.add("activeButton");
+                    let e = document.querySelector<HTMLElement>('#box');
+                    if(item.classList.contains('button1')) e!.style.transform = "rotate3d(0,0, 0, 90deg)";
+                    if(item.classList.contains('button2')) e!.style.transform = "rotate3d(0,90, 0, 90deg)";
+                    if(item.classList.contains('button3')) e!.style.transform = "rotate3d(-45,0, 0, 90deg)";
+                    if(item.classList.contains('button4')) e!.style.transform = "rotate3d(0,180, 0, 90deg)";
+
                 } else {
                     item.classList.remove("activeButton");
                 }

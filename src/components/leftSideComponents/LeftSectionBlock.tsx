@@ -8,6 +8,7 @@ import laptopIcon from "../../assets/laptop.svg";
 import ideaIcon from "../../assets/idea.svg";
 import manIcon from "../../assets/man.svg";
 import ButtonLinksContainer from "./ButtonLinksContainer";
+import Box from "./Box";
 
 
 type SmallBlockProps = {
@@ -60,11 +61,13 @@ const LeftSectionBlock = (props : SmallBlockProps) =>  {
         <div className={"leftBlockContainer"}>
             <div id={"leftBlockContent"}>
                 <StyledButtonContainer>
+                    <Box />
                     <Description />
                     <div className={"buttonContainer"}>
                         {buttonTabs.map((item, index: number) => <SmallBlock key={index} index={index} description={item.description} icon={item.icons} pageName={item.pageName}/>)}
                     </div>
                 </StyledButtonContainer>
+
             </div>
         </div>
     );

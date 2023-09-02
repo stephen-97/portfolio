@@ -56,7 +56,6 @@ const StyledSectionStudy = styled.section`
     padding: 10px;
     border-radius: 10px;
     border: 1px solid gray;
-    width: 100%;
     font-size: 16px;
     text-align: left;
     margin-bottom: 50px;

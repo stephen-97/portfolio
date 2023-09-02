@@ -19,27 +19,42 @@ const StyledExperience = styled.section`
       display: inline-block;
       border: 1px darkslategray solid;
       position: relative;
-      padding: 20px;
+      padding: 10px 0;
       font-size: 25px;
       border-radius: 10px;
       transform-origin: 0 ;
-      background-color: #dfdfdf;
+      width: 100%;
       
       .experienceContent{
-        opacity: 0;
+        opacity: 1;
         color: gray;
         display: flex;
         flex-direction: row;
-
+        margin: 10px 20px;
+        
         // Div pour le titre et la description
-        > div  {
+        .contentDescription  {
+          width: 100%;
           font-size: 15px;
-          text-align: left;
+          min-width: 0;
+
+          .tagsExperience {
+            display: flex;
+            flex-wrap: wrap;
+
+            // TAGs
+            span {
+              padding: 5px 10px 5px 10px;
+              background-color: #282c34;
+              border-radius: 10px;
+              margin: 10px 10px 0 0;
+              color: white;
+            }
+          }
         }
         .dateExperience {
           font-size: 15px;
-          margin: 10px;
-          min-width: 100px;
+          min-width: 100px
         }
         .titleExperience {
           font-size: 18px;
@@ -51,18 +66,6 @@ const StyledExperience = styled.section`
         }
 
         // Container des Tags
-        .tagsExperience {
-          margin-top: 15px;
-
-          // TAGs
-          span {
-            padding: 5px 10px 5px 10px;
-            background-color: #282c34;
-            border-radius: 10px;
-            margin: 0px 10px 0px 0px;
-            color: white;
-          }
-        }
       }
       
       &:hover {
@@ -94,15 +97,7 @@ const StyledExperience = styled.section`
       }
 
       .experienceContent{
-        animation: changeOpacity 1s ease 1s forwards;
-        @keyframes changeOpacity {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
-        }
+      
       }
     }
   }
@@ -125,7 +120,7 @@ const Experience = forwardRef<HTMLDivElement, ExperienceProps>((props: Experienc
             <div className={'blockExperience'}>
                 <div className={'experienceContent'}>
                     <span className={'dateExperience'}>{`${props.date1} ${props.date2}`}</span>
-                    <div>
+                    <div className={'contentDescription'}>
                         <div className={'titleExperience'}>{`${props.title}`}</div>
                         <div className={'descriptionExperience'}> {`${props.description}`}</div>
                         <div className={'tagsExperience'}>
