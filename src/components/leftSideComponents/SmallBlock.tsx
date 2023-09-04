@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import "../style.scss"
-import styled from "styled-components";
+import {styled, css} from "styled-components";
 
 
 type SmallBlockProps = {
@@ -8,6 +8,27 @@ type SmallBlockProps = {
     icon:  string,
     pageName: string,
     index: number,
+}
+
+const loopButtonList = () => {
+    let style = '';
+    for(let i=0; i<= 5; i++){
+        const animDuration: number = 0.5;
+        style+= `
+            &:nth-of-type(${i}) > .button {
+                opacity: 0;
+                animation-name: example;
+                animation-fill-mode: forwards;
+                animation-duration: ${animDuration}s;
+                animation-delay:  ${i/4}s;
+            }
+            @keyframes example {
+                from {opacity: 0; left: -100px}
+                to {opacity: 1; left: 0px}
+            }
+        `
+    }
+    return css`${style}`
 }
 
 const StyledButton = styled.section`
@@ -20,26 +41,27 @@ const StyledButton = styled.section`
     margin: 15px 0;
     overflow: hidden;
     cursor:  pointer;
+  }
 
-    .titleButton {
-      display: inline-block;
-      vert-align: middle;
-      line-height: normal;
-      margin-left: 1vw;
-      position: relative;
-      z-index: 1;
-      transition: 0.3s ease;
-    }
-
-    .buttonColorContainer {
-      top:0;
-      left: 0;
-      position: absolute;
-      height: 100%;
-      width: 0;
-      transform-origin: 0;
-      transition: 0.3s ease;
-    }
+  ${loopButtonList()}
+  .titleButton {
+    display: inline-block;
+    vert-align: middle;
+    line-height: normal;
+    margin-left: 1vw;
+    position: relative;
+    z-index: 1;
+    transition: 0.3s ease;
+  }
+  
+  .buttonColorContainer {
+    top:0;
+    left: 0;
+    position: absolute;
+    height: 100%;
+    width: 0;
+    transform-origin: 0;
+    transition: 0.3s ease;
   }
 
   .activeButton, .button:hover {
@@ -63,27 +85,31 @@ const StyledButton = styled.section`
         }
       }
     }
-
     .titleButton {
       color: white;
       transition: 0.3s ease;
     }
-    
   }
-  
-  
+`
+
+const StyledButtonContainer = styled.section`
+ 
+
+
 `
 
 const SmallBlock = (props : SmallBlockProps) =>  {
-
+    useEffect(() => {
+        console.log(document.querySelectorAll(`${StyledButton}:nth-of-type(2) > .button`))
+    }, []);
 
     return(
-        <StyledButton>
-            <div className={`button button${props.index + 1}`}>
-                <div className={`buttonColorContainer`}></div>
-                <span className={'titleButton'}> {props.description}</span>
-            </div>
-        </StyledButton>
+            <StyledButton>
+                    <div className={`button button${props.index + 1}`}>
+                        <div className={`buttonColorContainer`}></div>
+                        <span className={'titleButton'}> {props.description}</span>
+                    </div>
+            </StyledButton>
     );
 }
 

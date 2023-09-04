@@ -12,12 +12,12 @@ const StyledBoxContainer = styled.section`
 
   .containerBox {
     position: absolute;
-    z-index: 100;
+    z-index: 1;
     height: 100px;
     width: 100px;
     background-color: red;
-    top: 50%;
-    left: 50%;
+    top: 10%;
+    left: 90%;
     transform: translate(-50%, -50%);
   }
 

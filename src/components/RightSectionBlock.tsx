@@ -3,18 +3,16 @@ import {AppDispatch, RootState} from "../redux/redux";
 import React, {useEffect, useRef} from "react";
 import gsap from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
-import ExperienceFace from "./CubeComponents/ExperienceFace";
-import AdoptezMoiLogo from "../assets/AdoptezMoiLogo.png";
-import StudyFace from "./CubeComponents/StudyFace";
-import PresentationFace from "./CubeComponents/PresentationFace";
 import Presentation from "./ItemsComponents/Presentation";
 import Experience from "./ItemsComponents/Experience";
 import Projects from "./ItemsComponents/Projects";
 import Study from "./ItemsComponents/Study";
+import Skills from "./ItemsComponents/Skills";
 import Wave from "../assets/wave.svg";
 import BriefCase from "../assets/briefcase.svg"
 import Graduation from "../assets/casquette-de-graduation.svg"
 import Idea from "../assets/exchange-ideas.svg"
+import Skill from "../assets/skill.svg"
 import {styled} from "styled-components";
 
 
@@ -63,6 +61,7 @@ const RightSectionBlock = (props : SmallBlockProps) =>  {
     const refProjects= useRef<null | HTMLDivElement>(null);
     const refContact= useRef<null | HTMLDivElement>(null);
     const refStudy= useRef<null | HTMLDivElement>(null);
+    const refSkills= useRef<null | HTMLDivElement>(null);
 
     const observer: IntersectionObserver = new IntersectionObserver((entries: IntersectionObserverEntry[]) => {
         entries.forEach((entry: IntersectionObserverEntry, index: number) => {
@@ -71,9 +70,11 @@ const RightSectionBlock = (props : SmallBlockProps) =>  {
                 if(entry.target.classList.contains('project')) entry.target.classList.add('active-project');
                 if(entry.target.classList.contains('blockStudy')) entry.target.classList.add('active-blockStudy')
                 if(entry.target.classList.contains('blockExperience')) entry.target.classList.add('active-blockExperience')
+                if(entry.target.classList.contains('skills-Container')) entry.target.classList.add('active-skills-Container')
             }
         })
     })
+
 
 
     useEffect(() => {
@@ -86,14 +87,16 @@ const RightSectionBlock = (props : SmallBlockProps) =>  {
         const studyElements = document.querySelectorAll(".blockStudy")
         // Block des experiences
         const experienceElements = document.querySelectorAll(".blockExperience")
+        // Block des experiences
+        const skillsElements = document.querySelectorAll(".skills-Container")
 
         itemsElements.forEach((el: Element) => observer.observe((el)))
         projectElements.forEach((el: Element) => observer.observe((el)))
         studyElements.forEach((el: Element) => observer.observe((el)))
         experienceElements.forEach((el: Element) => observer.observe((el)))
+        skillsElements.forEach((el: Element) => observer.observe((el)))
 
     }, [] )
-
 
 
 
@@ -202,6 +205,16 @@ const RightSectionBlock = (props : SmallBlockProps) =>  {
                     </StyledHeaderItem>
                     <Projects />
 
+                </section>
+
+                <section ref={refSkills} className={'item item5'}>
+                    <StyledHeaderItem>
+                        <div className={'title'}>
+                            <div className={'line'}></div>
+                            <img src={Skill} alt="React Logo" />
+                        </div>
+                    </StyledHeaderItem>
+                    <Skills />
                 </section>
             </main>
     );

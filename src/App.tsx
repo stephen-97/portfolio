@@ -2,10 +2,6 @@ import React, { CSSProperties} from 'react';
 import CSS from 'csstype'
 import '../src/components/style.scss'
 import './App.css';
-import Block from "./components/Block";
-import Description from "./components/leftSideComponents/Description";
-import SmallBlock from "./components/leftSideComponents/SmallBlock";
-
 import manIcon from "./assets/man.svg"
 import laptopIcon from "./assets/laptop.svg"
 import ideaIcon from "./assets/idea.svg"
