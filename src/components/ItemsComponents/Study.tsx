@@ -43,10 +43,39 @@ const createLoopCSS = styled.div`
   
 `;
 
+const loopActiveBlock = () => {
+    let style = '';
+    for(let i=1; i<= 5; i++){
+        style+= `
+            .active-blockStudy:nth-child(${i}) {
+                transform: translateX(-25%);
+                animation: animateBlockStudy 0.5s ease ${(i-1)*300}ms forwards;
+            }
+            .active-blockStudy:nth-child(2n) {
+                 transform: translateX(25%);
+            } 
+        `
+    }
+    return css`${style}`
+}
+
 
 
 // LA CLASS active-blockstudy est dans le fichier CSS car on ne peut pas faire des loops avec styled components
 const StyledSectionStudy = styled.section`
+
+  
+  
+  @keyframes animateBlockStudy {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0%);
+    }
+  }
+  ${loopActiveBlock()}
   
   .containerStudy{
     margin-top: 30px;
@@ -89,16 +118,7 @@ const StyledSectionStudy = styled.section`
     }
   }
   
-    @keyframes animateBlockStudy {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0%);
-      }
-    }
-
+  
 `
 
 

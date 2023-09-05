@@ -13,7 +13,7 @@ import BriefCase from "../assets/briefcase.svg"
 import Graduation from "../assets/casquette-de-graduation.svg"
 import Idea from "../assets/exchange-ideas.svg"
 import Skill from "../assets/skill.svg"
-import {styled} from "styled-components";
+import {css, styled} from "styled-components";
 
 
 
@@ -50,8 +50,35 @@ const StyledHeaderItem = styled.section`
 
 const StyledRightComponent = styled.section`
 
+  // Principaux éléments
+  .item {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    opacity: 0;
+    background-color: white;
+    justify-content: center;
+    margin: 0 20%;
+    height: 100vh;
+    border: 1px solid black;
+  }
   
+  .item.active {
+    opacity: 1;
+    transition: all 1s ease;
+    padding: 70px 0;
+  }
+  h2 {
+    margin: 30px 0;
+    padding: 0;
+    font-size: 25px;
+  }
 
+  p {
+    font-size: 18px;
+    text-align: left;
+    color: #3b3a3a;
+  }
 `
 
 const RightSectionBlock = (props : SmallBlockProps) =>  {
@@ -161,16 +188,16 @@ const RightSectionBlock = (props : SmallBlockProps) =>  {
         }
     })
     return(
-            <main className={"rightBlockContainer"}>
+           <StyledRightComponent>
                 <section ref={refPresentation} className={'item item1'}>
 
-                    <StyledHeaderItem>
-                        <div className={'title'}>
-                            <div className={'line'}></div>
-                            <img src={Wave} alt="React Logo" />
-                        </div>
-                    </StyledHeaderItem>
-                    <Presentation />
+                        <StyledHeaderItem>
+                            <div className={'title'}>
+                                <div className={'line'}></div>
+                                <img src={Wave} alt="React Logo" />
+                            </div>
+                        </StyledHeaderItem>
+                        <Presentation />
 
                 </section>
                 <section ref={refExperience} className={'item item2'}>
@@ -216,7 +243,7 @@ const RightSectionBlock = (props : SmallBlockProps) =>  {
                     </StyledHeaderItem>
                     <Skills />
                 </section>
-            </main>
+           </StyledRightComponent>
     );
 }
 

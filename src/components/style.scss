@@ -8,19 +8,6 @@ $descriptionLeftMargin : 50px;
     font-family: "Roboto Mono",Sans-serif;
 }
 
-.container {
-    //background: linear-gradient(to right, white, #f0f0f0);
-    position:relative;
-    display: flex;
-    flex-direction: row;
-}
-
-@media (max-width: 1200px) {
-    .container {
-        flex-direction: column;
-    }
-}
-
 .block{
     background-color:  whitesmoke;
     position: relative;
@@ -64,22 +51,6 @@ $descriptionLeftMargin : 50px;
     box-shadow: 0px 0px 32px -8px #000000;
 }
 
-
-.leftBlockContainer {
-    position: relative;
-    z-index: 2;
-    transition: all .2s ease-in-out;
-    flex: 0.45;
-    height: auto;
-}
-
-#leftBlockContent {
-    margin: 0 15%;
-    position: sticky;
-    padding: 0 20px 0 50px;
-    top: 0;
-    bottom: 0;
-}
 
 
 
@@ -220,54 +191,7 @@ $descriptionLeftMargin : 50px;
 // RIGHT CONTAINER
 
 
-.rightBlockContainer {
-    position: relative;
-    transition: all .2s ease-in-out;
-    margin-left: auto;
-    flex: 0.65;
-    min-height: 100vh;
-    border: 1px solid black;
-
-    // Principaux éléments
-    .item {
-        opacity: 0;
-        transition: all .1s ease;
-        padding: 70px 0;
-        margin: 20px 15%;
-    }
-
-    .item.active {
-        opacity: 1;
-        transition: all 1s ease;
-        padding: 70px 0;
-        margin: 20px 15%;
-    }
-    h2 {
-        margin: 30px 0;
-        padding: 0;
-        font-size: 25px;
-    }
-
-    p {
-        font-size: 18px;
-        text-align: left;
-        color: #3b3a3a;
-    }
-
-
-
-    .active-blockStudy {
-        @for $i from 1 through 5 {
-            &:nth-child(#{$i}) {
-                transform: translateX(-25%);
-                animation: animateBlockStudy 0.5s ease 200ms*calc($i - 1) forwards;
-            }
-            &:nth-child(2n) {
-                transform: translateX(25%);
-            }
-        }
-    }
-
+.right {
 
     // PROJECT BECAUSE OF ANIMATION
     .projectItemContainer {

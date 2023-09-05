@@ -6,53 +6,52 @@ import Description from "./Description";
 import SmallBlock from "./SmallBlock";
 import laptopIcon from "../../assets/laptop.svg";
 import ideaIcon from "../../assets/idea.svg";
-import manIcon from "../../assets/man.svg";
-import ButtonLinksContainer from "./ButtonLinksContainer";
+import App from "../../App";
 import Box from "./Box";
+
+import Wave from "../../assets/wave.svg";
+import BriefCase from "../../assets/briefcase.svg"
+import Graduation from "../../assets/casquette-de-graduation.svg"
+import Idea from "../../assets/exchange-ideas.svg"
+import Skill from "../../assets/skill.svg"
 
 
 type SmallBlockProps = {
 }
 
 
-const StyledLeftContainer = styled.section`
-
-
-`
-
-const loopButtonList = () => {
-    let style = '';
-    for(let i=0; i<= 5; i++){
-        const animDuration: number = 2;
-        style+= `
-            StyledButton:nth-of-type(${i}){
-                opacity: 0;
-                animation-name: example;
-                animation-fill-mode: forwards;
-                animation-duration: ${animDuration}s;
-                animation-delay:  ${i}s;
-            } 
-            .buttonColorContainer:nth-of-type(2){
-                opacity: 0;
-                background-color: blue;
-                animation-name: example;
-                animation-fill-mode: forwards;
-                animation-duration: ${animDuration}s;
-                animation-delay:  0s;
-            } 
-            @keyframes example {
-                from {opacity: 0; left: -100px}
-                to {opacity: 1; left: 0px}
-            }
-        `
-    }
-    return css`${style}`
-}
-
 const StyledButtonContainer = styled.section`
   .buttonContainer {
     display: flex;
+    position: relative;
     flex-direction: column;
+    align-items: center;
+  }
+
+  @media screen and (max-width:1000px){
+    .buttonContainer {
+      flex-direction: row;
+      height: 100%;
+    }
+  }
+`
+
+const StyledLeftContainer = styled.section`
+  
+
+  .leftBlockContent {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  @media screen and (max-width:1000px){
+    .leftBlockContent {
+      flex-direction: row;
+      width: 100vw;
+      height: 100%;
+    }
   }
 `
 
@@ -60,55 +59,46 @@ const StyledButtonContainer = styled.section`
 const buttonTabs = [
     {
         description: "PRESENTATION",
-        icons: manIcon,
+        icons: Wave,
         pageName: "presentation"
     },
     {
         description: "EXPÉRIENCE PRO",
-        icons: laptopIcon,
+        icons: BriefCase,
         pageName: "working",
     },
     {
         description: "ETUDES",
-        icons: manIcon,
+        icons: Graduation,
         pageName: "study"
     },
     {
         description: "PROJETS PERSO",
-        icons: ideaIcon,
+        icons: Idea,
         pageName: "projects"
     },
     {
         description: "CONTACTEZ MOI",
-        icons: manIcon,
+        icons: Skill,
         pageName: "contact"
     },
 ]
 
+
 const LeftSectionBlock = (props : SmallBlockProps) =>  {
 
-    useEffect(() => {
-        //console.log(document.querySelectorAll('.buttonContainer .button:nth-of-type(2n)'))
-    }, []);
-
-
     return(
-        <div className={"leftBlockContainer"}>
-            <div id={"leftBlockContent"}>
-                <StyledButtonContainer>
-                    <Box />
+        <StyledLeftContainer>
+                <div className={"leftBlockContent"}>
                     <Description />
-                    <div className={"buttonContainer"}>
-                        <SmallBlock key={1} index={1} description={'PRESENTATION'} icon={manIcon} pageName={'presentation'}/>
-                        <SmallBlock key={2} index={2} description={'EXPÉRIENCE PRO'} icon={laptopIcon} pageName={'working'}/>
-                        <SmallBlock key={3} index={3} description={'ETUDES'} icon={manIcon} pageName={'study'}/>
-                        <SmallBlock key={4} index={4} description={'PROJETS PERSO'} icon={ideaIcon} pageName={'projects'}/>
-                        <SmallBlock key={5} index={5} description={'CONTACTEZ MOI'} icon={ideaIcon} pageName={'contact'}/>
-                    </div>
-                </StyledButtonContainer>
-
-            </div>
-        </div>
+                    <StyledButtonContainer>
+                        <Box />
+                        <div className={"buttonContainer"}>
+                            {buttonTabs.map((item, index: number) => <SmallBlock key={index} index={index} description={item.description} icon={item.icons} pageName={item.pageName}/>)}
+                        </div>
+                    </StyledButtonContainer>
+                </div>
+        </StyledLeftContainer>
     );
 }
 
