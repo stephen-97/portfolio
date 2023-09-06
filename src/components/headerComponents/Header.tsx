@@ -24,35 +24,46 @@ const StyledButtonContainer = styled.section`
   .buttonContainer {
     display: flex;
     position: relative;
-    flex-direction: column;
+    flex-direction: row;
+    height: 100%;
     align-items: center;
   }
 
-  @media screen and (max-width:1000px){
-    .buttonContainer {
-      flex-direction: row;
-      height: 100%;
-    }
-  }
 `
 
 const StyledLeftContainer = styled.section`
   
-
+  .header {
+    position: fixed;
+    z-index: 1;
+    height: 75px;
+    width: 100vw;
+    min-width: 150px;
+    background-color: #282c34;
+    box-shadow: 0 0 15px 10px #282c34;
+  }
   .leftBlockContent {
+    height: 100%;
     display: flex;
-    height: 100vh;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
   }
-
-  @media screen and (max-width:1000px){
-    .leftBlockContent {
-      flex-direction: row;
-      width: 100vw;
-      height: 100%;
+  .logoContainer {
+    display: table;
+    font-weight: bolder;
+    background-color: red;
+    align-items: center;
+    margin-left: 2vw;
+    
+    > span {
+      display: table-cell;
+      vertical-align: middle;
+      background-color: rebeccapurple;
+      letter-spacing: .15em;
+      font-size: 38px;
     }
   }
+  
 `
 
 
@@ -89,14 +100,20 @@ const Header = (props : SmallBlockProps) =>  {
 
     return(
         <StyledLeftContainer>
-                <div className={"leftBlockContent"}>
-                    <HeaderLogo />
+            <main className={'header'}>
+                <nav className={"leftBlockContent"}>
+                    <div className={'logoContainer'}>
+                        <span>
+                            S.L
+                        </span>
+                    </div>
                     <StyledButtonContainer>
                         <div className={"buttonContainer"}>
                             {buttonTabs.map((item, index: number) => <HeaderButton key={index} index={index} description={item.description} icon={item.icons} pageName={item.pageName}/>)}
                         </div>
                     </StyledButtonContainer>
-                </div>
+                </nav>
+            </main>
         </StyledLeftContainer>
     );
 }

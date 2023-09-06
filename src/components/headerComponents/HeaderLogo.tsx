@@ -5,41 +5,28 @@ import ButtonLinksContainer from "./ButtonLinksContainer";
 
 
 const StyledDescription = styled.section`
-    div {
-      text-align: center;
+    & {
+      display: block;
+      position: relative;
+      flex: 1;
+      margin: 0;
+      padding: 0;
     }
     h1 {
-      display: inline-block;
-      text-align: center;
-      font-weight: bolder;
-      white-space: nowrap;
-      overflow: hidden;
       font-size: 38px;
+      margin: 0;
+      background-color: red;
       letter-spacing: .15em;
     }
-
-  @keyframes typing {
-    from { opacity: 0 }
-    to { opacity: 1 }
-  }
-
-  
-  @media screen and (max-width:1000px){
-    h1 {
-      margin-left: 50px;
-    }
-  }
 `
 
 const HeaderLogo = () =>  {
 
     return(
         <StyledDescription>
-            <div>
                 <h1>
                     S.L
                 </h1>
-            </div>
         </StyledDescription>
 );
 }

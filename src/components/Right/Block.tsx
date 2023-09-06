@@ -62,7 +62,6 @@ const StyledBockComponent = styled.section`
     }
     > img {
       margin: 0 2vw;
-      object-fit: fill;
       //font-size: clamp(30px, 4vw, 40px);
     }
   }

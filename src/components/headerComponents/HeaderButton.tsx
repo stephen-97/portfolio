@@ -37,7 +37,7 @@ const StyledButton = styled.section`
     position: relative;
     display: flex;
     line-height: 50px;
-    margin: 10px 30px;
+    margin: 0 clamp(10px, 2vw, 30px);
     overflow: hidden;
     cursor:  pointer;
     justify-content: center;
