@@ -11,95 +11,88 @@ type ExperienceProps = {
 }
 
 const StyledExperience = styled.section`
+  & {
+    position: relative;
+  }
+  
+  .blockExperience {
+    border: 1px darkslategray solid;
+    position: relative;
+    padding: 10px 0;
+    font-size: 25px;
+    border-radius: 10px;
 
-  .experienceContainer {
-    margin-top: 30px;
+    .experienceContent{
+      opacity: 1;
+      color: gray;
+      display: flex;
+      flex-direction: row;
+      margin: 10px 20px;
 
-    .blockExperience {
-      display: inline-block;
-      border: 1px darkslategray solid;
-      position: relative;
-      padding: 10px 0;
-      font-size: 25px;
-      border-radius: 10px;
-      transform-origin: 0 ;
-      width: 100%;
-      
-      .experienceContent{
-        opacity: 1;
-        color: gray;
-        display: flex;
-        flex-direction: row;
-        margin: 10px 20px;
-        
-        // Div pour le titre et la description
-        .contentDescription  {
-          width: 100%;
-          font-size: 15px;
-          min-width: 0;
+      // Div pour le titre et la description
+      .contentDescription  {
+        width: 100%;
+        font-size: 15px;
+        min-width: 0;
 
-          .tagsExperience {
-            display: flex;
-            flex-wrap: wrap;
+        .tagsExperience {
+          display: flex;
+          flex-wrap: wrap;
 
-            // TAGs
-            span {
-              padding: 5px 10px 5px 10px;
-              background-color: #282c34;
-              border-radius: 10px;
-              margin: 10px 10px 0 0;
-              color: white;
-            }
+          // TAGs
+          span {
+            padding: 5px 10px 5px 10px;
+            background-color: #282c34;
+            border-radius: 10px;
+            margin: 10px 10px 0 0;
+            color: white;
           }
         }
-        .dateExperience {
-          font-size: 15px;
-          min-width: 100px
-        }
-        .titleExperience {
-          font-size: 18px;
-          font-weight: bold;
-        }
-
-        .descriptionExperience {
-          margin: 10px 0px;
-        }
-
-        // Container des Tags
       }
-      
-      &:hover {
-        transition: all .4s ease;
-        background-color: #dfdddd;
-        border: 1px solid #4b4b4b;
+      .dateExperience {
+        font-size: 15px;
+        min-width: 100px
+      }
+      .titleExperience {
+        font-size: 18px;
+        font-weight: bold;
+      }
 
-        .dateExperience {
-          color: #284d53;
-        }
+      .descriptionExperience {
+        margin: 10px 0px;
+      }
 
-        .titleExperience {
-          font-size: 18px;
-          font-weight: bolder;
-          color: black;
-        }
+      // Container des Tags
+    }
+
+    &:hover {
+      transition: all .4s ease;
+      background-color: #dfdddd;
+      border: 1px solid #4b4b4b;
+
+      .dateExperience {
+        color: #284d53;
+      }
+
+      .titleExperience {
+        font-size: 18px;
+        font-weight: bolder;
+        color: black;
+      }
+    }
+  }
+
+  .active-blockExperience {
+    animation: scalingBlockExperience 1s ease forwards;
+    @keyframes scalingBlockExperience {
+      from {
+        transform: scaleX(0);
+      }
+      to {
+        transform: scaleX(1);
       }
     }
 
-    .active-blockExperience {
-      animation: scalingBlockExperience 1s ease forwards;
-      @keyframes scalingBlockExperience {
-        from {
-          transform: scaleX(0);
-        }
-        to {
-          transform: scaleX(1);
-        }
-      }
-
-      .experienceContent{
-      
-      }
-    }
   }
 
 `
@@ -139,7 +132,6 @@ const Experience = forwardRef<HTMLDivElement, ExperienceProps>((props: Experienc
 
     return(
         <StyledExperience>
-            <div className={"experienceContainer"}>
                 <ExperienceBlock
                     date1={2020}
                     date2={2023}
@@ -150,7 +142,6 @@ const Experience = forwardRef<HTMLDivElement, ExperienceProps>((props: Experienc
                         'avec l\'utilisation de terraform, ansible et des principes architecturaux.'}
 
                 />
-            </div>
         </StyledExperience>
     );
 })

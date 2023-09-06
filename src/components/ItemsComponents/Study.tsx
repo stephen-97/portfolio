@@ -63,7 +63,9 @@ const loopActiveBlock = () => {
 
 // LA CLASS active-blockstudy est dans le fichier CSS car on ne peut pas faire des loops avec styled components
 const StyledSectionStudy = styled.section`
-
+  & {
+    position: relative;
+  }
   
   
   @keyframes animateBlockStudy {
@@ -76,10 +78,7 @@ const StyledSectionStudy = styled.section`
     }
   }
   ${loopActiveBlock()}
-  
-  .containerStudy{
-    margin-top: 30px;
-  }
+
   // STUDY
   .blockStudy {
     padding: 10px;
@@ -92,7 +91,7 @@ const StyledSectionStudy = styled.section`
 
     h2 {
       font-size: 18px;
-      margin: 5px 0px;
+      margin: 5px 0;
       color: #3b3a3a;
       font-weight: 500;
     }
@@ -127,7 +126,7 @@ const Study = (props : StudyProps) =>  {
 
     return(
         <StyledSectionStudy>
-            <div className={'containerStudy'}>
+            <div>
                 <div className={'blockStudy'}>
                     <h2>RNCP36009 Directeur de projet informatique (Bac+5)</h2>
                     <div>Aston Ecole</div>

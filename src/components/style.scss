@@ -126,66 +126,6 @@ $descriptionLeftMargin : 50px;
 }
 
 
-// BLOCK POUR L'EXPERIENCE PROFESIONNELLE
-.professional-experience {
-    display: flex;
-    flex-direction: row;
-    box-shadow: 0 0 26px -5px rgba(0,0,0,0.51);
-    background-color: white;
-    width: 80%;
-    border-radius: 20px;
-    overflow: hidden;
-    margin: 10px;
-    //background-color: #282c34;
-
-    div {
-        padding: 10px;
-    }
-    // div de la date
-    div:nth-child(1) {
-        font-size: 22px;
-    }
-
-    // block titre / poste / desription  de l'expérience
-    div:nth-child(2){
-        font-size: 23px;
-
-        div {
-            padding: 0;
-        }
-        #companyName {
-            font-size: 25px;
-            display: inline-block;
-            margin-bottom: 5px;
-        }
-        #postName {
-            font-size: 18px;
-            color: #6a6a6a
-        }
-        #description {
-            padding: 12px 0px;
-            font-size: 15px;
-        }
-        #technoContainer {
-            display: flex;
-            flex-wrap: wrap;
-
-            span {
-                border-radius: 20px;
-                background-color: #868686;
-                padding: 10px;
-                font-size: 12px;
-                font-weight: bolder;
-                color: whitesmoke;
-                margin: 3px 5px;
-            }
-        }
-
-    }
-}
-
-
-
 
 
 // RIGHT CONTAINER

@@ -34,6 +34,9 @@ const loopSkillsList = () => {
 const StyledSkills = styled.section`
     $duration: .5s;
   
+    & {
+      position: relative;
+    }
     .skills-Container {
         display: flex;
         flex-direction: row;

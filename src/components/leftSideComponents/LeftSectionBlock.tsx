@@ -92,7 +92,6 @@ const LeftSectionBlock = (props : SmallBlockProps) =>  {
                 <div className={"leftBlockContent"}>
                     <Description />
                     <StyledButtonContainer>
-                        <Box />
                         <div className={"buttonContainer"}>
                             {buttonTabs.map((item, index: number) => <SmallBlock key={index} index={index} description={item.description} icon={item.icons} pageName={item.pageName}/>)}
                         </div>

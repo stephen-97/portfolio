@@ -1,5 +1,3 @@
-import {connect, useDispatch, useSelector} from "react-redux";
-import {AppDispatch, RootState} from "../redux/redux";
 import React, {useEffect, useRef} from "react";
 import gsap from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
@@ -14,72 +12,17 @@ import Graduation from "../assets/casquette-de-graduation.svg"
 import Idea from "../assets/exchange-ideas.svg"
 import Skill from "../assets/skill.svg"
 import {css, styled} from "styled-components";
-
+import Box from "./leftSideComponents/Box";
+import constants from "../constants/constants";
+import Block from "./Right/Block";
+import Description from "./leftSideComponents/Description";
+import skills from "./ItemsComponents/Skills";
 
 
 type SmallBlockProps = {
 }
 
 gsap.registerPlugin(ScrollTrigger);
-
-
-const StyledHeaderItem = styled.section`
-  // PRESENTATION BLOCK
-
-  .title {
-    height: 100px;
-    position: relative;
-    
-    .line {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      border-bottom: 4px dashed black;
-      width: 85%;
-      
-    }
-    > img {
-      position: absolute;
-      height: 4em;
-      top: 50%;
-      transform: translateY(-50%);
-      right: 0;
-    }
-  }
-`
-
-const StyledRightComponent = styled.section`
-
-  // Principaux éléments
-  .item {
-    display: flex;
-    position: relative;
-    flex-direction: column;
-    opacity: 0;
-    background-color: white;
-    justify-content: center;
-    margin: 0 20%;
-    height: 100vh;
-    border: 1px solid black;
-  }
-  
-  .item.active {
-    opacity: 1;
-    transition: all 1s ease;
-    padding: 70px 0;
-  }
-  h2 {
-    margin: 30px 0;
-    padding: 0;
-    font-size: 25px;
-  }
-
-  p {
-    font-size: 18px;
-    text-align: left;
-    color: #3b3a3a;
-  }
-`
 
 const RightSectionBlock = (props : SmallBlockProps) =>  {
 
@@ -187,63 +130,16 @@ const RightSectionBlock = (props : SmallBlockProps) =>  {
 
         }
     })
+
     return(
-           <StyledRightComponent>
-                <section ref={refPresentation} className={'item item1'}>
-
-                        <StyledHeaderItem>
-                            <div className={'title'}>
-                                <div className={'line'}></div>
-                                <img src={Wave} alt="React Logo" />
-                            </div>
-                        </StyledHeaderItem>
-                        <Presentation />
-
-                </section>
-                <section ref={refExperience} className={'item item2'}>
-
-                    <StyledHeaderItem>
-                        <div className={'title'}>
-                            <div className={'line'}></div>
-                            <img src={BriefCase} alt="React Logo" />
-                        </div>
-                    </StyledHeaderItem>
-                    <Experience />
-
-                </section>
-                <section ref={refStudy} className={'item item3'}>
-
-                    <StyledHeaderItem>
-                        <div className={'title'}>
-                            <div className={'line'}></div>
-                            <img src={Graduation} alt="React Logo" />
-                        </div>
-                    </StyledHeaderItem>
-                    <Study />
-
-                </section>
-                <section ref={refProjects} className={'item item4'}>
-
-                    <StyledHeaderItem>
-                        <div className={'title'}>
-                            <div className={'line'}></div>
-                            <img src={Idea} alt="React Logo" />
-                        </div>
-                    </StyledHeaderItem>
-                    <Projects />
-
-                </section>
-
-                <section ref={refSkills} className={'item item5'}>
-                    <StyledHeaderItem>
-                        <div className={'title'}>
-                            <div className={'line'}></div>
-                            <img src={Skill} alt="React Logo" />
-                        </div>
-                    </StyledHeaderItem>
-                    <Skills />
-                </section>
-           </StyledRightComponent>
+           <>
+                <Block id={'wave-img-presentation'} key={1} ref={refPresentation} icon={Wave} component={<Presentation />}/>
+                <Block id={'briefCase-img'} key={2} ref={refExperience} icon={BriefCase} component={<Experience />}/>
+                <Block id={'study-img'} key={3} ref={refStudy} icon={BriefCase} component={<Study />}/>
+                <Block id={'idea-img'} key={4} ref={refProjects} icon={Idea} component={<Projects />}/>
+                <Block id={'skills-img'} key={5} ref={refSkills} icon={Skill} component={<Skills />}/>
+               <Box />
+           </>
     );
 }
 

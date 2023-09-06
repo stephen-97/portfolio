@@ -1,16 +1,31 @@
-import React from 'react';
+import React, {JSX} from 'react';
 import "../style.scss"
 import {styled} from "styled-components";
 import ButtonLinksContainer from "./ButtonLinksContainer";
 
 
 const StyledDescription = styled.section`
-
-    h1 {
+    div {
       text-align: center;
-      font-size: 30px;
+    }
+    h1 {
+      display: inline-block;
+      text-align: center;
+      font-weight: bolder;
+      white-space: nowrap;
+      overflow: hidden;
+      font-size: 38px;
+      letter-spacing: .15em;
+      animation: typing 1s ease forwards ;
+      animation-delay: 0s;
     }
 
+  @keyframes typing {
+    from { opacity: 0 }
+    to { opacity: 1 }
+  }
+
+  
   @media screen and (max-width:1000px){
     h1 {
       margin-left: 50px;
@@ -22,9 +37,11 @@ const Description = () =>  {
 
     return(
         <StyledDescription>
-            <h1>
-                SL
-            </h1>
+            <div>
+                <h1>
+                    S.L
+                </h1>
+            </div>
         </StyledDescription>
 );
 }

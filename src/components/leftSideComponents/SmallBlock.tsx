@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import "../style.scss"
 import {styled, css} from "styled-components";
 import Graduation from "../../assets/casquette-de-graduation.svg";
-
+import constants from "../../constants/constants";
 
 type SmallBlockProps = {
     description: string;
@@ -21,7 +21,7 @@ const loopButtonList = () => {
                 animation-name: example;
                 animation-fill-mode: forwards;
                 animation-duration: ${animDuration}s;
-                animation-delay:  ${i/4}s;
+                animation-delay:  ${constants.firstAnim + i/4}s;
             }
             @keyframes example {
                 from {opacity: 0; left: -100px}

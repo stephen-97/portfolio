@@ -11,6 +11,10 @@ type ProjectProps = {
 
 const StyledProject = styled.section`
  
+    & {
+      position: relative;
+      
+    }
 
 `
 
