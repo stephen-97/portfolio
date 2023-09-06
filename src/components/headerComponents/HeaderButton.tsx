@@ -21,7 +21,7 @@ const loopButtonList = () => {
                 animation-name: example;
                 animation-fill-mode: forwards;
                 animation-duration: ${animDuration}s;
-                animation-delay:  ${constants.firstAnim + i/4}s;
+                animation-delay:  ${constants.headerAnim*i/5}s;
             }
             @keyframes example {
                 from {opacity: 0; left: -100px}
@@ -109,7 +109,7 @@ const StyledButtonContainer = styled.section`
 
 `
 
-const SmallBlock = (props : SmallBlockProps) =>  {
+const HeaderButton = (props : SmallBlockProps) =>  {
 
     return(
             <StyledButton>
@@ -121,7 +121,7 @@ const SmallBlock = (props : SmallBlockProps) =>  {
 }
 
 
-export default SmallBlock;
+export default HeaderButton;
 
 /**
  *

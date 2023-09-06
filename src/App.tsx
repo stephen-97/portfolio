@@ -6,7 +6,7 @@ import './App.css';
 import { store } from './redux/redux'
 import { Provider} from "react-redux";
 import RightSectionBlock from "./components/RightSectionBlock";
-import LeftSectionBlock from "./components/leftSideComponents/LeftSectionBlock";
+import LeftSectionBlock from "./components/headerComponents/Header";
 
 const StyledMainComponent = styled.section`
   .container {
@@ -39,7 +39,6 @@ const StyledMainComponent = styled.section`
     margin-left: 8%;
     flex-grow: 8;
     overflow: auto;
-    background-color: #61dafb;
     position: relative;
     min-height: 100vh;
     border: 1px solid black;

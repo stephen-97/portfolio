@@ -15,7 +15,7 @@ type BlockProps = {
     component: JSX.Element,
 }
 
-const waveHandDuration: number=0.3;
+const waveHandDuration: number=1;
 const StyledBockComponent = styled.section`
   .item {
     display: flex;
@@ -25,7 +25,6 @@ const StyledBockComponent = styled.section`
     background-color: white;
     margin: 0 20%;
     min-height: 100vh;
-    border: 1px solid black;
   }
 
   .item.active {
@@ -45,58 +44,101 @@ const StyledBockComponent = styled.section`
   .title {
     height: 100px;
     position: relative;
-    background-color: yellow;
+    margin-bottom: 5vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     
+    .lineContainer {
+      display: flex;
+      flex: 1;
+      justify-content: center;
+      flex-direction: column;
+    }
     .line {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      border-bottom: 4px dashed black;
-      width: 85%;
-      
+      opacity: 0;
+      border-bottom:  5px dashed black;
+      animation: animateLine 500ms ease ${constants.headerAnim+0.3}s forwards;
     }
     > img {
-      position: absolute;
-      height: 6em;
-      top: 50%;
-      transform: translateY(-50%);
-      right: 0;
+      margin: 0 2vw;
+      object-fit: fill;
+      //font-size: clamp(30px, 4vw, 40px);
     }
   }
   
   #wave-img-presentation{
-    animation: 
-            animateWave ${waveHandDuration}s ease ${constants.firstAnim + constants.secondAnim + constants.thirdAnim}s,
-            animateWave2  ${waveHandDuration}s ease ${constants.firstAnim + constants.secondAnim + constants.thirdAnim + waveHandDuration}s,
-            animateWave3  ${waveHandDuration}s ease ${constants.firstAnim + constants.secondAnim + constants.thirdAnim + waveHandDuration*2}s;
+    opacity: 0;
+    animation:
+            animateWaveOpacity 1s ease ${constants.headerAnim + constants.secondAnim}s forwards,
+            animateWaveTest ${waveHandDuration}s ease ${constants.headerAnim + constants.secondAnim + constants.thirdAnim}s forwards
   }
 
-  @keyframes animateWave {
+  @keyframes animateWaveTest {
+    0% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform:  rotate(-45deg);
+    }
+    50% {
+      transform: rotate(20deg);
+    }
+    75% {
+      transform: rotate(-45deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+
+  @keyframes animateWaveOpacity {
     from {
-      transform: translateY(-50%) rotate(0deg);
+      opacity: 0;
     }
     to {
-      transform: translateY(-50%) rotate(-45deg);
+      opacity: 1;
+    }
+  }
+
+  
+  @keyframes animateWave {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform:  rotate(-45deg);
     }
   }
 
   @keyframes animateWave2 {
     from {
-      transform: translateY(-50%) rotate(-45deg);
+      transform: rotate(-45deg);
     }
     to {
-      transform: translateY(-50%) rotate(45deg);
+      transform: rotate(45deg);
     }
   }
 
   @keyframes animateWave3 {
     from {
-      transform: translateY(-50%) rotate(45deg);
+      transform:  rotate(45deg);
     }
     to {
-      transform: translateY(-50%) rotate(0deg);
+      transform: rotate(0deg);
     }
   }
+  
+  @keyframes animateLine {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
   @media screen and (max-width:1000px){
     .item {
       margin: 0 5%;
@@ -112,10 +154,12 @@ const Block = (props : BlockProps) =>  {
             <section ref={props.ref} className={`item item${props.key}`}>
                 <div className={'blockContainer'}>
                         <div className={'title'}>
-                            <div className={'line'}></div>
-                            <img src={props.icon} alt="React Logo" />
+                            <div className={'lineContainer'}>
+                                <div className={'line'}></div>
+                            </div>
+                            <img id={props.id} src={props.icon} alt="React Logo" />
                         </div>
-                    <div style={{ backgroundColor: "purple"}}>
+                    <div >
                         {props.component}
                     </div>
                 </div>

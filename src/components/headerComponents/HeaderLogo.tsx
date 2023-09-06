@@ -16,8 +16,6 @@ const StyledDescription = styled.section`
       overflow: hidden;
       font-size: 38px;
       letter-spacing: .15em;
-      animation: typing 1s ease forwards ;
-      animation-delay: 0s;
     }
 
   @keyframes typing {
@@ -33,7 +31,7 @@ const StyledDescription = styled.section`
   }
 `
 
-const Description = () =>  {
+const HeaderLogo = () =>  {
 
     return(
         <StyledDescription>
@@ -50,4 +48,4 @@ const Description = () =>  {
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-export default Description;
+export default HeaderLogo;

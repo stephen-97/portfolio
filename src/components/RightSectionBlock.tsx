@@ -12,10 +12,10 @@ import Graduation from "../assets/casquette-de-graduation.svg"
 import Idea from "../assets/exchange-ideas.svg"
 import Skill from "../assets/skill.svg"
 import {css, styled} from "styled-components";
-import Box from "./leftSideComponents/Box";
+import Box from "./headerComponents/Box";
 import constants from "../constants/constants";
 import Block from "./Right/Block";
-import Description from "./leftSideComponents/Description";
+import HeaderLogo from "./headerComponents/HeaderLogo";
 import skills from "./ItemsComponents/Skills";
 
 

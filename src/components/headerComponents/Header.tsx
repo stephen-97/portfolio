@@ -2,8 +2,8 @@ import {connect, useDispatch, useSelector} from "react-redux";
 import {AppDispatch, RootState} from "../../redux/redux";
 import {css, styled} from "styled-components";
 import React, {useEffect} from "react";
-import Description from "./Description";
-import SmallBlock from "./SmallBlock";
+import HeaderLogo from "./HeaderLogo";
+import HeaderButton from "./HeaderButton";
 import laptopIcon from "../../assets/laptop.svg";
 import ideaIcon from "../../assets/idea.svg";
 import App from "../../App";
@@ -85,15 +85,15 @@ const buttonTabs = [
 ]
 
 
-const LeftSectionBlock = (props : SmallBlockProps) =>  {
+const Header = (props : SmallBlockProps) =>  {
 
     return(
         <StyledLeftContainer>
                 <div className={"leftBlockContent"}>
-                    <Description />
+                    <HeaderLogo />
                     <StyledButtonContainer>
                         <div className={"buttonContainer"}>
-                            {buttonTabs.map((item, index: number) => <SmallBlock key={index} index={index} description={item.description} icon={item.icons} pageName={item.pageName}/>)}
+                            {buttonTabs.map((item, index: number) => <HeaderButton key={index} index={index} description={item.description} icon={item.icons} pageName={item.pageName}/>)}
                         </div>
                     </StyledButtonContainer>
                 </div>
@@ -103,4 +103,4 @@ const LeftSectionBlock = (props : SmallBlockProps) =>  {
 
 const mapState = (state: RootState) => state.page
 
-export default connect(mapState)(LeftSectionBlock);
+export default connect(mapState)(Header);

@@ -21,58 +21,55 @@ const StyledPresentation = styled.section`
   }
   h1 {
     opacity: 0;
-    font-size: 55px;
+    font-size:  clamp(40px, 7vw, 70px);
     font-weight: bolder;
-    margin: 0 0 15px 0;
-    animation: animatePresentation 0.5s ease ${constants.firstAnim + constants.secondAnim}s forwards;
+    margin: 0 0 0 0;
+    animation: animatePresentation 0.5s ease ${constants.headerAnim + constants.secondAnim/5}s forwards;
   }
   h2 {
     opacity: 0;
-    background-color: red;
-    font-size: 30px;
-    animation: animatePresentation 0.5s ease ${constants.firstAnim + constants.secondAnim + 1/4}s forwards;
+    font-size: clamp(30px, 4vw, 40px);
+    animation: animatePresentation 0.5s ease ${constants.headerAnim + constants.secondAnim*2/5}s forwards;
   }
   .description_picture {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    background-color: #61dafb;
-    //grid-template-columns: 3fr 2fr;
-    grid-template-columns: repreat(auto-fit, minmax(1000px, 1fr));
   }
   p {
     margin: 0 0 10px 0;
   }
   .description {
-    flex: 1;
+    margin: 20px 0;
+    padding: 0 clamp(20px, 8vw, 50px) 0 0;
+    flex: 1.5;
     opacity: 0;
     font-size: 22px;
-    background-color: gray;
-    animation: animatePresentation 0.5s ease ${constants.firstAnim + constants.secondAnim + 2/4}s forwards;
+    animation: animatePresentation 0.5s ease ${constants.headerAnim + constants.secondAnim*3/4}s forwards;
   }
 
   picture {
+    display: flex;
+    opacity: 0;
+    margin:  20px 0;
     flex: 1;
-    text-align: center;
-    background-color: aquamarine;
-    justify-content: center;
+    animation: animateImg 0.5s ease ${constants.headerAnim + constants.secondAnim*4/4}s forwards;
   }
   img {
-    opacity: 1;
+    opacity: 0;
     align-items: center;
     display: table-row;
     background-color: black;
     transform: rotate(10deg);
     transition: ${imgAnimationDuration}ms ease;
     border-radius: ${borderRadiusImg}px;
-    animation: animateImg 0.5s ease ${constants.firstAnim + constants.secondAnim + 3/4}s forwards;
+    animation: animateImg 0.5s ease ${constants.headerAnim + constants.secondAnim*5/4}s forwards;
     &:hover {
       transform: rotate(0);
     }
   }
   #img_Background {
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
     border-radius: ${borderRadiusImg}px;
     display: table;
     background-color: black;
@@ -121,8 +118,9 @@ const Presentation = (props : PresentationProps) =>  {
                     le développement web et mobile.
                 </div>
                 <picture>
+                    <div id={'img_Background'}>
                         <img  width={350} height={400} src={Stephen_profile} alt={""}/>
-
+                    </div>
                 </picture>
             </span>
         </StyledPresentation>
