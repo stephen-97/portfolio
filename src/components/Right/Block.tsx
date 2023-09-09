@@ -1,9 +1,5 @@
-import {connect, useDispatch, useSelector} from "react-redux";
-import {AppDispatch, RootState} from "../../redux/redux";
 import { styled} from "styled-components";
 import React, {Component, JSX, LegacyRef} from "react";
-import BriefCase from "../../assets/briefcase.svg";
-import Experience from "../ItemsComponents/Experience";
 import constants from '../../constants/constants'
 
 
@@ -11,7 +7,7 @@ type BlockProps = {
     id: string,
     icon: string,
     ref: LegacyRef<HTMLDivElement>,
-    key: number,
+    keyItem: number,
     component: JSX.Element,
 }
 
@@ -20,16 +16,21 @@ const StyledBockComponent = styled.section`
   .item {
     display: flex;
     position: relative;
+    background-color: red;
     flex-direction: column;
     opacity: 0;
-    background-color: white;
-    margin: 0 20%;
+    margin: 40px 20%;
     min-height: 100vh;
+    scroll-margin-top: 12vh;
+    transition: ease 0s;
+
+
   }
 
   .item.active {
     opacity: 1;
-    padding: 70px 0;
+    transition: ${constants.duration_itemAnim}s ease;
+    
   }
 
   .blockContainer{
@@ -62,15 +63,14 @@ const StyledBockComponent = styled.section`
     }
     > img {
       margin: 0 2vw;
-      //font-size: clamp(30px, 4vw, 40px);
+      opacity: 0;
+      animation: animateIconOpacity 500ms ease ${constants.headerAnim+0.3}s forwards;
     }
   }
   
   #wave-img-presentation{
-    opacity: 0;
     animation:
-            animateWaveOpacity 1s ease ${constants.headerAnim + constants.secondAnim}s forwards,
-            animateWaveTest ${waveHandDuration}s ease ${constants.headerAnim + constants.secondAnim + constants.thirdAnim}s forwards
+            animateWaveTest ${waveHandDuration}s ease ${constants.headerAnim + constants.secondAnim + constants.thirdAnim}s forwards;
   }
 
   @keyframes animateWaveTest {
@@ -92,7 +92,7 @@ const StyledBockComponent = styled.section`
   }
 
 
-  @keyframes animateWaveOpacity {
+  @keyframes animateIconOpacity {
     from {
       opacity: 0;
     }
@@ -138,11 +138,7 @@ const StyledBockComponent = styled.section`
     }
   }
 
-  @media screen and (max-width:1000px){
-    .item {
-      margin: 0 5%;
-    }
-  }
+  
 `
 
 
@@ -150,7 +146,7 @@ const Block = (props : BlockProps) =>  {
 
     return(
         <StyledBockComponent>
-            <section ref={props.ref} className={`item item${props.key}`}>
+            <section ref={props.ref} className={`item item${props.keyItem}`}>
                 <div className={'blockContainer'}>
                         <div className={'title'}>
                             <div className={'lineContainer'}>

@@ -2,13 +2,8 @@ import {connect, useDispatch, useSelector} from "react-redux";
 import {AppDispatch, RootState} from "../../redux/redux";
 import {css, styled} from "styled-components";
 import React, {useEffect} from "react";
-import HeaderLogo from "./HeaderLogo";
 import HeaderButton from "./HeaderButton";
-import laptopIcon from "../../assets/laptop.svg";
-import ideaIcon from "../../assets/idea.svg";
-import App from "../../App";
-import Box from "./Box";
-
+import constants from "../../constants/constants";
 import Wave from "../../assets/wave.svg";
 import BriefCase from "../../assets/briefcase.svg"
 import Graduation from "../../assets/casquette-de-graduation.svg"
@@ -36,7 +31,7 @@ const StyledLeftContainer = styled.section`
   .header {
     position: fixed;
     z-index: 1;
-    height: 75px;
+    height: ${constants.headerSize}px;
     width: 100vw;
     min-width: 150px;
     background-color: #282c34;

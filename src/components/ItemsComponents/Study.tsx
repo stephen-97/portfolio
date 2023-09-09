@@ -7,6 +7,7 @@ import { RootState} from "../../redux/redux";
 import {styled, css} from "styled-components";
 
 type StudyProps = {
+    animationDelay: number,
 }
 
 
@@ -122,7 +123,6 @@ const StyledSectionStudy = styled.section`
 
 
 const Study = (props : StudyProps) =>  {
-
 
     return(
         <StyledSectionStudy>

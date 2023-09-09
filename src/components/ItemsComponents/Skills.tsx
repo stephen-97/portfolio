@@ -6,7 +6,8 @@ import {styled, ThemeProvider, css} from "styled-components";
 import { RootState} from "../../redux/redux";
 
 
-type ProjectProps = {
+type SkillsProps = {
+    animationDelay: number,
 }
 
 
@@ -140,8 +141,7 @@ const StyledSkills = styled.section`
     }
   }
 
-
-
+  
   .skills-Block:nth-of-type(2) {
     >span {
       position: absolute;
@@ -269,7 +269,7 @@ const StyledSkills = styled.section`
  * @param props
  * @constructor
  */
-const Skills = (props : ProjectProps) =>  {
+const Skills = (props : SkillsProps) =>  {
 
     return(
         <ThemeProvider theme={theme}>

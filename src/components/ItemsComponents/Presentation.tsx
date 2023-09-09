@@ -7,8 +7,9 @@ import Briefcase from "../../assets/briefcase.svg";
 import Wave from "../../assets/wave.svg"
 import constants from "../../constants/constants";
 import Stephen_profile from "../../assets/Stephen-profile.jpg"
-type PresentationProps = {
 
+type PresentationProps = {
+    animationDelay: number,
 }
 
 const borderRadiusImg: number = 30;

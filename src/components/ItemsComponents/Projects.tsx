@@ -7,15 +7,13 @@ import { RootState} from "../../redux/redux";
 
 
 type ProjectProps = {
+    animationDelay: number,
 }
 
 const StyledProject = styled.section`
- 
     & {
       position: relative;
-      
     }
-
 `
 
 
