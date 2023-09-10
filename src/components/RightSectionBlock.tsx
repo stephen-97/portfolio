@@ -30,7 +30,6 @@ const StyledItemContainer = styled.section`
     position: relative;
   }
   > div {
-    background-color: #61dafb;
   }
   
 `
@@ -57,11 +56,9 @@ const RightSectionBlock = (props : SmallBlockProps) =>  {
                 if(entry.target.classList.contains('project')) entry.target.classList.add('active-project');
                 if(entry.target.classList.contains('blockStudy')) entry.target.classList.add('active-blockStudy')
                 if(entry.target.classList.contains('experienceItem')) entry.target.classList.add('activeExperienceItem')
-                if(entry.target.classList.contains('experienceBlock')) {
-                    entry.target.classList.add('activeExperienceBlock')
-                    console.log("ye")
-                }
+                if(entry.target.classList.contains('experienceBlock')) entry.target.classList.add('activeExperienceBlock')
                 if(entry.target.classList.contains('skills-Container')) entry.target.classList.add('active-skills-Container')
+                if(entry.target.classList.contains('experienceAnne')) entry.target.classList.add('active-experienceAnne')
             }
         })
     })
@@ -82,6 +79,9 @@ const RightSectionBlock = (props : SmallBlockProps) =>  {
         const skillsElements = document.querySelectorAll(".skills-Container")
         //Block dans les expériences représentant le nombre d'année de travail, ect...
         const experienceBlocks = document.querySelectorAll(".experienceBlock")
+        //experienceAnne
+        const experienceAnne = document.querySelectorAll(".experienceAnne")
+
 
         itemsElements.forEach((el: Element) => observer.observe((el)))
         projectElements.forEach((el: Element) => observer.observe((el)))
@@ -89,6 +89,7 @@ const RightSectionBlock = (props : SmallBlockProps) =>  {
         experienceElements.forEach((el: Element) => observer.observe((el)))
         skillsElements.forEach((el: Element) => observer.observe((el)))
         experienceBlocks.forEach((el: Element) => observer.observe((el)))
+        experienceAnne.forEach((el: Element) => observer.observe((el)))
 
     }, [] )
 
@@ -156,16 +157,14 @@ const RightSectionBlock = (props : SmallBlockProps) =>  {
     })
 
     return(
-        <StyledItemContainer>
-           <div>
+        <>
                 <Block id={'wave-img-presentation'} keyItem={1} ref={refPresentation} icon={Wave} component={<Presentation animationDelay={blockAnimationDelay}/>}/>
                 <Block id={'briefCase-img'} keyItem={2} ref={refExperience} icon={BriefCase} component={<Experience animationDelay={blockAnimationDelay}/>}/>
                 <Block id={'study-img'} keyItem={3} ref={refStudy} icon={BriefCase} component={<Study animationDelay={blockAnimationDelay}/>}/>
                 <Block id={'idea-img'} keyItem={4} ref={refProjects} icon={Idea} component={<Projects animationDelay={blockAnimationDelay}/>}/>
                 <Block id={'skills-img'} keyItem={5} ref={refSkills} icon={Skill} component={<Skills animationDelay={blockAnimationDelay}/>}/>
                <Box />
-           </div>
-        </StyledItemContainer>
+        </>
     );
 }
 

@@ -16,21 +16,17 @@ const StyledBockComponent = styled.section`
   .item {
     display: flex;
     position: relative;
-    background-color: red;
     flex-direction: column;
     opacity: 0;
     margin: 40px 20%;
     min-height: 100vh;
     scroll-margin-top: 12vh;
     transition: ease 0s;
-
-
   }
 
   .item.active {
     opacity: 1;
     transition: ${constants.duration_itemAnim}s ease;
-    
   }
 
   .blockContainer{
