@@ -19,7 +19,7 @@ import LetterIcon from "../assets/letter.svg"
 
 import Box from "./headerComponents/Box";
 import constants from "../constants/constants";
-import Block from "./Right/Block";
+import Item from "./ItemsComponents/Item";
 import skills from "./ItemsComponents/Contact";
 
 
@@ -74,15 +74,15 @@ const MainSection = (props : SmallBlockProps) =>  {
 
         // Items : Expériences, présentations, ect...
         const itemsElements = document.querySelectorAll(".item")
-        // Block des projets :
+        // Item des projets :
         const projectElements = document.querySelectorAll(".project")
-        // Block des études
+        // Item des études
         const studyElements = document.querySelectorAll(".blockStudy")
-        // Block des experiences
+        // Item des experiences
         const experienceElements = document.querySelectorAll(".experienceItem")
-        // Block des experiences
+        // Item des experiences
         const skillsElements = document.querySelectorAll(".contact-block")
-        //Block dans les expériences représentant le nombre d'année de travail, ect...
+        //Item dans les expériences représentant le nombre d'année de travail, ect...
         const experienceBlocks = document.querySelectorAll(".experienceBlock")
         //experienceAnne
         const experienceAnne = document.querySelectorAll(".experience-skills-block")
@@ -163,11 +163,11 @@ const MainSection = (props : SmallBlockProps) =>  {
 
     return(
         <>
-                <Block id={'wave-img-presentation'} keyItem={1} ref={refPresentation} icon={WaveIcon} component={<Presentation animationDelay={blockAnimationDelay}/>}/>
-                <Block id={'briefCase-img'} keyItem={2} ref={refExperience} icon={BriefCaseIcon} component={<Experience animationDelay={blockAnimationDelay}/>}/>
-                <Block id={'study-img'} keyItem={3} ref={refStudy} icon={GraduationIcon} component={<Study animationDelay={blockAnimationDelay}/>}/>
-                <Block id={'idea-img'} keyItem={4} ref={refProjects} icon={IdeaIcon} component={<Projects animationDelay={blockAnimationDelay}/>}/>
-                <Block id={'skills-img'} keyItem={5} ref={refSkills} icon={LetterIcon} component={<Skills animationDelay={blockAnimationDelay}/>}/>
+                <Item id={'wave-img-presentation'} keyItem={1} ref={refPresentation} icon={WaveIcon} component={<Presentation animationDelay={blockAnimationDelay}/>}/>
+                <Item id={'briefCase-img'} keyItem={2} ref={refExperience} icon={BriefCaseIcon} component={<Experience animationDelay={blockAnimationDelay}/>}/>
+                <Item id={'study-img'} keyItem={3} ref={refStudy} icon={GraduationIcon} component={<Study animationDelay={blockAnimationDelay}/>}/>
+                <Item id={'idea-img'} keyItem={4} ref={refProjects} icon={IdeaIcon} component={<Projects animationDelay={blockAnimationDelay}/>}/>
+                <Item id={'skills-img'} keyItem={5} ref={refSkills} icon={LetterIcon} component={<Skills animationDelay={blockAnimationDelay}/>}/>
                <Box />
         </>
     );

@@ -13,6 +13,7 @@ export default {
     color3: "#a4a4a4",
     color4: "#424242",
     color5: "#32ff9b",
+    color5Filter: "invert(100%) sepia(44%) saturate(3478%) hue-rotate(69deg) brightness(104%) contrast(101%)",
 
     colorWhite: "#f2fbf7",
     colorBlack: "#1a1c1b",

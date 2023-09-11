@@ -49,7 +49,7 @@ const StyledButton = styled.section`
     width: 60px;
   }
   .button-img:hover {
-    filter: invert(84%) sepia(64%) saturate(4580%) hue-rotate(59deg) brightness(105%) contrast(94%);
+    filter: ${constants.color5Filter};
   }
   .titleButton {
     display: inline-block;
@@ -74,7 +74,7 @@ const StyledButton = styled.section`
   .activeButton, .button-img:hover {
 
     .button-img {
-      filter: invert(84%) sepia(64%) saturate(4580%) hue-rotate(59deg) brightness(105%) contrast(94%);
+      filter: ${constants.color5Filter};
       transition: ease 0.5s;
     }
     .buttonColorContainer {

@@ -138,7 +138,7 @@ const StyledBockComponent = styled.section`
 `
 
 
-const Block = (props : BlockProps) =>  {
+const Item = (props : BlockProps) =>  {
 
     return(
         <StyledBockComponent>
@@ -160,4 +160,4 @@ const Block = (props : BlockProps) =>  {
     );
 }
 
-export default Block;
+export default Item;
