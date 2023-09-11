@@ -1,48 +1,39 @@
 import React, { CSSProperties} from 'react';
-import CSS from 'csstype'
+import { styled} from "styled-components";
+import constants from "./constants/constants";
 import '../src/components/style.scss'
 import './App.css';
-import manIcon from "./assets/man.svg"
-import laptopIcon from "./assets/laptop.svg"
-import ideaIcon from "./assets/idea.svg"
 
 import { store } from './redux/redux'
 import { Provider} from "react-redux";
-import Page from "./utility/page";
 import RightSectionBlock from "./components/RightSectionBlock";
-import LeftSectionBlock from "./components/leftSideComponents/LeftSectionBlock";
+import Header from "./components/headerComponents/Header";
 
-interface IButton{
-    name: string
-    type: string
-}
-
-const buttonTabs = [
-    {
-        description: "EXPÉRIENCE PRO",
-        icons: laptopIcon,
-        pageName: "working",
-    },
-    {
-        description: "PROJETS PERSO",
-        icons: ideaIcon,
-        pageName: "projects"
-    },
-    {
-        description: "CONTACTEZ MOI",
-        icons: manIcon,
-        pageName: "contact"
-    }
-]
-
+const StyledMainComponent = styled.section`
+  .container {
+    //background: linear-gradient(to right, white, #f0f0f0);
+    position:relative;
+  }
+  .right {
+    overflow: auto;
+    padding-top: ${constants.headerSize}px;
+    position: relative;
+    min-height: 100vh;
+  }
+ 
+`
 
 function App() {
     return (
         <Provider store={store}>
-            <div className={'container'}>
-                <LeftSectionBlock />
-                <RightSectionBlock />
-            </div>
+            <StyledMainComponent>
+                <div className={'container'}>
+                    <Header />
+                    <main className={"right"}>
+                        <RightSectionBlock />
+                    </main>
+                </div>
+            </StyledMainComponent>
         </Provider>
     );
 }

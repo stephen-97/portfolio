@@ -7,6 +7,7 @@ import { RootState} from "../../redux/redux";
 import {styled, css} from "styled-components";
 
 type StudyProps = {
+    animationDelay: number,
 }
 
 
@@ -43,14 +44,42 @@ const createLoopCSS = styled.div`
   
 `;
 
+const loopActiveBlock = () => {
+    let style = '';
+    for(let i=1; i<= 5; i++){
+        style+= `
+            .active-blockStudy:nth-child(${i}) {
+                transform: translateX(-25%);
+                animation: animateBlockStudy 0.5s ease ${(i-1)*300}ms forwards;
+            }
+            .active-blockStudy:nth-child(2n) {
+                 transform: translateX(25%);
+            } 
+        `
+    }
+    return css`${style}`
+}
+
 
 
 // LA CLASS active-blockstudy est dans le fichier CSS car on ne peut pas faire des loops avec styled components
 const StyledSectionStudy = styled.section`
-  
-  .containerStudy{
-    margin-top: 30px;
+  & {
+    position: relative;
   }
+  
+  
+  @keyframes animateBlockStudy {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0%);
+    }
+  }
+  ${loopActiveBlock()}
+
   // STUDY
   .blockStudy {
     padding: 10px;
@@ -63,7 +92,7 @@ const StyledSectionStudy = styled.section`
 
     h2 {
       font-size: 18px;
-      margin: 5px 0px;
+      margin: 5px 0;
       color: #3b3a3a;
       font-weight: 500;
     }
@@ -89,25 +118,15 @@ const StyledSectionStudy = styled.section`
     }
   }
   
-    @keyframes animateBlockStudy {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0%);
-      }
-    }
-
+  
 `
 
 
 const Study = (props : StudyProps) =>  {
 
-
     return(
         <StyledSectionStudy>
-            <div className={'containerStudy'}>
+            <div>
                 <div className={'blockStudy'}>
                     <h2>RNCP36009 Directeur de projet informatique (Bac+5)</h2>
                     <div>Aston Ecole</div>

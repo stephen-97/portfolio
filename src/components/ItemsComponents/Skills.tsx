@@ -6,7 +6,8 @@ import {styled, ThemeProvider, css} from "styled-components";
 import { RootState} from "../../redux/redux";
 
 
-type ProjectProps = {
+type SkillsProps = {
+    animationDelay: number,
 }
 
 
@@ -32,9 +33,11 @@ const loopSkillsList = () => {
 }
 
 const StyledSkills = styled.section`
-    $duration: .5s;  
+    $duration: .5s;
   
-      
+    & {
+      position: relative;
+    }
     .skills-Container {
         display: flex;
         flex-direction: row;
@@ -138,8 +141,7 @@ const StyledSkills = styled.section`
     }
   }
 
-
-
+  
   .skills-Block:nth-of-type(2) {
     >span {
       position: absolute;
@@ -267,7 +269,7 @@ const StyledSkills = styled.section`
  * @param props
  * @constructor
  */
-const Skills = (props : ProjectProps) =>  {
+const Skills = (props : SkillsProps) =>  {
 
     return(
         <ThemeProvider theme={theme}>
