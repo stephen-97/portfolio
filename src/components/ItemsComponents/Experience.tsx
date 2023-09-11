@@ -49,7 +49,6 @@ const loopExperienceSkills = () => {
         style+= `
             > span:nth-of-type(${i}) {
                 position: relative;
-                background-color: purple;
                 animation: animationSkills 0.2s ease-in-out ${i*0.2}s forwards;
                 @keyframes animationSkills {
                   0% {
@@ -82,7 +81,11 @@ const StyledExperience = styled.section`
 
   #experienceList {
     position: relative;
-    background-color: rebeccapurple;
+    list-style-type: none;
+    padding: 0;
+    > li {
+      
+    }
   }
   
   .activeExperienceBlock {
@@ -114,95 +117,128 @@ const StyledExperience = styled.section`
     min-height: 300px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     position: relative;
-    background-color: red;
     margin-bottom: 50px;
   }
   
-  .experienceAnne {
+  .experience-skills-block {
     top: 0;
+    margin: auto;
     border-radius: 10px;
     position: relative;
-    width: 500px;
-    height: 300px;
-    background-color: yellow;
+    width: 520px;
+    min-height: 350px;
+    
     text-align: center;
     padding: 10px 0;
     
-    > img {
-      background-color: #61dafb;
-      margin: 0;
-    }
-    > span {
-      display: block;
-      background-color: #cbded9;
-      font-size: 23px;
-      font-weight: bold;
+    // RIGHT
+    &:nth-of-type(1){
+      height: auto;
+      min-height: auto;
+      > .experience-skills-block-title {
+        display: block;
+        color: black;
+        font-size: ${constants.fontSize1};
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
     }
     
+    // LEFT
+    &:nth-of-type(2){
+      background-color: ${constants.color3};
+      box-shadow: ${constants.boxShadow};
+      
+      > .experience-skills-block-title {
+        display: block;
+        color: whitesmoke;
+        font-size: ${constants.fontSize1};
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+    }
+    
+    > img {
+      margin: 0;
+    }
+
+    
+    
+    //SKILLS RIGHT
     .skills-list  {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-evenly;
       
+      
       > span {
+        background-color: ${constants.color4};
         display: block;
         opacity: 0;
         margin-top: 20px;
-        width: 100px;
-        padding: 10px 15px;
+        width: 175px;
+        padding: 20px 0 20px 30px;
         border-radius: 10px;
-        background-color: #282c34;
         font-weight: bolder;
+        font-size: 20px;
         position: relative;
-        
-        >span {
-          display: block;
-          font-weight: 200;
-          color: whitesmoke;
-        }
-      }
-    }
-
-    .skills-list  {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-evenly;
-
-      > span {
-        display: block;
-        opacity: 0;
-        margin-top: 20px;
-        width: 100px;
-        padding: 10px 15px;
-        border-radius: 10px;
-        background-color: #282c34;
-        font-weight: bolder;
-        position: relative;
+        text-align: left;
+        color: whitesmoke;
 
         >span {
           display: block;
-          font-weight: 200;
-          color: whitesmoke;
+          font-size: 18px;
+          color: ${constants.color5};
+          font-weight: 100;
         }
       }
     }
     
+    
+    
+    
+    // Choice BLOCK
     ul {
-      background-color: rebeccapurple;
       padding: 0;
-
+      margin-top: 30px;
+      
       >ol {
         opacity: 0;
-        background-color: green;
+        margin: 10px auto;
+        width: 150px;
         padding: 0;
-        margin-top: 10px;
-        font-size: 20px;
+        font-size: 25px;
         cursor: pointer;
-
-        >span {
-          color: #cbded9;
+        font-weight: bold;
+        text-align: left;
+        
+        &:hover {
+          color: red;
+        }
+      }
+      a {
+        display: block;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+      
+        //transform: scale(0);
+      }
+      .itemSelected {
+        border-bottom: 4px solid black;
+        transform: scaleX(0);
+        z-index: -1;
+        animation: scalingBorder 0.5s ease-in-out forwards;
+        @keyframes scalingBorder {
+          from {
+            transform: scaleX(0);
+            transform-origin: left ;
+          }
+          to {
+            transform-origin: left ;
+            transform: scaleX(1);
+          }
         }
       }
     }
@@ -251,25 +287,7 @@ const backEndSkills: Array<Skill> =
         {name: 'MongoDB', level: Level.Basic},
     ]
 
-/**
- * <span>DevOps</span>
- *                             <section    key={experiencePattern}  className={'skills-list'} id={'DevOps'}>
- *                                 <span>Ansible <span>Intermédiaire</span></span>
- *                                 <span>Docker <span>Intermédiaire</span></span>
- *                                 <span>Terraform <span>Basic</span></span>
- *                             </section>
- *
- *
- * <span>BackEnd</span>
- *                             <section  key={experiencePattern} className={'skills-list'}  id={'BackEnd'}>
- *                                 <span>SYMFONY <span>Confirmé</span></span>
- *                                 <span>NODE JS<span>Intermédiaire</span></span>
- *                                 <span>Express<span>Intermédiaire</span></span>
- *                                 <span>MYSQL<span>Basic</span></span>
- *                                 <span>POSTGRESQL<span>Intermédiaire</span></span>
- *                                 <span>MongoBB <span>Basic</span></span>
- *                             </section>
- */
+
 const othersToolsSkills: Array<Skill> =
     [
         {name: 'Ansible', level:    Level.Confirmed},
@@ -280,54 +298,31 @@ const othersToolsSkills: Array<Skill> =
 
 const Experience = forwardRef<HTMLDivElement, ExperienceProps>((props: ExperienceProps, ref: ForwardedRef<HTMLDivElement>) =>  {
 
-
     const [experiencePattern, setExperiencePattern]:[ string, Dispatch<string>] = useState('FrontEnd')
-
-
-    useEffect(() => {
-        document.querySelectorAll('.skills-list')
-    }, []);
-
-    const choicePattern = (s: string) => {
-        setExperiencePattern(s);
-        switch (s) {
-            case 'FrontEnd':
-                document.querySelectorAll('.skills-list').forEach((e: Element) => e!.classList.remove('active-experienceAnne'))
-                document.getElementById(s)!.classList.add('active-experienceAnne');
-                break;
-            case 'BackEnd':
-                //document.getElementById('FrontEnd')!.classList.remove('active-experienceAnne');
-                //document.getElementById('DevOps')!.classList.remove('active-experienceAnne');
-                document.querySelectorAll('.skills-list').forEach((e: Element) => e!.classList.remove('active-experienceAnne'))
-                document.getElementById(s)!.classList.add('active-experienceAnne');
-                break;
-            case 'DevOps':
-                //document.getElementById('FrontEnd')!.classList.remove('active-experienceAnne');
-                //document.getElementById('BackEnd')!.classList.remove('active-experienceAnne');
-                document.querySelectorAll('.skills-list').forEach((e: Element) => e!.classList.remove('active-experienceAnne'))
-                document.getElementById(s)!.classList.add('active-experienceAnne');
-                break;
-            default:
-                break;
-        }
-    }
-
-
 
     return(
         <StyledExperience>
             <section id={'sectionBlock'} >
-                <div className={'experienceAnne'}>
-                    <img height={70} width={70} src={computer} alt={'computer image'}/>
-                    <span>3 années d'expérience</span>
+                <div className={'experience-skills-block'}>
+                    <img height={80} width={80} src={computer} alt={'computer image'}/>
+                    <span className={'experience-skills-block-title'}>3 YEARS EXPERIENCES</span>
                     <ul>
-                        <ol onClick={() => setExperiencePattern('FrontEnd')} ><span>&lt;ol&gt;</span> Front End <span>&lt;ol/&gt;</span> </ol>
-                        <ol onClick={() => setExperiencePattern('BackEnd')}><span>&lt;ol&gt;</span> Back End <span>&lt;ol/&gt;</span> </ol>
-                        <ol onClick={() => setExperiencePattern('DevOps')}><span >&lt;ol&gt;</span>  Devops <span>&lt;ol/&gt;</span> </ol>
+                        <ol onClick={() => setExperiencePattern('FrontEnd')}  >
+                            <a  key={'BackEnd-Item'} className={`${experiencePattern==='FrontEnd' ? 'itemSelected': ''}`}></a>
+                            <span>Front End</span>
+                        </ol>
+                        <ol onClick={() => setExperiencePattern('BackEnd')} >
+                            <a  key={'FrontEnd-Item'} className={`${experiencePattern==='BackEnd' ? 'itemSelected': ''}`}></a>
+                            <span>Back End</span>
+                        </ol>
+                        <ol onClick={() => setExperiencePattern('DevOps')} >
+                            <a  key={'DevOps-Item'} className={`${experiencePattern==='DevOps' ? 'itemSelected': ''}`}></a>
+                            <span>Devops</span>
+                        </ol>
                     </ul>
                 </div>
-                <div className={'experienceAnne'}>
-                    <span>{experiencePattern}</span>
+                <div className={'experience-skills-block'}>
+                    <span className={'experience-skills-block-title'}>{experiencePattern}</span>
                     <section key={experiencePattern} className={'skills-list'} >
                         {
                             {
@@ -353,7 +348,7 @@ const Experience = forwardRef<HTMLDivElement, ExperienceProps>((props: Experienc
                     <ExperienceBlock
                         date1={2020}
                         date2={2023}
-                        title={'Gendarmerie Nationale'}
+                        title={'GENDARMERIE NATIONALE'}
                         description={'Developpeur Web et Devops en apprentissage, trois projets effectués en tant que\n' +
                             'déveleoppeur web dont deux utilisant ReactJS et NodeJs en TypeScript et un utilisant\n' +
                             'Symfony. Un projet en Devops pour introduire la solution Airflow dans la messagerie,\n' +

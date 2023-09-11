@@ -58,7 +58,7 @@ const RightSectionBlock = (props : SmallBlockProps) =>  {
                 if(entry.target.classList.contains('experienceItem')) entry.target.classList.add('activeExperienceItem')
                 if(entry.target.classList.contains('experienceBlock')) entry.target.classList.add('activeExperienceBlock')
                 if(entry.target.classList.contains('skills-Container')) entry.target.classList.add('active-skills-Container')
-                if(entry.target.classList.contains('experienceAnne')) entry.target.classList.add('active-experienceAnne')
+                if(entry.target.classList.contains('experience-skills-block')) entry.target.classList.add('active-experienceAnne')
             }
         })
     })
@@ -80,7 +80,7 @@ const RightSectionBlock = (props : SmallBlockProps) =>  {
         //Block dans les expériences représentant le nombre d'année de travail, ect...
         const experienceBlocks = document.querySelectorAll(".experienceBlock")
         //experienceAnne
-        const experienceAnne = document.querySelectorAll(".experienceAnne")
+        const experienceAnne = document.querySelectorAll(".experience-skills-block")
 
 
         itemsElements.forEach((el: Element) => observer.observe((el)))

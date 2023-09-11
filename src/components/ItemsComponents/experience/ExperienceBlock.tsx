@@ -74,11 +74,6 @@ const StyledExperienceBlock = styled.section`
     position: relative;
   }
 
-  #experienceList {
-    position: relative;
-    background-color: rebeccapurple;
-  }
-  
   .activeExperienceItem {
     animation: scalingBlockExperience ${transitionExperienceBlock}s ease forwards;
     @keyframes scalingBlockExperience {
@@ -93,7 +88,8 @@ const StyledExperienceBlock = styled.section`
     }
   }
   .experienceItem{
-    background-color: ${constants.color2};
+    background-color: ${constants.color3};
+    color: black;
     position: relative;
     padding: 10px 0;
     font-size: 25px;
@@ -102,7 +98,6 @@ const StyledExperienceBlock = styled.section`
     
     .experienceContent{
       opacity: 1;
-      color: gray;
       display: flex;
       flex-direction: row;
       margin: 10px 20px;
@@ -128,17 +123,19 @@ const StyledExperienceBlock = styled.section`
         }
       }
       .dateExperience {
-        font-size: 15px;
-        min-width: 100px
+        font-size: 20px;
+        text-align: center;
+        min-width: 150px
       }
       .titleExperience {
-        margin: 0;
-        font-size: 25px;
-        font-weight: bolder;
+        margin: 10px 0;
+        font-size: ${constants.fontSize1};
+        color: ${constants.colorWhite};
+        font-weight: bold;
       }
 
       .descriptionExperience {
-        margin: 10px 0;
+        margin: 15px 0;
       }
 
       // Container des Tags
@@ -147,7 +144,6 @@ const StyledExperienceBlock = styled.section`
     &:hover {
       transition: all ${transitionExperienceBlock}s ease;
       transform: translateY(-10px);
-
     }
   }
 
@@ -183,8 +179,6 @@ const StyledExperienceBlock = styled.section`
     background-color: red;
     margin-bottom: 50px;
   }
-  
-
 `
 
 
