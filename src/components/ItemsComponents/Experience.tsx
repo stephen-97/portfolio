@@ -13,8 +13,8 @@ type ExperienceProps = {
 }
 
 
-const animationDelay: number = constants.duration_itemAnim;
-const transitionExperienceBlock: number = 1;
+const animationDelay: number = 0.5;
+const transitionExperienceSkillBlock: number = 0.5;
 
 const loopBlockList = () => {
     let style = '';
@@ -22,7 +22,7 @@ const loopBlockList = () => {
     for(let i=1; i<= 5; i++){
         style+= `
             > ol:nth-of-type(${i}) {
-                animation: animationListBlockExperience 1s ease-in-out ${i/3+0.5}s forwards;
+                animation: animationListBlockExperience 1s ease-in-out ${i/3+1}s forwards;
                 transform: translateX(50px);
                 @keyframes animationListBlockExperience {
                   from {
@@ -88,29 +88,9 @@ const StyledExperience = styled.section`
     }
   }
   
-  .activeExperienceBlock {
-    animation: scalingBlockExperience 1s ease forwards;
-    @keyframes scalingBlockExperience {
-      from {
-        transform: scaleX(0);
-      }
-      to {
-        transform: scaleX(1);
-      }
-    }
-  }
   
   .selected  {
       color: white;
-  }
-  .experienceBlock{
-    height: 0;
-    top: 0;
-    border-radius: 10px;
-    position: relative;
-    width: 500px;
-    text-align: center;
-    padding: 10px 0;
   }
 
   #sectionBlock {
@@ -162,8 +142,6 @@ const StyledExperience = styled.section`
     > img {
       margin: 0;
     }
-
-    
     
     //SKILLS RIGHT
     .skills-list  {
@@ -174,21 +152,22 @@ const StyledExperience = styled.section`
       
       > span {
         background-color: ${constants.color4};
-        display: block;
         opacity: 0;
         margin-top: 20px;
-        width: 175px;
-        padding: 20px 0 20px 30px;
+        width: clamp(125px, 7vw, 175px);
+        //width: 175px;
+        //clamp(40px, 7vw, 70px);
+        padding: 20px 0 20px clamp(10px, 2vw, 30px);
         border-radius: 10px;
         font-weight: bolder;
-        font-size: 20px;
+        font-size: clamp(17px, 1vw, 20px);
         position: relative;
         text-align: left;
         color: whitesmoke;
 
         >span {
           display: block;
-          font-size: 18px;
+          font-size: clamp(15px, 1vw, 18px);
           color: ${constants.color5};
           font-weight: 100;
         }
@@ -244,12 +223,25 @@ const StyledExperience = styled.section`
     }
   }
 
-  .active-experienceAnne {
+  .active-experience-skills-block{
+    
+    &:nth-of-type(1) {
+      ul {
+        ${loopBlockList()}
+      }
+    }
+    &:nth-of-type(2) {
+      transform: translateX(250px);
+      animation: animation-Skills-Block ${transitionExperienceSkillBlock}s ease-in-out ${animationDelay}s forwards;
+      @keyframes animation-Skills-Block {
+        to {
+          transform: translateX(0);
+        }
+      }
+    }
+      
     >section {
       ${loopExperienceSkills()}
-    }
-    ul {
-      ${loopBlockList()}
     }
   }
   

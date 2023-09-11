@@ -18,7 +18,7 @@ const StyledBockComponent = styled.section`
     position: relative;
     flex-direction: column;
     opacity: 0;
-    margin: 40px 20%;
+    margin: 40px 25%;
     min-height: 100vh;
     scroll-margin-top: 12vh;
     transition: ease 0s;

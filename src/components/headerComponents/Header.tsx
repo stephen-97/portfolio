@@ -4,12 +4,11 @@ import {css, styled} from "styled-components";
 import React, {useEffect} from "react";
 import HeaderButton from "./HeaderButton";
 import constants from "../../constants/constants";
-import Wave from "../../assets/wave.svg";
-import BriefCase from "../../assets/briefcase.svg"
-import Graduation from "../../assets/casquette-de-graduation.svg"
-import Idea from "../../assets/exchange-ideas.svg"
-import Skill from "../../assets/skill.svg"
-
+import WaveIcon from "../../assets/wave.svg";
+import BriefCaseIcon from "../../assets/briefcase.svg"
+import GraduationIcon from "../../assets/casquette-de-graduation.svg"
+import IdeaIcon from "../../assets/exchange-ideas.svg"
+import LetterIcon from "../../assets/letter.svg"
 
 type SmallBlockProps = {
 }
@@ -61,31 +60,30 @@ const StyledLeftContainer = styled.section`
   
 `
 
-
 const buttonTabs = [
     {
         description: "PRESENTATION",
-        icons: Wave,
+        icons: WaveIcon,
         pageName: "presentation"
     },
     {
         description: "EXPÉRIENCE PRO",
-        icons: BriefCase,
+        icons: BriefCaseIcon,
         pageName: "working",
     },
     {
         description: "ETUDES",
-        icons: Graduation,
+        icons: GraduationIcon,
         pageName: "study"
     },
     {
         description: "PROJETS PERSO",
-        icons: Idea,
+        icons: IdeaIcon,
         pageName: "projects"
     },
     {
         description: "CONTACTEZ MOI",
-        icons: Skill,
+        icons: LetterIcon,
         pageName: "contact"
     },
 ]

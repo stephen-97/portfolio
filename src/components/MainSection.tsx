@@ -1,21 +1,26 @@
 import React, {useEffect, useRef} from "react";
 import gsap from "gsap";
+import {css, styled} from "styled-components";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
+
 import Presentation from "./ItemsComponents/Presentation";
 import Experience from "./ItemsComponents/Experience";
 import Projects from "./ItemsComponents/Projects";
 import Study from "./ItemsComponents/Study";
-import Skills from "./ItemsComponents/Skills";
-import Wave from "../assets/wave.svg";
-import BriefCase from "../assets/briefcase.svg"
-import Graduation from "../assets/casquette-de-graduation.svg"
-import Idea from "../assets/exchange-ideas.svg"
-import Skill from "../assets/skill.svg"
-import {css, styled} from "styled-components";
+import Skills from "./ItemsComponents/Contact";
+
+import WaveIcon from "../assets/wave.svg";
+import BriefCaseIcon from "../assets/briefcase.svg"
+import GraduationIcon from "../assets/casquette-de-graduation.svg"
+import IdeaIcon from "../assets/exchange-ideas.svg"
+import SkillIcon from "../assets/skill.svg"
+import LetterIcon from "../assets/letter.svg"
+
+
 import Box from "./headerComponents/Box";
 import constants from "../constants/constants";
 import Block from "./Right/Block";
-import skills from "./ItemsComponents/Skills";
+import skills from "./ItemsComponents/Contact";
 
 
 type SmallBlockProps = {
@@ -33,7 +38,7 @@ const StyledItemContainer = styled.section`
   }
   
 `
-const RightSectionBlock = (props : SmallBlockProps) =>  {
+const MainSection = (props : SmallBlockProps) =>  {
 
     const refPresentation= useRef<null | HTMLDivElement>(null);
     const refExperience = useRef<null | HTMLDivElement>(null);
@@ -56,9 +61,9 @@ const RightSectionBlock = (props : SmallBlockProps) =>  {
                 if(entry.target.classList.contains('project')) entry.target.classList.add('active-project');
                 if(entry.target.classList.contains('blockStudy')) entry.target.classList.add('active-blockStudy')
                 if(entry.target.classList.contains('experienceItem')) entry.target.classList.add('activeExperienceItem')
-                if(entry.target.classList.contains('experienceBlock')) entry.target.classList.add('activeExperienceBlock')
-                if(entry.target.classList.contains('skills-Container')) entry.target.classList.add('active-skills-Container')
-                if(entry.target.classList.contains('experience-skills-block')) entry.target.classList.add('active-experienceAnne')
+                //if(entry.target.classList.contains('experienceBlock')) entry.target.classList.add('activeExperienceBlock')
+                if(entry.target.classList.contains('contact-block')) entry.target.classList.add('active-contact-block')
+                if(entry.target.classList.contains('experience-skills-block')) entry.target.classList.add('active-experience-skills-block')
             }
         })
     })
@@ -76,7 +81,7 @@ const RightSectionBlock = (props : SmallBlockProps) =>  {
         // Block des experiences
         const experienceElements = document.querySelectorAll(".experienceItem")
         // Block des experiences
-        const skillsElements = document.querySelectorAll(".skills-Container")
+        const skillsElements = document.querySelectorAll(".contact-block")
         //Block dans les expériences représentant le nombre d'année de travail, ect...
         const experienceBlocks = document.querySelectorAll(".experienceBlock")
         //experienceAnne
@@ -158,15 +163,15 @@ const RightSectionBlock = (props : SmallBlockProps) =>  {
 
     return(
         <>
-                <Block id={'wave-img-presentation'} keyItem={1} ref={refPresentation} icon={Wave} component={<Presentation animationDelay={blockAnimationDelay}/>}/>
-                <Block id={'briefCase-img'} keyItem={2} ref={refExperience} icon={BriefCase} component={<Experience animationDelay={blockAnimationDelay}/>}/>
-                <Block id={'study-img'} keyItem={3} ref={refStudy} icon={BriefCase} component={<Study animationDelay={blockAnimationDelay}/>}/>
-                <Block id={'idea-img'} keyItem={4} ref={refProjects} icon={Idea} component={<Projects animationDelay={blockAnimationDelay}/>}/>
-                <Block id={'skills-img'} keyItem={5} ref={refSkills} icon={Skill} component={<Skills animationDelay={blockAnimationDelay}/>}/>
+                <Block id={'wave-img-presentation'} keyItem={1} ref={refPresentation} icon={WaveIcon} component={<Presentation animationDelay={blockAnimationDelay}/>}/>
+                <Block id={'briefCase-img'} keyItem={2} ref={refExperience} icon={BriefCaseIcon} component={<Experience animationDelay={blockAnimationDelay}/>}/>
+                <Block id={'study-img'} keyItem={3} ref={refStudy} icon={GraduationIcon} component={<Study animationDelay={blockAnimationDelay}/>}/>
+                <Block id={'idea-img'} keyItem={4} ref={refProjects} icon={IdeaIcon} component={<Projects animationDelay={blockAnimationDelay}/>}/>
+                <Block id={'skills-img'} keyItem={5} ref={refSkills} icon={LetterIcon} component={<Skills animationDelay={blockAnimationDelay}/>}/>
                <Box />
         </>
     );
 }
 
 
-export default RightSectionBlock;
+export default MainSection;

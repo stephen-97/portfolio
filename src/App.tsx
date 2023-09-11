@@ -6,7 +6,7 @@ import './App.css';
 
 import { store } from './redux/redux'
 import { Provider} from "react-redux";
-import RightSectionBlock from "./components/RightSectionBlock";
+import MainSection from "./components/MainSection";
 import Header from "./components/headerComponents/Header";
 
 const StyledMainComponent = styled.section`
@@ -30,7 +30,7 @@ function App() {
                 <div className={'container'}>
                     <Header />
                     <main className={"right"}>
-                        <RightSectionBlock />
+                        <MainSection />
                     </main>
                 </div>
             </StyledMainComponent>

@@ -103,11 +103,6 @@ const StyledButton = styled.section`
   }
 `
 
-const StyledButtonContainer = styled.section`
- 
-
-
-`
 
 const HeaderButton = (props : SmallBlockProps) =>  {
 
@@ -122,20 +117,3 @@ const HeaderButton = (props : SmallBlockProps) =>  {
 
 
 export default HeaderButton;
-
-/**
- *
- * <div className={`${checkSelectedPage() ? 'smallBlockClicked' : 'smallBlock'}`} onClick={() => dispatch(setPage({name : props.pageName}))}>
- *             <span> {props.description}</span>
- *             <img src={props.icon} alt="React Logo" />
- *         </div>
- */
-
-/**
- *
- *
- * <div className={`${checkSelectedPage() ? 'smallBlockClicked' : 'smallBlock'}`} onClick={() => dispatchPage() }>
- *             <span> {props.description}</span>
- *             <img src={props.icon} alt="React Logo" />
- *         </div>
- */

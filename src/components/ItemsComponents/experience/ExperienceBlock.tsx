@@ -13,61 +13,10 @@ type ExperienceBlockPops = {
 }
 
 
-const animationDelay: number = constants.duration_itemAnim;
-const transitionExperienceBlock: number = 1;
+const animationDelay: number = 0;
+const transitionExperienceBlock: number = 0.5;
 
-const loopBlockList = () => {
-    let style = '';
 
-    for(let i=1; i<= 5; i++){
-        style+= `
-            > ol:nth-of-type(${i}) {
-                animation: animationListBlockExperience 1s ease ${i/3+2}s forwards;
-                @keyframes animationListBlockExperience {
-                  from {
-                    opacity: 0;
-                  }
-                  to {
-                    opacity: 1;
-                  }
-                }
-            } 
-        `
-    }
-    return css`${style}`
-}
-
-const loopExperienceSkills = () => {
-    let style = '';
-
-    for(let i=1; i<= 10; i++){
-        style+= `
-            > span:nth-of-type(${i}) {
-                position: relative;
-                background-color: purple;
-                animation: animationSkills 1s ease ${i/3+0.5}s forwards;
-                @keyframes animationSkills {
-                  0% {
-                    transform: translate(-20px, -20px);
-                    opacity: 0;
-                  }
-                  50% { 
-                    opacity: 1;
-                  }
-                  to {
-                    transform: translate(0, 0);
-                    opacity: 1;
-                  }
-                }
-            } 
-        `
-    }
-    return css`${style}`
-}
-
-const changeClassName = (e: Element) => {
-    document.querySelectorAll('.')
-}
 
 const StyledExperienceBlock = styled.section`
   & {
@@ -75,36 +24,35 @@ const StyledExperienceBlock = styled.section`
   }
 
   .activeExperienceItem {
-    animation: scalingBlockExperience ${transitionExperienceBlock}s ease forwards;
-    @keyframes scalingBlockExperience {
-      from {
-        opacity: 1;
-        transform: scaleX(0);
-      }
+    animation: translateExperienceItem ${transitionExperienceBlock}s ease-in-out ${animationDelay}s forwards;
+    @keyframes translateExperienceItem {
       to {
         opacity: 1;
-        transform: scaleX(1);
+        transform: translateY(0px);
       }
     }
   }
+  
   .experienceItem{
-    background-color: ${constants.color3};
-    color: black;
     position: relative;
-    padding: 10px 0;
+    transform: translateY(100px);
+    background-color: ${constants.color3};
+    box-shadow: ${constants.boxShadow};
+    color: black;
     font-size: 25px;
     border-radius: 10px;
     transition: all ${transitionExperienceBlock}s ease;
-    
-    .experienceContent{
-      opacity: 1;
-      display: flex;
-      flex-direction: row;
-      margin: 10px 20px;
 
+    .dateExperience {
+      width: 500px;
+      font-size: ${constants.fontSize2};
+      text-align: center;
+      flex: 2;
+    }
       // Div pour le titre et la description
       .contentDescription  {
-        width: 100%;
+        margin: 35px;
+        padding: 20px 0;
         font-size: clamp(15px, 2em, 18px);
         min-width: 0;
 
@@ -122,11 +70,6 @@ const StyledExperienceBlock = styled.section`
           }
         }
       }
-      .dateExperience {
-        font-size: 20px;
-        text-align: center;
-        min-width: 150px
-      }
       .titleExperience {
         margin: 10px 0;
         font-size: ${constants.fontSize1};
@@ -139,7 +82,6 @@ const StyledExperienceBlock = styled.section`
       }
 
       // Container des Tags
-    }
 
     &:hover {
       transition: all ${transitionExperienceBlock}s ease;
@@ -147,28 +89,7 @@ const StyledExperienceBlock = styled.section`
     }
   }
 
-
-  .activeExperienceBlock {
-    animation: scalingBlockExperience 1s ease forwards;
-    @keyframes scalingBlockExperience {
-      from {
-        transform: scaleX(0);
-      }
-      to {
-        transform: scaleX(1);
-      }
-    }
-  }
   
-  .experienceBlock{
-    height: 0;
-    top: 0;
-    border-radius: 10px;
-    position: relative;
-    width: 500px;
-    text-align: center;
-    padding: 10px 0;
-  }
 
   #sectionBlock {
     min-height: 300px;
@@ -188,10 +109,9 @@ const ExperienceBlock = forwardRef<HTMLDivElement, ExperienceBlockPops>((props: 
     return (
         <StyledExperienceBlock>
             <div className={'experienceItem'}>
-                <div className={'experienceContent'}>
-                    <span className={'dateExperience'}>{`${props.date1} ${props.date2}`}</span>
                     <div className={'contentDescription'}>
                         <h5 className={'titleExperience'}>{`${props.title}`}</h5>
+                        <span className={'dateExperience'}>{`${props.date1} ${props.date2}`}</span>
                         <div className={'descriptionExperience'}> {`${props.description}`}</div>
                         <div className={'tagsExperience'}>
                             <span>CSS</span>
@@ -202,7 +122,6 @@ const ExperienceBlock = forwardRef<HTMLDivElement, ExperienceBlockPops>((props: 
                             <span>Terraform</span>
                         </div>
                     </div>
-                </div>
             </div>
         </StyledExperienceBlock>
     )
