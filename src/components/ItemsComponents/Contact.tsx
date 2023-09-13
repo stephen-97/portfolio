@@ -46,7 +46,7 @@ const StyledSkills = styled.section`
   
   section {
     margin: 0;
-    justify-content: space-around;
+    justify-content: space-between;
     width: auto;
     display: flex;
     flex-wrap: wrap;
@@ -130,6 +130,7 @@ const Contact = (props : SkillsProps) =>  {
                         <span>stephen-loiola-bastos-04351814b</span>
                     </a>
                 </section>
+                <h2>Merci pour votre lecture</h2>
             </StyledSkills>
         </ThemeProvider>
     );

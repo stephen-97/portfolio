@@ -1,19 +1,19 @@
-import React, {useEffect} from 'react';
+import React, {Dispatch, SetStateAction, useEffect, useState} from 'react';
 import "../style.scss"
 import {styled, css} from "styled-components";
 import Graduation from "../../assets/casquette-de-graduation.svg";
 import constants from "../../constants/constants";
 
 type SmallBlockProps = {
-    description: string;
     icon:  string,
-    pageName: string,
-    index: number,
+    display: string,
+    id: string,
+    index?: number,
 }
 
 const loopButtonList = () => {
-    let style = '';
-    for(let i=0; i<= 5; i++){
+    let style: string = '';
+    for(let i: number=0; i<= 5; i++){
         const animDuration: number = 0.5;
         style+= `
             &:nth-of-type(${i}) > .button {
@@ -32,10 +32,11 @@ const loopButtonList = () => {
     return css`${style}`
 }
 
-const StyledButton = styled.section`
+const StyledButton = styled.section<{ displayButton?: string, firstAnimationIsFinished: boolean }>`
+  
   .button {
     position: relative;
-    display: flex;
+    display: ${props => props.displayButton};
     line-height: 50px;
     margin: 0 clamp(10px, 2vw, 30px);
     overflow: hidden;
@@ -43,7 +44,8 @@ const StyledButton = styled.section`
     justify-content: center;
   }
 
-  ${loopButtonList()}
+  ${({firstAnimationIsFinished}) => !firstAnimationIsFinished && loopButtonList()}
+  
   .button-img {
     height: 60px;
     width: 60px;
@@ -106,9 +108,19 @@ const StyledButton = styled.section`
 
 const HeaderButton = (props : SmallBlockProps) =>  {
 
+    const [firstAnimationFinished, setFirstAnimationFinished] = useState(false);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setFirstAnimationFinished(true)
+        }, constants.headerAnim*1500);
+    }, []);
+
+
+
     return(
-            <StyledButton>
-                    <div className={`button button${props.index + 1}`}>
+            <StyledButton displayButton={props.display} firstAnimationIsFinished={firstAnimationFinished}>
+                    <div className={`button  ${props.index ? `button${props.index}` : null }`} id={props.id}>
                         <img className={'button-img'} src={props.icon} alt="React Logo" />
                     </div>
             </StyledButton>

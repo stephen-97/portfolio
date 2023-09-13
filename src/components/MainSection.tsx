@@ -33,10 +33,9 @@ const blockAnimationDelay =  constants.duration_itemAnim;
 const StyledItemContainer = styled.section`
   & {
     position: relative;
+    //background-color: #61dafb;
+    //padding: 0 clamp(1em, 20%, 30em);
   }
-  > div {
-  }
-  
 `
 const MainSection = (props : SmallBlockProps) =>  {
 
@@ -120,7 +119,7 @@ const MainSection = (props : SmallBlockProps) =>  {
         });
 
         buttons.forEach((button: Element, index: number) => {
-            buttonsMap.set(button, items[index] )
+            if(button.id !== 'MenuButton') buttonsMap.set(button, items[index] )
         })
 
         items.forEach((section: HTMLElement, i: number) => {
@@ -162,14 +161,14 @@ const MainSection = (props : SmallBlockProps) =>  {
     })
 
     return(
-        <>
+        <StyledItemContainer>
                 <Item id={'wave-img-presentation'} keyItem={1} ref={refPresentation} icon={WaveIcon} component={<Presentation animationDelay={blockAnimationDelay}/>}/>
                 <Item id={'briefCase-img'} keyItem={2} ref={refExperience} icon={BriefCaseIcon} component={<Experience animationDelay={blockAnimationDelay}/>}/>
                 <Item id={'study-img'} keyItem={3} ref={refStudy} icon={GraduationIcon} component={<Study animationDelay={blockAnimationDelay}/>}/>
                 <Item id={'idea-img'} keyItem={4} ref={refProjects} icon={IdeaIcon} component={<Projects animationDelay={blockAnimationDelay}/>}/>
                 <Item id={'skills-img'} keyItem={5} ref={refSkills} icon={LetterIcon} component={<Skills animationDelay={blockAnimationDelay}/>}/>
                <Box />
-        </>
+        </StyledItemContainer>
     );
 }
 

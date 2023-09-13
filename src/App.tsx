@@ -14,7 +14,7 @@ const StyledMainComponent = styled.section`
     //background: linear-gradient(to right, white, #f0f0f0);
     position:relative;
   }
-  .right {
+  .content {
     overflow: auto;
     padding-top: ${constants.headerSize}px;
     position: relative;
@@ -29,7 +29,7 @@ function App() {
             <StyledMainComponent>
                 <div className={'container'}>
                     <Header />
-                    <main className={"right"}>
+                    <main className={"content"}>
                         <MainSection />
                     </main>
                 </div>
