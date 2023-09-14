@@ -1,6 +1,7 @@
-import React, {Dispatch, SetStateAction, useEffect, useState} from 'react';
+import React, {createRef, Dispatch, RefObject, SetStateAction, useEffect, useRef, useState} from 'react';
 import { Helmet } from 'react-helmet';
-import {styled, css} from "styled-components";
+import {useOnClickOutside} from "usehooks-ts";
+import {styled } from "styled-components";
 import constants from "../../constants/constants";
 import WaveIcon from "../../assets/wave.svg";
 import BriefCaseIcon from "../../assets/briefcase.svg"
@@ -10,7 +11,7 @@ import LetterIcon from "../../assets/letter.svg"
 
 
 type MenuProps = {
-
+    onClickOutside: any,
 }
 
 
@@ -181,16 +182,37 @@ const StyledButtonMenu = styled.div`
 
 
 
-const SideMenu = (props : MenuProps) =>  {
+const SideMenu = ( props: MenuProps) =>  {
 
     const [menuToggle, setMenuToggle]:  [boolean, Dispatch<SetStateAction<boolean>>] = useState(false)
 
-
     useEffect(() => {
-        console.log(menuToggle)
-    }, [menuToggle]);
+        if(window.innerWidth > 1100) setMenuToggle(false);
+    }, [window.innerWidth > 1100]);
+
+    /**const useClickOutside = (ref: any, callback: any) => {
+        console.log("test2")
+        const handleClick = (e: any) => {
+            if(ref.current && !ref.current.contains(e.target)) {
+                callback()
+            }
+        }
+        useEffect(() => {
+            document.addEventListener('click', handleClick)
+            return () => {
+                document.removeEventListener('click', handleClick)
+            }
+        }, []);
+    }**/
+
+    const StyledButtonMenuRef: RefObject<HTMLDivElement> = createRef<HTMLDivElement>();
+    const handleClickOutside = () => {
+        setMenuToggle(false);
+    }
+    useOnClickOutside(StyledButtonMenuRef, handleClickOutside);
+
     return(
-        <StyledButtonMenu>
+        <StyledButtonMenu ref={StyledButtonMenuRef} >
             <Helmet>
                 <body className={menuToggle ? 'sideMenuOpened' : ''} />
             </Helmet>
@@ -200,27 +222,27 @@ const SideMenu = (props : MenuProps) =>  {
             <StyledMenu
                 $menuToggle={menuToggle}
             >
-                <nav>
+                <nav className={'side-menu-button-container'}>
                     <ol>
-                        <ul className={'button-side-menu'}>
+                        <ul className={'side-menu-button'} onClick={() => setMenuToggle(false)}>
                             <img src={WaveIcon} alt="React Logo" height={40}  width={40}/>
                             <span>Présentation</span>
                         </ul>
-                        <ul className={'button-side-menu'}>
+                        <ul className={'side-menu-button'} onClick={() => setMenuToggle(false)}>
                             <img src={BriefCaseIcon} alt="React Logo" height={40}  width={40}/>
                             <span>Expériences</span>
                         </ul>
-                        <ul className={'button-side-menu'}>
+                        <ul className={'side-menu-button'} onClick={() => setMenuToggle(false)}>
                             <img src={GraduationIcon} alt="React Logo" height={40}  width={40}/>
-                            <span>Étude</span>
+                            <span>Études</span>
                         </ul>
-                        <ul className={'button-side-menu'}>
+                        <ul className={'side-menu-button'} onClick={() => setMenuToggle(false)}>
                             <img src={IdeaIcon} alt="React Logo" height={40}  width={40}/>
                             <span>Projets personnels</span>
                         </ul>
-                        <ul className={'button-side-menu'}>
+                        <ul className={'side-menu-button'} onClick={() => setMenuToggle(false)}>
                             <img src={LetterIcon} alt="React Logo" height={40}  width={40}/>
-                            <span>Contact</span>
+                            <span>Contacts</span>
                         </ul>
                     </ol>
                 </nav>

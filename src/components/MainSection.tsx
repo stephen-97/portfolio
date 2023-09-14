@@ -13,14 +13,12 @@ import WaveIcon from "../assets/wave.svg";
 import BriefCaseIcon from "../assets/briefcase.svg"
 import GraduationIcon from "../assets/casquette-de-graduation.svg"
 import IdeaIcon from "../assets/exchange-ideas.svg"
-import SkillIcon from "../assets/skill.svg"
 import LetterIcon from "../assets/letter.svg"
 
 
 import Box from "./headerComponents/Box";
 import constants from "../constants/constants";
 import Item from "./ItemsComponents/Item";
-import skills from "./ItemsComponents/Contact";
 
 
 type SmallBlockProps = {
@@ -110,8 +108,10 @@ const MainSection = (props : SmallBlockProps) =>  {
         /// TEST INSPIRATION DISCORD
 
         const buttonContainer: Element | null= document.querySelector('.buttonContainer')
+        const buttonSideMenuContainer: Element | null = document.querySelector('.side-menu-button-container')
         const items: HTMLElement[] = gsap.utils.toArray<HTMLElement>('.item')
         const buttons: Element[] = Array.from(document.querySelectorAll(".button"));
+        const buttonsSideMenu: Element[] = Array.from(document.querySelectorAll(".side-menu-button"))
         const itemsMap: Map<any, any> = new Map();
         const buttonsMap: Map<any, any> = new Map();
 
@@ -120,7 +120,11 @@ const MainSection = (props : SmallBlockProps) =>  {
         });
 
         buttons.forEach((button: Element, index: number): void => {
-            if(button.id !== 'MenuButton') buttonsMap.set(button, items[index] )
+            buttonsMap.set(button, items[index] )
+        })
+
+        buttonsSideMenu.forEach((button: Element, index: number): void => {
+            buttonsMap.set(button, items[index] )
         })
 
         items.forEach((section: HTMLElement, i: number) => {
@@ -138,6 +142,13 @@ const MainSection = (props : SmallBlockProps) =>  {
 
         buttonContainer!.addEventListener("click", (e: Event) => {
             const target: Element | null = ( e.target! as HTMLElement).closest(".button");
+            if (buttonsMap.has(target)) {
+                buttonsMap.get(target).scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+
+        buttonSideMenuContainer!.addEventListener("click", (e: Event) => {
+            const target: Element | null = ( e.target! as HTMLElement).closest(".side-menu-button");
             if (buttonsMap.has(target)) {
                 buttonsMap.get(target).scrollIntoView({ behavior: 'smooth', block: 'start' });
             }

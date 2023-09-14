@@ -93,7 +93,7 @@ const Header = (props : SmallBlockProps) =>  {
                         <HeaderButton index={5} id={'ContactButton'} icon={LetterIcon} display={windowsWidth > 1100 ? "flex" : "none"}/>
                     </div>
                 </StyledButtonContainer>
-                <HeaderSideMenu />
+                <HeaderSideMenu onClickOutside={() => console.log('YES')} />
                 </nav>
         </StyledHeader>
     );
