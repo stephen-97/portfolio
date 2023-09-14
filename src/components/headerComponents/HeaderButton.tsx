@@ -1,7 +1,5 @@
 import React, {Dispatch, SetStateAction, useEffect, useState} from 'react';
-import "../style.scss"
 import {styled, css} from "styled-components";
-import Graduation from "../../assets/casquette-de-graduation.svg";
 import constants from "../../constants/constants";
 
 type SmallBlockProps = {

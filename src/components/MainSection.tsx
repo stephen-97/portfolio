@@ -30,11 +30,12 @@ gsap.registerPlugin(ScrollTrigger);
 
 const blockAnimationDelay =  constants.duration_itemAnim;
 
-const StyledItemContainer = styled.section`
+const StyledItemContainer = styled.main`
   & {
     position: relative;
-    //background-color: #61dafb;
-    //padding: 0 clamp(1em, 20%, 30em);
+    overflow: auto;
+    padding-top: ${constants.headerSize}px;
+    min-height: 100vh;
   }
 `
 const MainSection = (props : SmallBlockProps) =>  {
@@ -108,17 +109,17 @@ const MainSection = (props : SmallBlockProps) =>  {
     useEffect(() => {
         /// TEST INSPIRATION DISCORD
 
-        const buttonContainer= document.querySelector('.buttonContainer')
-        const items = gsap.utils.toArray<HTMLElement>('.item')
-        const buttons = Array.from(document.querySelectorAll(".button"));
-        const itemsMap = new Map();
-        const buttonsMap = new Map();
+        const buttonContainer: Element | null= document.querySelector('.buttonContainer')
+        const items: HTMLElement[] = gsap.utils.toArray<HTMLElement>('.item')
+        const buttons: Element[] = Array.from(document.querySelectorAll(".button"));
+        const itemsMap: Map<any, any> = new Map();
+        const buttonsMap: Map<any, any> = new Map();
 
-        items.forEach((item: HTMLElement, index: number) => {
+        items.forEach((item: HTMLElement, index: number): void => {
             itemsMap.set(item, buttons[index])
         });
 
-        buttons.forEach((button: Element, index: number) => {
+        buttons.forEach((button: Element, index: number): void => {
             if(button.id !== 'MenuButton') buttonsMap.set(button, items[index] )
         })
 
@@ -136,7 +137,7 @@ const MainSection = (props : SmallBlockProps) =>  {
         }, []);
 
         buttonContainer!.addEventListener("click", (e: Event) => {
-            const target =( e.target! as HTMLElement).closest(".button");
+            const target: Element | null = ( e.target! as HTMLElement).closest(".button");
             if (buttonsMap.has(target)) {
                 buttonsMap.get(target).scrollIntoView({ behavior: 'smooth', block: 'start' });
             }

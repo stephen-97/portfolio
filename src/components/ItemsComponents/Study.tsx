@@ -1,5 +1,4 @@
 import React from 'react';
-import "../style.scss"
 import {connect, useSelector} from "react-redux";
 
 import { RootState} from "../../redux/redux";

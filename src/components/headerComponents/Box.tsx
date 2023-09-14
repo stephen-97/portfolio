@@ -4,7 +4,7 @@ import { styled} from "styled-components";
 import React from "react";
 
 
-type SmallBlockProps = {
+type BoxProps = {
 }
 
 
@@ -70,7 +70,7 @@ const StyledBoxContainer = styled.section`
 
 
 
-const Box = (props : SmallBlockProps) =>  {
+const Box = (props : BoxProps) =>  {
 
     return(
         <StyledBoxContainer>

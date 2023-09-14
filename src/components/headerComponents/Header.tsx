@@ -10,6 +10,7 @@ import GraduationIcon from "../../assets/casquette-de-graduation.svg"
 import IdeaIcon from "../../assets/exchange-ideas.svg"
 import LetterIcon from "../../assets/letter.svg"
 import MenuIcon from "../../assets/menu.svg"
+import HeaderSideMenu from "./HeaderSideMenu";
 
 type SmallBlockProps = {
 }
@@ -25,17 +26,18 @@ const StyledButtonContainer = styled.section`
   }
 `
 
-const StyledLeftContainer = styled.section`
+const StyledHeader = styled.header`
+
+
+  position: fixed;
+  z-index: 1;
+  height: ${constants.headerSize}px;
+  width: 100vw;
+  min-width: 150px;
+  background-color: #282c34;
+  box-shadow: 0 0 15px 10px #282c34;
   
-  .header {
-    position: fixed;
-    z-index: 1;
-    height: ${constants.headerSize}px;
-    width: 100vw;
-    min-width: 150px;
-    background-color: #282c34;
-    box-shadow: 0 0 15px 10px #282c34;
-  }
+ 
   .leftBlockContent {
     height: 100%;
     display: flex;
@@ -60,36 +62,6 @@ const StyledLeftContainer = styled.section`
   
 `
 
-const buttonTabs = [
-    {
-        description: "PRESENTATION",
-        icons: WaveIcon,
-        pageName: "presentation"
-    },
-    {
-        description: "EXPÉRIENCE PRO",
-        icons: BriefCaseIcon,
-        pageName: "working",
-    },
-    {
-        description: "ETUDES",
-        icons: GraduationIcon,
-        pageName: "study"
-    },
-    {
-        description: "PROJETS PERSO",
-        icons: IdeaIcon,
-        pageName: "projects"
-    },
-    {
-        description: "CONTACTEZ MOI",
-        icons: LetterIcon,
-        pageName: "contact"
-    },
-]
-
-
-
 
 const Header = (props : SmallBlockProps) =>  {
 
@@ -105,31 +77,31 @@ const Header = (props : SmallBlockProps) =>  {
 
     
     return(
-        <StyledLeftContainer>
-            <main className={'header'}>
-                <nav className={"leftBlockContent"}>
-                    <div className={'logoContainer'}>
-                        <span>
-                            S.L
-                        </span>
+        <StyledHeader>
+            <nav className={"leftBlockContent"}>
+                <div className={'logoContainer'}>
+                    <span>
+                        S.L
+                    </span>
+                </div>
+                <StyledButtonContainer>
+                    <div className={"buttonContainer"}>
+                        <HeaderButton index={1} id={'PresentationButton'} icon={WaveIcon} display={windowsWidth > 1100 ? "flex" : "none"}/>
+                        <HeaderButton index={2} id={'WorkingButton'} icon={BriefCaseIcon} display={windowsWidth > 1100 ? "flex" : "none"}/>
+                        <HeaderButton index={3} id={'StudyButton'} icon={GraduationIcon} display={windowsWidth > 1100 ? "flex" : "none"}/>
+                        <HeaderButton index={4} id={'ProjectsButton'} icon={IdeaIcon} display={windowsWidth > 1100 ? "flex" : "none"}/>
+                        <HeaderButton index={5} id={'ContactButton'} icon={LetterIcon} display={windowsWidth > 1100 ? "flex" : "none"}/>
                     </div>
-                    <StyledButtonContainer>
-                        <div className={"buttonContainer"}>
-                            <HeaderButton index={1} id={'PresentationButton'} icon={WaveIcon} display={windowsWidth > 1100 ? "flex" : "none"}/>
-                            <HeaderButton index={2} id={'WorkingButton'} icon={BriefCaseIcon} display={windowsWidth > 1100 ? "flex" : "none"}/>
-                            <HeaderButton index={3} id={'StudyButton'} icon={GraduationIcon} display={windowsWidth > 1100 ? "flex" : "none"}/>
-                            <HeaderButton index={4} id={'ProjectsButton'} icon={IdeaIcon} display={windowsWidth > 1100 ? "flex" : "none"}/>
-                            <HeaderButton index={5} id={'ContactButton'} icon={LetterIcon} display={windowsWidth > 1100 ? "flex" : "none"}/>
-                            <HeaderButton id={'MenuButton'} icon={MenuIcon} display={windowsWidth <= 1100 ? "flex" : "none"}/>
-                        </div>
-                    </StyledButtonContainer>
+                </StyledButtonContainer>
+                <HeaderSideMenu />
                 </nav>
-            </main>
-        </StyledLeftContainer>
+        </StyledHeader>
     );
 }
 
 /**
+ * <HeaderButton id={'MenuButton'} icon={MenuIcon} display={windowsWidth <= 1100 ? "flex" : "none"}/>
+ *
  *
  * {windowsWidth > 1100 ?
  *                                 buttonTabs.map((item, index: number) => <HeaderButton key={index} index={index} icon={item.icons}/>)

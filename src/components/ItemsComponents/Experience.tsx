@@ -1,7 +1,6 @@
 import React, {Dispatch, ForwardedRef, forwardRef, useEffect, useState} from 'react';
 import {css, styled} from "styled-components";
-import "../style.scss"
-import {connect, useSelector} from "react-redux";
+import {connect } from "react-redux";
 import computer from "../../assets/computer.svg"
 import { RootState} from "../../redux/redux";
 import constants from "../../constants/constants";
