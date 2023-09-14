@@ -1,4 +1,4 @@
-import React, {createRef, Dispatch, RefObject, SetStateAction, useEffect, useRef, useState} from 'react';
+import React, {createRef, Dispatch, ReactElement, RefObject, SetStateAction, useEffect, useRef, useState} from 'react';
 import { Helmet } from 'react-helmet';
 import {useOnClickOutside} from "usehooks-ts";
 import {styled } from "styled-components";
@@ -6,15 +6,10 @@ import constants from "../../constants/constants";
 import config from "../../configs/config";
 
 
-type MenuProps = {
-    onClickOutside: any,
-}
-
-
 const StyledMenu = styled.button<{$menuToggle: boolean}>`
   display: none;
   
-  @media (max-width: 1100px){
+  @media (max-width: ${constants.maxWindowWidthForSideMenuButton}px){
     display: block;
     position: fixed;
     background-color: ${constants.color1};
@@ -69,7 +64,7 @@ const StyledMenu = styled.button<{$menuToggle: boolean}>`
 const StyledButtonMenu = styled.div`
   display: none;
   
-  @media (max-width: 1099px ){
+  @media (max-width: ${constants.maxWindowWidthForSideMenuButton}px ){
     display: block;
   }
   
@@ -178,13 +173,13 @@ const StyledButtonMenu = styled.div`
 
 
 
-const SideMenu = ( props: MenuProps) =>  {
+const HeaderSideMenu = (): ReactElement =>  {
 
     const [menuToggle, setMenuToggle]:  [boolean, Dispatch<SetStateAction<boolean>>] = useState(false)
 
     useEffect((): void => {
-        if(window.innerWidth > 1100) setMenuToggle(false);
-    }, [window.innerWidth > 1100]);
+        if(window.innerWidth > constants.maxWindowWidthForSideMenuButton) setMenuToggle(false);
+    }, [window.innerWidth > constants.maxWindowWidthForSideMenuButton]);
 
 
     const StyledButtonMenuRef: RefObject<HTMLDivElement> = createRef<HTMLDivElement>();
@@ -220,4 +215,4 @@ const SideMenu = ( props: MenuProps) =>  {
 }
 
 
-export default SideMenu;
+export default HeaderSideMenu;

@@ -1,14 +1,11 @@
-import {connect, useDispatch, useSelector} from "react-redux";
-import {AppDispatch, RootState} from "../../redux/redux";
-import {css, styled} from "styled-components";
-import React, {SetStateAction, useEffect, useState, Dispatch} from "react";
+import {connect } from "react-redux";
+import { RootState} from "../../redux/redux";
+import { styled} from "styled-components";
+import React, {SetStateAction, useEffect, useState, Dispatch, ReactElement} from "react";
 import HeaderButton from "./HeaderButton";
 import constants from "../../constants/constants";
 import config from "../../configs/config";
 import HeaderSideMenu from "./HeaderSideMenu";
-
-type SmallBlockProps = {
-}
 
 
 const StyledButtonContainer = styled.section`
@@ -58,17 +55,13 @@ const StyledHeader = styled.header`
 `
 
 
-const Header = (props : SmallBlockProps) =>  {
-
+const Header = (): ReactElement =>  {
 
     const [windowsWidth, setWindowsWidth]: [number, Dispatch<SetStateAction<number>>] = useState(window.innerWidth);
 
-    const [toSmall, setTooSmall ] : [boolean, Dispatch<SetStateAction<boolean>>] = useState(window.innerWidth < 1100)
-
     useEffect(() => {
         window.addEventListener("resize", () => setWindowsWidth(window.innerWidth) )
-
-    }, [window.innerWidth > 1100]);
+    }, [window.innerWidth > constants.maxWindowWidthForSideMenuButton]);
 
     
     return(
@@ -82,27 +75,20 @@ const Header = (props : SmallBlockProps) =>  {
                 <StyledButtonContainer>
                     <div className={"buttonContainer"}>
                         {config.navLinks.map(({name, icon}, index) => (
-                            <HeaderButton index={index+1} icon={icon} display={windowsWidth > 1100 ? "flex" : "none"}/>
+                            <HeaderButton
+                                index={index+1}
+                                icon={icon}
+                                display={windowsWidth > constants.maxWindowWidthForSideMenuButton ? "flex" : "none"}
+                            />
                         ))}
                     </div>
                 </StyledButtonContainer>
-                <HeaderSideMenu onClickOutside={() => console.log('YES')} />
+                <HeaderSideMenu />
                 </nav>
         </StyledHeader>
     );
 }
 
-/**
- * <HeaderButton id={'MenuButton'} icon={MenuIcon} display={windowsWidth <= 1100 ? "flex" : "none"}/>
- *
- *
- * {windowsWidth > 1100 ?
- *                                 buttonTabs.map((item, index: number) => <HeaderButton key={index} index={index} icon={item.icons}/>)
- *                                 :
- *                                 null
- *                             }
- * @param state
- */
 const mapState = (state: RootState) => state.page
 
 export default connect(mapState)(Header);

@@ -1,8 +1,8 @@
-import React, { useEffect, useState} from 'react';
+import React, {ReactElement, useEffect, useState} from 'react';
 import {styled, css} from "styled-components";
 import constants from "../../constants/constants";
 
-type SmallBlockProps = {
+type HeaderButtonProps = {
     icon:  string,
     display: string,
     index?: number,
@@ -103,7 +103,7 @@ const StyledButton = styled.section<{ displayButton?: string, firstAnimationIsFi
 `
 
 
-const HeaderButton = (props : SmallBlockProps) =>  {
+const HeaderButton = (props : HeaderButtonProps): ReactElement =>  {
 
     const [firstAnimationFinished, setFirstAnimationFinished] = useState(false);
 
@@ -112,8 +112,6 @@ const HeaderButton = (props : SmallBlockProps) =>  {
             setFirstAnimationFinished(true)
         }, constants.headerAnim*1500);
     }, []);
-
-
 
     return(
             <StyledButton displayButton={props.display} firstAnimationIsFinished={firstAnimationFinished}>

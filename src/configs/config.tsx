@@ -19,7 +19,6 @@ const navLinks: Array<navLinkInterface> =
         {name: 'Contacts', icon: LetterIcon},
     ]
 
-
 interface SocialMediaInterface {
     name: string,
     icon: string,
