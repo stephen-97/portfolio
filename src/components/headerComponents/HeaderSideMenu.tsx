@@ -3,11 +3,7 @@ import { Helmet } from 'react-helmet';
 import {useOnClickOutside} from "usehooks-ts";
 import {styled } from "styled-components";
 import constants from "../../constants/constants";
-import WaveIcon from "../../assets/wave.svg";
-import BriefCaseIcon from "../../assets/briefcase.svg"
-import GraduationIcon from "../../assets/casquette-de-graduation.svg"
-import IdeaIcon from "../../assets/exchange-ideas.svg"
-import LetterIcon from "../../assets/letter.svg"
+import config from "../../configs/config";
 
 
 type MenuProps = {
@@ -186,24 +182,10 @@ const SideMenu = ( props: MenuProps) =>  {
 
     const [menuToggle, setMenuToggle]:  [boolean, Dispatch<SetStateAction<boolean>>] = useState(false)
 
-    useEffect(() => {
+    useEffect((): void => {
         if(window.innerWidth > 1100) setMenuToggle(false);
     }, [window.innerWidth > 1100]);
 
-    /**const useClickOutside = (ref: any, callback: any) => {
-        console.log("test2")
-        const handleClick = (e: any) => {
-            if(ref.current && !ref.current.contains(e.target)) {
-                callback()
-            }
-        }
-        useEffect(() => {
-            document.addEventListener('click', handleClick)
-            return () => {
-                document.removeEventListener('click', handleClick)
-            }
-        }, []);
-    }**/
 
     const StyledButtonMenuRef: RefObject<HTMLDivElement> = createRef<HTMLDivElement>();
     const handleClickOutside = () => {
@@ -224,26 +206,12 @@ const SideMenu = ( props: MenuProps) =>  {
             >
                 <nav className={'side-menu-button-container'}>
                     <ol>
-                        <ul className={'side-menu-button'} onClick={() => setMenuToggle(false)}>
-                            <img src={WaveIcon} alt="React Logo" height={40}  width={40}/>
-                            <span>Présentation</span>
-                        </ul>
-                        <ul className={'side-menu-button'} onClick={() => setMenuToggle(false)}>
-                            <img src={BriefCaseIcon} alt="React Logo" height={40}  width={40}/>
-                            <span>Expériences</span>
-                        </ul>
-                        <ul className={'side-menu-button'} onClick={() => setMenuToggle(false)}>
-                            <img src={GraduationIcon} alt="React Logo" height={40}  width={40}/>
-                            <span>Études</span>
-                        </ul>
-                        <ul className={'side-menu-button'} onClick={() => setMenuToggle(false)}>
-                            <img src={IdeaIcon} alt="React Logo" height={40}  width={40}/>
-                            <span>Projets personnels</span>
-                        </ul>
-                        <ul className={'side-menu-button'} onClick={() => setMenuToggle(false)}>
-                            <img src={LetterIcon} alt="React Logo" height={40}  width={40}/>
-                            <span>Contacts</span>
-                        </ul>
+                        {config.navLinks.map(({name, icon}) => (
+                            <ul className={'side-menu-button'} onClick={() => setMenuToggle(false)}>
+                                <img src={icon} alt={icon} height={40}  width={40}/>
+                                <span>{name}</span>
+                            </ul>
+                        ))}
                     </ol>
                 </nav>
             </StyledMenu>

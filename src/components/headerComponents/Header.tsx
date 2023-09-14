@@ -4,12 +4,7 @@ import {css, styled} from "styled-components";
 import React, {SetStateAction, useEffect, useState, Dispatch} from "react";
 import HeaderButton from "./HeaderButton";
 import constants from "../../constants/constants";
-import WaveIcon from "../../assets/wave.svg";
-import BriefCaseIcon from "../../assets/briefcase.svg"
-import GraduationIcon from "../../assets/casquette-de-graduation.svg"
-import IdeaIcon from "../../assets/exchange-ideas.svg"
-import LetterIcon from "../../assets/letter.svg"
-import MenuIcon from "../../assets/menu.svg"
+import config from "../../configs/config";
 import HeaderSideMenu from "./HeaderSideMenu";
 
 type SmallBlockProps = {
@@ -86,11 +81,9 @@ const Header = (props : SmallBlockProps) =>  {
                 </div>
                 <StyledButtonContainer>
                     <div className={"buttonContainer"}>
-                        <HeaderButton index={1} id={'PresentationButton'} icon={WaveIcon} display={windowsWidth > 1100 ? "flex" : "none"}/>
-                        <HeaderButton index={2} id={'WorkingButton'} icon={BriefCaseIcon} display={windowsWidth > 1100 ? "flex" : "none"}/>
-                        <HeaderButton index={3} id={'StudyButton'} icon={GraduationIcon} display={windowsWidth > 1100 ? "flex" : "none"}/>
-                        <HeaderButton index={4} id={'ProjectsButton'} icon={IdeaIcon} display={windowsWidth > 1100 ? "flex" : "none"}/>
-                        <HeaderButton index={5} id={'ContactButton'} icon={LetterIcon} display={windowsWidth > 1100 ? "flex" : "none"}/>
+                        {config.navLinks.map(({name, icon}, index) => (
+                            <HeaderButton index={index+1} icon={icon} display={windowsWidth > 1100 ? "flex" : "none"}/>
+                        ))}
                     </div>
                 </StyledButtonContainer>
                 <HeaderSideMenu onClickOutside={() => console.log('YES')} />

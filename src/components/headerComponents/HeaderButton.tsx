@@ -1,11 +1,10 @@
-import React, {Dispatch, SetStateAction, useEffect, useState} from 'react';
+import React, { useEffect, useState} from 'react';
 import {styled, css} from "styled-components";
 import constants from "../../constants/constants";
 
 type SmallBlockProps = {
     icon:  string,
     display: string,
-    id: string,
     index?: number,
 }
 
@@ -118,7 +117,7 @@ const HeaderButton = (props : SmallBlockProps) =>  {
 
     return(
             <StyledButton displayButton={props.display} firstAnimationIsFinished={firstAnimationFinished}>
-                    <div className={`button  ${props.index ? `button${props.index}` : null }`} id={props.id}>
+                    <div className={`button  ${props.index ? `button${props.index}` : null }`}>
                         <img className={'button-img'} src={props.icon} alt="React Logo" />
                     </div>
             </StyledButton>
