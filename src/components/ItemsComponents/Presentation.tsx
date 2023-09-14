@@ -1,10 +1,7 @@
 import React from 'react';
-import "../style.scss"
 import {connect, useSelector} from "react-redux";
 import { RootState} from "../../redux/redux";
 import {styled} from "styled-components";
-import Briefcase from "../../assets/briefcase.svg";
-import Wave from "../../assets/wave.svg"
 import constants from "../../constants/constants";
 import Stephen_profile from "../../assets/Stephen-profile.jpg"
 

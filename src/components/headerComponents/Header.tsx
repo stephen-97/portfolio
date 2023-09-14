@@ -1,15 +1,11 @@
 import {connect, useDispatch, useSelector} from "react-redux";
 import {AppDispatch, RootState} from "../../redux/redux";
 import {css, styled} from "styled-components";
-import React, {useEffect} from "react";
+import React, {SetStateAction, useEffect, useState, Dispatch} from "react";
 import HeaderButton from "./HeaderButton";
 import constants from "../../constants/constants";
-import Wave from "../../assets/wave.svg";
-import BriefCase from "../../assets/briefcase.svg"
-import Graduation from "../../assets/casquette-de-graduation.svg"
-import Idea from "../../assets/exchange-ideas.svg"
-import Skill from "../../assets/skill.svg"
-
+import config from "../../configs/config";
+import HeaderSideMenu from "./HeaderSideMenu";
 
 type SmallBlockProps = {
 }
@@ -23,20 +19,20 @@ const StyledButtonContainer = styled.section`
     height: 100%;
     align-items: center;
   }
-
 `
 
-const StyledLeftContainer = styled.section`
+const StyledHeader = styled.header`
+
+
+  position: fixed;
+  z-index: 1;
+  height: ${constants.headerSize}px;
+  width: 100vw;
+  min-width: 150px;
+  background-color: ${constants.color1};
+  box-shadow: 0 0 15px 10px ${constants.color1};
   
-  .header {
-    position: fixed;
-    z-index: 1;
-    height: ${constants.headerSize}px;
-    width: 100vw;
-    min-width: 150px;
-    background-color: #282c34;
-    box-shadow: 0 0 15px 10px #282c34;
-  }
+ 
   .leftBlockContent {
     height: 100%;
     display: flex;
@@ -62,57 +58,51 @@ const StyledLeftContainer = styled.section`
 `
 
 
-const buttonTabs = [
-    {
-        description: "PRESENTATION",
-        icons: Wave,
-        pageName: "presentation"
-    },
-    {
-        description: "EXPÉRIENCE PRO",
-        icons: BriefCase,
-        pageName: "working",
-    },
-    {
-        description: "ETUDES",
-        icons: Graduation,
-        pageName: "study"
-    },
-    {
-        description: "PROJETS PERSO",
-        icons: Idea,
-        pageName: "projects"
-    },
-    {
-        description: "CONTACTEZ MOI",
-        icons: Skill,
-        pageName: "contact"
-    },
-]
-
-
 const Header = (props : SmallBlockProps) =>  {
 
+
+    const [windowsWidth, setWindowsWidth]: [number, Dispatch<SetStateAction<number>>] = useState(window.innerWidth);
+
+    const [toSmall, setTooSmall ] : [boolean, Dispatch<SetStateAction<boolean>>] = useState(window.innerWidth < 1100)
+
+    useEffect(() => {
+        window.addEventListener("resize", () => setWindowsWidth(window.innerWidth) )
+
+    }, [window.innerWidth > 1100]);
+
+    
     return(
-        <StyledLeftContainer>
-            <main className={'header'}>
-                <nav className={"leftBlockContent"}>
-                    <div className={'logoContainer'}>
-                        <span>
-                            S.L
-                        </span>
+        <StyledHeader>
+            <nav className={"leftBlockContent"}>
+                <div className={'logoContainer'}>
+                    <span>
+                        S.L
+                    </span>
+                </div>
+                <StyledButtonContainer>
+                    <div className={"buttonContainer"}>
+                        {config.navLinks.map(({name, icon}, index) => (
+                            <HeaderButton index={index+1} icon={icon} display={windowsWidth > 1100 ? "flex" : "none"}/>
+                        ))}
                     </div>
-                    <StyledButtonContainer>
-                        <div className={"buttonContainer"}>
-                            {buttonTabs.map((item, index: number) => <HeaderButton key={index} index={index} description={item.description} icon={item.icons} pageName={item.pageName}/>)}
-                        </div>
-                    </StyledButtonContainer>
+                </StyledButtonContainer>
+                <HeaderSideMenu onClickOutside={() => console.log('YES')} />
                 </nav>
-            </main>
-        </StyledLeftContainer>
+        </StyledHeader>
     );
 }
 
+/**
+ * <HeaderButton id={'MenuButton'} icon={MenuIcon} display={windowsWidth <= 1100 ? "flex" : "none"}/>
+ *
+ *
+ * {windowsWidth > 1100 ?
+ *                                 buttonTabs.map((item, index: number) => <HeaderButton key={index} index={index} icon={item.icons}/>)
+ *                                 :
+ *                                 null
+ *                             }
+ * @param state
+ */
 const mapState = (state: RootState) => state.page
 
 export default connect(mapState)(Header);

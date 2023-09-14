@@ -1,48 +1,14 @@
 import React from 'react';
-import "../style.scss"
 import {connect, useSelector} from "react-redux";
-
 
 import { RootState} from "../../redux/redux";
 import {styled, css} from "styled-components";
+import constants from "../../constants/constants";
 
 type StudyProps = {
     animationDelay: number,
 }
 
-
-
-const createLoopCSS = styled.div`
-  .active-project {
-    transform: scale(0);
-
-    ${() => {
-        let cssAcc= ``;
-        for (let i = 0; i < 5; i++) {
-            cssAcc += css`
-            &:nth-child(${i + 1}) {
-              opacity: 1;
-              animation: scalingBox 0.5s ease 500ms*calc($i - 1) forwards;
-              background-color: gray;
-            }
-          `;
-        }
-        return cssAcc; 
-    }} 
-    
-    
-    @keyframes scalingBox {
-      from {
-        transform: scale(0);
-      }
-      to {
-        transform: scale(1);
-      }
-    }
-    
-  }
-  
-`;
 
 const loopActiveBlock = () => {
     let style = '';
@@ -80,20 +46,25 @@ const StyledSectionStudy = styled.section`
   }
   ${loopActiveBlock()}
 
+  ul {
+    padding: 0;
+  }
   // STUDY
   .blockStudy {
-    padding: 10px;
+    padding: 20px;
+    background-color: ${constants.color3};
+    box-shadow: ${constants.boxShadow};
     border-radius: 10px;
-    border: 1px solid gray;
     font-size: 16px;
     text-align: left;
+    margin-left: 0;
     margin-bottom: 50px;
     opacity: 0;
 
     h2 {
-      font-size: 18px;
+      font-size: ${constants.fontSize2};
+      color: ${constants.colorWhite};
       margin: 5px 0;
-      color: #3b3a3a;
       font-weight: 500;
     }
     p {
@@ -109,11 +80,12 @@ const StyledSectionStudy = styled.section`
         padding: 5px ;
         border-radius: 10px;
         color: whitesmoke;
-        font-size: 13px;
+        font-size: ${constants.fontSize5};
       }
     }
     > div {
       color: #282c34;
+      font-size: ${constants.fontSize4};
       font-weight: 200;
     }
   }
@@ -126,8 +98,8 @@ const Study = (props : StudyProps) =>  {
 
     return(
         <StyledSectionStudy>
-            <div>
-                <div className={'blockStudy'}>
+            <ul>
+                <ol className={'blockStudy'}>
                     <h2>RNCP36009 Directeur de projet informatique (Bac+5)</h2>
                     <div>Aston Ecole</div>
                     <p>
@@ -138,8 +110,8 @@ const Study = (props : StudyProps) =>  {
                         <span>Budgétisations</span>
                         <span>Normes ISO</span>
                     </p>
-                </div>
-                <div className={'blockStudy'}>
+                </ol>
+                <ol className={'blockStudy'}>
                     <h2>RNCP31678 Concepteur et Développeur d'application (Bac+3/4)</h2>
                     <div>2iTech Academy by M2i</div>
                     <p>
@@ -152,8 +124,8 @@ const Study = (props : StudyProps) =>  {
                         <span>React Native</span>
                         <span>AWS</span>
                     </p>
-                </div>
-                <div className={'blockStudy'}>
+                </ol>
+                <ol className={'blockStudy'}>
                     <h2>L2 Informatique (Bac+2)</h2>
                     <div>Paris Descartes</div>
                     <p>
@@ -166,8 +138,8 @@ const Study = (props : StudyProps) =>  {
                         <span>React Native</span>
                         <span>AWS</span>
                     </p>
-                </div>
-            </div>
+                </ol>
+            </ul>
         </StyledSectionStudy>
     );
 }

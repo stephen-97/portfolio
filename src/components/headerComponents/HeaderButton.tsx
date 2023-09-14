@@ -1,19 +1,16 @@
-import React, {useEffect} from 'react';
-import "../style.scss"
+import React, { useEffect, useState} from 'react';
 import {styled, css} from "styled-components";
-import Graduation from "../../assets/casquette-de-graduation.svg";
 import constants from "../../constants/constants";
 
 type SmallBlockProps = {
-    description: string;
     icon:  string,
-    pageName: string,
-    index: number,
+    display: string,
+    index?: number,
 }
 
 const loopButtonList = () => {
-    let style = '';
-    for(let i=0; i<= 5; i++){
+    let style: string = '';
+    for(let i: number=0; i<= 5; i++){
         const animDuration: number = 0.5;
         style+= `
             &:nth-of-type(${i}) > .button {
@@ -32,10 +29,11 @@ const loopButtonList = () => {
     return css`${style}`
 }
 
-const StyledButton = styled.section`
+const StyledButton = styled.section<{ displayButton?: string, firstAnimationIsFinished: boolean }>`
+  
   .button {
     position: relative;
-    display: flex;
+    display: ${props => props.displayButton};
     line-height: 50px;
     margin: 0 clamp(10px, 2vw, 30px);
     overflow: hidden;
@@ -43,13 +41,14 @@ const StyledButton = styled.section`
     justify-content: center;
   }
 
-  ${loopButtonList()}
+  ${({firstAnimationIsFinished}) => !firstAnimationIsFinished && loopButtonList()}
+  
   .button-img {
     height: 60px;
     width: 60px;
   }
   .button-img:hover {
-    filter: invert(84%) sepia(64%) saturate(4580%) hue-rotate(59deg) brightness(105%) contrast(94%);
+    filter: ${constants.color5Filter};
   }
   .titleButton {
     display: inline-block;
@@ -74,7 +73,7 @@ const StyledButton = styled.section`
   .activeButton, .button-img:hover {
 
     .button-img {
-      filter: invert(84%) sepia(64%) saturate(4580%) hue-rotate(59deg) brightness(105%) contrast(94%);
+      filter: ${constants.color5Filter};
       transition: ease 0.5s;
     }
     .buttonColorContainer {
@@ -103,17 +102,22 @@ const StyledButton = styled.section`
   }
 `
 
-const StyledButtonContainer = styled.section`
- 
-
-
-`
 
 const HeaderButton = (props : SmallBlockProps) =>  {
 
+    const [firstAnimationFinished, setFirstAnimationFinished] = useState(false);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setFirstAnimationFinished(true)
+        }, constants.headerAnim*1500);
+    }, []);
+
+
+
     return(
-            <StyledButton>
-                    <div className={`button button${props.index + 1}`}>
+            <StyledButton displayButton={props.display} firstAnimationIsFinished={firstAnimationFinished}>
+                    <div className={`button  ${props.index ? `button${props.index}` : null }`}>
                         <img className={'button-img'} src={props.icon} alt="React Logo" />
                     </div>
             </StyledButton>
@@ -122,20 +126,3 @@ const HeaderButton = (props : SmallBlockProps) =>  {
 
 
 export default HeaderButton;
-
-/**
- *
- * <div className={`${checkSelectedPage() ? 'smallBlockClicked' : 'smallBlock'}`} onClick={() => dispatch(setPage({name : props.pageName}))}>
- *             <span> {props.description}</span>
- *             <img src={props.icon} alt="React Logo" />
- *         </div>
- */
-
-/**
- *
- *
- * <div className={`${checkSelectedPage() ? 'smallBlockClicked' : 'smallBlock'}`} onClick={() => dispatchPage() }>
- *             <span> {props.description}</span>
- *             <img src={props.icon} alt="React Logo" />
- *         </div>
- */

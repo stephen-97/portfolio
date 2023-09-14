@@ -1,21 +1,24 @@
 import React, {useEffect, useRef} from "react";
 import gsap from "gsap";
+import {css, styled} from "styled-components";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
+
 import Presentation from "./ItemsComponents/Presentation";
 import Experience from "./ItemsComponents/Experience";
 import Projects from "./ItemsComponents/Projects";
 import Study from "./ItemsComponents/Study";
-import Skills from "./ItemsComponents/Skills";
-import Wave from "../assets/wave.svg";
-import BriefCase from "../assets/briefcase.svg"
-import Graduation from "../assets/casquette-de-graduation.svg"
-import Idea from "../assets/exchange-ideas.svg"
-import Skill from "../assets/skill.svg"
-import {css, styled} from "styled-components";
+import Skills from "./ItemsComponents/Contact";
+
+import WaveIcon from "../assets/wave.svg";
+import BriefCaseIcon from "../assets/briefcase.svg"
+import GraduationIcon from "../assets/casquette-de-graduation.svg"
+import IdeaIcon from "../assets/exchange-ideas.svg"
+import LetterIcon from "../assets/letter.svg"
+
+
 import Box from "./headerComponents/Box";
 import constants from "../constants/constants";
-import Block from "./Right/Block";
-import skills from "./ItemsComponents/Skills";
+import Item from "./ItemsComponents/Item";
 
 
 type SmallBlockProps = {
@@ -25,15 +28,15 @@ gsap.registerPlugin(ScrollTrigger);
 
 const blockAnimationDelay =  constants.duration_itemAnim;
 
-const StyledItemContainer = styled.section`
+const StyledItemContainer = styled.main`
   & {
     position: relative;
+    overflow: auto;
+    padding-top: ${constants.headerSize}px;
+    min-height: 100vh;
   }
-  > div {
-  }
-  
 `
-const RightSectionBlock = (props : SmallBlockProps) =>  {
+const MainSection = (props : SmallBlockProps) =>  {
 
     const refPresentation= useRef<null | HTMLDivElement>(null);
     const refExperience = useRef<null | HTMLDivElement>(null);
@@ -56,9 +59,9 @@ const RightSectionBlock = (props : SmallBlockProps) =>  {
                 if(entry.target.classList.contains('project')) entry.target.classList.add('active-project');
                 if(entry.target.classList.contains('blockStudy')) entry.target.classList.add('active-blockStudy')
                 if(entry.target.classList.contains('experienceItem')) entry.target.classList.add('activeExperienceItem')
-                if(entry.target.classList.contains('experienceBlock')) entry.target.classList.add('activeExperienceBlock')
-                if(entry.target.classList.contains('skills-Container')) entry.target.classList.add('active-skills-Container')
-                if(entry.target.classList.contains('experience-skills-block')) entry.target.classList.add('active-experienceAnne')
+                //if(entry.target.classList.contains('experienceBlock')) entry.target.classList.add('activeExperienceBlock')
+                if(entry.target.classList.contains('contact-block')) entry.target.classList.add('active-contact-block')
+                if(entry.target.classList.contains('experience-skills-block')) entry.target.classList.add('active-experience-skills-block')
             }
         })
     })
@@ -69,15 +72,15 @@ const RightSectionBlock = (props : SmallBlockProps) =>  {
 
         // Items : Expériences, présentations, ect...
         const itemsElements = document.querySelectorAll(".item")
-        // Block des projets :
+        // Item des projets :
         const projectElements = document.querySelectorAll(".project")
-        // Block des études
+        // Item des études
         const studyElements = document.querySelectorAll(".blockStudy")
-        // Block des experiences
+        // Item des experiences
         const experienceElements = document.querySelectorAll(".experienceItem")
-        // Block des experiences
-        const skillsElements = document.querySelectorAll(".skills-Container")
-        //Block dans les expériences représentant le nombre d'année de travail, ect...
+        // Item des experiences
+        const skillsElements = document.querySelectorAll(".contact-block")
+        //Item dans les expériences représentant le nombre d'année de travail, ect...
         const experienceBlocks = document.querySelectorAll(".experienceBlock")
         //experienceAnne
         const experienceAnne = document.querySelectorAll(".experience-skills-block")
@@ -104,17 +107,23 @@ const RightSectionBlock = (props : SmallBlockProps) =>  {
     useEffect(() => {
         /// TEST INSPIRATION DISCORD
 
-        const buttonContainer= document.querySelector('.buttonContainer')
-        const items = gsap.utils.toArray<HTMLElement>('.item')
-        const buttons = Array.from(document.querySelectorAll(".button"));
-        const itemsMap = new Map();
-        const buttonsMap = new Map();
+        const buttonContainer: Element | null= document.querySelector('.buttonContainer')
+        const buttonSideMenuContainer: Element | null = document.querySelector('.side-menu-button-container')
+        const items: HTMLElement[] = gsap.utils.toArray<HTMLElement>('.item')
+        const buttons: Element[] = Array.from(document.querySelectorAll(".button"));
+        const buttonsSideMenu: Element[] = Array.from(document.querySelectorAll(".side-menu-button"))
+        const itemsMap: Map<any, any> = new Map();
+        const buttonsMap: Map<any, any> = new Map();
 
-        items.forEach((item: HTMLElement, index: number) => {
+        items.forEach((item: HTMLElement, index: number): void => {
             itemsMap.set(item, buttons[index])
         });
 
-        buttons.forEach((button: Element, index: number) => {
+        buttons.forEach((button: Element, index: number): void => {
+            buttonsMap.set(button, items[index] )
+        })
+
+        buttonsSideMenu.forEach((button: Element, index: number): void => {
             buttonsMap.set(button, items[index] )
         })
 
@@ -132,7 +141,14 @@ const RightSectionBlock = (props : SmallBlockProps) =>  {
         }, []);
 
         buttonContainer!.addEventListener("click", (e: Event) => {
-            const target =( e.target! as HTMLElement).closest(".button");
+            const target: Element | null = ( e.target! as HTMLElement).closest(".button");
+            if (buttonsMap.has(target)) {
+                buttonsMap.get(target).scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+
+        buttonSideMenuContainer!.addEventListener("click", (e: Event) => {
+            const target: Element | null = ( e.target! as HTMLElement).closest(".side-menu-button");
             if (buttonsMap.has(target)) {
                 buttonsMap.get(target).scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
@@ -157,16 +173,16 @@ const RightSectionBlock = (props : SmallBlockProps) =>  {
     })
 
     return(
-        <>
-                <Block id={'wave-img-presentation'} keyItem={1} ref={refPresentation} icon={Wave} component={<Presentation animationDelay={blockAnimationDelay}/>}/>
-                <Block id={'briefCase-img'} keyItem={2} ref={refExperience} icon={BriefCase} component={<Experience animationDelay={blockAnimationDelay}/>}/>
-                <Block id={'study-img'} keyItem={3} ref={refStudy} icon={BriefCase} component={<Study animationDelay={blockAnimationDelay}/>}/>
-                <Block id={'idea-img'} keyItem={4} ref={refProjects} icon={Idea} component={<Projects animationDelay={blockAnimationDelay}/>}/>
-                <Block id={'skills-img'} keyItem={5} ref={refSkills} icon={Skill} component={<Skills animationDelay={blockAnimationDelay}/>}/>
+        <StyledItemContainer>
+                <Item id={'wave-img-presentation'} keyItem={1} ref={refPresentation} icon={WaveIcon} component={<Presentation animationDelay={blockAnimationDelay}/>}/>
+                <Item id={'briefCase-img'} keyItem={2} ref={refExperience} icon={BriefCaseIcon} component={<Experience animationDelay={blockAnimationDelay}/>}/>
+                <Item id={'study-img'} keyItem={3} ref={refStudy} icon={GraduationIcon} component={<Study animationDelay={blockAnimationDelay}/>}/>
+                <Item id={'idea-img'} keyItem={4} ref={refProjects} icon={IdeaIcon} component={<Projects animationDelay={blockAnimationDelay}/>}/>
+                <Item id={'skills-img'} keyItem={5} ref={refSkills} icon={LetterIcon} component={<Skills animationDelay={blockAnimationDelay}/>}/>
                <Box />
-        </>
+        </StyledItemContainer>
     );
 }
 
 
-export default RightSectionBlock;
+export default MainSection;

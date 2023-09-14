@@ -13,15 +13,25 @@ type BlockProps = {
 
 const waveHandDuration: number=1;
 const StyledBockComponent = styled.section`
-  .item {
-    display: flex;
+  & {
     position: relative;
-    flex-direction: column;
+    display: block;
+  }
+  
+  .item {
+    position: relative;
     opacity: 0;
-    margin: 40px 20%;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 10px;
     min-height: 100vh;
     scroll-margin-top: 12vh;
-    transition: ease 0s;
+
+    @media screen and (max-width: 1200px) {
+      & {
+        //width: 95vw;
+      }
+    }
   }
 
   .item.active {
@@ -138,7 +148,7 @@ const StyledBockComponent = styled.section`
 `
 
 
-const Block = (props : BlockProps) =>  {
+const Item = (props : BlockProps) =>  {
 
     return(
         <StyledBockComponent>
@@ -160,4 +170,4 @@ const Block = (props : BlockProps) =>  {
     );
 }
 
-export default Block;
+export default Item;
