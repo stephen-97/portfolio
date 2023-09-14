@@ -33,6 +33,7 @@ function App() {
             <StyledMainComponent>
                 <Header />
                 <MainSection/>
+                <StyledMainComponent />
             </StyledMainComponent>
         </Provider>
     );

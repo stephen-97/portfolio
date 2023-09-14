@@ -10,6 +10,10 @@ const GlobalStyle = createGlobalStyle`
   
   body{
     font-family: "Roboto Mono",Sans-serif;
+
+    main {
+      transition: ease-in-out 0.3s;
+    }
     
     &.sideMenuOpened {
       overflow: hidden;
@@ -18,8 +22,10 @@ const GlobalStyle = createGlobalStyle`
       }
       main {
         filter: blur(5px) brightness(0.10);
+        transition: ease-in-out 0.3s;
       }
     }
+    
   }
 `;
 

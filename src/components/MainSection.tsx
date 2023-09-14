@@ -19,7 +19,7 @@ import LetterIcon from "../assets/letter.svg"
 import Box from "./headerComponents/Box";
 import constants from "../constants/constants";
 import Item from "./ItemsComponents/Item";
-
+import SocialMediaContainer from "./SocialMediaContainer";
 
 type SmallBlockProps = {
 }
@@ -180,6 +180,7 @@ const MainSection = (props : SmallBlockProps) =>  {
                 <Item id={'idea-img'} keyItem={4} ref={refProjects} icon={IdeaIcon} component={<Projects animationDelay={blockAnimationDelay}/>}/>
                 <Item id={'skills-img'} keyItem={5} ref={refSkills} icon={LetterIcon} component={<Skills animationDelay={blockAnimationDelay}/>}/>
                <Box />
+            <SocialMediaContainer />
         </StyledItemContainer>
     );
 }

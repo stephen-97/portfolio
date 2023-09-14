@@ -19,7 +19,7 @@ const StyledPresentation = styled.section`
   }
   h1 {
     opacity: 0;
-    font-size:  clamp(40px, 7vw, 70px);
+    font-size:  clamp(35px, 7vw, 70px);
     font-weight: bolder;
     margin: 0 0 0 0;
     animation: animatePresentation 0.5s ease ${constants.headerAnim + constants.secondAnim/5}s forwards;
@@ -35,11 +35,13 @@ const StyledPresentation = styled.section`
     flex-direction: row;
   }
   p {
-    margin: 0 0 10px 0;
+    margin: 0;
+    font-size: clamp(19px, 2vw, 21px);
   }
   .description {
     margin: 20px 0;
-    padding: 0 clamp(20px, 8vw, 50px) 0 0;
+    min-width: 400px;
+    padding: 0;
     flex: 1.5;
     opacity: 0;
     font-size: 22px;
@@ -112,8 +114,10 @@ const Presentation = (props : PresentationProps) =>  {
                         React et React Native !
                     </p>
                     <br/>
-                    Je suis actuellement en quête de nouvelles opportunités pour développer mes compétences dans
-                    le développement web et mobile.
+                    <p>
+                        Je suis actuellement en quête de nouvelles opportunités pour développer mes compétences dans
+                        le développement web et mobile.
+                    </p>
                 </div>
                 <picture>
                     <div id={'img_Background'}>

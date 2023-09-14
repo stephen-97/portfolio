@@ -68,31 +68,37 @@ const StyledBockComponent = styled.section`
       animation: animateLine 500ms ease ${constants.headerAnim+0.3}s forwards;
     }
     > img {
-      margin: 0 2vw;
       opacity: 0;
       animation: animateIconOpacity 500ms ease ${constants.headerAnim+0.3}s forwards;
     }
   }
   
   #wave-img-presentation{
-    animation:
-            animateWaveTest ${waveHandDuration}s ease ${constants.headerAnim + constants.secondAnim + constants.thirdAnim}s forwards;
+    animation: animateWaveTest ${waveHandDuration}s ease ${constants.headerAnim + constants.secondAnim + constants.thirdAnim}s forwards;
   }
 
   @keyframes animateWaveTest {
     0% {
-      transform: rotate(0deg);
+      opacity: 1;
     }
-    25% {
+    20% {
+      opacity: 1;
+      transform:  rotate(0deg);
+    }
+    40% {
+      opacity: 1;
       transform:  rotate(-45deg);
     }
-    50% {
+    60% {
+      opacity: 1;
       transform: rotate(20deg);
     }
-    75% {
+    80% {
+      opacity: 1;
       transform: rotate(-45deg);
     }
     100% {
+      opacity: 1;
       transform: rotate(0deg);
     }
   }
@@ -158,7 +164,7 @@ const Item = (props : BlockProps) =>  {
                             <div className={'lineContainer'}>
                                 <div className={'line'}></div>
                             </div>
-                            <img id={props.id} src={props.icon} alt="React Logo" />
+                            <img height={100} id={props.id} src={props.icon} alt="React Logo" />
                         </div>
                     <div >
                         {props.component}
