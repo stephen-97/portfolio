@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState, Dispatch, SetStateAction} from 'react';
 import {connect, useSelector} from "react-redux";
 import {styled, ThemeProvider, css} from "styled-components";
 import EmailIcon from "../../assets/email.svg"
@@ -16,8 +16,6 @@ type SkillsProps = {
 
 
 const theme = {
-    duration: "2s",
-    bgColor: "red",
 }
 
 const loopContactBlocks = () => {
@@ -52,6 +50,7 @@ const StyledSkills = styled.section`
     flex-wrap: wrap;
     padding: 0;
     position: relative;
+    align-items: center;
   }
   
   .contact-block {
@@ -69,7 +68,7 @@ const StyledSkills = styled.section`
     cursor: pointer;
     text-decoration: none;
     transition: 0.5s ease-in-out;
-
+    
     * {
       transition: inherit;
     }
@@ -110,29 +109,58 @@ const StyledSkills = styled.section`
 `
 const Contact = (props : SkillsProps) =>  {
 
+
+    const [wrappedItems, setWrappedItem]: [Element, Dispatch<SetStateAction<Element>>] = useState(document.getElementsByClassName('contact-block')[0])
+
+    const [test, setTest] = useState(null)
+
+    const detectWrap = (className: string) => {
+        let wrappedItems: Array<Element> = [];
+        let prevItem = {top: 0};
+        let currItem = {top: 0};
+        let items: HTMLCollectionOf<Element> = document.getElementsByClassName(className);
+
+        for (let i: number=0; i < items.length; i++){
+            currItem = items[i].getBoundingClientRect();
+            if(prevItem && prevItem.top < currItem.top){
+                wrappedItems.push(items[i])
+            }
+            prevItem = currItem
+        }
+        return wrappedItems.length === document.getElementsByClassName(className)!.length
+    }
+
+    const [windowsWidth, setWindowsWidth]: [number, Dispatch<SetStateAction<number>>] = useState(window.innerWidth);
+
+    useEffect(() => {
+        window.addEventListener("resize", () => setWindowsWidth(window.innerWidth) )
+        if(detectWrap('contact-block'))
+           (document.getElementById('section-contact-block') as HTMLElement).style.justifyContent = 'center'
+        else
+            (document.getElementById('section-contact-block') as HTMLElement).style.justifyContent = 'space-between'
+    }, [windowsWidth]);
+
     return(
-        <ThemeProvider theme={theme}>
-            <StyledSkills>
-                <section>
-                    <a className={'contact-block'} href={"mailto:stephen@hotmail.com"} >
-                        <img height={50} width={50} src={EmailIcon} alt={'Email icon'}/>
-                        <h5>Email</h5>
-                        <span>stephen.loiola@hotmail.com</span>
-                    </a>
-                    <a className={'contact-block'} href={"https://wa.me/33651662391"}>
-                        <img height={50} width={50} src={WhatsAppIcon} alt={'Whatsapp Icon'}/>
-                        <h5>Whatsapp</h5>
-                        <span>+33651662391</span>
-                    </a>
-                    <a className={'contact-block'} href={"https://www.linkedin.com/in/stephen-loiola-bastos-04351814b/"} target="_blank">
-                        <img height={50} width={50} src={LinkedinIcon} alt={'Linkedin image'}/>
-                        <h5>Linkedin</h5>
-                        <span>stephen-loiola-bastos-04351814b</span>
-                    </a>
-                </section>
-                <h2>Merci pour votre lecture</h2>
-            </StyledSkills>
-        </ThemeProvider>
+        <StyledSkills>
+            <section id={'section-contact-block'}>
+                <a className={'contact-block'} href={"mailto:stephen@hotmail.com"} >
+                    <img height={50} width={50} src={EmailIcon} alt={'Email icon'}/>
+                    <h5>Email</h5>
+                    <span>stephen.loiola@hotmail.com</span>
+                </a>
+                <a className={'contact-block'} href={"https://wa.me/33651662391"}>
+                    <img height={50} width={50} src={WhatsAppIcon} alt={'Whatsapp Icon'}/>
+                    <h5>Whatsapp</h5>
+                    <span>+33651662391</span>
+                </a>
+                <a className={'contact-block'} href={"https://www.linkedin.com/in/stephen-loiola-bastos-04351814b/"} target="_blank">
+                    <img height={50} width={50} src={LinkedinIcon} alt={'Linkedin image'}/>
+                    <h5>Linkedin</h5>
+                    <span>stephen-loiola-bastos-04351814b</span>
+                </a>
+            </section>
+            <h2>Merci pour votre lecture</h2>
+        </StyledSkills>
     );
 }
 
