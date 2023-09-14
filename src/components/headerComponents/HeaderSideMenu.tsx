@@ -2,46 +2,70 @@ import React, {Dispatch, SetStateAction, useEffect, useState} from 'react';
 import { Helmet } from 'react-helmet';
 import {styled, css} from "styled-components";
 import constants from "../../constants/constants";
+import WaveIcon from "../../assets/wave.svg";
+import BriefCaseIcon from "../../assets/briefcase.svg"
+import GraduationIcon from "../../assets/casquette-de-graduation.svg"
+import IdeaIcon from "../../assets/exchange-ideas.svg"
+import LetterIcon from "../../assets/letter.svg"
+
 
 type MenuProps = {
 
 }
 
-const loopButtonList = () => {
-    let style: string = '';
-    for(let i: number=0; i<= 5; i++){
-        const animDuration: number = 0.5;
-        style+= `
-            &:nth-of-type(${i}) > .button {
-                opacity: 0;
-                animation-name: example;
-                animation-fill-mode: forwards;
-                animation-duration: ${animDuration}s;
-                animation-delay:  ${constants.headerAnim*i/5}s;
-            }
-            @keyframes example {
-                from {opacity: 0; left: -100px}
-                to {opacity: 1; left: 0px}
-            }
-        `
-    }
-    return css`${style}`
-}
 
-
-const StyledMenu = styled.button`
+const StyledMenu = styled.button<{$menuToggle: boolean}>`
   display: none;
   
   @media (max-width: 1100px){
     display: block;
     position: fixed;
-    background-color: red;
-    z-index: 0;
-    width: 70vw;
+    background-color: ${constants.color1};
+    border: none;
+    z-index: 1;
+    min-width: min(70vw, 400px);
+    padding: 100px 50px;
     height: 100vh;
     top: 0;
     right: 0;
     bottom: 0;
+    box-shadow: -10px 0 30px -15px ${constants.color1};
+    transition: ease-in-out 0.3s;
+    transform: translateX(${props => props.$menuToggle ? 0 : 100}vw);
+    transform-origin: right;
+    visibility: ${props => props.$menuToggle  ? 'visible' : 'hidden'};
+  }
+  
+  nav {
+    
+    ol {
+      text-align: left;
+      
+      ul{
+        display: table;
+        padding: 0 20px;
+        vertical-align: center;
+        margin: 40px 0;
+        font-size: ${constants.fontSize2};
+        cursor: pointer;
+        color: ${constants.colorWhite};
+        
+        &:hover{
+          color: ${constants.color5};
+          img {
+            filter: ${constants.color5Filter};
+          }
+        }
+        img {
+          filter:  ${constants.colorWhiteFilter}
+        }
+        span {
+          display: table-cell;
+          vertical-align: middle;
+          padding: 0 20px;
+        }
+      }
+    }
   }
 `
 
@@ -56,7 +80,7 @@ const StyledButtonMenu = styled.div`
     position: relative;
     float: right;
     overflow: hidden;
-    z-index: 1;
+    z-index: 10;
     margin: 0;
     padding: 0;
     width: 96px;
@@ -173,10 +197,33 @@ const SideMenu = (props : MenuProps) =>  {
             <button className={`menu-button lines ${menuToggle ? `close` : null}`} onClick={() => setMenuToggle((current: boolean) => !current)}>
                 <span></span>
             </button>
-            <StyledMenu>
-                <section>
-
-                </section>
+            <StyledMenu
+                $menuToggle={menuToggle}
+            >
+                <nav>
+                    <ol>
+                        <ul className={'button-side-menu'}>
+                            <img src={WaveIcon} alt="React Logo" height={40}  width={40}/>
+                            <span>Présentation</span>
+                        </ul>
+                        <ul className={'button-side-menu'}>
+                            <img src={BriefCaseIcon} alt="React Logo" height={40}  width={40}/>
+                            <span>Expériences</span>
+                        </ul>
+                        <ul className={'button-side-menu'}>
+                            <img src={GraduationIcon} alt="React Logo" height={40}  width={40}/>
+                            <span>Étude</span>
+                        </ul>
+                        <ul className={'button-side-menu'}>
+                            <img src={IdeaIcon} alt="React Logo" height={40}  width={40}/>
+                            <span>Projets personnels</span>
+                        </ul>
+                        <ul className={'button-side-menu'}>
+                            <img src={LetterIcon} alt="React Logo" height={40}  width={40}/>
+                            <span>Contact</span>
+                        </ul>
+                    </ol>
+                </nav>
             </StyledMenu>
         </StyledButtonMenu>
     );
