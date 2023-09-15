@@ -32,8 +32,13 @@ const StyledItemContainer = styled.main`
   & {
     position: relative;
     overflow: auto;
-    padding-top: ${constants.headerSize}px;
+    padding: ${constants.headerSize}px 150px 0 150px;
     min-height: 100vh;
+    background-color: red;
+
+    @media screen and (max-width: ${constants.maxWindowWidthForSideMenuButton}px) {
+      padding: ${constants.headerSize}px 0 0 0;
+    }
   }
 `
 const MainSection = (props : SmallBlockProps) =>  {

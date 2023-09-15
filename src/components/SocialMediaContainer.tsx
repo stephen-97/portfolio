@@ -11,7 +11,7 @@ type SmallBlockProps = {
 const StyledSocialMediaContainer = styled.div`
   display: none;
 
-  @media screen and (min-width: ${constants.maxWindowWidthForSideMenuButton+700}px) {
+  @media screen and (min-width: ${constants.maxWindowWidthForSideMenuButton}px) {
     display: flex;
     flex-direction: column;
     box-sizing: content-box;

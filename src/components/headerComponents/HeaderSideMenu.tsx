@@ -28,8 +28,8 @@ const StyledMenu = styled.button<{$menuToggle: boolean}>`
     visibility: ${props => props.$menuToggle  ? 'visible' : 'hidden'};
   }
   
-  nav {
-    
+  .side-menu-button-container {
+    padding-top: 80px;
     ol {
       text-align: left;
       
@@ -58,7 +58,19 @@ const StyledMenu = styled.button<{$menuToggle: boolean}>`
         }
       }
     }
+    .external-links-container-list {
+      display: flex;
+      flex-direction: row;
+      padding: 0;
+      justify-content: space-around;
+      margin-top: 120px;
+      ul {
+        padding: 0;
+        margin: 0;
+      }
+    }
   }
+  
 `
 
 const StyledButtonMenu = styled.div`
@@ -201,10 +213,19 @@ const HeaderSideMenu = (): ReactElement =>  {
             >
                 <nav className={'side-menu-button-container'}>
                     <ol>
-                        {config.navLinks.map(({name, icon}) => (
+                        {config.navLinks.map(({name, icon, alt}) => (
                             <ul className={'side-menu-button'} onClick={() => setMenuToggle(false)}>
-                                <img src={icon} alt={icon} height={40}  width={40}/>
+                                <img src={icon} alt={alt} height={40}  width={40}/>
                                 <span>{name}</span>
+                            </ul>
+                        ))}
+                    </ol>
+                    <ol className={'external-links-container-list'}>
+                        {config.socialMediaLinks.map(({name, icon, alt, url}) => (
+                            <ul className={'side-menu-button'} onClick={() => setMenuToggle(false)}>
+                                <a href={url} target={'_blank'} >
+                                    <img src={icon} alt={alt} height={50}  width={50}/>
+                                </a>
                             </ul>
                         ))}
                     </ol>
