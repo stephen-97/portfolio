@@ -1,12 +1,8 @@
 import React from "react";
 import { styled} from "styled-components";
 import constants from "../constants/constants";
-import GithubIcon from "../assets/github.svg";
-import LinkedinIcon from "../assets/linkedin.svg";
-import TwitterIcon from "../assets/twitter.svg"
+import config from "../configs/config";
 
-type SmallBlockProps = {
-}
 
 const StyledSocialMediaContainer = styled.div`
   display: none;
@@ -29,10 +25,15 @@ const StyledSocialMediaContainer = styled.div`
   img {
     margin-bottom: 30px;
     cursor: pointer;
-    transition: ease 0.5s;
     &:hover {
       filter: ${constants.color5Filter};
     }
+  }
+  
+  ol {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
   }
   .vertical-line{
     position: absolute;
@@ -45,16 +46,19 @@ const StyledSocialMediaContainer = styled.div`
     border: 1px;
   }
 `
-const SocialMediaContainer = (props : SmallBlockProps) =>  {
-
+const SocialMediaContainer = () =>  {
 
     return(
         <StyledSocialMediaContainer>
-            <img height={60} src={GithubIcon} alt="Github Icon" onClick={() => null}/>
-            <img height={60} src={LinkedinIcon} alt="Github Icon" onClick={() => null}/>
-            <img height={60} src={TwitterIcon} alt="Github Icon" onClick={() => null}/>
-            <img height={60} src={GithubIcon} alt="Github Icon" onClick={() => null}/>
-            <div className={'vertical-line'}></div>
+            <nav>
+                <ol className={'socialMedia-links-container'}>
+                    {config.socialMediaLinks.map(({name, icon, alt, url}) => (
+                        <a href={url} target={'_blank'} >
+                            <img height={50} src={icon} alt={alt} />
+                        </a>
+                    ))}
+                </ol>
+            </nav>
         </StyledSocialMediaContainer>
     );
 }

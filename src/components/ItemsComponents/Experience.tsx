@@ -69,6 +69,29 @@ const loopExperienceSkills = () => {
     return css`${style}`
 }
 
+
+/**
+ * a {
+ *             transition: ease-in-out .3s;
+ *             transform: scaleX(0);
+ *             height: 5px;
+ *             border-bottom: 0;
+ *             transform-origin: left;
+ *             background-color: ${constants.color5};
+ *             position: absolute;
+ *             bottom: 0;
+ *           }
+ *           &:hover {
+ *             color: ${constants.color5};
+ *             transition: ease-in-out .3s;
+ *             a {
+ *               transition: inherit;
+ *               transform: scaleX(1);
+ *               transform-origin: left;
+ *             }
+ *           }
+ * @param e
+ */
 const changeClassName = (e: Element) => {
     document.querySelectorAll('.s')
 }
@@ -203,22 +226,6 @@ const StyledExperience = styled.section`
       
         //transform: scale(0);
       }
-      .itemSelected {
-        border-bottom: 4px solid black;
-        transform: scaleX(0);
-        z-index: -1;
-        animation: scalingBorder 0.5s ease-in-out forwards;
-        @keyframes scalingBorder {
-          from {
-            transform: scaleX(0);
-            transform-origin: left ;
-          }
-          to {
-            transform-origin: left ;
-            transform: scaleX(1);
-          }
-        }
-      }
     }
   }
 
@@ -227,6 +234,38 @@ const StyledExperience = styled.section`
     &:nth-of-type(1) {
       ul {
         ${loopBlockList()}
+        a {
+          transition: ease-in-out .2s;
+          transform: scaleX(0);
+          height: 4px;
+          border-bottom: 0;
+          transform-origin: left;
+          background-color: ${constants.color5};
+          position: absolute;
+          bottom: -4px;
+        }
+        
+        ol:nth-of-type(n) {
+          &:hover{
+            color: ${constants.color5};
+            transition: ease-in-out .2s;
+            a {
+              transition: inherit;
+              transform: scaleX(1);
+              transform-origin: left;
+            }
+          }
+        }
+        
+        .itemSelected {
+          color: ${constants.color5};
+          transition: ease-in-out .2s;
+          a {
+            transform: scaleX(1);
+            transform-origin: left;
+          }
+        }
+        
       }
     }
     &:nth-of-type(2) {
@@ -298,16 +337,16 @@ const Experience = forwardRef<HTMLDivElement, ExperienceProps>((props: Experienc
                     <img height={80} width={80} src={computer} alt={'computer image'}/>
                     <span className={'experience-skills-block-title'}>3 YEARS EXPERIENCES</span>
                     <ul>
-                        <ol onClick={() => setExperiencePattern('FrontEnd')}  >
-                            <a  key={'BackEnd-Item'} className={`${experiencePattern==='FrontEnd' ? 'itemSelected': ''}`}></a>
+                        <ol onClick={() => setExperiencePattern('FrontEnd')}  className={`${experiencePattern==='FrontEnd' ? 'itemSelected': ''}`}>
+                            <a key={'BackEnd-Item'} ></a>
                             <span>Front End</span>
                         </ol>
-                        <ol onClick={() => setExperiencePattern('BackEnd')} >
-                            <a  key={'FrontEnd-Item'} className={`${experiencePattern==='BackEnd' ? 'itemSelected': ''}`}></a>
+                        <ol onClick={() => setExperiencePattern('BackEnd')}  className={`${experiencePattern==='BackEnd' ? 'itemSelected': ''}`}>
+                            <a key={'FrontEnd-Item'}></a>
                             <span>Back End</span>
                         </ol>
-                        <ol onClick={() => setExperiencePattern('DevOps')} >
-                            <a  key={'DevOps-Item'} className={`${experiencePattern==='DevOps' ? 'itemSelected': ''}`}></a>
+                        <ol onClick={() => setExperiencePattern('DevOps')} className={`${experiencePattern==='DevOps' ? 'itemSelected': ''}`}>
+                            <a key={'DevOps-Item'}></a>
                             <span>Devops</span>
                         </ol>
                     </ul>

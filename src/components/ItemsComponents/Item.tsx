@@ -61,10 +61,11 @@ const StyledBockComponent = styled.section`
       flex: 1;
       justify-content: center;
       flex-direction: column;
+      padding-right: 20px;
     }
     .line {
       opacity: 0;
-      border-bottom:  5px dashed black;
+      border-bottom:  3px dashed black;
       animation: animateLine 500ms ease ${constants.headerAnim+0.3}s forwards;
     }
     > img {
