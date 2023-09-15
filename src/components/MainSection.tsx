@@ -34,8 +34,7 @@ const StyledItemContainer = styled.main`
     overflow: auto;
     padding: ${constants.headerSize}px 150px 0 150px;
     min-height: 100vh;
-    background-color: red;
-
+    transition: none;
     @media screen and (max-width: ${constants.maxWindowWidthForSideMenuButton}px) {
       padding: ${constants.headerSize}px 0 0 0;
     }
