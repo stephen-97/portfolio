@@ -36,9 +36,8 @@ const StyledExperienceBlock = styled.section`
   .experienceItem{
     position: relative;
     transform: translateY(100px);
-    background-color: ${constants.color3};
+    background-color: ${constants.colorDark1};
     box-shadow: ${constants.boxShadow};
-    color: black;
     font-size: 25px;
     border-radius: 10px;
     transition: all ${transitionExperienceBlock}s ease;
@@ -66,14 +65,13 @@ const StyledExperienceBlock = styled.section`
             background-color: #282c34;
             border-radius: 10px;
             margin: 10px 10px 0 0;
-            color: white;
           }
         }
       }
       .titleExperience {
         margin: 10px 0;
         font-size: ${constants.fontSize1};
-        color: ${constants.colorWhite};
+        color: ${constants.colorLight1};
         font-weight: bold;
       }
 

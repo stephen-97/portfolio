@@ -1,4 +1,4 @@
-import React, {createRef, Dispatch, RefObject, SetStateAction, useEffect, useRef, useState} from 'react';
+import React, {createRef, Dispatch, ReactElement, RefObject, SetStateAction, useEffect, useRef, useState} from 'react';
 import { Helmet } from 'react-helmet';
 import {useOnClickOutside} from "usehooks-ts";
 import {styled } from "styled-components";
@@ -6,15 +6,10 @@ import constants from "../../constants/constants";
 import config from "../../configs/config";
 
 
-type MenuProps = {
-    onClickOutside: any,
-}
-
-
 const StyledMenu = styled.button<{$menuToggle: boolean}>`
   display: none;
   
-  @media (max-width: 1100px){
+  @media (max-width: ${constants.maxWindowWidthForSideMenuButton}px){
     display: block;
     position: fixed;
     background-color: ${constants.color1};
@@ -34,7 +29,7 @@ const StyledMenu = styled.button<{$menuToggle: boolean}>`
   }
   
   nav {
-    
+    padding-top: 80px;
     ol {
       text-align: left;
       
@@ -45,12 +40,12 @@ const StyledMenu = styled.button<{$menuToggle: boolean}>`
         margin: 40px 0;
         font-size: ${constants.fontSize2};
         cursor: pointer;
-        color: ${constants.colorWhite};
+        color: ${constants.colorLight1};
         
         &:hover{
-          color: ${constants.color5};
+          color: ${constants.color1};
           img {
-            filter: ${constants.color5Filter};
+            filter: ${constants.colorWhiteFilter};
           }
         }
         img {
@@ -63,13 +58,25 @@ const StyledMenu = styled.button<{$menuToggle: boolean}>`
         }
       }
     }
+    .socialMedia-links-container {
+      display: flex;
+      flex-direction: row;
+      padding: 0;
+      justify-content: space-around;
+      margin-top: 120px;
+      ul {
+        padding: 0;
+        margin: 0;
+      }
+    }
   }
+  
 `
 
 const StyledButtonMenu = styled.div`
   display: none;
   
-  @media (max-width: 1099px ){
+  @media (max-width: ${constants.maxWindowWidthForSideMenuButton}px ){
     display: block;
   }
   
@@ -108,7 +115,7 @@ const StyledButtonMenu = styled.div`
     border-radius: 50px;
     
     &:hover {
-      background-color: ${constants.color5};
+      background-color: ${constants.color1};
     }
   }
   
@@ -161,13 +168,13 @@ const StyledButtonMenu = styled.div`
     top: 0;
     -ms-transform: rotate(225deg);
     transform: rotate(225deg);
-    background-color: ${constants.color5};
+    background-color: ${constants.color1};
   }
   .lines.close span::after {
     bottom: 0;
     -ms-transform: rotate(-225deg);
     transform: rotate(-225deg);
-    background-color: ${constants.color5};
+    background-color: ${constants.color1};
   }
   .lines.close span::before,
   .lines.close span::after {
@@ -178,13 +185,13 @@ const StyledButtonMenu = styled.div`
 
 
 
-const SideMenu = ( props: MenuProps) =>  {
+const HeaderSideMenu = (): ReactElement =>  {
 
     const [menuToggle, setMenuToggle]:  [boolean, Dispatch<SetStateAction<boolean>>] = useState(false)
 
     useEffect((): void => {
-        if(window.innerWidth > 1100) setMenuToggle(false);
-    }, [window.innerWidth > 1100]);
+        if(window.innerWidth > constants.maxWindowWidthForSideMenuButton) setMenuToggle(false);
+    }, [window.innerWidth > constants.maxWindowWidthForSideMenuButton]);
 
 
     const StyledButtonMenuRef: RefObject<HTMLDivElement> = createRef<HTMLDivElement>();
@@ -206,10 +213,19 @@ const SideMenu = ( props: MenuProps) =>  {
             >
                 <nav className={'side-menu-button-container'}>
                     <ol>
-                        {config.navLinks.map(({name, icon}) => (
+                        {config.navLinks.map(({name, icon, alt}) => (
                             <ul className={'side-menu-button'} onClick={() => setMenuToggle(false)}>
-                                <img src={icon} alt={icon} height={40}  width={40}/>
+                                <img src={icon} alt={alt} height={40}  width={40}/>
                                 <span>{name}</span>
+                            </ul>
+                        ))}
+                    </ol>
+                    <ol className={'socialMedia-links-container'}>
+                        {config.socialMediaLinks.map(({name, icon, alt, url}) => (
+                            <ul className={'side-menu-button-socialMedia'}>
+                                <a href={url} target={'_blank'} >
+                                    <img src={icon} alt={alt} height={50}  width={50}/>
+                                </a>
                             </ul>
                         ))}
                     </ol>
@@ -220,4 +236,4 @@ const SideMenu = ( props: MenuProps) =>  {
 }
 
 
-export default SideMenu;
+export default HeaderSideMenu;

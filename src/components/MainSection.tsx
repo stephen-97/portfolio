@@ -19,7 +19,7 @@ import LetterIcon from "../assets/letter.svg"
 import Box from "./headerComponents/Box";
 import constants from "../constants/constants";
 import Item from "./ItemsComponents/Item";
-
+import SocialMediaContainer from "./SocialMediaContainer";
 
 type SmallBlockProps = {
 }
@@ -32,8 +32,12 @@ const StyledItemContainer = styled.main`
   & {
     position: relative;
     overflow: auto;
-    padding-top: ${constants.headerSize}px;
+    padding: ${constants.headerSize}px 150px 0 150px;
     min-height: 100vh;
+    transition: none;
+    @media screen and (max-width: ${constants.maxWindowWidthForSideMenuButton}px) {
+      padding: ${constants.headerSize}px 0 0 0;
+    }
   }
 `
 const MainSection = (props : SmallBlockProps) =>  {
@@ -180,6 +184,7 @@ const MainSection = (props : SmallBlockProps) =>  {
                 <Item id={'idea-img'} keyItem={4} ref={refProjects} icon={IdeaIcon} component={<Projects animationDelay={blockAnimationDelay}/>}/>
                 <Item id={'skills-img'} keyItem={5} ref={refSkills} icon={LetterIcon} component={<Skills animationDelay={blockAnimationDelay}/>}/>
                <Box />
+            <SocialMediaContainer />
         </StyledItemContainer>
     );
 }

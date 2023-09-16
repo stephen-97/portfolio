@@ -13,6 +13,7 @@ type BlockProps = {
 
 const waveHandDuration: number=1;
 const StyledBockComponent = styled.section`
+
   & {
     position: relative;
     display: block;
@@ -26,17 +27,15 @@ const StyledBockComponent = styled.section`
     padding: 0 10px;
     min-height: 100vh;
     scroll-margin-top: 12vh;
-
-    @media screen and (max-width: 1200px) {
+    @media not all and (display-mode: fullscreen) {
       & {
-        //width: 95vw;
+        margin: 40px auto 100px auto;
       }
     }
   }
 
   .item.active {
     opacity: 1;
-    transition: ${constants.duration_itemAnim}s ease;
   }
 
   .blockContainer{
@@ -49,50 +48,59 @@ const StyledBockComponent = styled.section`
   }
   
   .title {
-    height: 100px;
+    max-height: 100px;
     position: relative;
     margin-bottom: 5vh;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    
+    align-items: center;
     .lineContainer {
       display: flex;
       flex: 1;
       justify-content: center;
       flex-direction: column;
+      padding-right: 20px;
     }
     .line {
       opacity: 0;
-      border-bottom:  5px dashed black;
+      border-bottom:  3px dashed white;
       animation: animateLine 500ms ease ${constants.headerAnim+0.3}s forwards;
     }
     > img {
-      margin: 0 2vw;
       opacity: 0;
       animation: animateIconOpacity 500ms ease ${constants.headerAnim+0.3}s forwards;
+      filter: ${constants.colorWhiteFilter};
+      height: clamp(60px, 10vw, 100px);
     }
   }
   
   #wave-img-presentation{
-    animation:
-            animateWaveTest ${waveHandDuration}s ease ${constants.headerAnim + constants.secondAnim + constants.thirdAnim}s forwards;
+    animation: animateWaveTest ${waveHandDuration}s ease ${constants.headerAnim + constants.secondAnim + constants.thirdAnim}s forwards;
   }
 
   @keyframes animateWaveTest {
     0% {
-      transform: rotate(0deg);
+      opacity: 1;
     }
-    25% {
+    20% {
+      opacity: 1;
+      transform:  rotate(0deg);
+    }
+    40% {
+      opacity: 1;
       transform:  rotate(-45deg);
     }
-    50% {
+    60% {
+      opacity: 1;
       transform: rotate(20deg);
     }
-    75% {
+    80% {
+      opacity: 1;
       transform: rotate(-45deg);
     }
     100% {
+      opacity: 1;
       transform: rotate(0deg);
     }
   }
@@ -158,7 +166,7 @@ const Item = (props : BlockProps) =>  {
                             <div className={'lineContainer'}>
                                 <div className={'line'}></div>
                             </div>
-                            <img id={props.id} src={props.icon} alt="React Logo" />
+                            <img  id={props.id} src={props.icon} alt="React Logo" />
                         </div>
                     <div >
                         {props.component}

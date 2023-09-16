@@ -52,7 +52,7 @@ const StyledSectionStudy = styled.section`
   // STUDY
   .blockStudy {
     padding: 20px;
-    background-color: ${constants.color3};
+    background-color: ${constants.colorDark1};
     box-shadow: ${constants.boxShadow};
     border-radius: 10px;
     font-size: 16px;
@@ -63,13 +63,12 @@ const StyledSectionStudy = styled.section`
 
     h2 {
       font-size: ${constants.fontSize2};
-      color: ${constants.colorWhite};
+      color: ${constants.colorLight1};
       margin: 5px 0;
       font-weight: 500;
     }
     p {
       margin: 10px 0;
-      color: #282c34;
       display: flex;
       flex-wrap: wrap;
       padding: 0;
@@ -84,7 +83,6 @@ const StyledSectionStudy = styled.section`
       }
     }
     > div {
-      color: #282c34;
       font-size: ${constants.fontSize4};
       font-weight: 200;
     }

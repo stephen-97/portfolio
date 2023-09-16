@@ -3,7 +3,7 @@ import {connect, useSelector} from "react-redux";
 import { RootState} from "../../redux/redux";
 import {styled} from "styled-components";
 import constants from "../../constants/constants";
-import Stephen_profile from "../../assets/Stephen-profile.jpg"
+import Stephen_profile from "../../assets/Stephen-profile.jpg";
 
 type PresentationProps = {
     animationDelay: number,
@@ -19,8 +19,9 @@ const StyledPresentation = styled.section`
   }
   h1 {
     opacity: 0;
-    font-size:  clamp(40px, 7vw, 70px);
+    font-size:  clamp(35px, 7vw, 70px);
     font-weight: bolder;
+    color: ${constants.color1};
     margin: 0 0 0 0;
     animation: animatePresentation 0.5s ease ${constants.headerAnim + constants.secondAnim/5}s forwards;
   }
@@ -31,40 +32,39 @@ const StyledPresentation = styled.section`
   }
   .description_picture {
     display: flex;
-    flex-wrap: wrap;
     flex-direction: row;
+    flex-wrap: wrap;
   }
   p {
-    margin: 0 0 10px 0;
+    margin: 0;
+    font-size: clamp(19px, 2vw, 21px);
+    
+    > span {
+      color: ${constants.color2}
+    }
   }
   .description {
     margin: 20px 0;
-    padding: 0 clamp(20px, 8vw, 50px) 0 0;
+    min-width: 400px;
+    padding: 0;
     flex: 1.5;
     opacity: 0;
     font-size: 22px;
     animation: animatePresentation 0.5s ease ${constants.headerAnim + constants.secondAnim*3/4}s forwards;
+    @media screen and (max-width: ${constants.maxWindowWidthForSideMenuButton}px) {
+      & {
+        min-width: 100%;
+        margin-bottom: 50px;
+      }
+    }
   }
 
   picture {
     display: flex;
     opacity: 0;
-    margin:  20px 0;
+    margin:  20px;
     flex: 1;
     animation: animateImg 0.5s ease ${constants.headerAnim + constants.secondAnim*4/4}s forwards;
-  }
-  img {
-    opacity: 0;
-    align-items: center;
-    display: table-row;
-    background-color: black;
-    transform: rotate(10deg);
-    transition: ${imgAnimationDuration}ms ease;
-    border-radius: ${borderRadiusImg}px;
-    animation: animateImg 0.5s ease ${constants.headerAnim + constants.secondAnim*5/4}s forwards;
-    &:hover {
-      transform: rotate(0);
-    }
   }
   #img_Background {
     margin: auto;
@@ -72,7 +72,28 @@ const StyledPresentation = styled.section`
     display: table;
     background-color: black;
     overflow: auto;
+    max-width: 100%;
+    &:hover {
+      background-color: ${constants.color2};
+      transition: ease-in-out 0.5s;
+    }
   }
+  img {
+    opacity: 0;
+    align-items: center;
+    background-color: black;
+    transform: translate(20px,-20px);
+    transition: ${imgAnimationDuration}ms ease;
+    border-radius: ${borderRadiusImg}px;
+    max-width: 100%;
+    min-width: 200px;
+    height: auto;
+    animation: animateImg 0.5s ease ${constants.headerAnim + constants.secondAnim*5/4}s forwards;
+    &:hover {
+      transform: translate(0) rotate(0);
+    }
+  }
+  
   
   @keyframes animatePresentation {
     from {
@@ -98,6 +119,7 @@ const StyledPresentation = styled.section`
 const Presentation = (props : PresentationProps) =>  {
 
 
+
     return(
         <StyledPresentation>
             <h1>STEPHEN LOIOLA BASTOS</h1>
@@ -105,15 +127,22 @@ const Presentation = (props : PresentationProps) =>  {
             <span className={'description_picture'}>
                 <div className={'description'}>
                     <p>
-                        Bonjour et bienvenu sur mon portefolio! Je suis jeune développeur TypeScript Junior ayant
-                        suivi des formations en alternance à Paris du bac jusqu'au bac+5.
-                        Je maîtrise plusieurs langages de programmation comme HTML, CSS, TypeScript, PHP.. Par contre j'ai
-                        une grande préférence énorme préférence pour le TypeScript et les bibliothèques comme
-                        React et React Native !
+                        Bonjour et bienvenu sur mon portefolio! Je suis jeune développeur <span>TypeScript Junior</span>  ayant
+                        suivi des formations en alternance à Paris du bac <span>jusqu'au bac+5</span>.
+                        Je maîtrise plusieurs langages de programmation comme HTML, CSS, TypeScript, PHP.. Je possède néanmoins une
+                        grande préférence pour les langages Javascript & TypeScript, et les librairies comme
+                        <span> React et React Native</span> !
                     </p>
                     <br/>
-                    Je suis actuellement en quête de nouvelles opportunités pour développer mes compétences dans
-                    le développement web et mobile.
+                    <p>
+                        Je suis actuellement en quête de nouvelles opportunités pour développer mes compétences dans
+                        le développement web et mobile.
+                    </p>
+                    <br/>
+                    <p>
+                        Lorsque je ne suis pas devant VSCODE ou Webstorm, j'aime généralement
+                        la promenade ou je peux me trouver entrain de lire Kingdom ou devant Zelda!
+                    </p>
                 </div>
                 <picture>
                     <div id={'img_Background'}>

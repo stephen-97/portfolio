@@ -1,8 +1,8 @@
-import React, { useEffect, useState} from 'react';
+import React, {ReactElement, useEffect, useState} from 'react';
 import {styled, css} from "styled-components";
 import constants from "../../constants/constants";
 
-type SmallBlockProps = {
+type HeaderButtonProps = {
     icon:  string,
     display: string,
     index?: number,
@@ -46,9 +46,11 @@ const StyledButton = styled.section<{ displayButton?: string, firstAnimationIsFi
   .button-img {
     height: 60px;
     width: 60px;
+    filter: ${constants.colorWhiteFilter};
+
   }
   .button-img:hover {
-    filter: ${constants.color5Filter};
+    filter: ${constants.color1Filter};
   }
   .titleButton {
     display: inline-block;
@@ -73,7 +75,7 @@ const StyledButton = styled.section<{ displayButton?: string, firstAnimationIsFi
   .activeButton, .button-img:hover {
 
     .button-img {
-      filter: ${constants.color5Filter};
+      filter: ${constants.color1Filter};
       transition: ease 0.5s;
     }
     .buttonColorContainer {
@@ -103,7 +105,7 @@ const StyledButton = styled.section<{ displayButton?: string, firstAnimationIsFi
 `
 
 
-const HeaderButton = (props : SmallBlockProps) =>  {
+const HeaderButton = (props : HeaderButtonProps): ReactElement =>  {
 
     const [firstAnimationFinished, setFirstAnimationFinished] = useState(false);
 
@@ -112,8 +114,6 @@ const HeaderButton = (props : SmallBlockProps) =>  {
             setFirstAnimationFinished(true)
         }, constants.headerAnim*1500);
     }, []);
-
-
 
     return(
             <StyledButton displayButton={props.display} firstAnimationIsFinished={firstAnimationFinished}>
