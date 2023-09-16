@@ -46,9 +46,11 @@ const StyledButton = styled.section<{ displayButton?: string, firstAnimationIsFi
   .button-img {
     height: 60px;
     width: 60px;
+    filter: ${constants.colorWhiteFilter};
+
   }
   .button-img:hover {
-    filter: ${constants.color5Filter};
+    filter: ${constants.color1Filter};
   }
   .titleButton {
     display: inline-block;
@@ -73,7 +75,7 @@ const StyledButton = styled.section<{ displayButton?: string, firstAnimationIsFi
   .activeButton, .button-img:hover {
 
     .button-img {
-      filter: ${constants.color5Filter};
+      filter: ${constants.color1Filter};
       transition: ease 0.5s;
     }
     .buttonColorContainer {

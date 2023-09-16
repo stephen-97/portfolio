@@ -1,5 +1,6 @@
 
 import { createGlobalStyle } from 'styled-components';
+import constants from "../constants/constants";
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -10,7 +11,9 @@ const GlobalStyle = createGlobalStyle`
   
   body{
     font-family: "Roboto Mono",Sans-serif;
-
+    background-color: ${constants.colorDark2};
+    //background-color: #0b3838;
+    color: ${constants.colorLight1};
     main {
       transition: ease-in-out 0.3s;
     }

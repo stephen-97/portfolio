@@ -26,8 +26,8 @@ const StyledHeader = styled.header`
   height: ${constants.headerSize}px;
   width: 100vw;
   min-width: 150px;
-  background-color: ${constants.color1};
-  box-shadow: 0 0 15px 10px ${constants.color1};
+  background-color: ${constants.colorDark2};
+  box-shadow: rgba(0,0,0,0.16) 0 10px 36px 0, rgba(0,0,0,0.06) 0 0 0 1px;
   
  
   .leftBlockContent {

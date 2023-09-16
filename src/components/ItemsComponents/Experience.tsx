@@ -140,7 +140,6 @@ const StyledExperience = styled.section`
       min-height: auto;
       > .experience-skills-block-title {
         display: block;
-        color: black;
         font-size: ${constants.fontSize1};
         font-weight: bold;
         margin-bottom: 5px;
@@ -149,7 +148,7 @@ const StyledExperience = styled.section`
     
     // LEFT
     &:nth-of-type(2){
-      background-color: ${constants.color3};
+      background-color: ${constants.colorDark1};
       box-shadow: ${constants.boxShadow};
       
       > .experience-skills-block-title {
@@ -163,6 +162,7 @@ const StyledExperience = styled.section`
     
     > img {
       margin: 0;
+      filter:  ${constants.color2Filter};
     }
     
     //SKILLS RIGHT
@@ -173,7 +173,7 @@ const StyledExperience = styled.section`
       
       
       > span {
-        background-color: ${constants.color4};
+        background-color: ${constants.colorDark2};
         opacity: 0;
         margin-top: 20px;
         width: clamp(125px, 7vw, 175px);
@@ -190,7 +190,7 @@ const StyledExperience = styled.section`
         >span {
           display: block;
           font-size: clamp(15px, 1vw, 18px);
-          color: ${constants.color5};
+          color: ${constants.color2};
           font-weight: 100;
         }
       }
@@ -213,10 +213,7 @@ const StyledExperience = styled.section`
         cursor: pointer;
         font-weight: bold;
         text-align: left;
-        
-        &:hover {
-          color: red;
-        }
+       
       }
       a {
         display: block;
@@ -240,14 +237,14 @@ const StyledExperience = styled.section`
           height: 4px;
           border-bottom: 0;
           transform-origin: left;
-          background-color: ${constants.color5};
+          background-color: ${constants.color1};
           position: absolute;
           bottom: -4px;
         }
         
         ol:nth-of-type(n) {
           &:hover{
-            color: ${constants.color5};
+            color: ${constants.color1};
             transition: ease-in-out .2s;
             a {
               transition: inherit;
@@ -258,7 +255,7 @@ const StyledExperience = styled.section`
         }
         
         .itemSelected {
-          color: ${constants.color5};
+          color: ${constants.color1};
           transition: ease-in-out .2s;
           a {
             transform: scaleX(1);

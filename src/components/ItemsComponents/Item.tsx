@@ -13,6 +13,7 @@ type BlockProps = {
 
 const waveHandDuration: number=1;
 const StyledBockComponent = styled.section`
+
   & {
     position: relative;
     display: block;
@@ -26,17 +27,15 @@ const StyledBockComponent = styled.section`
     padding: 0 10px;
     min-height: 100vh;
     scroll-margin-top: 12vh;
-
-    @media screen and (max-width: 1200px) {
+    @media not all and (display-mode: fullscreen) {
       & {
-        //width: 95vw;
+        margin: 40px auto 100px auto;
       }
     }
   }
 
   .item.active {
     opacity: 1;
-    transition: ${constants.duration_itemAnim}s ease;
   }
 
   .blockContainer{
@@ -49,13 +48,13 @@ const StyledBockComponent = styled.section`
   }
   
   .title {
-    height: 100px;
+    max-height: 100px;
     position: relative;
     margin-bottom: 5vh;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    
+    align-items: center;
     .lineContainer {
       display: flex;
       flex: 1;
@@ -65,12 +64,14 @@ const StyledBockComponent = styled.section`
     }
     .line {
       opacity: 0;
-      border-bottom:  3px dashed black;
+      border-bottom:  3px dashed white;
       animation: animateLine 500ms ease ${constants.headerAnim+0.3}s forwards;
     }
     > img {
       opacity: 0;
       animation: animateIconOpacity 500ms ease ${constants.headerAnim+0.3}s forwards;
+      filter: ${constants.colorWhiteFilter};
+      height: clamp(60px, 10vw, 100px);
     }
   }
   
@@ -165,7 +166,7 @@ const Item = (props : BlockProps) =>  {
                             <div className={'lineContainer'}>
                                 <div className={'line'}></div>
                             </div>
-                            <img height={100} id={props.id} src={props.icon} alt="React Logo" />
+                            <img  id={props.id} src={props.icon} alt="React Logo" />
                         </div>
                     <div >
                         {props.component}

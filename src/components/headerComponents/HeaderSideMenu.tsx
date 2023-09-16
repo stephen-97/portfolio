@@ -40,12 +40,12 @@ const StyledMenu = styled.button<{$menuToggle: boolean}>`
         margin: 40px 0;
         font-size: ${constants.fontSize2};
         cursor: pointer;
-        color: ${constants.colorWhite};
+        color: ${constants.colorLight1};
         
         &:hover{
-          color: ${constants.color5};
+          color: ${constants.color1};
           img {
-            filter: ${constants.color5Filter};
+            filter: ${constants.colorWhiteFilter};
           }
         }
         img {
@@ -115,7 +115,7 @@ const StyledButtonMenu = styled.div`
     border-radius: 50px;
     
     &:hover {
-      background-color: ${constants.color5};
+      background-color: ${constants.color1};
     }
   }
   
@@ -168,13 +168,13 @@ const StyledButtonMenu = styled.div`
     top: 0;
     -ms-transform: rotate(225deg);
     transform: rotate(225deg);
-    background-color: ${constants.color5};
+    background-color: ${constants.color1};
   }
   .lines.close span::after {
     bottom: 0;
     -ms-transform: rotate(-225deg);
     transform: rotate(-225deg);
-    background-color: ${constants.color5};
+    background-color: ${constants.color1};
   }
   .lines.close span::before,
   .lines.close span::after {

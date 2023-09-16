@@ -25,8 +25,9 @@ const StyledSocialMediaContainer = styled.div`
   img {
     margin-bottom: 30px;
     cursor: pointer;
+    filter: ${constants.colorWhiteFilter};
     &:hover {
-      filter: ${constants.color5Filter};
+      filter: ${constants.color1Filter};
     }
   }
   

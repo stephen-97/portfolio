@@ -56,7 +56,7 @@ const StyledSkills = styled.section`
   .contact-block {
     position: relative;
     transform: scale(0);
-    background-color: ${constants.color3};
+    background-color: ${constants.colorDark1};
     width: 300px;
     height: 200px;
     border-radius: 10px;
@@ -74,7 +74,7 @@ const StyledSkills = styled.section`
     }
 
     &:hover {
-      background-color: ${constants.color5};
+      background-color: ${constants.color1};
       >h5 {
         color: ${constants.colorBlack};
       }
@@ -90,12 +90,12 @@ const StyledSkills = styled.section`
       margin: 10px 0;
       font-size: ${constants.fontSize4};
       font-weight: bolder;
-      color: ${constants.colorWhite};
+      color: ${constants.colorLight1};
       text-decoration: inherit;
     }
     
     > span {
-      color: ${constants.colorWhite};
+      color: ${constants.colorLight1};
       text-decoration: inherit;
     }
     
