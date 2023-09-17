@@ -6,6 +6,7 @@ import HeaderButton from "./HeaderButton";
 import constants from "../../utility/constants";
 import config from "../../configs/config";
 import HeaderSideMenu from "./HeaderSideMenu";
+import Logo from "./Logo";
 
 
 const StyledButtonContainer = styled.section`
@@ -39,7 +40,6 @@ const StyledHeader = styled.header`
   .logoContainer {
     display: table;
     font-weight: bolder;
-    background-color: red;
     align-items: center;
     margin-left: 2vw;
     
@@ -68,9 +68,7 @@ const Header = (): ReactElement =>  {
         <StyledHeader>
             <nav className={"leftBlockContent"}>
                 <div className={'logoContainer'}>
-                    <span>
-                        S.L
-                    </span>
+                    <Logo />
                 </div>
                 <StyledButtonContainer>
                     <div className={"buttonContainer"}>
