@@ -52,7 +52,7 @@ const projects: Array<ProjectInterface> = [
     },
     {
         title: "Projet d'étude",
-        description: "Simulation d'une application d'adoption d'animaux de compagnie",
+        description: "Simulation d'une application d'adoption d'animaux de compagnie.",
         tags: ["React Native", "Javascript", "Symfony", "Docker"],
         githubLink: 'https://gitlab.com/Stephen-97/avis_r_animaux',
         demoLink: 'https://www.linkedin.com/posts/stephen-loiola-bastos-04351814b_reactnative-developpeur-expo-activity-7075197754867621888-aWGH?utm_source=share&utm_medium=member_desktop',
