@@ -1,9 +1,9 @@
-import React from 'react';
-import {connect, useSelector} from "react-redux";
-
+import React, {ReactElement} from 'react';
+import {connect } from "react-redux";
+import Tag from "../Tag";
 import { RootState} from "../../redux/redux";
 import {styled, css} from "styled-components";
-import constants from "../../constants/constants";
+import constants from "../../utility/constants";
 
 type StudyProps = {
     animationDelay: number,
@@ -54,7 +54,7 @@ const StyledSectionStudy = styled.section`
     padding: 20px;
     background-color: ${constants.colorDark1};
     box-shadow: ${constants.boxShadow};
-    border-radius: 10px;
+    border-radius: ${constants.borderRadius1}px;
     font-size: 16px;
     text-align: left;
     margin-left: 0;
@@ -67,20 +67,11 @@ const StyledSectionStudy = styled.section`
       margin: 5px 0;
       font-weight: 500;
     }
-    p {
+    ul {
       margin: 10px 0;
       display: flex;
       flex-wrap: wrap;
       padding: 0;
-
-      > span {
-        margin: 2px 3px 0 2px;
-        background-color: #3b3a3a;
-        padding: 5px ;
-        border-radius: 10px;
-        color: whitesmoke;
-        font-size: ${constants.fontSize5};
-      }
     }
     > div {
       font-size: ${constants.fontSize4};
@@ -92,7 +83,7 @@ const StyledSectionStudy = styled.section`
 `
 
 
-const Study = (props : StudyProps) =>  {
+const Study = (props : StudyProps): ReactElement =>  {
 
     return(
         <StyledSectionStudy>
@@ -100,42 +91,42 @@ const Study = (props : StudyProps) =>  {
                 <ol className={'blockStudy'}>
                     <h2>RNCP36009 Directeur de projet informatique (Bac+5)</h2>
                     <div>Aston Ecole</div>
-                    <p>
-                        <span>Architecture Logiciel</span>
-                        <span>Cloud Azure</span>
-                        <span>Sécurité</span>
-                        <span>Gestion de projet</span>
-                        <span>Budgétisations</span>
-                        <span>Normes ISO</span>
-                    </p>
+                    <ul>
+                        <Tag name={'Architecture logicielle'}/>
+                        <Tag name={'Cloud Azure'}/>
+                        <Tag name={'Cybersécurité'}/>
+                        <Tag name={'Gestion de projet'}/>
+                        <Tag name={'Budgétisation'}/>
+                        <Tag name={'Normes ISO'}/>
+                    </ul>
                 </ol>
                 <ol className={'blockStudy'}>
                     <h2>RNCP31678 Concepteur et Développeur d'application (Bac+3/4)</h2>
                     <div>2iTech Academy by M2i</div>
-                    <p>
-                        <span>Merise</span>
-                        <span>UML</span>
-                        <span>Javascript / TypeScript</span>
-                        <span>Symfony</span>
-                        <span>React</span>
-                        <span>Node / Express</span>
-                        <span>React Native</span>
-                        <span>AWS</span>
-                    </p>
+                    <ul>
+                        <Tag name={'Merise'}/>
+                        <Tag name={'UML'}/>
+                        <Tag name={'Javascript / Typesript'}/>
+                        <Tag name={'Symfony'}/>
+                        <Tag name={'React'}/>
+                        <Tag name={'Node / Express'}/>
+                        <Tag name={'React Native'}/>
+                        <Tag name={'AWS'}/>
+                    </ul>
                 </ol>
                 <ol className={'blockStudy'}>
                     <h2>L2 Informatique (Bac+2)</h2>
                     <div>Paris Descartes</div>
-                    <p>
-                        <span>Merise</span>
-                        <span>UML</span>
-                        <span>Javascript / TypeScript</span>
-                        <span>Symfony</span>
-                        <span>React</span>
-                        <span>Node / Express</span>
-                        <span>React Native</span>
-                        <span>AWS</span>
-                    </p>
+                    <ul>
+                        <Tag name={'C'}/>
+                        <Tag name={'Java'}/>
+                        <Tag name={'OCaml'}/>
+                        <Tag name={'Algorithme'}/>
+                        <Tag name={'HTML'}/>
+                        <Tag name={'CSS'}/>
+                        <Tag name={'Javascript'}/>
+                        <Tag name={'PHP'}/>
+                    </ul>
                 </ol>
             </ul>
         </StyledSectionStudy>

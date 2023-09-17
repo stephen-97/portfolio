@@ -1,6 +1,6 @@
-import React from "react";
+import React, {ReactElement} from "react";
 import { styled} from "styled-components";
-import constants from "../constants/constants";
+import constants from "../utility/constants";
 import config from "../configs/config";
 
 
@@ -47,7 +47,7 @@ const StyledSocialMediaContainer = styled.div`
     border: 1px;
   }
 `
-const SocialMediaContainer = () =>  {
+const SocialMediaContainer = (): ReactElement =>  {
 
     return(
         <StyledSocialMediaContainer>

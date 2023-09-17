@@ -3,7 +3,7 @@ import {css, styled} from "styled-components";
 import {connect } from "react-redux";
 import computer from "../../assets/computer.svg"
 import { RootState} from "../../redux/redux";
-import constants from "../../constants/constants";
+import constants from "../../utility/constants";
 import ExperienceBlock from "./experience/ExperienceBlock";
 
 type ExperienceProps = {
@@ -69,33 +69,6 @@ const loopExperienceSkills = () => {
     return css`${style}`
 }
 
-
-/**
- * a {
- *             transition: ease-in-out .3s;
- *             transform: scaleX(0);
- *             height: 5px;
- *             border-bottom: 0;
- *             transform-origin: left;
- *             background-color: ${constants.color5};
- *             position: absolute;
- *             bottom: 0;
- *           }
- *           &:hover {
- *             color: ${constants.color5};
- *             transition: ease-in-out .3s;
- *             a {
- *               transition: inherit;
- *               transform: scaleX(1);
- *               transform-origin: left;
- *             }
- *           }
- * @param e
- */
-const changeClassName = (e: Element) => {
-    document.querySelectorAll('.s')
-}
-
 const StyledExperience = styled.section`
   & {
     position: relative;
@@ -126,7 +99,7 @@ const StyledExperience = styled.section`
   .experience-skills-block {
     top: 0;
     margin: auto;
-    border-radius: 10px;
+    border-radius: ${constants.borderRadius1}px;
     position: relative;
     width: 520px;
     min-height: 350px;
@@ -177,10 +150,8 @@ const StyledExperience = styled.section`
         opacity: 0;
         margin-top: 20px;
         width: clamp(125px, 7vw, 175px);
-        //width: 175px;
-        //clamp(40px, 7vw, 70px);
         padding: 20px 0 20px clamp(10px, 2vw, 30px);
-        border-radius: 10px;
+        border-radius: ${constants.borderRadius1}px;
         font-weight: bolder;
         font-size: clamp(17px, 1vw, 20px);
         position: relative;
@@ -195,8 +166,6 @@ const StyledExperience = styled.section`
         }
       }
     }
-    
-    
     
     
     // Choice BLOCK
@@ -220,8 +189,6 @@ const StyledExperience = styled.section`
         position: absolute;
         height: 100%;
         width: 100%;
-      
-        //transform: scale(0);
       }
     }
   }

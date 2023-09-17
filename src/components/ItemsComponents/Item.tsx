@@ -1,6 +1,6 @@
 import { styled} from "styled-components";
 import React, {Component, JSX, LegacyRef} from "react";
-import constants from '../../constants/constants'
+import constants from '../../utility/constants'
 
 
 type BlockProps = {

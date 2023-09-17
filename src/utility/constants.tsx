@@ -6,15 +6,15 @@ export default {
     headerAnim: 1,
     secondAnim: 1.5,
     thirdAnim: 1,
-
     headerSize:70,
+
+    // BORDER RADIUS
+    borderRadius1: 10,
 
     // COLOR
     color1: "#32ff9b",
     color2: "#3afbbd",
     color3: "#a4a4a4",
-
-
 
     // FILTER COLOR
     color1Filter: "invert(100%) sepia(44%) saturate(3478%) hue-rotate(69deg) brightness(104%) contrast(101%)",

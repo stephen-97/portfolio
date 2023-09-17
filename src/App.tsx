@@ -6,7 +6,8 @@ import { store } from './redux/redux'
 import { Provider} from "react-redux";
 import MainSection from "./components/MainSection";
 import Header from "./components/headerComponents/Header";
-import GlobalStyle from "./style/GlobalStyle";
+import GlobalStyle from "./utility/GlobalStyle";
+import Footer from "./components/Footer";
 
 const StyledMainComponent = styled.section`
   
@@ -33,6 +34,7 @@ function App() {
             <StyledMainComponent>
                 <Header />
                 <MainSection/>
+                <Footer />
                 <StyledMainComponent />
             </StyledMainComponent>
         </Provider>

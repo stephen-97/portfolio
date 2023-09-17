@@ -1,27 +1,21 @@
 import React, {useEffect, useState, Dispatch, SetStateAction} from 'react';
-import {connect, useSelector} from "react-redux";
-import {styled, ThemeProvider, css} from "styled-components";
+import {connect } from "react-redux";
+import {styled,  css} from "styled-components";
 import EmailIcon from "../../assets/email.svg"
 import WhatsAppIcon from "../../assets/whatsapp.svg"
 import LinkedinIcon from "../../assets/linkedin.svg"
 import { RootState} from "../../redux/redux";
-import computer from "../../assets/computer.svg";
-import constants from "../../constants/constants";
-import {inspect} from "util";
+import constants from "../../utility/constants";
+import functions from "../../utility/functions";
 
 
-type SkillsProps = {
+type ContactProps = {
     animationDelay: number,
 }
 
-
-const theme = {
-}
-
 const loopContactBlocks = () => {
-    let style = '';
-
-    for(let i=1; i<= 5; i++){
+    let style: string = '';
+    for(let i: number=1; i<= 5; i++){
         style+= `
             .active-contact-block:nth-of-type(${i}) {
                 animation: contactBlockAnimation 0.5s ease-in-out ${0.5*i/3}s forwards;
@@ -59,7 +53,7 @@ const StyledSkills = styled.section`
     background-color: ${constants.colorDark1};
     width: 300px;
     height: 200px;
-    border-radius: 10px;
+    border-radius: ${constants.borderRadius1}px;
     margin: 20px 0;
     display: flex;
     justify-content: center;
@@ -107,34 +101,14 @@ const StyledSkills = styled.section`
   
   
 `
-const Contact = (props : SkillsProps) =>  {
+const Contact = (props : ContactProps) =>  {
 
-
-    const [wrappedItems, setWrappedItem]: [Element, Dispatch<SetStateAction<Element>>] = useState(document.getElementsByClassName('contact-block')[0])
-
-    const [test, setTest] = useState(null)
-
-    const detectWrap = (className: string) => {
-        let wrappedItems: Array<Element> = [];
-        let prevItem = {top: 0};
-        let currItem = {top: 0};
-        let items: HTMLCollectionOf<Element> = document.getElementsByClassName(className);
-
-        for (let i: number=0; i < items.length; i++){
-            currItem = items[i].getBoundingClientRect();
-            if(prevItem && prevItem.top < currItem.top){
-                wrappedItems.push(items[i])
-            }
-            prevItem = currItem
-        }
-        return wrappedItems.length === document.getElementsByClassName(className)!.length
-    }
 
     const [windowsWidth, setWindowsWidth]: [number, Dispatch<SetStateAction<number>>] = useState(window.innerWidth);
 
     useEffect(() => {
         window.addEventListener("resize", () => setWindowsWidth(window.innerWidth) )
-        if(detectWrap('contact-block'))
+        if(functions.detectWrap('contact-block'))
            (document.getElementById('section-contact-block') as HTMLElement).style.justifyContent = 'center'
         else
             (document.getElementById('section-contact-block') as HTMLElement).style.justifyContent = 'space-between'
@@ -165,5 +139,4 @@ const Contact = (props : SkillsProps) =>  {
 }
 
 const mapState = (state: RootState) => state.page
-
 export default connect(mapState)(Contact);
