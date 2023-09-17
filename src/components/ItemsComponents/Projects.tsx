@@ -154,47 +154,6 @@ const ProjectsContainer = (props : ProjectContainerProps): ReactElement =>  {
     );
 }
 
-/**
- *
- * <StyledProject className={'project'}>
- *                     <header>
- *                         Portfolio V1
- *                     </header>
- *                     <main>
- *                         <p>Mon premier portfolio (celui ci!) et il y aura probablement
- *                         d'autres versions!</p>
- *                         <ul>
- *                             <Tag name={'React'}/>
- *                             <Tag name={'Typescript'}/>
- *                             <Tag name={'HTML'}/>
- *                             <Tag name={'CSS'}/>
- *                             <Tag name={'Responsive'}/>
- *                         </ul>
- *                     </main>
- *                     <footer>
- *                         <a>GITHUB</a>
- *                     </footer>
- *                 </StyledProject>
- *                 <StyledProject className={'project'}>
- *                     <header>
- *                         Projet d'étude
- *                     </header>
- *                     <main>
- *                         <p>Simulation d'une application d'adoption d'animaux de compagnie</p>
- *                         <ul>
- *                             <Tag name={'React Native'}/>
- *                             <Tag name={'Javascript'}/>
- *                             <Tag name={'Symfony'}/>
- *                             <Tag name={'Docker'}/>
- *                         </ul>
- *                     </main>
- *                     <footer>
- *                         <a>GITHUB</a>
- *                         <a>DEMO</a>
- *                     </footer>
- *                 </StyledProject>
- * @param state
- */
 const mapState = (state: RootState) => state.page
 
 export default connect(mapState)(ProjectsContainer);
