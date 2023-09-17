@@ -5,11 +5,20 @@ import Tag from "../Tag";
 import constants from "../../utility/constants";
 import functions from "../../utility/functions";
 import {RootState} from "../../redux/redux";
+import config from "../../configs/config";
 
-
-type ProjectProps = {
+type ProjectContainerProps = {
     animationDelay: number,
 }
+
+type ProjectProps = {
+    title: string,
+    description: string,
+    tags: Array<string>,
+    githubLink: string,
+    demoLink?: string,
+}
+
 const loopProjectsContainer = () => {
     let style: string = '';
     for(let i: number=1; i<= 5; i++){
@@ -31,23 +40,19 @@ const loopProjectsContainer = () => {
     return css`${style}`
 }
 
-
 const StyledProjectsContainer = styled.section`
-    & {
-      position: relative;
-    }
-    #project-container {
-      display: flex;
-      flex-wrap: wrap;
-      flex-direction: row;
-      padding: 0;
-      justify-content: space-around;
-    }
-    ${loopProjectsContainer()}
-  
-  
+  & {
+    position: relative;
+  }
+  #project-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding: 0;
+    justify-content: space-around;
+  }
+  ${loopProjectsContainer()}
 `
-
 
 const StyledProject = styled.li`
   & {
@@ -68,7 +73,6 @@ const StyledProject = styled.li`
     padding: 20px;
   }
   
-  
   main{
     flex: 1;
     padding: 20px;
@@ -88,6 +92,7 @@ const StyledProject = styled.li`
       width: 30%;
       height: 50px;
       display: flex;
+      text-decoration: none;
       justify-content: center;
       align-items: center;
       font-size: ${constants.fontSize4};
@@ -106,9 +111,28 @@ const StyledProject = styled.li`
   }
 `
 
+const Project = (props: ProjectProps): ReactElement => {
+    return (
+        <StyledProject className={'project'}>
+            <header>
+                {props.title}
+            </header>
+            <main>
+                <p>{props.description}</p>
+                <ul>
+                    {props.tags.map((tagName: string) =>  <Tag name={tagName} />)}
+                </ul>
+            </main>
+            <footer>
+                <a href={props.githubLink}>GITHUB</a>
+                {props.demoLink ? <a href={props.demoLink}>DEMO</a> : null}
+            </footer>
+        </StyledProject>
+    )
+}
 
 
-const Projects = (props : ProjectProps): ReactElement =>  {
+const ProjectsContainer = (props : ProjectContainerProps): ReactElement =>  {
 
     const [windowsWidth, setWindowsWidth]: [number, Dispatch<SetStateAction<number>>] = useState(window.innerWidth);
 
@@ -124,48 +148,53 @@ const Projects = (props : ProjectProps): ReactElement =>  {
     return(
         <StyledProjectsContainer>
             <ul id={'project-container'}>
-                <StyledProject className={'project'}>
-                    <header>
-                        Portfolio V1
-                    </header>
-                    <main>
-                        <p>Mon premier portfolio (celui ci!) et il y aura probablement
-                        d'autres versions!</p>
-                        <ul>
-                            <Tag name={'React'}/>
-                            <Tag name={'Typescript'}/>
-                            <Tag name={'HTML'}/>
-                            <Tag name={'CSS'}/>
-                            <Tag name={'Responsive'}/>
-                        </ul>
-                    </main>
-                    <footer>
-                        <a>GITHUB</a>
-                    </footer>
-                </StyledProject>
-                <StyledProject className={'project'}>
-                    <header>
-                        Projet d'étude
-                    </header>
-                    <main>
-                        <p>Simulation d'une application d'adoption d'animaux de compagnie</p>
-                        <ul>
-                            <Tag name={'React Native'}/>
-                            <Tag name={'Javascript'}/>
-                            <Tag name={'Symfony'}/>
-                            <Tag name={'Docker'}/>
-                        </ul>
-                    </main>
-                    <footer>
-                        <a>GITHUB</a>
-                        <a>DEMO</a>
-                    </footer>
-                </StyledProject>
+                {config.projects.map((e) => <Project title={e.title} description={e.description} tags={e.tags} githubLink={e.githubLink} demoLink={e.demoLink}/>)}
             </ul>
         </StyledProjectsContainer>
     );
 }
 
+/**
+ *
+ * <StyledProject className={'project'}>
+ *                     <header>
+ *                         Portfolio V1
+ *                     </header>
+ *                     <main>
+ *                         <p>Mon premier portfolio (celui ci!) et il y aura probablement
+ *                         d'autres versions!</p>
+ *                         <ul>
+ *                             <Tag name={'React'}/>
+ *                             <Tag name={'Typescript'}/>
+ *                             <Tag name={'HTML'}/>
+ *                             <Tag name={'CSS'}/>
+ *                             <Tag name={'Responsive'}/>
+ *                         </ul>
+ *                     </main>
+ *                     <footer>
+ *                         <a>GITHUB</a>
+ *                     </footer>
+ *                 </StyledProject>
+ *                 <StyledProject className={'project'}>
+ *                     <header>
+ *                         Projet d'étude
+ *                     </header>
+ *                     <main>
+ *                         <p>Simulation d'une application d'adoption d'animaux de compagnie</p>
+ *                         <ul>
+ *                             <Tag name={'React Native'}/>
+ *                             <Tag name={'Javascript'}/>
+ *                             <Tag name={'Symfony'}/>
+ *                             <Tag name={'Docker'}/>
+ *                         </ul>
+ *                     </main>
+ *                     <footer>
+ *                         <a>GITHUB</a>
+ *                         <a>DEMO</a>
+ *                     </footer>
+ *                 </StyledProject>
+ * @param state
+ */
 const mapState = (state: RootState) => state.page
 
-export default connect(mapState)(Projects);
+export default connect(mapState)(ProjectsContainer);
