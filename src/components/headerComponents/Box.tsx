@@ -1,5 +1,4 @@
-import {connect, useDispatch, useSelector} from "react-redux";
-import {AppDispatch, RootState} from "../../redux/redux";
+
 import { styled} from "styled-components";
 import React from "react";
 

@@ -7,11 +7,12 @@ import constants from "../utility/constants";
 
 const StyledFooter: IStyledComponent<"web"> = styled.section`
   & {
-    height: 100px;
+    height: 80px;
     text-align: center;
     font-size: ${constants.fontSize5};
     font-weight: 500;
     color: ${constants.colorLight1};
+    padding: 0 30px;
   }
 `
 
