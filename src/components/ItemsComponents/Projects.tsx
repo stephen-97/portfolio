@@ -1,6 +1,7 @@
-import React, {Dispatch, SetStateAction, useEffect, useState} from 'react';
+import React, {Dispatch, ReactElement, SetStateAction, useEffect, useState} from 'react';
 import {css, styled} from "styled-components";
-import {connect, useSelector} from "react-redux";
+import {connect } from "react-redux";
+import Tag from "../Tag";
 import constants from "../../utility/constants";
 import functions from "../../utility/functions";
 import {RootState} from "../../redux/redux";
@@ -29,7 +30,9 @@ const loopProjectsContainer = () => {
     }
     return css`${style}`
 }
-const StyledProject = styled.section`
+
+
+const StyledProjectsContainer = styled.section`
     & {
       position: relative;
     }
@@ -41,53 +44,71 @@ const StyledProject = styled.section`
       justify-content: space-around;
     }
     ${loopProjectsContainer()}
-    .project {
-      height: 400px;
-      width: 350px;
-      background-color: ${constants.colorDark1};
-      list-style: none;
-      border-radius: ${constants.borderRadius1}px;
-      margin: 0 0 30px 0;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
+  
+  
+`
 
-    main{
-      flex: 1;
-      background-color: darkred;
-    }
+
+const StyledProject = styled.li`
+  & {
+    height: 350px;
+    width: 350px;
+    background-color: ${constants.colorDark1};
+    list-style: none;
+    border-radius: ${constants.borderRadius1}px;
+    margin: 0 0 30px 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
   
-    footer {
-      height: 80px;
+  header {
+    font-size: ${constants.fontSize1};
+    text-align: center;
+    padding: 20px;
+  }
+  
+  
+  main{
+    flex: 1;
+    padding: 20px;
+    ul {
+      padding: 0;
       display: flex;
-      justify-content: space-evenly;
-      align-items: center;
+      flex-wrap: wrap;
     }
+  }
   
+  footer {
+    height: 80px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
     a {
       width: 30%;
       height: 50px;
-      display: table-cell;
-      vertical-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: ${constants.fontSize4};
+      font-weight: bolder;
       background-color: ${constants.colorDark2};
       border-radius: ${constants.borderRadius1}px;
       border: 2px ${constants.color2} solid;
       cursor: pointer;
       color: ${constants.colorLight1};
-      
       &:hover {
         background-color: ${constants.color1};
         color: ${constants.colorDark1};
         transition: 0.5s ease-in-out;
       }
     }
+  }
 `
 
 
 
-
-const Projects = (props : ProjectProps) =>  {
+const Projects = (props : ProjectProps): ReactElement =>  {
 
     const [windowsWidth, setWindowsWidth]: [number, Dispatch<SetStateAction<number>>] = useState(window.innerWidth);
 
@@ -101,45 +122,47 @@ const Projects = (props : ProjectProps) =>  {
 
 
     return(
-        <StyledProject>
+        <StyledProjectsContainer>
             <ul id={'project-container'}>
-                <li className={'project'}>
+                <StyledProject className={'project'}>
                     <header>
-                        Portfolio
+                        Portfolio V1
                     </header>
                     <main>
+                        <p>Mon premier portfolio (celui ci!) et il y aura probablement
+                        d'autres versions!</p>
                         <ul>
-                            <li>React</li>
-                            <li>Typescript</li>
-                            <li>HTML</li>
-                            <li>CSS</li>
-                            <li>Responsive</li>
+                            <Tag name={'React'}/>
+                            <Tag name={'Typescript'}/>
+                            <Tag name={'HTML'}/>
+                            <Tag name={'CSS'}/>
+                            <Tag name={'Responsive'}/>
                         </ul>
                     </main>
                     <footer>
                         <a>GITHUB</a>
-                        <a >DEMO</a>
                     </footer>
-                </li>
-                <li className={'project'}>
+                </StyledProject>
+                <StyledProject className={'project'}>
                     <header>
                         Projet d'étude
                     </header>
                     <main>
+                        <p>Simulation d'une application d'adoption d'animaux de compagnie</p>
                         <ul>
-                            <li>React Native</li>
-                            <li>Javascript</li>
-                            <li>Symfony</li>
-                            <li>Docker</li>
+                            <Tag name={'React Native'}/>
+                            <Tag name={'Javascript'}/>
+                            <Tag name={'Symfony'}/>
+                            <Tag name={'Docker'}/>
                         </ul>
                     </main>
                     <footer>
                         <a>GITHUB</a>
                         <a>DEMO</a>
                     </footer>
-                </li>
+                </StyledProject>
             </ul>
-        </StyledProject>
+        </StyledProjectsContainer>
     );
 }
 
