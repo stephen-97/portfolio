@@ -17,7 +17,7 @@ import LetterIcon from "../assets/letter.svg"
 
 
 import Box from "./headerComponents/Box";
-import constants from "../constants/constants";
+import constants from "../utility/constants";
 import Item from "./ItemsComponents/Item";
 import SocialMediaContainer from "./SocialMediaContainer";
 
@@ -63,9 +63,9 @@ const MainSection = (props : SmallBlockProps) =>  {
                 if(entry.target.classList.contains('project')) entry.target.classList.add('active-project');
                 if(entry.target.classList.contains('blockStudy')) entry.target.classList.add('active-blockStudy')
                 if(entry.target.classList.contains('experienceItem')) entry.target.classList.add('activeExperienceItem')
-                //if(entry.target.classList.contains('experienceBlock')) entry.target.classList.add('activeExperienceBlock')
                 if(entry.target.classList.contains('contact-block')) entry.target.classList.add('active-contact-block')
                 if(entry.target.classList.contains('experience-skills-block')) entry.target.classList.add('active-experience-skills-block')
+                if(entry.target.classList.contains('project')) entry.target.classList.add('active-project')
             }
         })
     })
@@ -88,6 +88,9 @@ const MainSection = (props : SmallBlockProps) =>  {
         const experienceBlocks = document.querySelectorAll(".experienceBlock")
         //experienceAnne
         const experienceAnne = document.querySelectorAll(".experience-skills-block")
+        //project Container
+        const projectsContainers = document.querySelectorAll(".project")
+
 
 
         itemsElements.forEach((el: Element) => observer.observe((el)))
@@ -97,7 +100,7 @@ const MainSection = (props : SmallBlockProps) =>  {
         skillsElements.forEach((el: Element) => observer.observe((el)))
         experienceBlocks.forEach((el: Element) => observer.observe((el)))
         experienceAnne.forEach((el: Element) => observer.observe((el)))
-
+        projectsContainers.forEach((el: Element) => observer.observe((el)))
     }, [] )
 
 

@@ -2,7 +2,7 @@ import React from 'react';
 import {connect, useSelector} from "react-redux";
 import { RootState} from "../../redux/redux";
 import {styled} from "styled-components";
-import constants from "../../constants/constants";
+import constants from "../../utility/constants";
 import Stephen_profile from "../../assets/Stephen-profile.jpg";
 
 type PresentationProps = {

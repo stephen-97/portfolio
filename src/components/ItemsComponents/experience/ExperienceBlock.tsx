@@ -2,7 +2,8 @@ import React, {Dispatch, ForwardedRef, forwardRef, useEffect, useState} from 're
 import {css, styled} from "styled-components";
 import {connect, useSelector} from "react-redux";
 import { RootState} from "../../../redux/redux";
-import constants from "../../../constants/constants";
+import constants from "../../../utility/constants";
+import Tag from "../../Tag";
 
 
 type ExperienceBlockPops = {
@@ -39,7 +40,7 @@ const StyledExperienceBlock = styled.section`
     background-color: ${constants.colorDark1};
     box-shadow: ${constants.boxShadow};
     font-size: 25px;
-    border-radius: 10px;
+    border-radius: ${constants.borderRadius1}px;
     transition: all ${transitionExperienceBlock}s ease;
 
     .dateExperience {
@@ -58,14 +59,7 @@ const StyledExperienceBlock = styled.section`
         .tagsExperience {
           display: flex;
           flex-wrap: wrap;
-
-          // TAGs
-          span {
-            padding: 5px 10px 5px 10px;
-            background-color: #282c34;
-            border-radius: 10px;
-            margin: 10px 10px 0 0;
-          }
+          padding: 0;
         }
       }
       .titleExperience {
@@ -111,14 +105,14 @@ const ExperienceBlock = forwardRef<HTMLDivElement, ExperienceBlockPops>((props: 
                         <h5 className={'titleExperience'}>{`${props.title}`}</h5>
                         <span className={'dateExperience'}>{`${props.date1} ${props.date2}`}</span>
                         <div className={'descriptionExperience'}> {`${props.description}`}</div>
-                        <div className={'tagsExperience'}>
-                            <span>CSS</span>
-                            <span>React</span>
-                            <span>Node</span>
-                            <span>TypeScript</span>
-                            <span>Ansible</span>
-                            <span>Terraform</span>
-                        </div>
+                        <ul className={'tagsExperience'}>
+                            <Tag name={'CSS'} />
+                            <Tag name={'React'}/>
+                            <Tag name={'Node'}/>
+                            <Tag name={'Typescript'}/>
+                            <Tag name={'Ansible'}/>
+                            <Tag name={'Terraform'}/>
+                        </ul>
                     </div>
             </div>
         </StyledExperienceBlock>

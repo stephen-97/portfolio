@@ -3,7 +3,7 @@ import { RootState} from "../../redux/redux";
 import { styled} from "styled-components";
 import React, {SetStateAction, useEffect, useState, Dispatch, ReactElement} from "react";
 import HeaderButton from "./HeaderButton";
-import constants from "../../constants/constants";
+import constants from "../../utility/constants";
 import config from "../../configs/config";
 import HeaderSideMenu from "./HeaderSideMenu";
 

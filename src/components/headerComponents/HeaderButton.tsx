@@ -1,6 +1,6 @@
 import React, {ReactElement, useEffect, useState} from 'react';
 import {styled, css} from "styled-components";
-import constants from "../../constants/constants";
+import constants from "../../utility/constants";
 
 type HeaderButtonProps = {
     icon:  string,

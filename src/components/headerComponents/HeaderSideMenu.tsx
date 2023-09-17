@@ -2,7 +2,7 @@ import React, {createRef, Dispatch, ReactElement, RefObject, SetStateAction, use
 import { Helmet } from 'react-helmet';
 import {useOnClickOutside} from "usehooks-ts";
 import {styled } from "styled-components";
-import constants from "../../constants/constants";
+import constants from "../../utility/constants";
 import config from "../../configs/config";
 
 
@@ -12,7 +12,7 @@ const StyledMenu = styled.button<{$menuToggle: boolean}>`
   @media (max-width: ${constants.maxWindowWidthForSideMenuButton}px){
     display: block;
     position: fixed;
-    background-color: ${constants.color1};
+    background-color: ${constants.colorDark1};
     border: none;
     z-index: 1;
     min-width: min(70vw, 400px);
@@ -21,7 +21,7 @@ const StyledMenu = styled.button<{$menuToggle: boolean}>`
     top: 0;
     right: 0;
     bottom: 0;
-    box-shadow: -10px 0 30px -15px ${constants.color1};
+    box-shadow: -10px 0 30px -15px ${constants.colorDark1};
     transition: ease-in-out 0.3s;
     transform: translateX(${props => props.$menuToggle ? 0 : 100}vw);
     transform-origin: right;

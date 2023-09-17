@@ -1,6 +1,6 @@
 
 import { createGlobalStyle } from 'styled-components';
-import constants from "../constants/constants";
+import constants from "../utility/constants";
 
 const GlobalStyle = createGlobalStyle`
   html {
