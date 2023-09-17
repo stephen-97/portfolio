@@ -124,8 +124,8 @@ const Project = (props: ProjectProps): ReactElement => {
                 </ul>
             </main>
             <footer>
-                <a href={props.githubLink}>GITHUB</a>
-                {props.demoLink ? <a href={props.demoLink}>DEMO</a> : null}
+                <a href={props.githubLink} target={'_blank'}>GITHUB</a>
+                {props.demoLink ? <a href={props.demoLink} target={'_blank'}>DEMO</a> : null}
             </footer>
         </StyledProject>
     )
