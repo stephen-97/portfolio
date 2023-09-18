@@ -22,7 +22,7 @@ const StyledBockComponent = styled.section`
   .item {
     position: relative;
     opacity: 0;
-    max-width: 1100px;
+    max-width: 1000px;
     margin: 40px auto;
     padding: 0 10px;
     min-height: 100vh;

@@ -76,6 +76,9 @@ const StyledProject = styled.li`
   main{
     flex: 1;
     padding: 20px;
+    p {
+      color: ${constants.colorLight2};
+    }
     ul {
       padding: 0;
       display: flex;

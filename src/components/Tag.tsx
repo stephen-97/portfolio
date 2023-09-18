@@ -14,6 +14,7 @@ const StyledTag = styled.li`
     border-radius: 10px;
     margin: 10px 10px 0 0;
     list-style-type: none;
+    color: ${constants.color2};
   }
 `
 const Tag = (props: TagProps): ReactElement =>  {

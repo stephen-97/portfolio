@@ -73,13 +73,12 @@ const StyledSectionStudy = styled.section`
       flex-wrap: wrap;
       padding: 0;
     }
-    > div {
+    > span {
       font-size: ${constants.fontSize4};
+      color: ${constants.colorLight2};
       font-weight: 200;
     }
   }
-  
-  
 `
 
 
@@ -90,7 +89,7 @@ const Study = (props : StudyProps): ReactElement =>  {
             <ul>
                 <ol className={'blockStudy'}>
                     <h2>RNCP36009 Directeur de projet informatique (Bac+5)</h2>
-                    <div>Aston Ecole</div>
+                    <span>Aston Ecole</span>
                     <ul>
                         <Tag name={'Architecture logicielle'}/>
                         <Tag name={'Cloud Azure'}/>
@@ -102,7 +101,7 @@ const Study = (props : StudyProps): ReactElement =>  {
                 </ol>
                 <ol className={'blockStudy'}>
                     <h2>RNCP31678 Concepteur et Développeur d'application (Bac+3/4)</h2>
-                    <div>2iTech Academy by M2i</div>
+                    <span>2iTech Academy by M2i</span>
                     <ul>
                         <Tag name={'Merise'}/>
                         <Tag name={'UML'}/>
@@ -116,7 +115,7 @@ const Study = (props : StudyProps): ReactElement =>  {
                 </ol>
                 <ol className={'blockStudy'}>
                     <h2>L2 Informatique (Bac+2)</h2>
-                    <div>Paris Descartes</div>
+                    <span>Paris Descartes</span>
                     <ul>
                         <Tag name={'C'}/>
                         <Tag name={'Java'}/>

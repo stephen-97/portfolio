@@ -43,9 +43,9 @@ const StyledExperienceBlock = styled.section`
     border-radius: ${constants.borderRadius1}px;
     transition: all ${transitionExperienceBlock}s ease;
 
-    .dateExperience {
+    .experience-date {
       width: 500px;
-      font-size: ${constants.fontSize2};
+      font-size: ${constants.fontSize3};
       text-align: center;
       flex: 2;
     }
@@ -62,14 +62,15 @@ const StyledExperienceBlock = styled.section`
           padding: 0;
         }
       }
-      .titleExperience {
+      .title-experience {
         margin: 10px 0;
-        font-size: ${constants.fontSize1};
+        font-size: clamp(${constants.h3_min},3vw, ${constants.h3_max});
         color: ${constants.colorLight1};
         font-weight: bold;
       }
 
-      .descriptionExperience {
+      .experience-description {
+        color: ${constants.colorLight2};
         margin: 15px 0;
       }
 
@@ -102,9 +103,9 @@ const ExperienceBlock = forwardRef<HTMLDivElement, ExperienceBlockPops>((props: 
         <StyledExperienceBlock>
             <div className={'experienceItem'}>
                     <div className={'contentDescription'}>
-                        <h5 className={'titleExperience'}>{`${props.title}`}</h5>
-                        <span className={'dateExperience'}>{`${props.date1} ${props.date2}`}</span>
-                        <div className={'descriptionExperience'}> {`${props.description}`}</div>
+                        <h3 className={'title-experience'}>{`${props.title}`}</h3>
+                        <span className={'experience-date'}>{`${props.date1} ${props.date2}`}</span>
+                        <div className={'experience-description'}> {`${props.description}`}</div>
                         <ul className={'tagsExperience'}>
                             <Tag name={'CSS'} />
                             <Tag name={'React'}/>

@@ -19,7 +19,7 @@ const StyledPresentation = styled.section`
   }
   h1 {
     opacity: 0;
-    font-size:  clamp(35px, 7vw, 70px);
+    font-size:  clamp(${constants.h1_min}px, 7vw, ${constants.h1_max}px);
     font-weight: bolder;
     color: ${constants.color1};
     margin: 0 0 0 0;
@@ -27,7 +27,7 @@ const StyledPresentation = styled.section`
   }
   h2 {
     opacity: 0;
-    font-size: clamp(30px, 4vw, 40px);
+    font-size: clamp(${constants.h2_min}px, 4vw, ${constants.h2_max}px);
     animation: animatePresentation 0.5s ease ${constants.headerAnim + constants.secondAnim*2/5}s forwards;
   }
   .description_picture {
@@ -37,7 +37,8 @@ const StyledPresentation = styled.section`
   }
   p {
     margin: 0;
-    font-size: clamp(19px, 2vw, 21px);
+    color: ${constants.colorLight2};
+    font-size: clamp(${constants.p_min}px, 2vw, ${constants.p_max}px);
     
     > span {
       color: ${constants.color2}
