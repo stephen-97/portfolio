@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { styled} from "styled-components";
 import './App.css';
 
@@ -8,7 +8,7 @@ import MainSection from "./components/MainSection";
 import Header from "./components/headerComponents/Header";
 import GlobalStyle from "./utility/GlobalStyle";
 import Footer from "./components/Footer";
-
+import Loader from "./components/Loader";
 const StyledMainComponent = styled.section`
   
   body {
@@ -28,14 +28,26 @@ const StyledMainComponent = styled.section`
 `
 
 function App() {
+
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+
+    }, [isLoading]);
     return (
         <Provider store={store}>
             <GlobalStyle />
             <StyledMainComponent>
-                <Header />
-                <MainSection/>
-                <Footer />
-                <StyledMainComponent />
+                {isLoading ?
+                    <Loader finishLoading={() => setIsLoading(false)} />
+                    :
+                    <>
+                        <Header />
+                        <MainSection/>
+                        <Footer />
+                        <StyledMainComponent />
+                    </>
+                }
             </StyledMainComponent>
         </Provider>
     );

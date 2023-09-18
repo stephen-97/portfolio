@@ -2,7 +2,6 @@ import React, {ReactElement} from "react";
 import { styled} from "styled-components";
 import constants from "../utility/constants";
 
-
 type TagProps = {
     name: string,
 }

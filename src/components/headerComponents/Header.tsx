@@ -31,25 +31,11 @@ const StyledHeader = styled.header`
   box-shadow: rgba(0,0,0,0.16) 0 10px 36px 0, rgba(0,0,0,0.06) 0 0 0 1px;
   
  
-  .leftBlockContent {
+  .header-nav {
     height: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-  }
-  .logoContainer {
-    display: table;
-    font-weight: bolder;
-    align-items: center;
-    margin-left: 2vw;
-    
-    > span {
-      display: table-cell;
-      vertical-align: middle;
-      background-color: rebeccapurple;
-      letter-spacing: .15em;
-      font-size: 38px;
-    }
   }
   
 `
@@ -63,13 +49,12 @@ const Header = (): ReactElement =>  {
         window.addEventListener("resize", () => setWindowsWidth(window.innerWidth) )
     }, [window.innerWidth > constants.maxWindowWidthForSideMenuButton]);
 
-    
+    const [isLoading, setIsLoading] = useState(true);
+
     return(
         <StyledHeader>
-            <nav className={"leftBlockContent"}>
-                <div className={'logoContainer'}>
-                    <Logo />
-                </div>
+            <nav className={"header-nav"}>
+                <Logo finishLoading={() => setIsLoading(false)}/>
                 <StyledButtonContainer>
                     <div className={"buttonContainer"}>
                         {config.navLinks.map(({name, icon}, index) => (
