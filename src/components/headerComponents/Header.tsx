@@ -61,6 +61,7 @@ const Header = (): ReactElement =>  {
                             <HeaderButton
                                 index={index+1}
                                 icon={icon}
+                                name={name}
                                 display={windowsWidth > constants.maxWindowWidthForSideMenuButton ? "flex" : "none"}
                             />
                         ))}

@@ -18,7 +18,7 @@ const navLinks: Array<navLinkInterface> =
         {name: 'Présentation', icon: WaveIcon, alt: 'Wave Icon'},
         {name: 'Expériences', icon: BriefCaseIcon, alt: 'BriefCase Icon'},
         {name: 'Études', icon: GraduationIcon, alt: 'Graduation Icon'},
-        {name: 'Projets personnels', icon: IdeaIcon, alt: 'Idean Icon'},
+        {name: 'Projets', icon: IdeaIcon, alt: 'Idean Icon'},
         {name: 'Contacts', icon: LetterIcon, alt: 'Contact Icon'},
     ]
 

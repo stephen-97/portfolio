@@ -3,6 +3,7 @@ import {styled, css} from "styled-components";
 import constants from "../../utility/constants";
 
 type HeaderButtonProps = {
+    name: string,
     icon:  string,
     display: string,
     index?: number,
@@ -39,15 +40,27 @@ const StyledButton = styled.section<{ displayButton?: string, firstAnimationIsFi
     overflow: hidden;
     cursor:  pointer;
     justify-content: center;
+    align-items: center;
+    
+    &:hover {
+      span {
+        color: ${constants.color1}
+      }
+      .button-img {
+        filter: ${constants.color1Filter};
+      }
+    }
   }
 
   ${({firstAnimationIsFinished}) => !firstAnimationIsFinished && loopButtonList()}
-  
+  span {
+    color: ${constants.colorWhiteFilter}
+  }
   .button-img {
-    height: 60px;
-    width: 60px;
+    height: 30px;
+    width: 30px;
     filter: ${constants.colorWhiteFilter};
-
+    margin-left: 10px;
   }
   .button-img:hover {
     filter: ${constants.color1Filter};
@@ -74,9 +87,11 @@ const StyledButton = styled.section<{ displayButton?: string, firstAnimationIsFi
 
   .activeButton, .button-img:hover {
 
+    span {
+      color: ${constants.color1}
+    }
     .button-img {
       filter: ${constants.color1Filter};
-      transition: ease 0.5s;
     }
     .buttonColorContainer {
       top:0;
@@ -118,6 +133,7 @@ const HeaderButton = (props : HeaderButtonProps): ReactElement =>  {
     return(
             <StyledButton displayButton={props.display} firstAnimationIsFinished={firstAnimationFinished}>
                     <div className={`button  ${props.index ? `button${props.index}` : null }`}>
+                        <span>{props.name}</span>
                         <img className={'button-img'} src={props.icon} alt="React Logo" />
                     </div>
             </StyledButton>
