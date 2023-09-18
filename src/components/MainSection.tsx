@@ -16,7 +16,7 @@ import IdeaIcon from "../assets/exchange-ideas.svg"
 import LetterIcon from "../assets/letter.svg"
 
 
-import Box from "./headerComponents/Box";
+import Box from "./Box";
 import constants from "../utility/constants";
 import Item from "./ItemsComponents/Item";
 import SocialMediaContainer from "./SocialMediaContainer";
@@ -165,12 +165,12 @@ const MainSection = (props : SmallBlockProps) =>  {
             buttons.forEach((item: Element) => {
                 if (element === item) {
                     item.classList.add("activeButton");
-                    let e = document.querySelector<HTMLElement>('#box');
+                    let e: HTMLElement | null = document.querySelector<HTMLElement>('#box');
                     if(item.classList.contains('button1')) e!.style.transform = "rotate3d(0,0, 0, 90deg)";
-                    if(item.classList.contains('button2')) e!.style.transform = "rotate3d(0,90, 0, 90deg)";
-                    if(item.classList.contains('button3')) e!.style.transform = "rotate3d(-45,0, 0, 90deg)";
-                    if(item.classList.contains('button4')) e!.style.transform = "rotate3d(0,180, 0, 90deg)";
-
+                    if(item.classList.contains('button2')) e!.style.transform = "rotate3d(0,1, 0, 90deg)";
+                    if(item.classList.contains('button3')) e!.style.transform = "rotate3d(0, 1, 0, 180deg)";
+                    if(item.classList.contains('button4')) e!.style.transform = "rotate3d(0,1, 0, 270deg)";
+                    if(item.classList.contains('button5')) e!.style.transform = "rotate3d(-1,0, 0, 90deg)";
                 } else {
                     item.classList.remove("activeButton");
                 }
@@ -186,7 +186,6 @@ const MainSection = (props : SmallBlockProps) =>  {
             <Item id={'study-img'} keyItem={3} ref={refStudy} icon={GraduationIcon} component={<Study animationDelay={blockAnimationDelay}/>}/>
             <Item id={'idea-img'} keyItem={4} ref={refProjects} icon={IdeaIcon} component={<Projects animationDelay={blockAnimationDelay}/>}/>
             <Item id={'skills-img'} keyItem={5} ref={refSkills} icon={LetterIcon} component={<Skills animationDelay={blockAnimationDelay}/>}/>
-            <Box />
             <SocialMediaContainer />
         </StyledItemContainer>
     );

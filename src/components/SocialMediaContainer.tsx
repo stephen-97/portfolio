@@ -1,27 +1,44 @@
-import React, {ReactElement} from "react";
+import React, {ReactElement, useEffect} from "react";
 import { styled} from "styled-components";
 import constants from "../utility/constants";
 import config from "../configs/config";
+import Box from "./Box";
 
+
+
+const socialMediaAnimationDelay = 4.5;
 
 const StyledSocialMediaContainer = styled.div`
-  display: none;
-
+  visibility: hidden;
+  opacity: 0;
+  animation: animSocialMediaContainer 0.5s ease-in-out ${socialMediaAnimationDelay}s forwards;
+  @keyframes animSocialMediaContainer {
+    to {
+      opacity: 1;
+    }
+  }
+  
   @media screen and (min-width: ${constants.maxWindowWidthForSideMenuButton}px) {
-    display: flex;
+    visibility: visible;
+    display: block;
     flex-direction: column;
     box-sizing: content-box;
     position: fixed;
     left: 50px;
     bottom: 0;
-    height: 40vh;
+    border-bottom: none;
+  }
+  
+  nav {
+    display: block;
     border: 1px dashed;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     border-bottom: none;
+    position: relative;
+    height: 350px;
     padding: 10px;
   }
-    
   img {
     margin-bottom: 30px;
     cursor: pointer;
@@ -30,29 +47,34 @@ const StyledSocialMediaContainer = styled.div`
       filter: ${constants.color1Filter};
     }
   }
-  
   ol {
     display: flex;
     flex-direction: column;
     padding: 0;
+    a {
+      text-align: center;
+    }
   }
-  .vertical-line{
-    position: absolute;
-    height: 100%;
-    width: 1px;
-    background-color: black;
-    translate: transform(-50%);
-    left: 50%;
-    z-index: -1;
-    border: 1px;
+  
+  #box-container {
+    top: 10px;
+    position: relative;
   }
 `
 const SocialMediaContainer = (): ReactElement =>  {
 
+
+    useEffect(() => {
+
+    }, []);
+
     return(
         <StyledSocialMediaContainer>
+            <div id={'box-container'}>
+                <Box />
+            </div>
             <nav>
-                <ol className={'socialMedia-links-container'}>
+                <ol id={'socialMedia-links-container'}>
                     {config.socialMediaLinks.map(({name, icon, alt, url}) => (
                         <a href={url} target={'_blank'} >
                             <img height={50} src={icon} alt={alt} />

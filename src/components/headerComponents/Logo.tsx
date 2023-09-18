@@ -6,13 +6,12 @@ import functions from "../../utility/functions";
 
 
 const widthSpan = 60;
-const heightSpan = 5;
+const heightSpan =4;
 const StyledLogo = styled.div`
 
   &{
-    background-color: ${constants.colorDark1};
     position: relative;
-    height: 100%;
+    height: 95%;
     width: 120px;
     font-size: 0;
     -webkit-appearance: none;
