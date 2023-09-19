@@ -42,6 +42,7 @@ const GlobalStyle = createGlobalStyle`
   
   p {
     font-size: clamp(${constants.p_min}px, 2vw, ${constants.p_max}px);
+    color: ${constants.colorLight2}
   }
 `;
 

@@ -75,12 +75,13 @@ const StyledProject = styled.li`
   
   main{
     flex: 1;
-    padding: 20px;
+    padding: 10px 20px;
     p {
-      color: ${constants.colorLight2};
+      margin: 10px 0;
+      font-size: clamp(17px, 2vw, 18px);;
     }
     ul {
-      padding: 0;
+      padding: 15px 0;
       display: flex;
       flex-wrap: wrap;
     }
@@ -123,7 +124,7 @@ const Project = (props: ProjectProps): ReactElement => {
             <main>
                 <p>{props.description}</p>
                 <ul>
-                    {props.tags.map((tagName: string) =>  <Tag name={tagName} />)}
+                    {props.tags.map((tagName, i) =>  <Tag key={i} name={tagName} />)}
                 </ul>
             </main>
             <footer>
@@ -151,7 +152,7 @@ const ProjectsContainer = (props : ProjectContainerProps): ReactElement =>  {
     return(
         <StyledProjectsContainer>
             <ul id={'project-container'}>
-                {config.projects.map((e) => <Project title={e.title} description={e.description} tags={e.tags} githubLink={e.githubLink} demoLink={e.demoLink}/>)}
+                {config.projects.map((e, i) => <Project key={i} title={e.title} description={e.description} tags={e.tags} githubLink={e.githubLink} demoLink={e.demoLink}/>)}
             </ul>
         </StyledProjectsContainer>
     );

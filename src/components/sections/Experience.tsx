@@ -317,15 +317,15 @@ const Experience = forwardRef<HTMLDivElement, ExperienceProps>((props: Experienc
                             {
                                 'FrontEnd':
                                     <>
-                                        {frontEndSkills.map(e => <span>{e.name}<span>{e.level}</span></span>)}
+                                        {frontEndSkills.map((e, i) => <span key={i}>{e.name}<span>{e.level}</span></span>)}
                                     </>,
                                 'BackEnd':
                                     <>
-                                        {backEndSkills.map(e => <span>{e.name}<span>{e.level}</span></span>)}
+                                        {backEndSkills.map((e, i) => <span key={i}>{e.name}<span>{e.level}</span></span>)}
                                     </>,
                                 'DevOps':
                                     <>
-                                        {othersToolsSkills.map(e => <span>{e.name}<span>{e.level}</span></span>)}
+                                        {othersToolsSkills.map((e, i) => <span key={i}>{e.name}<span>{e.level}</span></span>)}
                                     </>
                             }[experiencePattern]
                         }

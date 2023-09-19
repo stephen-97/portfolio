@@ -48,7 +48,7 @@ interface ProjectInterface {
 const projects: Array<ProjectInterface> = [
     {
         title: 'Portfolio V1',
-        description: "Mon premier portfolio (celui ci!) et il y aura probablement d'autres versions!",
+        description: "Mon premier portfolio (celui ci!). Il y aura probablement d'autres versions !",
         tags: ["React", "Typescript", "HTML", "CSS", "Responsive"],
         githubLink: 'https://github.com/stephen-97/portfolio'
     },

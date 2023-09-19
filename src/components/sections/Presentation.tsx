@@ -34,7 +34,7 @@ const StyledPresentation = styled.section`
     margin: 0;
     color: ${constants.colorLight2};
     > span {
-      color: ${constants.color2}
+      color: ${constants.color2};
     }
   }
 
@@ -123,7 +123,9 @@ const Presentation = (props: PresentationProps) => {
             <span className={'description_picture'}>
                 <div className={'description'}>
                     <p>
-                        Bonjour et bienvenu sur mon portefolio ! Je suis un jeune développeur <span>javascript et typeScript Junior</span>  ayant
+                        Bonjour et bienvenu sur mon portefolio ! Je suis un jeune développeur
+                        <span>javascript et typeScript Junior</span>
+                        ayant
                         suivi des formations en alternance à Paris du bac <span>jusqu'au bac+5</span>.
                         Je maîtrise plusieurs langages comme HTML, CSS, TypeScript, PHP.. Je possède néanmoins une
                         grande préférence pour les langages Javascript & TypeScript, et les librairies comme
@@ -151,4 +153,5 @@ const Presentation = (props: PresentationProps) => {
 }
 
 export default Presentation;
+
 

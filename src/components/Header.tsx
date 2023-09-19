@@ -55,6 +55,7 @@ const Header = (): ReactElement => {
                     <div className={"buttonContainer"}>
                         {config.navLinks.map(({name, icon}, index) => (
                             <HeaderButton
+                                key={index}
                                 index={index + 1}
                                 icon={icon}
                                 name={name}

@@ -208,16 +208,16 @@ const HeaderSideMenu = (): ReactElement =>  {
             >
                 <nav id={'side-menu-button-container'}>
                     <ol>
-                        {config.navLinks.map(({name, icon, alt}) => (
-                            <ul className={'side-menu-button'} onClick={() => setMenuToggle(false)}>
+                        {config.navLinks.map(({name, icon, alt}, index) => (
+                            <ul className={'side-menu-button'} onClick={() => setMenuToggle(false)} key={index}>
                                 <img src={icon} alt={alt} height={40}  width={40}/>
                                 <span>{name}</span>
                             </ul>
                         ))}
                     </ol>
                     <ol id={'socialMedia-links-container'}>
-                        {config.socialMediaLinks.map(({name, icon, alt, url}) => (
-                            <ul className={'side-menu-button-socialMedia'}>
+                        {config.socialMediaLinks.map(({name, icon, alt, url}, index) => (
+                            <ul className={'side-menu-button-socialMedia'} key={index}>
                                 <a href={url} target={'_blank'} >
                                     <img src={icon} alt={alt} height={50}  width={50}/>
                                 </a>

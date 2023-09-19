@@ -169,15 +169,15 @@ const Main = () => {
 
     return (
         <StyledItemContainer>
-            <Item id={'wave-img-presentation'} keyItem={1} ref={refPresentation} icon={WaveIcon}
+            <Item id={'wave-img-presentation'} keyItem={1} refProp={refPresentation} icon={WaveIcon}
                   component={<Presentation animationDelay={blockAnimationDelay}/>}/>
-            <Item id={'briefCase-img'} keyItem={2} ref={refExperience} icon={BriefCaseIcon}
+            <Item id={'briefCase-img'} keyItem={2} refProp={refExperience} icon={BriefCaseIcon}
                   component={<Experience animationDelay={blockAnimationDelay}/>}/>
-            <Item id={'study-img'} keyItem={3} ref={refStudy} icon={GraduationIcon}
+            <Item id={'study-img'} keyItem={3} refProp={refStudy} icon={GraduationIcon}
                   component={<Study animationDelay={blockAnimationDelay}/>}/>
-            <Item id={'idea-img'} keyItem={4} ref={refProjects} icon={IdeaIcon}
+            <Item id={'idea-img'} keyItem={4} refProp={refProjects} icon={IdeaIcon}
                   component={<Projects animationDelay={blockAnimationDelay}/>}/>
-            <Item id={'skills-img'} keyItem={5} ref={refContatcs} icon={LetterIcon}
+            <Item id={'skills-img'} keyItem={5} refProp={refContatcs} icon={LetterIcon}
                   component={<Skills animationDelay={blockAnimationDelay}/>}/>
             <SocialMediaContainer/>
         </StyledItemContainer>

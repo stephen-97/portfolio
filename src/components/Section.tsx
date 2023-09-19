@@ -6,7 +6,7 @@ import constants from '../utility/constants'
 type SectionProps = {
     id: string,
     icon: string,
-    ref: LegacyRef<HTMLDivElement>,
+    refProp: LegacyRef<HTMLDivElement>,
     keyItem: number,
     component: JSX.Element,
 }
@@ -160,7 +160,7 @@ const Section = (props: SectionProps) => {
 
     return (
         <StyledBockComponent>
-            <section ref={props.ref} className={`item item${props.keyItem}`}>
+            <section ref={props.refProp} className={`item item${props.keyItem}`}>
                 <div className={'blockContainer'}>
                     <div className={'title'}>
                         <div className={'lineContainer'}>

@@ -1,5 +1,5 @@
 import React, {ReactElement, useEffect, useState} from 'react';
-import {styled, css} from "styled-components";
+import {styled, css, ThemeProvider} from "styled-components";
 import constants from "../../utility/constants";
 
 type HeaderButtonProps = {
@@ -30,11 +30,12 @@ const loopButtonList = () => {
     return css`${style}`
 }
 
-const StyledButton = styled.section<{ displayButton?: string, firstAnimationIsFinished: boolean }>`
+//${({firstAnimationIsFinished}) => !firstAnimationIsFinished && loopButtonList()}
+const StyledButton = styled.section`
   
   .button {
     position: relative;
-    display: ${props => props.displayButton};
+    display: ${props => props.theme.displayButton};
     line-height: 50px;
     margin: 0 clamp(10px, 2vw, 30px);
     overflow: hidden;
@@ -52,7 +53,8 @@ const StyledButton = styled.section<{ displayButton?: string, firstAnimationIsFi
     }
   }
 
-  ${({firstAnimationIsFinished}) => !firstAnimationIsFinished && loopButtonList()}
+  ${props => !props.theme.firstAnimationFinished && loopButtonList()}
+  
   span {
     color: ${constants.colorWhiteFilter}
   }
@@ -130,13 +132,19 @@ const HeaderButton = (props : HeaderButtonProps): ReactElement =>  {
         }, constants.headerAnim*1500);
     }, []);
 
+    const theme = {
+        firstAnimationFinished : firstAnimationFinished,
+        displayButton : props.display
+    }
     return(
-            <StyledButton displayButton={props.display} firstAnimationIsFinished={firstAnimationFinished}>
-                    <div className={`button  ${props.index ? `button${props.index}` : null }`}>
-                        <span>{props.name}</span>
-                        <img className={'button-img'} src={props.icon} alt="React Logo" />
-                    </div>
+        <ThemeProvider theme={theme}>
+            <StyledButton>
+                <div className={`button  ${props.index ? `button${props.index}` : null }`}>
+                    <span>{props.name}</span>
+                    <img className={'button-img'} src={props.icon} alt="React Logo" />
+                </div>
             </StyledButton>
+        </ThemeProvider>
     );
 }
 
