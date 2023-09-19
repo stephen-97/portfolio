@@ -8,8 +8,8 @@ import config from "../../configs/config";
 
 const StyledMenu = styled.button<{$menuToggle: boolean}>`
   display: none;
-  
-  @media (max-width: ${constants.maxWindowWidthForSideMenuButton}px){
+
+  @media (max-width: ${constants.maxWindowWidthForSideMenuButton}px) {
     display: block;
     position: fixed;
     background-color: ${constants.colorDark1};
@@ -25,15 +25,15 @@ const StyledMenu = styled.button<{$menuToggle: boolean}>`
     transition: ease-in-out 0.3s;
     transform: translateX(${props => props.$menuToggle ? 0 : 100}vw);
     transform-origin: right;
-    visibility: ${props => props.$menuToggle  ? 'visible' : 'hidden'};
+    visibility: ${props => props.$menuToggle ? 'visible' : 'hidden'};
   }
-  
+
   #side-menu-button-container {
-    
+
     ol {
       text-align: left;
-      
-      ul{
+
+      ul {
         display: table;
         padding: 0 20px;
         vertical-align: center;
@@ -41,16 +41,19 @@ const StyledMenu = styled.button<{$menuToggle: boolean}>`
         font-size: ${constants.fontSize2};
         cursor: pointer;
         color: ${constants.colorLight1};
-        
-        &:hover{
+
+        &:hover {
           color: ${constants.color1};
+
           img {
             filter: ${constants.colorWhiteFilter};
           }
         }
+
         img {
-          filter:  ${constants.colorWhiteFilter}
+          filter: ${constants.colorWhiteFilter}
         }
+
         span {
           display: table-cell;
           vertical-align: middle;
@@ -58,21 +61,22 @@ const StyledMenu = styled.button<{$menuToggle: boolean}>`
         }
       }
     }
+
     #socialMedia-links-container {
       display: flex;
       flex-direction: row;
       padding: 0;
       justify-content: space-around;
       margin-top: 120px;
+
       ul {
         padding: 0;
         margin: 0;
       }
     }
   }
-  
 `
-
+const deg: number = 135;
 const StyledButtonMenu = styled.div`
   display: none;
   
@@ -113,10 +117,6 @@ const StyledButtonMenu = styled.div`
     height: 8px;
     background-color: white;
     border-radius: 50px;
-    
-    &:hover {
-      background-color: ${constants.color1};
-    }
   }
   
   .menu-button span::before, .menu-button span::after {
@@ -166,15 +166,13 @@ const StyledButtonMenu = styled.div`
   }
   .lines.close span::before {
     top: 0;
-    -ms-transform: rotate(225deg);
-    transform: rotate(225deg);
-    background-color: ${constants.color1};
+    -ms-transform: rotate(${deg}deg);
+    transform: rotate(${deg}deg);
   }
   .lines.close span::after {
     bottom: 0;
-    -ms-transform: rotate(-225deg);
-    transform: rotate(-225deg);
-    background-color: ${constants.color1};
+    -ms-transform: rotate(-${deg}deg);
+    transform: rotate(-${deg}deg);
   }
   .lines.close span::before,
   .lines.close span::after {
@@ -192,7 +190,7 @@ const HeaderSideMenu = (): ReactElement =>  {
     }, [window.innerWidth > constants.maxWindowWidthForSideMenuButton]);
 
     const StyledButtonMenuRef: RefObject<HTMLDivElement> = createRef<HTMLDivElement>();
-    const handleClickOutside = () => {
+    const handleClickOutside = (): void => {
         setMenuToggle(false);
     }
     useOnClickOutside(StyledButtonMenuRef, handleClickOutside);

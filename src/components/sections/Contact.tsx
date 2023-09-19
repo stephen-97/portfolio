@@ -15,10 +15,10 @@ type ContactProps = {
 
 const loopContactBlocks = () => {
     let style: string = '';
-    for(let i: number=1; i<= 5; i++){
+    for(let i: number=0; i<= 5; i++){
         style+= `
             .active-contact-block:nth-of-type(${i}) {
-                animation: contactBlockAnimation 0.5s ease-in-out ${0.5*i/3}s forwards;
+                animation: contactBlockAnimation 0.5s ease-in-out ${i/3}s forwards;
                 @keyframes contactBlockAnimation {
                   to {
                     transform: scale(1);

@@ -3,7 +3,7 @@ import React, {Component, JSX, LegacyRef} from "react";
 import constants from '../utility/constants'
 
 
-type BlockProps = {
+type SectionProps = {
     id: string,
     icon: string,
     ref: LegacyRef<HTMLDivElement>,
@@ -156,7 +156,7 @@ const StyledBockComponent = styled.section`
   }
 `
 
-const Section = (props: BlockProps) => {
+const Section = (props: SectionProps) => {
 
     return (
         <StyledBockComponent>

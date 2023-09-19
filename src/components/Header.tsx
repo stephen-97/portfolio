@@ -1,12 +1,12 @@
 import {connect} from "react-redux";
-import {RootState} from "../../redux/redux";
+import {RootState} from "../redux/redux";
 import {styled} from "styled-components";
 import React, {SetStateAction, useEffect, useState, Dispatch, ReactElement} from "react";
-import HeaderButton from "./HeaderButton";
-import constants from "../../utility/constants";
-import config from "../../configs/config";
-import HeaderSideMenu from "./HeaderSideMenu";
-import Logo from "./Logo";
+import HeaderButton from "./header/HeaderButton";
+import constants from "../utility/constants";
+import config from "../configs/config";
+import HeaderSideMenu from "./header/HeaderSideMenu";
+import Logo from "./header/HeaderLogo";
 
 
 const StyledButtonContainer = styled.section`

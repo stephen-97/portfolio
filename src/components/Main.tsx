@@ -3,11 +3,11 @@ import gsap from "gsap";
 import {css, styled} from "styled-components";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
 
-import Presentation from "./ItemsComponents/Presentation";
-import Experience from "./ItemsComponents/Experience";
-import Projects from "./ItemsComponents/Projects";
-import Study from "./ItemsComponents/Study";
-import Skills from "./ItemsComponents/Contact";
+import Presentation from "./sections/Presentation";
+import Experience from "./sections/Experience";
+import Projects from "./sections/Projects";
+import Study from "./sections/Study";
+import Skills from "./sections/Contact";
 import WaveIcon from "../assets/wave.svg";
 import BriefCaseIcon from "../assets/briefcase.svg"
 import GraduationIcon from "../assets/casquette-de-graduation.svg"

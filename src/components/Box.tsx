@@ -41,7 +41,6 @@ const StyledBoxContainer = styled.section`
     text-align: center;
     color: white;
     background-color: ${constants.color2};
-    //background-color: #cbd1d2;
     box-sizing: border-box;
     position: absolute;
     box-shadow: inset 0 0 28px -10px rgba(0, 0, 0, 0.94);

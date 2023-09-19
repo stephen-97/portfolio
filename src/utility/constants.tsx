@@ -32,8 +32,8 @@ export default {
 
     colorLight1: "#cecfdf",
     colorLight2: "#a9a7b8",
-    colorDark1: "#293038",
-    colorDark2: "#1a242a",
+    colorDark1: "#1a242a",
+    colorDark2: "#293038",
     //colorDark2: "#1b2e39"
     //colorDark2: "#1c3932",
     colorBlack: "#1a1c1b",

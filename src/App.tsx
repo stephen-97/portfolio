@@ -4,11 +4,13 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import {store} from './redux/redux'
 import {Provider} from "react-redux";
 import GlobalStyle from "./utility/GlobalStyle";
+import Head from "./components/Head";
 import Error404 from "./pages/Error404";
 import Home from "./pages/Home"
 import CVpdf from "./pages/CVpdf";
+import LogoPng from "./assets/logo.png"
 
-const StyledMainComponent: IStyledComponent<"web"> = styled.section`
+const StyledMainComponent: IStyledComponent<any> = styled.section`
   body {
     &.backGroundMenu {
       overflow: hidden;
@@ -45,12 +47,20 @@ const router = createBrowserRouter([
 const App = (): ReactElement => {
 
     return (
-        <Provider store={store}>
-            <GlobalStyle/>
-            <StyledMainComponent>
-                <RouterProvider router={router}/>
-            </StyledMainComponent>
-        </Provider>
+        <>
+            <Head
+                title={'Portfolio Stephen Loiola Bastos'}
+                image={LogoPng}
+                description={'Portfolio Stephen Loiola Bastos'}
+            />
+            <Provider store={store}>
+                <GlobalStyle/>
+                <StyledMainComponent>
+                    <RouterProvider router={router}/>
+                </StyledMainComponent>
+            </Provider>
+        </>
+
     );
 }
 

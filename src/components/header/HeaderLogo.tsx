@@ -5,9 +5,9 @@ import constants from "../../utility/constants";
 import functions from "../../utility/functions";
 
 
-const widthSpan = 50;
-const heightSpan =4;
-const fontSizeLogo = 25;
+const widthSpan: number = 50;
+const heightSpan: number = 4;
+const fontSizeLogo: number = 25;
 
 const StyledLogo = styled.a`
   position: relative;
@@ -90,7 +90,7 @@ type LogoProps = {
     finishLoading: Function,
 }
 
-const Logo = (props : LogoProps): ReactElement =>  {
+const HeaderLogo = (props : LogoProps): ReactElement =>  {
 
     return(
         <StyledLogo href={'/'}>
@@ -104,4 +104,4 @@ const Logo = (props : LogoProps): ReactElement =>  {
 }
 
 
-export default Logo;
+export default HeaderLogo;
