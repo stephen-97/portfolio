@@ -1,9 +1,6 @@
-import {connect } from "react-redux";
 import {IStyledComponent, styled} from "styled-components";
-import React, {SetStateAction, useEffect, useState, Dispatch, ReactElement} from "react";
+import React, { ReactElement} from "react";
 import constants from "../utility/constants";
-
-
 
 const StyledFooter: IStyledComponent<"web"> = styled.section`
   & {
@@ -11,7 +8,6 @@ const StyledFooter: IStyledComponent<"web"> = styled.section`
     text-align: center;
     font-size: ${constants.fontSize5};
     font-weight: 500;
-    background-color: rosybrown;
     color: ${constants.colorLight1};
     padding: 0 30px;
   }

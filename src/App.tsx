@@ -1,16 +1,13 @@
-import React, {useEffect, useState} from 'react';
-import { styled} from "styled-components";
-import './App.css';
-
+import React, {ReactElement, SetStateAction, Dispatch, useState} from 'react';
+import {IStyledComponent, styled} from "styled-components";
+import {Router, Route, Routes, createBrowserRouter, RouterProvider} from "react-router-dom";
 import { store } from './redux/redux'
 import { Provider} from "react-redux";
-import MainSection from "./components/MainSection";
-import Header from "./components/headerComponents/Header";
 import GlobalStyle from "./utility/GlobalStyle";
-import Footer from "./components/Footer";
-import Loader from "./components/Loader";
-const StyledMainComponent = styled.section`
-  
+import Error404 from "./pages/Error404";
+import Home from "./pages/Home"
+
+const StyledMainComponent: IStyledComponent<"web"> = styled.section`
   body {
     &.backGroundMenu {
       overflow: hidden;
@@ -24,30 +21,27 @@ const StyledMainComponent = styled.section`
       }
     }
   }
- 
 `
 
-function App() {
 
-    const [isLoading, setIsLoading] = useState(true);
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <Home />
+    },
+    {
+        path: "*",
+        element: <Error404 />
+    }
+])
 
-    useEffect(() => {
+const App = (): ReactElement =>  {
 
-    }, [isLoading]);
     return (
         <Provider store={store}>
             <GlobalStyle />
             <StyledMainComponent>
-                {isLoading ?
-                    <Loader finishLoading={() => setIsLoading(false)} />
-                    :
-                    <>
-                        <Header />
-                        <MainSection/>
-                        <Footer />
-                        <StyledMainComponent />
-                    </>
-                }
+                <RouterProvider router={router}/>
             </StyledMainComponent>
         </Provider>
     );

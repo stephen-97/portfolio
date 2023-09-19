@@ -1,6 +1,6 @@
 import { styled} from "styled-components";
 import React, {Component, JSX, LegacyRef} from "react";
-import constants from '../../utility/constants'
+import constants from '../utility/constants'
 
 
 type BlockProps = {
@@ -30,7 +30,6 @@ const StyledBockComponent = styled.section`
     @media not all and (display-mode: fullscreen) {
       & {
         margin: 40px auto 100px auto;
-        min-height:1px; 
       }
     }
   }
@@ -157,7 +156,7 @@ const StyledBockComponent = styled.section`
 `
 
 
-const Item = (props : BlockProps) =>  {
+const Section = (props : BlockProps) =>  {
 
     return(
         <StyledBockComponent>
@@ -179,4 +178,4 @@ const Item = (props : BlockProps) =>  {
     );
 }
 
-export default Item;
+export default Section;

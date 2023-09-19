@@ -1,14 +1,11 @@
-    import React, {ReactElement, useEffect, useState} from 'react';
-import anime from 'animejs';
+import React, {ReactElement, useEffect } from 'react';
 import {styled } from "styled-components";
 import constants from "../utility/constants";
-import functions from "../utility/functions";
 
-
-const widthSpan = 80;
-const heightSpan = 6;
-const singleAnimDuration= 0.3;
-const animDuration = singleAnimDuration*5;
+const widthSpan: number = 80;
+const heightSpan: number = 6;
+const singleAnimDuration: number= 0.3;
+const animDuration: number = singleAnimDuration*5;
 
 const StyledLogo = styled.div`
   span{
@@ -101,20 +98,16 @@ const StyledLogo = styled.div`
   }
 `
 
-
-
 type LoaderProps = {
     finishLoading: Function,
 }
-    const Loader = (props : LoaderProps): ReactElement =>  {
+const Loader = (props : LoaderProps): ReactElement =>  {
 
-
-        useEffect(() => {
-            setTimeout(() => {
-                props.finishLoading(true);
-            }, animDuration*1000 + 1000);
-
-        }, []);
+    useEffect(() => {
+        setTimeout(() => {
+            props.finishLoading(true);
+        }, animDuration*1000 + 1000);
+    }, []);
 
     return(
         <StyledLogo >
@@ -128,6 +121,5 @@ type LoaderProps = {
         </StyledLogo>
     );
 }
-
 
 export default Loader;

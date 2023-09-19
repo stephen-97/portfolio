@@ -19,15 +19,11 @@ const StyledPresentation = styled.section`
   }
   h1 {
     opacity: 0;
-    font-size:  clamp(${constants.h1_min}px, 7vw, ${constants.h1_max}px);
-    font-weight: bolder;
-    color: ${constants.color1};
     margin: 0 0 0 0;
     animation: animatePresentation 0.5s ease ${constants.headerAnim + constants.secondAnim/5}s forwards;
   }
   h2 {
     opacity: 0;
-    font-size: clamp(${constants.h2_min}px, 4vw, ${constants.h2_max}px);
     animation: animatePresentation 0.5s ease ${constants.headerAnim + constants.secondAnim*2/5}s forwards;
   }
   .description_picture {
@@ -147,7 +143,7 @@ const Presentation = (props : PresentationProps) =>  {
                 </div>
                 <picture>
                     <div id={'img_Background'}>
-                        <img  width={350} height={400} src={Stephen_profile} alt={""}/>
+                        <img  width={295} height={335} src={Stephen_profile} alt={""}/>
                     </div>
                 </picture>
             </span>

@@ -1,4 +1,3 @@
-
 import { styled} from "styled-components";
 import React from "react";
 import constants from "../utility/constants";
@@ -7,9 +6,6 @@ import BriefCaseIcon from "../assets/briefcase.svg"
 import GraduationIcon from "../assets/casquette-de-graduation.svg"
 import IdeaIcon from "../assets/exchange-ideas.svg"
 import LetterIcon from "../assets/letter.svg"
-
-type BoxProps = {
-}
 
 const size: number = 60;
 
@@ -25,6 +21,9 @@ const StyledBoxContainer = styled.section`
     transform: translate(-50%, -50%);
     -webkit-box-shadow: 0 0 45px -10px ${constants.color2};
     box-shadow: 0 0 45px -10px ${constants.color2};
+    @media screen and (max-height:  450px) {
+      display: none;
+    }
   }
 
   #box {
@@ -81,9 +80,7 @@ const StyledBoxContainer = styled.section`
   }
 `
 
-
-
-const Box = (props : BoxProps) =>  {
+const Box = () =>  {
 
     return(
         <StyledBoxContainer>

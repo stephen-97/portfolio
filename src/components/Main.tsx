@@ -8,21 +8,14 @@ import Experience from "./ItemsComponents/Experience";
 import Projects from "./ItemsComponents/Projects";
 import Study from "./ItemsComponents/Study";
 import Skills from "./ItemsComponents/Contact";
-
 import WaveIcon from "../assets/wave.svg";
 import BriefCaseIcon from "../assets/briefcase.svg"
 import GraduationIcon from "../assets/casquette-de-graduation.svg"
 import IdeaIcon from "../assets/exchange-ideas.svg"
 import LetterIcon from "../assets/letter.svg"
-
-
-import Box from "./Box";
 import constants from "../utility/constants";
-import Item from "./ItemsComponents/Item";
+import Item from "./Section";
 import SocialMediaContainer from "./SocialMediaContainer";
-
-type SmallBlockProps = {
-}
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -40,14 +33,13 @@ const StyledItemContainer = styled.main`
     }
   }
 `
-const MainSection = (props : SmallBlockProps) =>  {
+const Main = () =>  {
 
     const refPresentation= useRef<null | HTMLDivElement>(null);
     const refExperience = useRef<null | HTMLDivElement>(null);
     const refProjects= useRef<null | HTMLDivElement>(null);
-    const refContact= useRef<null | HTMLDivElement>(null);
     const refStudy= useRef<null | HTMLDivElement>(null);
-    const refSkills= useRef<null | HTMLDivElement>(null);
+    const refContatcs= useRef<null | HTMLDivElement>(null);
 
     const observer: IntersectionObserver = new IntersectionObserver((entries: IntersectionObserverEntry[]) => {
         entries.forEach((entry: IntersectionObserverEntry, index: number) => {
@@ -185,11 +177,11 @@ const MainSection = (props : SmallBlockProps) =>  {
             <Item id={'briefCase-img'} keyItem={2} ref={refExperience} icon={BriefCaseIcon} component={<Experience animationDelay={blockAnimationDelay}/>}/>
             <Item id={'study-img'} keyItem={3} ref={refStudy} icon={GraduationIcon} component={<Study animationDelay={blockAnimationDelay}/>}/>
             <Item id={'idea-img'} keyItem={4} ref={refProjects} icon={IdeaIcon} component={<Projects animationDelay={blockAnimationDelay}/>}/>
-            <Item id={'skills-img'} keyItem={5} ref={refSkills} icon={LetterIcon} component={<Skills animationDelay={blockAnimationDelay}/>}/>
+            <Item id={'skills-img'} keyItem={5} ref={refContatcs} icon={LetterIcon} component={<Skills animationDelay={blockAnimationDelay}/>}/>
             <SocialMediaContainer />
         </StyledItemContainer>
     );
 }
 
 
-export default MainSection;
+export default Main;
