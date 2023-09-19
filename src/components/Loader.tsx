@@ -8,7 +8,7 @@ const singleAnimDuration: number= 0.3;
 const animDuration: number = singleAnimDuration*5;
 
 const StyledLogo = styled.div`
-  span{
+  span {
     display: block;
     position: absolute;
     height: ${heightSpan}px;
@@ -18,7 +18,7 @@ const StyledLogo = styled.div`
     transform: translate(-50%, -50%);
     background-color: ${constants.color2};
   }
-  
+
   .loader-container {
     background-color: ${constants.colorDark1};
     position: fixed;
@@ -42,40 +42,43 @@ const StyledLogo = styled.div`
         opacity: 0;
         color: ${constants.color2};
         position: absolute;
-        top:50%;
+        top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         font-size: 30px;
-        animation: animLogoText 0.6s ease-in-out ${singleAnimDuration*5}s forwards;
+        animation: animLogoText 0.6s ease-in-out ${singleAnimDuration * 5}s forwards;
         @keyframes animLogoText {
           to {
             opacity: 1;
           }
         }
       }
+
       .first {
         animation: animLogoFirst 0.3s ease-in-out ${singleAnimDuration}s forwards;
         @keyframes animLogoFirst {
           100% {
-            top: calc(50% - ${widthSpan/2}px);
+            top: calc(50% - ${widthSpan / 2}px);
             transform: translate(-50%, 50%);
           }
         }
       }
+
       .second {
         animation: animLogoSecond 0.3s ease-in-out ${singleAnimDuration * 2}s forwards;
         @keyframes animLogoSecond {
           100% {
-            top:  calc(50% + ${widthSpan/2}px);
+            top: calc(50% + ${widthSpan / 2}px);
             transform: translate(-50%, -50%);
           }
         }
       }
+
       .third {
         animation: animLogoThird 0.3s ease-in-out ${singleAnimDuration * 3}s forwards, animLogoFourth 0.3s ease-in-out ${singleAnimDuration * 4}s forwards;
         @keyframes animLogoFourth {
           to {
-            transform: rotate(90deg) ;
+            transform: rotate(90deg);
           }
         }
       }
@@ -89,6 +92,7 @@ const StyledLogo = styled.div`
           }
         }
       }
+
       @keyframes animLogoThird {
         100% {
           transform: translateX(-50%) rotate(90deg);

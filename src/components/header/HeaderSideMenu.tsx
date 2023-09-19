@@ -183,8 +183,6 @@ const StyledButtonMenu = styled.div`
   }
 `
 
-
-
 const HeaderSideMenu = (): ReactElement =>  {
 
     const [menuToggle, setMenuToggle]:  [boolean, Dispatch<SetStateAction<boolean>>] = useState(false)
@@ -192,7 +190,6 @@ const HeaderSideMenu = (): ReactElement =>  {
     useEffect((): void => {
         if(window.innerWidth > constants.maxWindowWidthForSideMenuButton) setMenuToggle(false);
     }, [window.innerWidth > constants.maxWindowWidthForSideMenuButton]);
-
 
     const StyledButtonMenuRef: RefObject<HTMLDivElement> = createRef<HTMLDivElement>();
     const handleClickOutside = () => {
@@ -234,6 +231,5 @@ const HeaderSideMenu = (): ReactElement =>  {
         </StyledButtonMenu>
     );
 }
-
 
 export default HeaderSideMenu;

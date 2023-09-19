@@ -39,6 +39,10 @@ const GlobalStyle = createGlobalStyle`
   h2 {
     font-size: clamp(${constants.h2_min}px, 4vw, ${constants.h2_max}px);
   }
+  
+  p {
+    font-size: clamp(${constants.p_min}px, 2vw, ${constants.p_max}px);
+  }
 `;
 
 export default GlobalStyle;

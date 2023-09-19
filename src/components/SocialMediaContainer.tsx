@@ -1,5 +1,5 @@
 import React, {ReactElement, useEffect, useState, Dispatch, SetStateAction} from "react";
-import { styled, ThemeProvider} from "styled-components";
+import {styled, ThemeProvider} from "styled-components";
 import constants from "../utility/constants";
 import config from "../configs/config";
 import Box from "./Box";
@@ -10,7 +10,7 @@ const StyledSocialMediaContainer = styled.div`
   visibility: hidden;
   display: none;
   opacity: 0;
-  
+
   @media screen and (min-width: ${constants.maxWindowWidthForSideMenuButton}px) {
     visibility: visible;
     display: block;
@@ -28,7 +28,7 @@ const StyledSocialMediaContainer = styled.div`
       }
     }
   }
-  
+
   nav {
     display: block;
     border: 1px dashed;
@@ -39,55 +39,59 @@ const StyledSocialMediaContainer = styled.div`
     height: 270px;
     padding: 10px;
   }
+
   img {
     margin-bottom: 20px;
     cursor: pointer;
     filter: ${constants.colorWhiteFilter};
+
     &:hover {
       filter: ${constants.color1Filter};
     }
   }
+
   ol {
     display: flex;
     flex-direction: column;
     padding: 0;
+
     a {
       text-align: center;
     }
   }
-  
+
   #box-container {
     top: 10px;
     position: relative;
   }
 `
 
-const SocialMediaContainer = (): ReactElement =>  {
+const SocialMediaContainer = (): ReactElement => {
 
-    const [animSocialMediaFinished, setAnimSocialMediaFinished]  : [boolean, Dispatch<SetStateAction<boolean>>]= useState(false);
+    const [animSocialMediaFinished, setAnimSocialMediaFinished]: [boolean, Dispatch<SetStateAction<boolean>>] = useState(false);
 
-    const theme ={
+    const theme = {
         animIsFinished: animSocialMediaFinished,
     }
 
     useEffect(() => {
         setTimeout(() => {
             setAnimSocialMediaFinished(true)
-        }, socialMediaAnimationDelay*1000+600);
+        }, socialMediaAnimationDelay * 1000 + 600);
 
     }, []);
 
-    return(
+    return (
         <ThemeProvider theme={theme}>
             <StyledSocialMediaContainer>
                 <div id={'box-container'}>
-                    <Box />
+                    <Box/>
                 </div>
                 <nav>
                     <ol id={'socialMedia-links-container'}>
                         {config.socialMediaLinks.map(({name, icon, alt, url}) => (
-                            <a href={url} target={'_blank'} >
-                                <img height={40} src={icon} alt={alt} />
+                            <a href={url} target={'_blank'}>
+                                <img height={40} src={icon} alt={alt}/>
                             </a>
                         ))}
                     </ol>
