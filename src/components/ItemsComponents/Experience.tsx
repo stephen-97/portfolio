@@ -122,8 +122,6 @@ const StyledExperience = styled.section`
     // LEFT
     &:nth-of-type(2){
       background-color: ${constants.colorDark1};
-      box-shadow: ${constants.boxShadow};
-      
       > .experience-skills-block-title {
         display: block;
         color: whitesmoke;

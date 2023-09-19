@@ -5,8 +5,10 @@ import constants from "../../utility/constants";
 import functions from "../../utility/functions";
 
 
-const widthSpan = 60;
+const widthSpan = 50;
 const heightSpan =4;
+const fontSizeLogo = 25;
+
 const StyledLogo = styled.div`
 
   &{
@@ -39,7 +41,7 @@ const StyledLogo = styled.div`
         top:50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-size: 30px;
+        font-size: ${fontSizeLogo}px;
       }
       .first {
         top: calc(50% - ${widthSpan/2}px);

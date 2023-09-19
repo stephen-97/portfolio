@@ -30,6 +30,7 @@ const StyledBockComponent = styled.section`
     @media not all and (display-mode: fullscreen) {
       & {
         margin: 40px auto 100px auto;
+        min-height:1px; 
       }
     }
   }

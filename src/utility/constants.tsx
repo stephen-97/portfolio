@@ -36,6 +36,7 @@ export default {
     colorLight2: "#a9a7b8",
     colorDark1: "#1a242a",
     colorDark2: "#293038",
+    //colorDark2: "#1c3932",
     colorBlack: "#1a1c1b",
 
     //FONT SIZE

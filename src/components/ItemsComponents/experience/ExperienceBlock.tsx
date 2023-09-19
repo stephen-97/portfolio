@@ -38,7 +38,6 @@ const StyledExperienceBlock = styled.section`
     position: relative;
     transform: translateY(100px);
     background-color: ${constants.colorDark1};
-    box-shadow: ${constants.boxShadow};
     font-size: 25px;
     border-radius: ${constants.borderRadius1}px;
     transition: all ${transitionExperienceBlock}s ease;
@@ -80,18 +79,6 @@ const StyledExperienceBlock = styled.section`
       transition: all ${transitionExperienceBlock}s ease;
       transform: translateY(-10px);
     }
-  }
-
-  
-
-  #sectionBlock {
-    min-height: 300px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    position: relative;
-    background-color: red;
-    margin-bottom: 50px;
   }
 `
 
