@@ -138,7 +138,7 @@ const Presentation = (props : PresentationProps) =>  {
                     <br/>
                     <p>
                         Lorsque je ne suis pas devant VSCODE ou Webstorm, j'aime généralement
-                        la promenade ou je peux me trouver entrain de lire Kingdom ou devant Zelda!
+                        lire Kingdom, jouer à Zelda et assister à des orchestres d'ost.
                     </p>
                 </div>
                 <picture>

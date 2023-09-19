@@ -107,7 +107,7 @@ const Main = () =>  {
         /// TEST INSPIRATION DISCORD
 
         const buttonContainer: Element | null= document.querySelector('.buttonContainer')
-        const buttonSideMenuContainer: Element | null = document.querySelector('.side-menu-button-container')
+        const buttonSideMenuContainer: Element | null = document.querySelector('#side-menu-button-container')
         const items: HTMLElement[] = gsap.utils.toArray<HTMLElement>('.item')
         const buttons: Element[] = Array.from(document.querySelectorAll(".button"));
         const buttonsSideMenu: Element[] = Array.from(document.querySelectorAll(".side-menu-button"))

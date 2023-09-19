@@ -16,7 +16,7 @@ const StyledMenu = styled.button<{$menuToggle: boolean}>`
     border: none;
     z-index: 1;
     min-width: min(70vw, 400px);
-    padding: 100px 50px;
+    padding: 0 50px;
     height: 100vh;
     top: 0;
     right: 0;
@@ -28,8 +28,8 @@ const StyledMenu = styled.button<{$menuToggle: boolean}>`
     visibility: ${props => props.$menuToggle  ? 'visible' : 'hidden'};
   }
   
-  nav {
-    padding-top: 80px;
+  #side-menu-button-container {
+    
     ol {
       text-align: left;
       
@@ -58,7 +58,7 @@ const StyledMenu = styled.button<{$menuToggle: boolean}>`
         }
       }
     }
-    .socialMedia-links-container {
+    #socialMedia-links-container {
       display: flex;
       flex-direction: row;
       padding: 0;
@@ -211,7 +211,7 @@ const HeaderSideMenu = (): ReactElement =>  {
             <StyledMenu
                 $menuToggle={menuToggle}
             >
-                <nav className={'side-menu-button-container'}>
+                <nav id={'side-menu-button-container'}>
                     <ol>
                         {config.navLinks.map(({name, icon, alt}) => (
                             <ul className={'side-menu-button'} onClick={() => setMenuToggle(false)}>
@@ -220,7 +220,7 @@ const HeaderSideMenu = (): ReactElement =>  {
                             </ul>
                         ))}
                     </ol>
-                    <ol className={'socialMedia-links-container'}>
+                    <ol id={'socialMedia-links-container'}>
                         {config.socialMediaLinks.map(({name, icon, alt, url}) => (
                             <ul className={'side-menu-button-socialMedia'}>
                                 <a href={url} target={'_blank'} >

@@ -1,5 +1,5 @@
 import { styled} from "styled-components";
-import React from "react";
+import React, {ReactElement} from "react";
 import constants from "../utility/constants";
 import WaveIcon from "../assets/wave.svg";
 import BriefCaseIcon from "../assets/briefcase.svg"
@@ -80,7 +80,7 @@ const StyledBoxContainer = styled.section`
   }
 `
 
-const Box = () =>  {
+const Box = (): ReactElement =>  {
 
     return(
         <StyledBoxContainer>

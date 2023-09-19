@@ -36,11 +36,11 @@ const StyledSocialMediaContainer = styled.div`
     border-top-right-radius: 30px;
     border-bottom: none;
     position: relative;
-    height: 250px;
+    height: 270px;
     padding: 10px;
   }
   img {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     cursor: pointer;
     filter: ${constants.colorWhiteFilter};
     &:hover {

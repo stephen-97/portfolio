@@ -6,6 +6,7 @@ import { Provider} from "react-redux";
 import GlobalStyle from "./utility/GlobalStyle";
 import Error404 from "./pages/Error404";
 import Home from "./pages/Home"
+import CVpdf from "./pages/CVpdf";
 
 const StyledMainComponent: IStyledComponent<"web"> = styled.section`
   body {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <Home />
+    },
+    {
+        path: "/stephenCV",
+        element: <CVpdf />
     },
     {
         path: "*",
