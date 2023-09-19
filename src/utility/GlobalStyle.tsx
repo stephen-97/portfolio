@@ -28,7 +28,16 @@ const GlobalStyle = createGlobalStyle`
         transition: ease-in-out 0.3s;
       }
     }
-    
+  }
+  
+  h1 {
+    font-size:  clamp(${constants.h1_min}px, 7vw, ${constants.h1_max}px);
+    font-weight: bolder;
+    color: ${constants.color1};
+  }
+  
+  h2 {
+    font-size: clamp(${constants.h2_min}px, 4vw, ${constants.h2_max}px);
   }
 `;
 

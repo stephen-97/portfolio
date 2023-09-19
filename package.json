@@ -5,6 +5,7 @@
   "dependencies": {
     "@ap.cx/react-fullpage": "^0.3.0",
     "@fullpage/react-fullpage": "^0.1.40",
+    "@react-pdf/renderer": "^3.1.12",
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -13,11 +14,13 @@
     "@types/node": "^16.18.37",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
+    "animejs": "^3.2.1",
     "gsap": "^3.12.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
     "react-redux": "^8.1.1",
+    "react-router-dom": "^6.16.0",
     "react-scripts": "5.0.1",
     "sass": "^1.63.6",
     "styled-components": "^6.0.7",
@@ -50,6 +53,7 @@
     ]
   },
   "devDependencies": {
+    "@types/animejs": "^3.1.7",
     "@types/react-helmet": "^6.1.6",
     "file-loader": "^6.2.0",
     "hooks": "^0.3.2"

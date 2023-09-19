@@ -53,7 +53,6 @@ const StyledSectionStudy = styled.section`
   .blockStudy {
     padding: 20px;
     background-color: ${constants.colorDark1};
-    box-shadow: ${constants.boxShadow};
     border-radius: ${constants.borderRadius1}px;
     font-size: 16px;
     text-align: left;
@@ -61,10 +60,10 @@ const StyledSectionStudy = styled.section`
     margin-bottom: 50px;
     opacity: 0;
 
-    h2 {
-      font-size: ${constants.fontSize2};
+    h3 {
+      font-size: clamp(${constants.h3_min}px ,4vw, ${constants.h3_max}px);
       color: ${constants.colorLight1};
-      margin: 5px 0;
+      margin: 5px 0 15px 0;
       font-weight: 500;
     }
     ul {
@@ -73,13 +72,12 @@ const StyledSectionStudy = styled.section`
       flex-wrap: wrap;
       padding: 0;
     }
-    > div {
+    > span {
       font-size: ${constants.fontSize4};
+      color: ${constants.colorLight2};
       font-weight: 200;
     }
   }
-  
-  
 `
 
 
@@ -89,8 +87,8 @@ const Study = (props : StudyProps): ReactElement =>  {
         <StyledSectionStudy>
             <ul>
                 <ol className={'blockStudy'}>
-                    <h2>RNCP36009 Directeur de projet informatique (Bac+5)</h2>
-                    <div>Aston Ecole</div>
+                    <h3>RNCP36009 Directeur de projet informatique (Bac+5)</h3>
+                    <span>Aston Ecole</span>
                     <ul>
                         <Tag name={'Architecture logicielle'}/>
                         <Tag name={'Cloud Azure'}/>
@@ -101,8 +99,8 @@ const Study = (props : StudyProps): ReactElement =>  {
                     </ul>
                 </ol>
                 <ol className={'blockStudy'}>
-                    <h2>RNCP31678 Concepteur et Développeur d'application (Bac+3/4)</h2>
-                    <div>2iTech Academy by M2i</div>
+                    <h3>RNCP31678 Concepteur et Développeur d'application (Bac+3/4)</h3>
+                    <span>2iTech Academy by M2i</span>
                     <ul>
                         <Tag name={'Merise'}/>
                         <Tag name={'UML'}/>
@@ -115,8 +113,8 @@ const Study = (props : StudyProps): ReactElement =>  {
                     </ul>
                 </ol>
                 <ol className={'blockStudy'}>
-                    <h2>L2 Informatique (Bac+2)</h2>
-                    <div>Paris Descartes</div>
+                    <h3>L2 Informatique (Bac+2)</h3>
+                    <span>Paris Descartes</span>
                     <ul>
                         <Tag name={'C'}/>
                         <Tag name={'Java'}/>

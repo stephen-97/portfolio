@@ -19,15 +19,11 @@ const StyledPresentation = styled.section`
   }
   h1 {
     opacity: 0;
-    font-size:  clamp(35px, 7vw, 70px);
-    font-weight: bolder;
-    color: ${constants.color1};
     margin: 0 0 0 0;
     animation: animatePresentation 0.5s ease ${constants.headerAnim + constants.secondAnim/5}s forwards;
   }
   h2 {
     opacity: 0;
-    font-size: clamp(30px, 4vw, 40px);
     animation: animatePresentation 0.5s ease ${constants.headerAnim + constants.secondAnim*2/5}s forwards;
   }
   .description_picture {
@@ -37,7 +33,8 @@ const StyledPresentation = styled.section`
   }
   p {
     margin: 0;
-    font-size: clamp(19px, 2vw, 21px);
+    color: ${constants.colorLight2};
+    font-size: clamp(${constants.p_min}px, 2vw, ${constants.p_max}px);
     
     > span {
       color: ${constants.color2}
@@ -141,12 +138,12 @@ const Presentation = (props : PresentationProps) =>  {
                     <br/>
                     <p>
                         Lorsque je ne suis pas devant VSCODE ou Webstorm, j'aime généralement
-                        la promenade ou je peux me trouver entrain de lire Kingdom ou devant Zelda!
+                        lire Kingdom, jouer à Zelda et assister à des orchestres d'ost.
                     </p>
                 </div>
                 <picture>
                     <div id={'img_Background'}>
-                        <img  width={350} height={400} src={Stephen_profile} alt={""}/>
+                        <img  width={295} height={335} src={Stephen_profile} alt={""}/>
                     </div>
                 </picture>
             </span>

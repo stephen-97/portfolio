@@ -1,16 +1,14 @@
-import React from 'react';
-import { styled} from "styled-components";
-import './App.css';
-
+import React, {ReactElement, SetStateAction, Dispatch, useState} from 'react';
+import {IStyledComponent, styled} from "styled-components";
+import {Router, Route, Routes, createBrowserRouter, RouterProvider} from "react-router-dom";
 import { store } from './redux/redux'
 import { Provider} from "react-redux";
-import MainSection from "./components/MainSection";
-import Header from "./components/headerComponents/Header";
 import GlobalStyle from "./utility/GlobalStyle";
-import Footer from "./components/Footer";
+import Error404 from "./pages/Error404";
+import Home from "./pages/Home"
+import CVpdf from "./pages/CVpdf";
 
-const StyledMainComponent = styled.section`
-  
+const StyledMainComponent: IStyledComponent<"web"> = styled.section`
   body {
     &.backGroundMenu {
       overflow: hidden;
@@ -24,18 +22,31 @@ const StyledMainComponent = styled.section`
       }
     }
   }
- 
 `
 
-function App() {
+
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <Home />
+    },
+    {
+        path: "/stephenCV",
+        element: <CVpdf />
+    },
+    {
+        path: "*",
+        element: <Error404 />
+    }
+])
+
+const App = (): ReactElement =>  {
+
     return (
         <Provider store={store}>
             <GlobalStyle />
             <StyledMainComponent>
-                <Header />
-                <MainSection/>
-                <Footer />
-                <StyledMainComponent />
+                <RouterProvider router={router}/>
             </StyledMainComponent>
         </Provider>
     );

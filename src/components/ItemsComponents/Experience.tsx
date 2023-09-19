@@ -101,7 +101,7 @@ const StyledExperience = styled.section`
     margin: auto;
     border-radius: ${constants.borderRadius1}px;
     position: relative;
-    width: 520px;
+    width: 490px;
     min-height: 350px;
     
     text-align: center;
@@ -113,7 +113,7 @@ const StyledExperience = styled.section`
       min-height: auto;
       > .experience-skills-block-title {
         display: block;
-        font-size: ${constants.fontSize1};
+        font-size: clamp(${constants.h3_min}px ,4vw, ${constants.h3_max}px);
         font-weight: bold;
         margin-bottom: 5px;
       }
@@ -122,12 +122,10 @@ const StyledExperience = styled.section`
     // LEFT
     &:nth-of-type(2){
       background-color: ${constants.colorDark1};
-      box-shadow: ${constants.boxShadow};
-      
       > .experience-skills-block-title {
         display: block;
         color: whitesmoke;
-        font-size: ${constants.fontSize1};
+        font-size: clamp(${constants.h3_min}px ,3vw, ${constants.h3_max}px);
         font-weight: bold;
         margin-bottom: 5px;
       }
@@ -144,7 +142,6 @@ const StyledExperience = styled.section`
       flex-wrap: wrap;
       justify-content: space-evenly;
       
-      
       > span {
         background-color: ${constants.colorDark2};
         opacity: 0;
@@ -153,7 +150,7 @@ const StyledExperience = styled.section`
         padding: 20px 0 20px clamp(10px, 2vw, 30px);
         border-radius: ${constants.borderRadius1}px;
         font-weight: bolder;
-        font-size: clamp(17px, 1vw, 20px);
+        font-size: clamp(13px, 1vw, 16px);
         position: relative;
         text-align: left;
         color: whitesmoke;
@@ -176,13 +173,12 @@ const StyledExperience = styled.section`
       >ol {
         opacity: 0;
         margin: 10px auto;
-        width: 150px;
+        width: 120px;
         padding: 0;
-        font-size: 25px;
+        font-size: 20px;
         cursor: pointer;
         font-weight: bold;
         text-align: left;
-       
       }
       a {
         display: block;
@@ -194,7 +190,6 @@ const StyledExperience = styled.section`
   }
 
   .active-experience-skills-block{
-    
     &:nth-of-type(1) {
       ul {
         ${loopBlockList()}
@@ -229,9 +224,9 @@ const StyledExperience = styled.section`
             transform-origin: left;
           }
         }
-        
       }
     }
+    
     &:nth-of-type(2) {
       transform: translateX(250px);
       animation: animation-Skills-Block ${transitionExperienceSkillBlock}s ease-in-out ${animationDelay}s forwards;

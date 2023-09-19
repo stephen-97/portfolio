@@ -1,8 +1,17 @@
-
 export default {
+    h1_max: 65,
+    h1_min: 30,
+
+    h2_max: 35,
+    h2_min: 27,
+
+    h3_max: 25,
+    h3_min: 20,
+    //font-size: clamp(19px, 2vw, 21px);
+    p_max: 20,
+    p_min: 17,
 
     duration_itemAnim: 1,
-
     headerAnim: 1,
     secondAnim: 1.5,
     thirdAnim: 1,
@@ -22,8 +31,11 @@ export default {
     colorWhiteFilter: "invert(85%) sepia(12%) saturate(508%) hue-rotate(167deg) brightness(123%) contrast(96%)",
 
     colorLight1: "#cecfdf",
-    colorDark1: "#1a242a",
-    colorDark2: "#293038",
+    colorLight2: "#a9a7b8",
+    colorDark1: "#293038",
+    colorDark2: "#1a242a",
+    //colorDark2: "#1b2e39"
+    //colorDark2: "#1c3932",
     colorBlack: "#1a1c1b",
 
     //FONT SIZE
