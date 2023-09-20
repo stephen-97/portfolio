@@ -21,8 +21,8 @@ const StyledTag = styled.li`
 const Tag = (props: TagProps): ReactElement =>  {
 
     const styleObject = {
-        backgroundColor: props.isBgColorLight ? constants.colorLight1 : constants.colorDark2,
-        color: props.isBgColorLight ? constants.color4 : constants.color2
+        backgroundColor: props.isBgColorLight ? constants.colorLight1 : constants.colorDark1,
+        color: props.isBgColorLight ? constants.colorDarkGreen : constants.colorLightGreen
     }
     return(
             <StyledTag style={styleObject}>{props.name}</StyledTag>

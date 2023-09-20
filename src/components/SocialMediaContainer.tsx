@@ -42,13 +42,12 @@ const StyledSocialMediaContainer = styled.div`
     padding: 10px;
   }
 
-  img {
+  .social-media-logo {
     margin-bottom: 20px;
     cursor: pointer;
     filter: ${constants.colorWhiteFilter};
-
     &:hover {
-      filter: ${constants.color1Filter};
+      opacity: 0.6;
     }
   }
 
@@ -59,6 +58,7 @@ const StyledSocialMediaContainer = styled.div`
 
     a {
       text-align: center;
+
       img {
         filter: invert(100%);
       }
@@ -96,7 +96,7 @@ const SocialMediaContainer = (): ReactElement => {
                     <ol id={'socialMedia-links-container'}>
                         {config.socialMediaLinks.map(({name, icon, alt, url}, i) => (
                             <a key={i} href={url} target={'_blank'}>
-                                <img height={40} src={icon} alt={alt}/>
+                                <img className={'social-media-logo'} height={40} src={icon} alt={alt}/>
                             </a>
                         ))}
                     </ol>

@@ -16,11 +16,11 @@ const StyledLogo = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: ${constants.color2};
+    background-color: ${constants.colorLightGreen};
   }
 
   .loader-container {
-    background-color: ${constants.colorDark1};
+    background-color: ${constants.colorDark2};
     position: fixed;
     top: 0;
     left: 0;
@@ -40,7 +40,7 @@ const StyledLogo = styled.div`
     & {
       div {
         opacity: 0;
-        color: ${constants.color2};
+        color: ${constants.colorLightGreen};
         position: absolute;
         top: 50%;
         left: 50%;

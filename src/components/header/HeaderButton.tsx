@@ -45,10 +45,10 @@ const StyledButton = styled.section`
     
     &:hover {
       span {
-        color: ${constants.color2}
+        color: ${constants.colorLightGreen}
       }
       .button-img {
-        filter: ${constants.color2Filter};
+        filter: ${constants.colorLightGreenFilter};
       }
     }
   }
@@ -65,7 +65,7 @@ const StyledButton = styled.section`
     margin-left: 10px;
   }
   .button-img:hover {
-    filter: ${constants.color2Filter};
+    filter: ${constants.colorLightGreenFilter};
   }
   .titleButton {
     display: inline-block;
@@ -90,10 +90,10 @@ const StyledButton = styled.section`
   .activeButton, .button-img:hover {
 
     span {
-      color: ${constants.color2}
+      color: ${constants.colorLightGreen}
     }
     .button-img {
-      filter: ${constants.color2Filter};
+      filter: ${constants.colorLightGreenFilter};
     }
     .buttonColorContainer {
       top:0;

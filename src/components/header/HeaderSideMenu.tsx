@@ -12,7 +12,7 @@ const StyledMenu = styled.button<{$menuToggle: boolean}>`
   @media (max-width: ${constants.maxWindowWidthForSideMenuButton}px) {
     display: block;
     position: fixed;
-    background-color: ${constants.colorDark1};
+    background-color: ${constants.colorDark2};
     border: none;
     z-index: 1;
     min-width: min(70vw, 400px);
@@ -21,7 +21,7 @@ const StyledMenu = styled.button<{$menuToggle: boolean}>`
     top: 0;
     right: 0;
     bottom: 0;
-    box-shadow: -10px 0 30px -15px ${constants.colorDark1};
+    box-shadow: -10px 0 30px -15px ${constants.colorDark2};
     transition: ease-in-out 0.3s;
     transform: translateX(${props => props.$menuToggle ? 0 : 100}vw);
     transform-origin: right;
@@ -43,10 +43,10 @@ const StyledMenu = styled.button<{$menuToggle: boolean}>`
         color: ${constants.colorLight1};
 
         &:hover {
-          color: ${constants.color1};
+          color: ${constants.colorLightGreen};
 
           img {
-            filter: ${constants.colorWhiteFilter};
+            filter: ${constants.colorLightGreenFilter};
           }
         }
 

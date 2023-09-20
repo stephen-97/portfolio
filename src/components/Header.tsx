@@ -25,7 +25,7 @@ const StyledHeader = styled.header`
   height: ${constants.headerSize}px;
   width: 100vw;
   min-width: 150px;
-  background-color: ${constants.colorDark2};
+  background-color: ${constants.colorDark1};
   box-shadow: rgba(0, 0, 0, 0.16) 0 10px 36px 0, rgba(0, 0, 0, 0.06) 0 0 0 1px;
   
   .header-nav {

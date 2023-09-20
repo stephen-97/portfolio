@@ -18,8 +18,6 @@ const StyledBoxContainer = styled.section`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    -webkit-box-shadow: 0 0 45px -10px ${constants.color2};
-    box-shadow: 0 0 45px -10px ${constants.color2};
     @media screen and (max-height: 450px) {
       display: none;
     }
@@ -51,6 +49,7 @@ const StyledBoxContainer = styled.section`
       transform: translate(-50%, -50%);
       filter: invert(0%) sepia(97%) saturate(0%) hue-rotate(291deg) brightness(104%) contrast(101%);
       height: 30px;
+      cursor: inherit;
     }
   }
 

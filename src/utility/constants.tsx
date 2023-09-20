@@ -20,25 +20,19 @@ export default {
     // BORDER RADIUS
     borderRadius1: 10,
     // COLOR
-    color1: "#32ff9b",
-    color2: "#3afbbd",
-    color3: "#a4a4a4",
-    color4: "#0b755c",
+    colorLightGreen: "#3afbbd",
+    colorDarkGreen: "#0b755c",
 
     // FILTER COLOR
-    color1Filter: "invert(100%) sepia(44%) saturate(3478%) hue-rotate(69deg) brightness(104%) contrast(101%)",
-    color2Filter: "invert(100%) sepia(31%) saturate(4578%) hue-rotate(77deg) brightness(106%) contrast(97%)",
-    color4Filter: "invert(34%) sepia(15%) saturate(2951%) hue-rotate(121deg) brightness(94%) contrast(91%)",
+    colorLightGreenFilter: "invert(100%) sepia(31%) saturate(4578%) hue-rotate(77deg) brightness(106%) contrast(97%)",
+    colorDarkGreenFilter: "invert(34%) sepia(15%) saturate(2951%) hue-rotate(121deg) brightness(94%) contrast(91%)",
     colorWhiteFilter: "invert(85%) sepia(12%) saturate(508%) hue-rotate(167deg) brightness(123%) contrast(96%)",
-    colorDarkFilter: "filter: invert(14%) sepia(63%) saturate(182%) hue-rotate(172deg) brightness(96%) contrast(90%)",
+    colorDarkFilter: "invert(14%) sepia(63%) saturate(182%) hue-rotate(172deg) brightness(96%) contrast(90%)",
 
     colorLight1: "#cecfdf",
     colorLight2: "#a9aab5",
-    colorDark1: "#1a242a",
-    colorDark2: "#293038",
-    //colorDark2: "#1b2e39"
-    //colorDark2: "#1c3932",
-    colorBlack: "#1a1c1b",
+    colorDark1: "#293038",
+    colorDark2: "#1a242a",
 
     //FONT SIZE
     fontSize1: "25px",

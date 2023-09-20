@@ -17,7 +17,7 @@ const StyledPresentation = styled.section`
   h1 {
     opacity: 0;
     margin: 0;
-    color:  ${props => props.theme.isBgColorLight ? constants.color4 : constants.color2};
+    color:  ${props => props.theme.isBgColorLight ? constants.colorDarkGreen : constants.colorLightGreen};
     animation: animatePresentation 0.5s ease ${constants.headerAnim + constants.secondAnim / 5}s forwards;
   }
 
@@ -37,7 +37,7 @@ const StyledPresentation = styled.section`
     opacity: 0.8;
     
     > span {
-      color: ${props => props.theme.isBgColorLight ? constants.color4 : constants.color2};;
+      color: ${props => props.theme.isBgColorLight ? constants.colorDarkGreen : constants.colorLightGreen};;
       opacity: 1;
     }
 
@@ -80,7 +80,7 @@ const StyledPresentation = styled.section`
     max-width: 100%;
 
     &:hover {
-      background-color: ${props => props.theme.isBgColorLight ? constants.color4 : constants.color2};
+      background-color: ${props => props.theme.isBgColorLight ? constants.colorDarkGreen : constants.colorLightGreen};
       transition: ease-in-out 0.5s;
     }
   }
@@ -140,8 +140,8 @@ const Presentation = (props: PresentationProps) => {
                         Bonjour et bienvenu sur mon portefolio ! Je suis un jeune développeur
                         <span > Javascript et Typescript Junior </span> ayant
                         suivi des formations en alternance à Paris du bac jusqu'au bac+5.
-                        Je maîtrise plusieurs langages comme le HTML, CSS, TypeScript, PHP.. Je possède néanmoins une
-                        grande préférence pour les langages Javascript & TypeScript, et les librairies comme
+                        Je maîtrise plusieurs langages comme le HTML, CSS, Javascript et TypeScript, PHP.. Je possède néanmoins
+                        plus d'expertise et une grande préférence pour les langages Javascript & TypeScript, et les librairies comme
                         <span> React et React Native</span> !
                     </p>
                     <br/>

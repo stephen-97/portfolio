@@ -57,7 +57,7 @@ const StyledProjectsContainer = styled.section`
   .project {
     height: 350px;
     width: 350px;
-    background-color: ${props => props.theme.isBgColorLight ? constants.colorLight2 : constants.colorDark1};
+    background-color: ${props => props.theme.isBgColorLight ? constants.colorLight2 : constants.colorDark2};
     list-style: none;
     border-radius: ${constants.borderRadius1}px;
     margin: 0 0 30px 0;
@@ -103,15 +103,15 @@ const StyledProjectsContainer = styled.section`
         align-items: center;
         font-size: ${constants.fontSize4};
         font-weight: bolder;
-        background-color: ${props => props.theme.isBgColorLight ? constants.colorLight1 : constants.colorDark2};
+        background-color: ${props => props.theme.isBgColorLight ? constants.colorLight1 : constants.colorDark1};
         border-radius: ${constants.borderRadius1}px;
-        border: 2px ${props => props.theme.isBgColorLight ? constants.color4 : constants.color2} solid;
+        border: 2px ${props => props.theme.isBgColorLight ? constants.colorDarkGreen : constants.colorLightGreen} solid;
         cursor: pointer;
-        color: ${props => props.theme.isBgColorLight ? constants.colorDark2 : constants.colorLight1};
+        color: ${props => props.theme.isBgColorLight ? constants.colorDark1 : constants.colorLight1};
 
         &:hover {
-          background-color: ${props => props.theme.isBgColorLight ? constants.color4 : constants.color2};
-          color: ${props => props.theme.isBgColorLight ? constants.colorLight1 : constants.colorDark1};;
+          background-color: ${props => props.theme.isBgColorLight ? constants.colorDarkGreen : constants.colorLightGreen};
+          color: ${props => props.theme.isBgColorLight ? constants.colorLight1 : constants.colorDark2};;
           transition: 0.5s ease-in-out;
         }
       }

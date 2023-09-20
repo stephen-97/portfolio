@@ -1,11 +1,10 @@
 import React, {Dispatch, ForwardedRef, forwardRef, useEffect, useState} from 'react';
 import {css, styled, ThemeProvider} from "styled-components";
-import {connect } from "react-redux";
+import {connect} from "react-redux";
 import computer from "../../assets/computer.svg"
-import { RootState} from "../../redux/redux";
+import {RootState} from "../../redux/redux";
 import constants from "../../utility/constants";
 import ExperienceBlock from "./experience/ExperienceBlock";
-
 
 
 type ExperienceProps = {
@@ -19,10 +18,10 @@ const transitionExperienceSkillBlock: number = 0.5;
 const loopBlockList = () => {
     let style = '';
 
-    for(let i=1; i<= 5; i++){
-        style+= `
+    for (let i = 1; i <= 5; i++) {
+        style += `
             > ol:nth-of-type(${i}) {
-                animation: animationListBlockExperience 1s ease-in-out ${i/3+1}s forwards;
+                animation: animationListBlockExperience 1s ease-in-out ${i / 3 + 1}s forwards;
                 transform: translateX(50px);
                 @keyframes animationListBlockExperience {
                   from {
@@ -45,11 +44,11 @@ const loopBlockList = () => {
 const loopExperienceSkills = () => {
     let style = '';
 
-    for(let i=0; i<= 10; i++){
-        style+= `
+    for (let i = 0; i <= 10; i++) {
+        style += `
             > span:nth-of-type(${i}) {
                 position: relative;
-                animation: animationSkills 0.2s ease-in-out ${i*0.2}s forwards;
+                animation: animationSkills 0.2s ease-in-out ${i * 0.2}s forwards;
                 @keyframes animationSkills {
                   0% {
                     transform: translate(-20px, -20px);
@@ -79,13 +78,14 @@ const StyledExperience = styled.section`
     position: relative;
     list-style-type: none;
     padding: 0;
+
     > li {
-      
+
     }
   }
-  
-  .selected  {
-      color: white;
+
+  .selected {
+    color: white;
   }
 
   #sectionBlock {
@@ -95,7 +95,7 @@ const StyledExperience = styled.section`
     position: relative;
     margin-bottom: 50px;
   }
-  
+
   .experience-skills-block {
     top: 0;
     margin: auto;
@@ -103,48 +103,50 @@ const StyledExperience = styled.section`
     position: relative;
     width: 490px;
     min-height: 350px;
-    
+
     text-align: center;
     padding: 10px 0;
-    
+
     // RIGHT
-    &:nth-of-type(1){
+    &:nth-of-type(1) {
       height: auto;
       min-height: auto;
+
       > .experience-skills-block-title {
         display: block;
-        font-size: clamp(${constants.h3_min}px ,4vw, ${constants.h3_max}px);
+        font-size: clamp(${constants.h3_min}px, 4vw, ${constants.h3_max}px);
         font-weight: bold;
         margin-bottom: 5px;
       }
     }
-    
+
     // LEFT
-    &:nth-of-type(2){
-      background-color: ${props => props.theme.isBgColorLight ? constants.colorLight2 : constants.colorDark1 };
+    &:nth-of-type(2) {
+      background-color: ${props => props.theme.isBgColorLight ? constants.colorLight2 : constants.colorDark2};
+
       > .experience-skills-block-title {
         display: block;
-        color: ${props => props.theme.isBgColorLight ? constants.colorDark1 : constants.colorLight1 };;
-        font-size: clamp(${constants.h3_min}px ,3vw, ${constants.h3_max}px);
+        color: ${props => props.theme.isBgColorLight ? constants.colorDark2 : constants.colorLight1};;
+        font-size: clamp(${constants.h3_min}px, 3vw, ${constants.h3_max}px);
         font-weight: bold;
         margin-bottom: 5px;
         margin-top: 0;
       }
     }
-    
+
     > img {
       margin: 0;
-      filter: ${props => props.theme.isBgColorLight ? constants.color4Filter : constants.color2Filter };
+      filter: ${props => props.theme.isBgColorLight ? constants.colorDarkGreenFilter : constants.colorLightGreenFilter};
     }
-    
+
     //SKILLS RIGHT
-    .skills-list  {
+    .skills-list {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-evenly;
-      
+
       > span {
-        background-color: ${props => props.theme.isBgColorLight ? constants.colorLight1 : constants.colorDark2 };
+        background-color: ${props => props.theme.isBgColorLight ? constants.colorLight1 : constants.colorDark1};
         opacity: 0;
         margin-top: 20px;
         width: clamp(125px, 7vw, 175px);
@@ -154,24 +156,22 @@ const StyledExperience = styled.section`
         font-size: clamp(13px, 1vw, 16px);
         position: relative;
         text-align: left;
-        color:  ${props => props.theme.isBgColorLight ? constants.colorDark1 : constants.colorLight1 };
+        color: ${props => props.theme.isBgColorLight ? constants.colorDark2 : constants.colorLight1};
 
-        >span {
+        > span {
           display: block;
           font-size: clamp(15px, 1vw, 18px);
-          color: ${props => props.theme.isBgColorLight ? constants.color4 : constants.color2 };;
-          font-weight: 200;
+          color: ${props => props.theme.isBgColorLight ? constants.colorDarkGreen : constants.colorLightGreen};;
         }
       }
     }
-    
-    
+
     // Choice BLOCK
     ul {
       padding: 0;
       margin-top: 30px;
-      
-      >ol {
+
+      > ol {
         opacity: 0;
         margin: 10px auto;
         width: 120px;
@@ -181,6 +181,7 @@ const StyledExperience = styled.section`
         font-weight: bold;
         text-align: left;
       }
+
       a {
         display: block;
         position: absolute;
@@ -190,7 +191,7 @@ const StyledExperience = styled.section`
     }
   }
 
-  .active-experience-skills-block{
+  .active-experience-skills-block {
     &:nth-of-type(1) {
       ul {
         ${loopBlockList()}
@@ -200,15 +201,16 @@ const StyledExperience = styled.section`
           height: 4px;
           border-bottom: 0;
           transform-origin: left;
-          background-color: ${constants.color4};
+          background-color: ${constants.colorDarkGreen};
           position: absolute;
           bottom: -4px;
         }
-        
+
         ol:nth-of-type(n) {
-          &:hover{
-            color: ${constants.color4};
+          &:hover {
+            color: ${constants.colorDarkGreen};
             transition: ease-in-out .2s;
+
             a {
               transition: inherit;
               transform: scaleX(1);
@@ -216,10 +218,11 @@ const StyledExperience = styled.section`
             }
           }
         }
-        
+
         .itemSelected {
-          color: ${constants.color4};
+          color: ${constants.colorDarkGreen};
           transition: ease-in-out .2s;
+
           a {
             transform: scaleX(1);
             transform-origin: left;
@@ -227,7 +230,7 @@ const StyledExperience = styled.section`
         }
       }
     }
-    
+
     &:nth-of-type(2) {
       transform: translateX(250px);
       animation: animation-Skills-Block ${transitionExperienceSkillBlock}s ease-in-out ${animationDelay}s forwards;
@@ -237,20 +240,22 @@ const StyledExperience = styled.section`
         }
       }
     }
-      
-    >section {
+
+    > section {
       ${loopExperienceSkills()}
     }
   }
-  
+
 
 `
+
 enum Level {
-    Experienced= 'Expérimenté',
-    Confirmed= 'Confirmé',
-    Intermediate= 'Intermédiaire',
-    Basic= 'Basic',
+    Experienced = 'Expérimenté',
+    Confirmed = 'Confirmé',
+    Intermediate = 'Intermédiaire',
+    Basic = 'Basic',
 }
+
 interface Skill {
     name: string,
     level: string,
@@ -259,17 +264,17 @@ interface Skill {
 
 const frontEndSkills: Array<Skill> =
     [
-        {name: 'REACT NATIVE', level: Level.Experienced},
+        {name: 'REACT NATIVE', level: Level.Confirmed},
         {name: 'JAVASCRIPT', level: Level.Confirmed},
         {name: 'TYPESCRIPT', level: Level.Intermediate},
-        {name: 'HTML', level: Level.Experienced},
+        {name: 'HTML', level: Level.Confirmed},
         {name: 'SCSS', level: Level.Confirmed},
         {name: 'TWIG', level: Level.Basic},
     ]
 
 const backEndSkills: Array<Skill> =
     [
-        {name: 'SYMFONY', level:    Level.Confirmed},
+        {name: 'SYMFONY', level: Level.Confirmed},
         {name: 'NODE', level: Level.Intermediate},
         {name: 'Express', level: Level.Intermediate},
         {name: 'MYSQL', level: Level.Basic},
@@ -280,60 +285,65 @@ const backEndSkills: Array<Skill> =
 
 const othersToolsSkills: Array<Skill> =
     [
-        {name: 'Ansible', level:    Level.Confirmed},
+        {name: 'Ansible', level: Level.Intermediate},
         {name: 'Docker', level: Level.Intermediate},
-        {name: 'Terraform', level: Level.Basic},
+        {name: 'Terraform', level: Level.Intermediate},
     ]
 
 
+const Experience = forwardRef<HTMLDivElement, ExperienceProps>((props: ExperienceProps, ref: ForwardedRef<HTMLDivElement>) => {
 
-const Experience = forwardRef<HTMLDivElement, ExperienceProps>((props: ExperienceProps, ref: ForwardedRef<HTMLDivElement>) =>  {
-
-    const [experiencePattern, setExperiencePattern]:[ string, Dispatch<string>] = useState('FrontEnd')
+    const [experiencePattern, setExperiencePattern]: [string, Dispatch<string>] = useState('FrontEnd')
 
     const theme = {
         isBgColorLight: props.isBgColorLight,
     }
 
 
-    return(
+    return (
         <ThemeProvider theme={theme}>
             <StyledExperience>
-                <section id={'sectionBlock'} >
+                <section id={'sectionBlock'}>
                     <div className={'experience-skills-block'}>
                         <img height={80} width={80} src={computer} alt={'computer image'}/>
                         <span className={'experience-skills-block-title'}>3 YEARS EXPERIENCES</span>
                         <ul>
-                            <ol onClick={() => setExperiencePattern('FrontEnd')}  className={`${experiencePattern==='FrontEnd' ? 'itemSelected': ''}`}>
-                                <a key={'BackEnd-Item'} ></a>
-                                <span>Front End</span>
+                            <ol onClick={() => setExperiencePattern('FrontEnd')}
+                                className={`${experiencePattern === 'FrontEnd' ? 'itemSelected' : ''}`}>
+                                <a key={'BackEnd-Item'}></a>
+                                <span>FrontEnd</span>
                             </ol>
-                            <ol onClick={() => setExperiencePattern('BackEnd')}  className={`${experiencePattern==='BackEnd' ? 'itemSelected': ''}`}>
+                            <ol onClick={() => setExperiencePattern('BackEnd')}
+                                className={`${experiencePattern === 'BackEnd' ? 'itemSelected' : ''}`}>
                                 <a key={'FrontEnd-Item'}></a>
-                                <span>Back End</span>
+                                <span>BackEnd</span>
                             </ol>
-                            <ol onClick={() => setExperiencePattern('DevOps')} className={`${experiencePattern==='DevOps' ? 'itemSelected': ''}`}>
+                            <ol onClick={() => setExperiencePattern('Integration Tools')}
+                                className={`${experiencePattern === 'Integration Tools' ? 'itemSelected' : ''}`}>
                                 <a key={'DevOps-Item'}></a>
-                                <span>Devops</span>
+                                <span>Integration</span>
                             </ol>
                         </ul>
                     </div>
                     <div className={'experience-skills-block'}>
                         <h3 className={'experience-skills-block-title'}>{experiencePattern}</h3>
-                        <section key={experiencePattern} className={'skills-list'} >
+                        <section key={experiencePattern} className={'skills-list'}>
                             {
                                 {
                                     'FrontEnd':
                                         <>
-                                            {frontEndSkills.map((e, i) => <span key={i}>{e.name}<span>{e.level}</span></span>)}
+                                            {frontEndSkills.map((e, i) => <span
+                                                key={i}>{e.name}<span>{e.level}</span></span>)}
                                         </>,
                                     'BackEnd':
                                         <>
-                                            {backEndSkills.map((e, i) => <span key={i}>{e.name}<span>{e.level}</span></span>)}
+                                            {backEndSkills.map((e, i) => <span
+                                                key={i}>{e.name}<span>{e.level}</span></span>)}
                                         </>,
-                                    'DevOps':
+                                    'Integration Tools':
                                         <>
-                                            {othersToolsSkills.map((e, i) => <span key={i}>{e.name}<span>{e.level}</span></span>)}
+                                            {othersToolsSkills.map((e, i) => <span
+                                                key={i}>{e.name}<span>{e.level}</span></span>)}
                                         </>
                                 }[experiencePattern]
                             }
@@ -347,11 +357,9 @@ const Experience = forwardRef<HTMLDivElement, ExperienceProps>((props: Experienc
                             date1={2020}
                             date2={2023}
                             title={'GENDARMERIE NATIONALE'}
-                            description={'Developpeur Web et Devops en apprentissage, trois projets effectués en tant que\n' +
-                                'déveleoppeur web dont deux utilisant ReactJS et NodeJs en TypeScript et un utilisant\n' +
-                                'Symfony. Un projet en Devops pour introduire la solution Airflow dans la messagerie,\n' +
-                                'avec l\'utilisation de terraform, ansible et des principes architecturaux.'}
-
+                            description={'Développeur Web et Devops en apprentissage, trois projets effectués en tant que développeur web : ' +
+                                ' ReactJS, NodeJs et Symfony. Un projet avec une philosphie Devops ' +
+                                'pour introduire la solution Airflow dans la messagerie avec l\'utilisation de Terraform et Ansible.'}
                         />
                     </li>
                 </ul>

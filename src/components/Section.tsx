@@ -16,11 +16,11 @@ const waveHandDuration: number = 1;
 const StyledBockComponent = styled.section`
   position: relative;
   display: block;
-  background-color: ${props => props.theme.isBgColorLight ? constants.colorLight1 : constants.colorDark2};
-  color: ${props => props.theme.isBgColorLight ? constants.colorDark2 : constants.colorLight1};
+  background-color: ${props => props.theme.isBgColorLight ? constants.colorLight1 : constants.colorDark1};
+  color: ${props => props.theme.isBgColorLight ? constants.colorDark1 : constants.colorLight1};
   padding: 0 150px;
   @media screen and (max-width: ${constants.maxWindowWidthForSideMenuButton}px) {
-    padding: ${constants.headerSize}px 0 0 0;
+    padding: 0;
   }
 
   .item {
@@ -71,7 +71,7 @@ const StyledBockComponent = styled.section`
 
     .line {
       opacity: 0;
-      border-bottom: 3px dashed ${props => props.theme.isBgColorLight ? constants.colorDark2 : constants.colorLight1};
+      border-bottom: 3px dashed ${props => props.theme.isBgColorLight ? constants.colorDark1 : constants.colorLight1};
       animation: animateLine 500ms ease ${constants.headerAnim + 0.3}s forwards;
     }
 

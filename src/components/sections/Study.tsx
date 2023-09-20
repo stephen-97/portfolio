@@ -56,7 +56,7 @@ const StyledSectionStudy = styled.section`
   // STUDY
   .block-study {
     padding: 20px;
-    background-color: ${props => props.theme.isBgColorLight ? constants.colorLight2 : constants.colorDark1};
+    background-color: ${props => props.theme.isBgColorLight ? constants.colorLight2 : constants.colorDark2};
     border-radius: ${constants.borderRadius1}px;
     font-size: 16px;
     text-align: left;

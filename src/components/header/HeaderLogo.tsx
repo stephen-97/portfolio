@@ -21,7 +21,16 @@ const StyledLogo = styled.a`
   box-shadow: none;
   border: none;
   cursor: pointer;
-
+  animation: entranceLogo 0.4s ease-in-out forwards;
+  @keyframes entranceLogo {
+    from {
+      transform: translateX(-100px);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  
   &:hover {
     animation: ShakingLogoButton 0.8s ease forwards;
     transform-origin: 0;
@@ -52,12 +61,12 @@ const StyledLogo = styled.a`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: ${constants.color2};
+    background-color: ${constants.colorLightGreen};
   }
 
   div {
     opacity: 1;
-    color: ${constants.color2};
+    color: ${constants.colorLightGreen};
     position: absolute;
     top: 50%;
     left: 50%;

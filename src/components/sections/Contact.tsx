@@ -48,7 +48,7 @@ const StyledSkills = styled.section`
   .contact-block {
     position: relative;
     transform: scale(0);
-    background-color: ${props => props.theme.isBgColorLight ? constants.colorLight2 : constants.colorDark1};
+    background-color: ${props => props.theme.isBgColorLight ? constants.colorLight2 : constants.colorDark2};
     width: 300px;
     height: 200px;
     border-radius: ${constants.borderRadius1}px;
@@ -66,14 +66,14 @@ const StyledSkills = styled.section`
     }
 
     &:hover {
-      background-color: ${props => props.theme.isBgColorLight ? constants.color4 : constants.color2};
+      background-color: ${props => props.theme.isBgColorLight ? constants.colorDarkGreen : constants.colorLightGreen};
 
       > h5 {
-        color: ${props => props.theme.isBgColorLight ? constants.colorLight1 : constants.colorDark1};
+        color: ${props => props.theme.isBgColorLight ? constants.colorLight1 : constants.colorDark2};
       }
 
       > span {
-        color: ${props => props.theme.isBgColorLight ? constants.colorLight1 : constants.colorDark1};
+        color: ${props => props.theme.isBgColorLight ? constants.colorLight1 : constants.colorDark2};
       }
 
       > img {
@@ -85,12 +85,12 @@ const StyledSkills = styled.section`
       margin: 10px 0;
       font-size: ${constants.fontSize4};
       font-weight: bolder;
-      color: ${props => props.theme.isBgColorLight ? constants.colorDark1 : constants.colorLight1};
+      color: ${props => props.theme.isBgColorLight ? constants.colorDark2 : constants.colorLight1};
       text-decoration: inherit;
     }
 
     > span {
-      color: ${props => props.theme.isBgColorLight ? constants.colorDark1 : constants.colorLight1};
+      color: ${props => props.theme.isBgColorLight ? constants.colorDark2 : constants.colorLight1};
       text-decoration: inherit;
     }
 
@@ -101,7 +101,14 @@ const StyledSkills = styled.section`
 
   ${loopContactBlocks()}
 
-
+  #ending-message {
+    margin-top: 50px;
+    text-align: center;
+    h2 {
+      text-align: center;
+      background-color: red;
+    }
+  }
 `
 const Contact = (props: ContactProps) => {
 
@@ -140,8 +147,14 @@ const Contact = (props: ContactProps) => {
                         <h5>Linkedin</h5>
                         <span>stephen-loiola-bastos-04351814b</span>
                     </a>
+                    <section id={'ending-message'}>
+                        <p>
+                            N'hésitez pas à me contacter pour toute opportunité.
+                            Si vous êtes développeur vous pouvez éventuellement me donner votre avis (Technique ou pas!)
+                            sur ce premier portfolio développé en React.
+                        </p>
+                    </section>
                 </section>
-                <h2>Merci pour votre lecture</h2>
             </StyledSkills>
         </ThemeProvider>
     );

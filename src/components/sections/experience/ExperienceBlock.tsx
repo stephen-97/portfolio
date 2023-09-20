@@ -31,7 +31,7 @@ const StyledExperienceBlock = styled.section`
   }
 
   .experienceItem {
-    background-color: ${props => props.theme.isBgColorLight ? constants.colorLight2 : constants.colorDark2};
+    background-color: ${props => props.theme.isBgColorLight ? constants.colorLight2 : constants.colorDark1};
     position: relative;
     transform: translateY(100px);
     font-size: 25px;
