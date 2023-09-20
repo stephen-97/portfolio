@@ -1,16 +1,18 @@
 import React, {Dispatch, ForwardedRef, forwardRef, useEffect, useState} from 'react';
-import {css, styled} from "styled-components";
+import {css, styled, ThemeProvider} from "styled-components";
 import {connect } from "react-redux";
 import computer from "../../assets/computer.svg"
 import { RootState} from "../../redux/redux";
 import constants from "../../utility/constants";
 import ExperienceBlock from "./experience/ExperienceBlock";
 
+
+
 type ExperienceProps = {
     ref: HTMLDivElement | undefined,
     animationDelay: number,
+    isBgColorLight: boolean,
 }
-
 
 const animationDelay: number = 0.5;
 const transitionExperienceSkillBlock: number = 0.5;
@@ -83,7 +85,6 @@ const StyledExperience = styled.section`
     }
   }
   
-  
   .selected  {
       color: white;
   }
@@ -121,19 +122,20 @@ const StyledExperience = styled.section`
     
     // LEFT
     &:nth-of-type(2){
-      background-color: ${constants.colorDark1};
+      background-color: ${props => props.theme.isBgColorLight ? constants.colorLight2 : constants.colorDark1 };
       > .experience-skills-block-title {
         display: block;
-        color: whitesmoke;
+        color: ${props => props.theme.isBgColorLight ? constants.colorDark1 : constants.colorLight1 };;
         font-size: clamp(${constants.h3_min}px ,3vw, ${constants.h3_max}px);
         font-weight: bold;
         margin-bottom: 5px;
+        margin-top: 0;
       }
     }
     
     > img {
       margin: 0;
-      filter:  ${constants.color2Filter};
+      filter:   ${props => props.theme.isBgColorLight ? constants.color4Filter : constants.color2Filter };
     }
     
     //SKILLS RIGHT
@@ -143,7 +145,7 @@ const StyledExperience = styled.section`
       justify-content: space-evenly;
       
       > span {
-        background-color: ${constants.colorDark2};
+        background-color: ${props => props.theme.isBgColorLight ? constants.colorLight1 : constants.colorDark2 };
         opacity: 0;
         margin-top: 20px;
         width: clamp(125px, 7vw, 175px);
@@ -153,13 +155,13 @@ const StyledExperience = styled.section`
         font-size: clamp(13px, 1vw, 16px);
         position: relative;
         text-align: left;
-        color: whitesmoke;
+        color:  ${props => props.theme.isBgColorLight ? constants.colorDark1 : constants.colorLight1 };
 
         >span {
           display: block;
           font-size: clamp(15px, 1vw, 18px);
-          color: ${constants.color2};
-          font-weight: 100;
+          color: ${props => props.theme.isBgColorLight ? constants.color4 : constants.color2 };;
+          font-weight: 200;
         }
       }
     }
@@ -199,14 +201,14 @@ const StyledExperience = styled.section`
           height: 4px;
           border-bottom: 0;
           transform-origin: left;
-          background-color: ${constants.color1};
+          background-color: ${constants.color4};
           position: absolute;
           bottom: -4px;
         }
         
         ol:nth-of-type(n) {
           &:hover{
-            color: ${constants.color1};
+            color: ${constants.color4};
             transition: ease-in-out .2s;
             a {
               transition: inherit;
@@ -217,7 +219,7 @@ const StyledExperience = styled.section`
         }
         
         .itemSelected {
-          color: ${constants.color1};
+          color: ${constants.color4};
           transition: ease-in-out .2s;
           a {
             transform: scaleX(1);
@@ -285,68 +287,77 @@ const othersToolsSkills: Array<Skill> =
     ]
 
 
+
 const Experience = forwardRef<HTMLDivElement, ExperienceProps>((props: ExperienceProps, ref: ForwardedRef<HTMLDivElement>) =>  {
 
     const [experiencePattern, setExperiencePattern]:[ string, Dispatch<string>] = useState('FrontEnd')
 
-    return(
-        <StyledExperience>
-            <section id={'sectionBlock'} >
-                <div className={'experience-skills-block'}>
-                    <img height={80} width={80} src={computer} alt={'computer image'}/>
-                    <span className={'experience-skills-block-title'}>3 YEARS EXPERIENCES</span>
-                    <ul>
-                        <ol onClick={() => setExperiencePattern('FrontEnd')}  className={`${experiencePattern==='FrontEnd' ? 'itemSelected': ''}`}>
-                            <a key={'BackEnd-Item'} ></a>
-                            <span>Front End</span>
-                        </ol>
-                        <ol onClick={() => setExperiencePattern('BackEnd')}  className={`${experiencePattern==='BackEnd' ? 'itemSelected': ''}`}>
-                            <a key={'FrontEnd-Item'}></a>
-                            <span>Back End</span>
-                        </ol>
-                        <ol onClick={() => setExperiencePattern('DevOps')} className={`${experiencePattern==='DevOps' ? 'itemSelected': ''}`}>
-                            <a key={'DevOps-Item'}></a>
-                            <span>Devops</span>
-                        </ol>
-                    </ul>
-                </div>
-                <div className={'experience-skills-block'}>
-                    <span className={'experience-skills-block-title'}>{experiencePattern}</span>
-                    <section key={experiencePattern} className={'skills-list'} >
-                        {
-                            {
-                                'FrontEnd':
-                                    <>
-                                        {frontEndSkills.map((e, i) => <span key={i}>{e.name}<span>{e.level}</span></span>)}
-                                    </>,
-                                'BackEnd':
-                                    <>
-                                        {backEndSkills.map((e, i) => <span key={i}>{e.name}<span>{e.level}</span></span>)}
-                                    </>,
-                                'DevOps':
-                                    <>
-                                        {othersToolsSkills.map((e, i) => <span key={i}>{e.name}<span>{e.level}</span></span>)}
-                                    </>
-                            }[experiencePattern]
-                        }
-                    </section>
-                </div>
-            </section>
-            <ul id={'experienceList'}>
-                <li>
-                    <ExperienceBlock
-                        date1={2020}
-                        date2={2023}
-                        title={'GENDARMERIE NATIONALE'}
-                        description={'Developpeur Web et Devops en apprentissage, trois projets effectués en tant que\n' +
-                            'déveleoppeur web dont deux utilisant ReactJS et NodeJs en TypeScript et un utilisant\n' +
-                            'Symfony. Un projet en Devops pour introduire la solution Airflow dans la messagerie,\n' +
-                            'avec l\'utilisation de terraform, ansible et des principes architecturaux.'}
+    const theme = {
+        isBgColorLight: props.isBgColorLight,
+    }
 
-                    />
-                </li>
-            </ul>
-        </StyledExperience>
+
+    return(
+        <ThemeProvider theme={theme}>
+            <StyledExperience>
+                <section id={'sectionBlock'} >
+                    <div className={'experience-skills-block'}>
+                        <img height={80} width={80} src={computer} alt={'computer image'}/>
+                        <span className={'experience-skills-block-title'}>3 YEARS EXPERIENCES</span>
+                        <ul>
+                            <ol onClick={() => setExperiencePattern('FrontEnd')}  className={`${experiencePattern==='FrontEnd' ? 'itemSelected': ''}`}>
+                                <a key={'BackEnd-Item'} ></a>
+                                <span>Front End</span>
+                            </ol>
+                            <ol onClick={() => setExperiencePattern('BackEnd')}  className={`${experiencePattern==='BackEnd' ? 'itemSelected': ''}`}>
+                                <a key={'FrontEnd-Item'}></a>
+                                <span>Back End</span>
+                            </ol>
+                            <ol onClick={() => setExperiencePattern('DevOps')} className={`${experiencePattern==='DevOps' ? 'itemSelected': ''}`}>
+                                <a key={'DevOps-Item'}></a>
+                                <span>Devops</span>
+                            </ol>
+                        </ul>
+                    </div>
+                    <div className={'experience-skills-block'}>
+                        <h3 className={'experience-skills-block-title'}>{experiencePattern}</h3>
+                        <section key={experiencePattern} className={'skills-list'} >
+                            {
+                                {
+                                    'FrontEnd':
+                                        <>
+                                            {frontEndSkills.map((e, i) => <span key={i}>{e.name}<span>{e.level}</span></span>)}
+                                        </>,
+                                    'BackEnd':
+                                        <>
+                                            {backEndSkills.map((e, i) => <span key={i}>{e.name}<span>{e.level}</span></span>)}
+                                        </>,
+                                    'DevOps':
+                                        <>
+                                            {othersToolsSkills.map((e, i) => <span key={i}>{e.name}<span>{e.level}</span></span>)}
+                                        </>
+                                }[experiencePattern]
+                            }
+                        </section>
+                    </div>
+                </section>
+                <ul id={'experienceList'}>
+                    <li>
+                        <ExperienceBlock
+                            isBgColorLight={theme.isBgColorLight}
+                            date1={2020}
+                            date2={2023}
+                            title={'GENDARMERIE NATIONALE'}
+                            description={'Developpeur Web et Devops en apprentissage, trois projets effectués en tant que\n' +
+                                'déveleoppeur web dont deux utilisant ReactJS et NodeJs en TypeScript et un utilisant\n' +
+                                'Symfony. Un projet en Devops pour introduire la solution Airflow dans la messagerie,\n' +
+                                'avec l\'utilisation de terraform, ansible et des principes architecturaux.'}
+
+                        />
+                    </li>
+                </ul>
+            </StyledExperience>
+        </ThemeProvider>
     );
 })
 

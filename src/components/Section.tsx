@@ -1,4 +1,4 @@
-import {styled} from "styled-components";
+import {styled, ThemeProvider} from "styled-components";
 import React, {Component, JSX, LegacyRef} from "react";
 import constants from '../utility/constants'
 
@@ -9,27 +9,31 @@ type SectionProps = {
     refProp: LegacyRef<HTMLDivElement>,
     keyItem: number,
     component: JSX.Element,
+    isBgColorLight: boolean,
 }
 
 const waveHandDuration: number = 1;
 const StyledBockComponent = styled.section`
-
-  & {
-    position: relative;
-    display: block;
+  position: relative;
+  display: block;
+  background-color: ${props => props.theme.isBgColorLight ? constants.colorLight1 : constants.colorDark2};
+  color: ${props => props.theme.isBgColorLight ? constants.colorDark2 : constants.colorLight1};
+  padding: 0 150px;
+  @media screen and (max-width: ${constants.maxWindowWidthForSideMenuButton}px) {
+    padding: ${constants.headerSize}px 0 0 0;
   }
 
   .item {
     position: relative;
     opacity: 0;
     max-width: 1000px;
-    margin: 40px auto;
-    padding: 0 10px;
+    margin: 0 auto;
+    padding: 0 20px 100px 10px;
     min-height: 100vh;
-    scroll-margin-top: 12vh;
+    scroll-margin-top: ${constants.headerSize}px;
     @media not all and (display-mode: fullscreen) {
       & {
-        margin: 40px auto 100px auto;
+        padding: 20px 10px 30px 10px;
       }
     }
   }
@@ -67,14 +71,14 @@ const StyledBockComponent = styled.section`
 
     .line {
       opacity: 0;
-      border-bottom: 3px dashed white;
+      border-bottom: 3px dashed ${props => props.theme.isBgColorLight ? constants.colorDark2 : constants.colorLight1};
       animation: animateLine 500ms ease ${constants.headerAnim + 0.3}s forwards;
     }
 
     > img {
       opacity: 0;
       animation: animateIconOpacity 500ms ease ${constants.headerAnim + 0.3}s forwards;
-      filter: ${constants.colorWhiteFilter};
+      filter:${props => props.theme.isBgColorLight ? constants.colorDarkFilter : constants.colorWhiteFilter};
       height: clamp(60px, 10vw, 100px);
     }
   }
@@ -158,22 +162,28 @@ const StyledBockComponent = styled.section`
 
 const Section = (props: SectionProps) => {
 
+    const theme = {
+        isBgColorLight: props.isBgColorLight,
+    }
+
     return (
-        <StyledBockComponent>
-            <section ref={props.refProp} className={`item item${props.keyItem}`}>
-                <div className={'blockContainer'}>
-                    <div className={'title'}>
-                        <div className={'lineContainer'}>
-                            <div className={'line'}></div>
+        <ThemeProvider theme={theme}>
+            <StyledBockComponent ref={props.refProp}>
+                <section className={`item item${props.keyItem}`}>
+                    <div className={'blockContainer'}>
+                        <div className={'title'}>
+                            <div className={'lineContainer'}>
+                                <div className={'line'}></div>
+                            </div>
+                            <img id={props.id} src={props.icon} alt="React Logo"/>
                         </div>
-                        <img id={props.id} src={props.icon} alt="React Logo"/>
+                        <div>
+                            {props.component}
+                        </div>
                     </div>
-                    <div>
-                        {props.component}
-                    </div>
-                </div>
-            </section>
-        </StyledBockComponent>
+                </section>
+            </StyledBockComponent>
+        </ThemeProvider>
     );
 }
 

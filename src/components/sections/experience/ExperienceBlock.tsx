@@ -1,5 +1,5 @@
 import React from 'react';
-import {styled} from "styled-components"
+import {styled, ThemeProvider} from "styled-components"
 import constants from "../../../utility/constants";
 import Tag from "../../Tag";
 
@@ -9,10 +9,11 @@ type ExperienceBlockPops = {
     date2: number,
     title: string,
     description: string,
+    isBgColorLight: boolean,
 }
 
 
-const animationDelay: number = 0;
+const animationExBlockDelay: number = 0;
 const transitionExperienceBlock: number = 0.5;
 
 
@@ -20,7 +21,7 @@ const StyledExperienceBlock = styled.section`
   position: relative;
 
   .activeExperienceItem {
-    animation: translateExperienceItem ${transitionExperienceBlock}s ease-in-out ${animationDelay}s forwards;
+    animation: translateExperienceItem ${transitionExperienceBlock}s ease-in-out ${animationExBlockDelay}s forwards;
     @keyframes translateExperienceItem {
       to {
         opacity: 1;
@@ -30,9 +31,9 @@ const StyledExperienceBlock = styled.section`
   }
 
   .experienceItem {
+    background-color: ${props => props.theme.isBgColorLight ? constants.colorLight2 : constants.colorDark2};
     position: relative;
     transform: translateY(100px);
-    background-color: ${constants.colorDark1};
     font-size: 25px;
     border-radius: ${constants.borderRadius1}px;
     transition: all ${transitionExperienceBlock}s ease;
@@ -61,12 +62,10 @@ const StyledExperienceBlock = styled.section`
     .title-experience {
       margin: 10px 0;
       font-size: clamp(${constants.h3_min}, 3vw, ${constants.h3_max});
-      color: ${constants.colorLight1};
       font-weight: bold;
     }
 
     .experience-description {
-      color: ${constants.colorLight2};
       margin: 15px 0;
     }
   }
@@ -75,26 +74,31 @@ const StyledExperienceBlock = styled.section`
 
 const ExperienceBlock = (props: ExperienceBlockPops) => {
 
-    return (
-        <StyledExperienceBlock>
-            <div className={'experienceItem'}>
-                <div className={'contentDescription'}>
-                    <h3 className={'title-experience'}>{`${props.title}`}</h3>
-                    <span className={'experience-date'}>{`${props.date1} ${props.date2}`}</span>
-                    <p className={'experience-description'}> {`${props.description}`}</p>
-                    <ul className={'tagsExperience'}>
-                        <Tag name={'CSS'}/>
-                        <Tag name={'React'}/>
-                        <Tag name={'Node'}/>
-                        <Tag name={'Typescript'}/>
-                        <Tag name={'Ansible'}/>
-                        <Tag name={'Terraform'}/>
-                    </ul>
-                </div>
-            </div>
-        </StyledExperienceBlock>
-    )
+    const theme = {
+        isBgColorLight: props.isBgColorLight,
+    }
 
+    return (
+        <ThemeProvider theme={theme}>
+            <StyledExperienceBlock>
+                    <div className={'experienceItem'}>
+                        <div className={'contentDescription'}>
+                            <h3 className={'title-experience'}>{`${props.title}`}</h3>
+                            <span className={'experience-date'}>{`${props.date1} ${props.date2}`}</span>
+                            <p className={'experience-description'}> {`${props.description}`}</p>
+                            <ul className={'tagsExperience'}>
+                                <Tag isBgColorLight={props.isBgColorLight} name={'CSS'}/>
+                                <Tag isBgColorLight={props.isBgColorLight} name={'React'}/>
+                                <Tag isBgColorLight={props.isBgColorLight} name={'Node'}/>
+                                <Tag isBgColorLight={props.isBgColorLight} name={'Typescript'}/>
+                                <Tag isBgColorLight={props.isBgColorLight} name={'Ansible'}/>
+                                <Tag isBgColorLight={props.isBgColorLight} name={'Terraform'}/>
+                            </ul>
+                        </div>
+                    </div>
+            </StyledExperienceBlock>
+        </ThemeProvider>
+)
 }
 
 

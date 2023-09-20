@@ -10,7 +10,6 @@ import LetterIcon from "../assets/letter.svg"
 const size: number = 60;
 
 const StyledBoxContainer = styled.section`
-
   #containerBox {
     position: relative;
     z-index: 1;
@@ -40,7 +39,7 @@ const StyledBoxContainer = styled.section`
     width: ${size}px;
     text-align: center;
     color: white;
-    background-color: ${constants.color2};
+    background-color: whitesmoke;
     box-sizing: border-box;
     position: absolute;
     box-shadow: inset 0 0 28px -10px rgba(0, 0, 0, 0.94);

@@ -22,16 +22,11 @@ gsap.registerPlugin(ScrollTrigger);
 const blockAnimationDelay = constants.duration_itemAnim;
 
 const StyledItemContainer = styled.main`
-  & {
-    position: relative;
-    overflow: auto;
-    padding: ${constants.headerSize}px 150px 0 150px;
-    min-height: 100vh;
-    transition: none;
-    @media screen and (max-width: ${constants.maxWindowWidthForSideMenuButton}px) {
-      padding: ${constants.headerSize}px 0 0 0;
-    }
-  }
+  position: relative;
+  overflow: auto;
+  padding: ${constants.headerSize}px 0 0 0;
+  min-height: 100vh;
+  transition: none;
 `
 const Main = () => {
 
@@ -53,7 +48,7 @@ const Main = () => {
                     }
                 }
                 if (entry.target.classList.contains('project')) entry.target.classList.add('active-project');
-                if (entry.target.classList.contains('blockStudy')) entry.target.classList.add('active-blockStudy')
+                if (entry.target.classList.contains('block-study')) entry.target.classList.add('active-block-study')
                 if (entry.target.classList.contains('experienceItem')) entry.target.classList.add('activeExperienceItem')
                 if (entry.target.classList.contains('contact-block')) entry.target.classList.add('active-contact-block')
                 if (entry.target.classList.contains('experience-skills-block')) entry.target.classList.add('active-experience-skills-block')
@@ -70,7 +65,7 @@ const Main = () => {
         // Item des projets :
         const projectElements = document.querySelectorAll(".project")
         // Item des études
-        const studyElements = document.querySelectorAll(".blockStudy")
+        const studyElements = document.querySelectorAll(".block-study")
         // Item des experiences
         const experienceElements = document.querySelectorAll(".experienceItem")
         // Item des experiences
@@ -163,21 +158,21 @@ const Main = () => {
                     item.classList.remove("activeButton");
                 }
             });
-
         }
     })
 
     return (
         <StyledItemContainer>
-            <Item id={'wave-img-presentation'} keyItem={1} refProp={refPresentation} icon={WaveIcon}
+            <Item id={'wave-img-presentation'} isBgColorLight={false} keyItem={1} refProp={refPresentation}
+                  icon={WaveIcon}
                   component={<Presentation animationDelay={blockAnimationDelay}/>}/>
-            <Item id={'briefCase-img'} keyItem={2} refProp={refExperience} icon={BriefCaseIcon}
-                  component={<Experience animationDelay={blockAnimationDelay}/>}/>
-            <Item id={'study-img'} keyItem={3} refProp={refStudy} icon={GraduationIcon}
-                  component={<Study animationDelay={blockAnimationDelay}/>}/>
-            <Item id={'idea-img'} keyItem={4} refProp={refProjects} icon={IdeaIcon}
-                  component={<Projects animationDelay={blockAnimationDelay}/>}/>
-            <Item id={'skills-img'} keyItem={5} refProp={refContatcs} icon={LetterIcon}
+            <Item id={'briefCase-img'} isBgColorLight={true} keyItem={2} refProp={refExperience} icon={BriefCaseIcon}
+                  component={<Experience isBgColorLight={true} animationDelay={blockAnimationDelay}/>}/>
+            <Item id={'study-img'} isBgColorLight={false} keyItem={3} refProp={refStudy} icon={GraduationIcon}
+                  component={<Study isBgColorLight={false} animationDelay={blockAnimationDelay}/>}/>
+            <Item id={'idea-img'} isBgColorLight={true} keyItem={4} refProp={refProjects} icon={IdeaIcon}
+                  component={<Projects isBgColorLight={true} animationDelay={blockAnimationDelay}/>}/>
+            <Item id={'skills-img'} isBgColorLight={false} keyItem={5} refProp={refContatcs} icon={LetterIcon}
                   component={<Skills animationDelay={blockAnimationDelay}/>}/>
             <SocialMediaContainer/>
         </StyledItemContainer>

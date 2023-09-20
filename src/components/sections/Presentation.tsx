@@ -2,6 +2,7 @@ import React from 'react';
 import {styled} from "styled-components";
 import constants from "../../utility/constants";
 import Stephen_profile from "../../assets/Stephen-profile.jpg";
+import zeldaLogo from "../../assets/linkgif.gif"
 
 type PresentationProps = {
     animationDelay: number,
@@ -35,6 +36,10 @@ const StyledPresentation = styled.section`
     color: ${constants.colorLight2};
     > span {
       color: ${constants.color2};
+    }
+    > #switch-span {
+        cursor: url(${zeldaLogo}), pointer;
+      //lg:cursor-[url('/images/koroks/Elma.png'),_pointer]
     }
   }
 
@@ -124,10 +129,9 @@ const Presentation = (props: PresentationProps) => {
                 <div className={'description'}>
                     <p>
                         Bonjour et bienvenu sur mon portefolio ! Je suis un jeune développeur
-                        <span>javascript et typeScript Junior</span>
-                        ayant
+                        <span> Javascript et Typescript Junior </span> ayant
                         suivi des formations en alternance à Paris du bac <span>jusqu'au bac+5</span>.
-                        Je maîtrise plusieurs langages comme HTML, CSS, TypeScript, PHP.. Je possède néanmoins une
+                        Je maîtrise plusieurs langages comme le HTML, CSS, TypeScript, PHP.. Je possède néanmoins une
                         grande préférence pour les langages Javascript & TypeScript, et les librairies comme
                         <span> React et React Native</span> !
                     </p>
@@ -139,7 +143,7 @@ const Presentation = (props: PresentationProps) => {
                     <br/>
                     <p>
                         Lorsque je ne suis pas devant VSCODE ou Webstorm, j'aime généralement
-                        lire Kingdom, jouer à Zelda et assister à des orchestres d'ost.
+                        lire Kingdom, <span id={'switch-span'}>jouer à la switch</span> et assister à des orchestres d'ost.
                     </p>
                 </div>
                 <picture>

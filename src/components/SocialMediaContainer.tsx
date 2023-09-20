@@ -10,6 +10,7 @@ const StyledSocialMediaContainer = styled.div`
   visibility: hidden;
   display: none;
   opacity: 0;
+  mix-blend-mode: difference;
 
   @media screen and (min-width: ${constants.maxWindowWidthForSideMenuButton}px) {
     visibility: visible;
@@ -35,6 +36,7 @@ const StyledSocialMediaContainer = styled.div`
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     border-bottom: none;
+    mix-blend-mode: difference;
     position: relative;
     height: 270px;
     padding: 10px;
@@ -57,6 +59,9 @@ const StyledSocialMediaContainer = styled.div`
 
     a {
       text-align: center;
+      img {
+        filter: invert(100%);
+      }
     }
   }
 

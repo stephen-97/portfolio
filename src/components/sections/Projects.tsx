@@ -1,5 +1,5 @@
 import React, {Dispatch, ReactElement, SetStateAction, useEffect, useState} from 'react';
-import {css, styled} from "styled-components";
+import {css, styled, ThemeProvider} from "styled-components";
 import {connect } from "react-redux";
 import Tag from "../Tag";
 import constants from "../../utility/constants";
@@ -9,6 +9,7 @@ import config from "../../configs/config";
 
 type ProjectContainerProps = {
     animationDelay: number,
+    isBgColorLight: boolean,
 }
 
 type ProjectProps = {
@@ -58,7 +59,7 @@ const StyledProject = styled.li`
   & {
     height: 350px;
     width: 350px;
-    background-color: ${constants.colorDark1};
+    background-color: ${props => props.theme.bgColor === 'dark' ? constants.colorDark1 : constants.colorLight2 };
     list-style: none;
     border-radius: ${constants.borderRadius1}px;
     margin: 0 0 30px 0;
@@ -101,39 +102,21 @@ const StyledProject = styled.li`
       align-items: center;
       font-size: ${constants.fontSize4};
       font-weight: bolder;
-      background-color: ${constants.colorDark2};
+      background-color: ${props => props.theme.isBgColorLight ? constants.colorLight1 : constants.colorDark2 };
       border-radius: ${constants.borderRadius1}px;
-      border: 2px ${constants.color2} solid;
+      border: 2px ${props => props.theme.isBgColorLight ? constants.color4 : constants.color2 } solid;
       cursor: pointer;
-      color: ${constants.colorLight1};
+      color: ${props => props.theme.isBgColorLight ? constants.colorDark2 : constants.colorLight1 };
       &:hover {
-        background-color: ${constants.color1};
-        color: ${constants.colorDark1};
+        background-color: ${props => props.theme.isBgColorLight ? constants.color4 : constants.color2 };
+        color: ${props => props.theme.isBgColorLight ? constants.colorDark2 : constants.colorLight1 };;
         transition: 0.5s ease-in-out;
       }
     }
   }
 `
 
-const Project = (props: ProjectProps): ReactElement => {
-    return (
-        <StyledProject className={'project'}>
-            <header>
-                {props.title}
-            </header>
-            <main>
-                <p>{props.description}</p>
-                <ul>
-                    {props.tags.map((tagName, i) =>  <Tag key={i} name={tagName} />)}
-                </ul>
-            </main>
-            <footer>
-                <a href={props.githubLink} target={'_blank'}>GITHUB</a>
-                {props.demoLink ? <a href={props.demoLink} target={'_blank'}>DEMO</a> : null}
-            </footer>
-        </StyledProject>
-    )
-}
+
 
 
 const ProjectsContainer = (props : ProjectContainerProps): ReactElement =>  {
@@ -148,13 +131,39 @@ const ProjectsContainer = (props : ProjectContainerProps): ReactElement =>  {
             (document.getElementById('project-container') as HTMLElement).style.justifyContent = 'space-around'
     }, [windowsWidth]);
 
+    const theme = {
+        isBgColorLight: props.isBgColorLight,
+    }
+
+    const Project = (props: ProjectProps): ReactElement => {
+        return (
+            <StyledProject className={'project'}>
+                <header>
+                    {props.title}
+                </header>
+                <main>
+                    <p>{props.description}</p>
+                    <ul>
+                        {props.tags.map((tagName, i) =>  <Tag isBgColorLight={theme.isBgColorLight} key={i} name={tagName} />)}
+                    </ul>
+                </main>
+                <footer>
+                    <a href={props.githubLink} target={'_blank'}>GITHUB</a>
+                    {props.demoLink ? <a href={props.demoLink} target={'_blank'}>DEMO</a> : null}
+                </footer>
+            </StyledProject>
+        )
+    }
+
 
     return(
-        <StyledProjectsContainer>
-            <ul id={'project-container'}>
-                {config.projects.map((e, i) => <Project key={i} title={e.title} description={e.description} tags={e.tags} githubLink={e.githubLink} demoLink={e.demoLink}/>)}
-            </ul>
-        </StyledProjectsContainer>
+        <ThemeProvider theme={theme}>
+            <StyledProjectsContainer>
+                <ul id={'project-container'}>
+                    {config.projects.map((e, i) => <Project key={i} title={e.title} description={e.description} tags={e.tags} githubLink={e.githubLink} demoLink={e.demoLink}/>)}
+                </ul>
+            </StyledProjectsContainer>
+        </ThemeProvider>
     );
 }
 
