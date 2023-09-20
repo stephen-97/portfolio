@@ -5,7 +5,7 @@ import WhatsAppIcon from "../../assets/whatsapp.svg"
 import LinkedinIcon from "../../assets/linkedin.svg"
 import constants from "../../utility/constants";
 import functions from "../../utility/functions";
-
+import 'balloon-css';
 
 type ContactProps = {
     isBgColorLight: boolean,
@@ -59,7 +59,7 @@ const StyledSkills = styled.section`
     flex-direction: column;
     cursor: pointer;
     text-decoration: none;
-    transition: 0.5s ease-in-out;
+    transition: ${constants.transitionButton}s ease-in-out;
 
     * {
       transition: inherit;
@@ -102,11 +102,26 @@ const StyledSkills = styled.section`
   ${loopContactBlocks()}
 
   #ending-message {
+    opacity: 0;
     margin-top: 50px;
     text-align: center;
-    h2 {
-      text-align: center;
-      background-color: red;
+    a {
+      text-decoration: none;
+      cursor: pointer;
+      color: ${props => props.theme.isBgColorLight ? constants.colorDarkGreen : constants.colorLightGreen};;
+    }
+  }
+  .active-ending-message {
+    animation: animEndingMessage 0.5s ease-in-out 1s forwards;
+    @keyframes animEndingMessage {
+      from {
+        transform: translateY(100px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
   }
 `
@@ -151,7 +166,7 @@ const Contact = (props: ContactProps) => {
                         <p>
                             N'hésitez pas à me contacter pour toute opportunité.
                             Si vous êtes développeur vous pouvez éventuellement me donner votre avis (Technique ou pas!)
-                            sur ce premier portfolio développé en React.
+                            sur <a href={'https://github.com/stephen-97/portfolio'} target={'_blank'} aria-label="Lien du repository" data-balloon-pos="down">ce premier portfolio développé en React.</a>
                         </p>
                     </section>
                 </section>

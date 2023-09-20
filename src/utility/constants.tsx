@@ -17,6 +17,8 @@ export default {
     thirdAnim: 1,
     headerSize:70,
 
+    transitionButton : 0.4,
+
     // BORDER RADIUS
     borderRadius1: 10,
     // COLOR

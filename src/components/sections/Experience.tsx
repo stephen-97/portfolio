@@ -306,7 +306,7 @@ const Experience = forwardRef<HTMLDivElement, ExperienceProps>((props: Experienc
                 <section id={'sectionBlock'}>
                     <div className={'experience-skills-block'}>
                         <img height={80} width={80} src={computer} alt={'computer image'}/>
-                        <span className={'experience-skills-block-title'}>3 YEARS EXPERIENCES</span>
+                        <span className={'experience-skills-block-title'}>3 YEARS OF EXPERIENCE</span>
                         <ul>
                             <ol onClick={() => setExperiencePattern('FrontEnd')}
                                 className={`${experiencePattern === 'FrontEnd' ? 'itemSelected' : ''}`}>

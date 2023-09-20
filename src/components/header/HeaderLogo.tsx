@@ -9,6 +9,8 @@ const widthSpan: number = 50;
 const heightSpan: number = 4;
 const fontSizeLogo: number = 25;
 
+const firstAnimationLogoDuration: number = 0.4;
+
 const StyledLogo = styled.a`
   position: relative;
   margin-left: 30px;
@@ -21,18 +23,23 @@ const StyledLogo = styled.a`
   box-shadow: none;
   border: none;
   cursor: pointer;
-  animation: entranceLogo 0.4s ease-in-out forwards;
-  @keyframes entranceLogo {
-    from {
-      transform: translateX(-100px);
-    }
-    to {
-      transform: translateX(0);
+
+  .first-logo-animation {
+    background-color: red;
+    animation: entranceLogo ${firstAnimationLogoDuration}s ease-in-out;
+    @keyframes entranceLogo {
+      from {
+        transform: translateX(-100px);
+      }
+      to {
+        transform: translateX(0);
+      }
     }
   }
-  
+
   &:hover {
     animation: ShakingLogoButton 0.8s ease forwards;
+    animation-play-state: running;
     transform-origin: 0;
     @keyframes ShakingLogoButton {
       20% {
@@ -92,7 +99,6 @@ const StyledLogo = styled.a`
     transform: rotate(90deg);
     left: calc(50% - ${widthSpan}px);
   }
-
 `
 
 type LogoProps = {
@@ -101,8 +107,12 @@ type LogoProps = {
 
 const HeaderLogo = (props : LogoProps): ReactElement =>  {
 
+    useEffect(() => {
+        setTimeout(() => {
+        }, firstAnimationLogoDuration*1000 + 100);
+    }, []);
     return(
-        <StyledLogo href={'/'}>
+        <StyledLogo href={'/'} id={'header-logo'} className={'first-logo-animation'}>
             <span className={'first'}></span>
             <span className={'second'}></span>
             <span className={'third'}></span>

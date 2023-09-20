@@ -108,11 +108,12 @@ const StyledProjectsContainer = styled.section`
         border: 2px ${props => props.theme.isBgColorLight ? constants.colorDarkGreen : constants.colorLightGreen} solid;
         cursor: pointer;
         color: ${props => props.theme.isBgColorLight ? constants.colorDark1 : constants.colorLight1};
+        transition: ${constants.transitionButton}s ease-in-out;
 
         &:hover {
           background-color: ${props => props.theme.isBgColorLight ? constants.colorDarkGreen : constants.colorLightGreen};
           color: ${props => props.theme.isBgColorLight ? constants.colorLight1 : constants.colorDark2};;
-          transition: 0.5s ease-in-out;
+          transition: ${constants.transitionButton}s ease-in-out;
         }
       }
     }

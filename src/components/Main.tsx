@@ -49,6 +49,7 @@ const Main = (): ReactElement => {
                 if (entry.target.classList.contains('block-study')) entry.target.classList.add('active-block-study')
                 if (entry.target.classList.contains('experienceItem')) entry.target.classList.add('activeExperienceItem')
                 if (entry.target.classList.contains('contact-block')) entry.target.classList.add('active-contact-block')
+                if (entry.target.id === 'ending-message') entry.target.classList.add('active-ending-message')
                 if (entry.target.classList.contains('experience-skills-block')) entry.target.classList.add('active-experience-skills-block')
                 if (entry.target.classList.contains('project')) entry.target.classList.add('active-project')
             }
@@ -67,7 +68,9 @@ const Main = (): ReactElement => {
         // Item des experiences
         const experienceElements = document.querySelectorAll(".experienceItem")
         // Item des experiences
-        const skillsElements = document.querySelectorAll(".contact-block")
+        const contactElements = document.querySelectorAll(".contact-block")
+        // Dernier message
+        const endingMessage = document.querySelector("#ending-message")
         //Item dans les expériences représentant le nombre d'année de travail, ect...
         const experienceBlocks = document.querySelectorAll(".experienceBlock")
         //experienceAnne
@@ -80,7 +83,8 @@ const Main = (): ReactElement => {
         projectElements.forEach((el: Element) => observer.observe((el)))
         studyElements.forEach((el: Element) => observer.observe((el)))
         experienceElements.forEach((el: Element) => observer.observe((el)))
-        skillsElements.forEach((el: Element) => observer.observe((el)))
+        contactElements.forEach((el: Element) => observer.observe((el)))
+        observer.observe(endingMessage!)
         experienceBlocks.forEach((el: Element) => observer.observe((el)))
         experienceAnne.forEach((el: Element) => observer.observe((el)))
         projectsContainers.forEach((el: Element) => observer.observe((el)))
