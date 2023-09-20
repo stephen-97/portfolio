@@ -48,7 +48,7 @@ interface ProjectInterface {
 const projects: Array<ProjectInterface> = [
     {
         title: 'Portfolio V1',
-        description: "Mon premier portfolio (celui ci!) et il y aura probablement d'autres versions!",
+        description: "Mon premier portfolio (celui ci!). Il y aura probablement d'autres versions !",
         tags: ["React", "Typescript", "HTML", "CSS", "Responsive"],
         githubLink: 'https://github.com/stephen-97/portfolio'
     },
@@ -60,10 +60,36 @@ const projects: Array<ProjectInterface> = [
         demoLink: 'https://www.linkedin.com/posts/stephen-loiola-bastos-04351814b_reactnative-developpeur-expo-activity-7075197754867621888-aWGH?utm_source=share&utm_medium=member_desktop',
     },
 ]
+
+interface ISchoolExperience {
+    name: string,
+    schoolName: string,
+    tags: Array<string>
+}
+
+const schoolExperiences: Array<ISchoolExperience> = [
+    {
+        name: 'RNCP36009 Directeur de projet informatique (Bac+5)',
+        schoolName: 'Aston Ecole',
+        tags: ['Architecture logicielle', 'Cloud Azure', 'Cybersécurité','Gestion de projet','Budgétisation', 'Normes ISO'],
+    },
+    {
+        name: "RNCP31678 Concepteur et Développeur d'application (Bac+3/4)",
+        schoolName: '2iTech Academy by M2i',
+        tags: ['Merise', 'UML', 'Javascript / Typesript','Symfony','React', 'Node / Express', 'React Native', 'AWS'],
+    },
+    {
+        name: 'L2 Informatique (Bac+2)',
+        schoolName: 'Paris Descartes',
+        tags: ['C', 'Java', 'OCaml','Algorithme','HTML', 'CSSO', 'Javascript', 'PHP'],
+    }
+]
+
 export default {
 
     // Data
     navLinks,
     socialMediaLinks,
-    projects
+    projects,
+    schoolExperiences,
 };

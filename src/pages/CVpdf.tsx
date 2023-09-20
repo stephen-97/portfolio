@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React, {ReactElement} from "react";
 import {IStyledComponent, styled} from "styled-components";
 // @ts-ignore
 import cv from '../assets/stephenLoiolaBastosCv.pdf'
@@ -12,9 +12,10 @@ const StyledCVpdf: IStyledComponent<"web"> = styled.section`
   height: 100%;
   width: 100%;
 `
+
 const CVpdf = (): ReactElement => {
 
-    return(
+    return (
         <StyledCVpdf>
             <object data={cv} type="application/pdf" width="100%" height="100%"/>
         </StyledCVpdf>

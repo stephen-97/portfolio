@@ -2,9 +2,6 @@ import { configureStore } from '@reduxjs/toolkit'
 import {pageSlice } from "./slices/pageSlice";
 import {pageSliceWhileScrolling} from "./slices/pageSlice";
 
-export const {setPage} = pageSlice.actions
-export const {setPageSliceScroll} = pageSliceWhileScrolling.actions
-
 export const store = configureStore({
   reducer: {
     page: pageSlice.reducer,
@@ -13,4 +10,3 @@ export const store = configureStore({
 })
 
 export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch

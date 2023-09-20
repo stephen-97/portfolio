@@ -1,6 +1,6 @@
 import React, {Dispatch, ReactElement, SetStateAction, useState} from "react";
 import Loader from "../components/Loader";
-import Header from "../components/headerComponents/Header";
+import Header from "../components/Header";
 import Main from "../components/Main";
 import Footer from "../components/Footer";
 

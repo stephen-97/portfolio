@@ -16,11 +16,3 @@ export const pageSliceWhileScrolling = createSlice({
         setPageSliceScroll: (state, action) => state = action.payload
     }
 })
-
-export const scrollSlice = createSlice({
-    name: 'scrolling',
-    initialState: {name: "working"},
-    reducers: {
-        setPage: (state, action) => state = action.payload
-    }
-})
