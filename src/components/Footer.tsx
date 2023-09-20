@@ -1,5 +1,5 @@
 import {IStyledComponent, styled} from "styled-components";
-import React, { ReactElement} from "react";
+import React, {ReactElement} from "react";
 import constants from "../utility/constants";
 
 const StyledFooter: IStyledComponent<"web"> = styled.section`
@@ -13,9 +13,9 @@ const StyledFooter: IStyledComponent<"web"> = styled.section`
   }
 `
 
-const Footer = (): ReactElement =>  {
+const Footer = (): ReactElement => {
 
-    return(
+    return (
         <StyledFooter>
             <span>Created and designed by LOIOLA BASTOS Stephen. @ Copyright 2023. All right reserved.</span>
         </StyledFooter>

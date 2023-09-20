@@ -1,11 +1,11 @@
-import React, {ReactElement, useEffect } from 'react';
-import {styled } from "styled-components";
+import React, {ReactElement, useEffect} from 'react';
+import {styled} from "styled-components";
 import constants from "../utility/constants";
 
 const widthSpan: number = 80;
 const heightSpan: number = 6;
-const singleAnimDuration: number= 0.3;
-const animDuration: number = singleAnimDuration*5;
+const singleAnimDuration: number = 0.3;
+const animDuration: number = singleAnimDuration * 5;
 
 const StyledLogo = styled.div`
   span {
@@ -105,16 +105,16 @@ const StyledLogo = styled.div`
 type LoaderProps = {
     finishLoading: Function,
 }
-const Loader = (props : LoaderProps): ReactElement =>  {
+const Loader = (props: LoaderProps): ReactElement => {
 
     useEffect(() => {
         setTimeout(() => {
             props.finishLoading(true);
-        }, animDuration*1000 + 1000);
+        }, animDuration * 1000 + 1000);
     }, []);
 
-    return(
-        <StyledLogo >
+    return (
+        <StyledLogo>
             <button className={`loader-container`}>
                 <span className={'first'}></span>
                 <span className={'second'}></span>

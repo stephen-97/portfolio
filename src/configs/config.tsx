@@ -32,7 +32,12 @@ interface SocialMediaInterface {
 
 const socialMediaLinks: Array<SocialMediaInterface> = [
     {name: 'GitHub', icon: GithubIcon, url: 'https://github.com/stephen-97', alt: 'Github Link'},
-    {name: 'Linkedin', icon: LinkedinIcon, url: 'https://www.linkedin.com/in/stephen-loiola-bastos-04351814b/', alt: 'Linkedin Link'},
+    {
+        name: 'Linkedin',
+        icon: LinkedinIcon,
+        url: 'https://www.linkedin.com/in/stephen-loiola-bastos-04351814b/',
+        alt: 'Linkedin Link'
+    },
     {name: 'Twiiter', icon: TwitterIcon, url: 'https://twitter.com/LuciusAskeladd_', alt: 'Twitter Link'},
     {name: 'CV', icon: CVIcon, url: '/stephenCV', alt: 'CV Stephen Loiola Bastos Link'},
 ]
@@ -71,17 +76,17 @@ const schoolExperiences: Array<ISchoolExperience> = [
     {
         name: 'RNCP36009 Directeur de projet informatique (Bac+5)',
         schoolName: 'Aston Ecole',
-        tags: ['Architecture logicielle', 'Cloud Azure', 'Cybersécurité','Gestion de projet','Budgétisation', 'Normes ISO'],
+        tags: ['Architecture logicielle', 'Cloud Azure', 'Cybersécurité', 'Gestion de projet', 'Budgétisation', 'Normes ISO'],
     },
     {
         name: "RNCP31678 Concepteur et Développeur d'application (Bac+3/4)",
         schoolName: '2iTech Academy by M2i',
-        tags: ['Merise', 'UML', 'Javascript / Typesript','Symfony','React', 'Node / Express', 'React Native', 'AWS'],
+        tags: ['Merise', 'UML', 'Javascript / Typesript', 'Symfony', 'React', 'Node / Express', 'React Native', 'AWS'],
     },
     {
         name: 'L2 Informatique (Bac+2)',
         schoolName: 'Paris Descartes',
-        tags: ['C', 'Java', 'OCaml','Algorithme','HTML', 'CSSO', 'Javascript', 'PHP'],
+        tags: ['C', 'Java', 'OCaml', 'Algorithme', 'HTML', 'CSSO', 'Javascript', 'PHP'],
     }
 ]
 

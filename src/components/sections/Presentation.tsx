@@ -17,7 +17,7 @@ const StyledPresentation = styled.section`
   h1 {
     opacity: 0;
     margin: 0;
-    color:  ${props => props.theme.isBgColorLight ? constants.colorDarkGreen : constants.colorLightGreen};
+    color: ${props => props.theme.isBgColorLight ? constants.colorDarkGreen : constants.colorLightGreen};
     animation: animatePresentation 0.5s ease ${constants.headerAnim + constants.secondAnim / 5}s forwards;
   }
 
@@ -35,7 +35,7 @@ const StyledPresentation = styled.section`
   p {
     margin: 0;
     opacity: 0.8;
-    
+
     > span {
       color: ${props => props.theme.isBgColorLight ? constants.colorDarkGreen : constants.colorLightGreen};;
       opacity: 1;
@@ -139,7 +139,7 @@ const Presentation = (props: PresentationProps) => {
                     <p>
                         Bonjour et bienvenu sur mon portefolio ! Je suis un jeune développeur
                         <span> Javascript et Typescript Junior </span> ayant
-                        suivi des formations en alternance à Paris du bac jusqu'au bac+5.
+                        suivi des formations en alternance à Paris du bac au bac+5.
                         Je maîtrise plusieurs langages comme le HTML, CSS, Javascript et TypeScript, PHP.. Je possède néanmoins
                         plus d'expertise et une grande préférence pour les langages Javascript & TypeScript, et les librairies comme
                         <span> React et React Native</span> !
@@ -151,8 +151,8 @@ const Presentation = (props: PresentationProps) => {
                     </p>
                     <br/>
                     <p>
-                        Lorsque je ne suis pas devant VSCODE ou Webstorm, j'aime généralement
-                        lire Kingdom, <span id={'switch-span'}>jouer à la switch</span> et assister à des orchestres d'ost.
+                        Lorsque je ne suis pas devant VSCODE ou Webstorm, j'aime beaucoup
+                        voyager, <span id={'switch-span'}>jouer à la switch</span> et assister à des orchestres.
                     </p>
                 </div>
                 <picture>

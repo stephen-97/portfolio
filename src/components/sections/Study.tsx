@@ -37,7 +37,7 @@ const StyledSectionStudy = styled.section`
   & {
     position: relative;
   }
-  
+
   @keyframes animateblock-study {
     from {
       opacity: 0;
@@ -93,12 +93,13 @@ const Study = (props: StudyProps): ReactElement => {
     }
 
     const BlockStudy = (props: BlockStudyProps) => {
-        return(
+        return (
             <ol className={'block-study'}>
                 <h3>{props.name}</h3>
                 <span>{props.schoolName}</span>
                 <ul>
-                    {props.tags.map((TagName, i) => <Tag key={i} isBgColorLight={theme.isBgColorLight} name={TagName}/>)}
+                    {props.tags.map((TagName, i) => <Tag key={i} isBgColorLight={theme.isBgColorLight}
+                                                         name={TagName}/>)}
                 </ul>
             </ol>
         )
@@ -108,7 +109,8 @@ const Study = (props: StudyProps): ReactElement => {
             <StyledSectionStudy>
                 <ul>
                     {config.schoolExperiences.map((schoolExperience, i) =>
-                        <BlockStudy key={i} name={schoolExperience.name} schoolName={schoolExperience.schoolName} tags={schoolExperience.tags}/>)
+                        <BlockStudy key={i} name={schoolExperience.name} schoolName={schoolExperience.schoolName}
+                                    tags={schoolExperience.tags}/>)
                     }
                 </ul>
             </StyledSectionStudy>

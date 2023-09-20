@@ -82,24 +82,24 @@ const ExperienceBlock = (props: ExperienceBlockPops) => {
     return (
         <ThemeProvider theme={theme}>
             <StyledExperienceBlock>
-                    <div className={'experienceItem'}>
-                        <div className={'contentDescription'}>
-                            <h3 className={'title-experience'}>{`${props.title}`}</h3>
-                            <span className={'experience-date'}>{`${props.date1} ${props.date2}`}</span>
-                            <p className={'experience-description'}> {`${props.description}`}</p>
-                            <ul className={'tagsExperience'}>
-                                <Tag isBgColorLight={props.isBgColorLight} name={'CSS'}/>
-                                <Tag isBgColorLight={props.isBgColorLight} name={'React'}/>
-                                <Tag isBgColorLight={props.isBgColorLight} name={'Node'}/>
-                                <Tag isBgColorLight={props.isBgColorLight} name={'Typescript'}/>
-                                <Tag isBgColorLight={props.isBgColorLight} name={'Ansible'}/>
-                                <Tag isBgColorLight={props.isBgColorLight} name={'Terraform'}/>
-                            </ul>
-                        </div>
+                <div className={'experienceItem'}>
+                    <div className={'contentDescription'}>
+                        <h3 className={'title-experience'}>{`${props.title}`}</h3>
+                        <span className={'experience-date'}>{`${props.date1} ${props.date2}`}</span>
+                        <p className={'experience-description'}> {`${props.description}`}</p>
+                        <ul className={'tagsExperience'}>
+                            <Tag isBgColorLight={props.isBgColorLight} name={'CSS'}/>
+                            <Tag isBgColorLight={props.isBgColorLight} name={'React'}/>
+                            <Tag isBgColorLight={props.isBgColorLight} name={'Node'}/>
+                            <Tag isBgColorLight={props.isBgColorLight} name={'Typescript'}/>
+                            <Tag isBgColorLight={props.isBgColorLight} name={'Ansible'}/>
+                            <Tag isBgColorLight={props.isBgColorLight} name={'Terraform'}/>
+                        </ul>
                     </div>
+                </div>
             </StyledExperienceBlock>
         </ThemeProvider>
-)
+    )
 }
 
 

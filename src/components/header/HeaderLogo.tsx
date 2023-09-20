@@ -1,8 +1,6 @@
-import React, {ReactElement, useEffect, useState} from 'react';
-import anime from 'animejs';
+import React, {ReactElement, useEffect} from 'react';
 import {styled} from "styled-components";
 import constants from "../../utility/constants";
-import functions from "../../utility/functions";
 
 
 const widthSpan: number = 50;
