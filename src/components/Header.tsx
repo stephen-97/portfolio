@@ -8,7 +8,6 @@ import config from "../configs/config";
 import HeaderSideMenu from "./header/HeaderSideMenu";
 import HeaderLogo from "./header/HeaderLogo";
 
-
 const StyledButtonContainer = styled.section`
   .buttonContainer {
     display: flex;
