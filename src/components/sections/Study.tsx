@@ -4,12 +4,18 @@ import Tag from "../Tag";
 import {RootState} from "../../redux/redux";
 import {styled, css, ThemeProvider} from "styled-components";
 import constants from "../../utility/constants";
+import config from "../../configs/config";
 
 type StudyProps = {
     animationDelay: number,
     isBgColorLight: boolean,
 }
 
+type BlockStudyProps = {
+    name: string,
+    schoolName: string,
+    tags: Array<string>,
+}
 
 const loopActiveBlock = () => {
     let style = '';
@@ -28,13 +34,11 @@ const loopActiveBlock = () => {
 }
 
 
-// LA CLASS active-block-study est dans le fichier CSS car on ne peut pas faire des loops avec styled components
 const StyledSectionStudy = styled.section`
   & {
     position: relative;
   }
-
-
+  
   @keyframes animateblock-study {
     from {
       opacity: 0;
@@ -88,35 +92,24 @@ const Study = (props: StudyProps): ReactElement => {
         isBgColorLight: props.isBgColorLight,
     }
 
-    const tagsArrayBac5: Array<string> = ['Architecture logicielle', 'Cloud Azure', 'Cybersécurité','Gestion de projet','Budgétisation', 'Normes ISO'];
-    const tagsArrayBac3: Array<string> = ['Merise', 'UML', 'Javascript / Typesript','Symfony','React', 'Node / Express', 'React Native', 'AWS'];
-    const tagsArrayBac2: Array<string> = ['C', 'Java', 'OCaml','Algorithme','HTML', 'CSSO', 'Javascript', 'PHP'];
-
+    const BlockStudy = (props: BlockStudyProps) => {
+        return(
+            <ol className={'block-study'}>
+                <h3>{props.name}</h3>
+                <span>{props.schoolName}</span>
+                <ul>
+                    {props.tags.map((TagName, i) => <Tag key={i} isBgColorLight={theme.isBgColorLight} name={TagName}/>)}
+                </ul>
+            </ol>
+        )
+    }
     return (
         <ThemeProvider theme={theme}>
             <StyledSectionStudy>
                 <ul>
-                    <ol className={'block-study'}>
-                        <h3>RNCP36009 Directeur de projet informatique (Bac+5)</h3>
-                        <span>Aston Ecole</span>
-                        <ul>
-                            {tagsArrayBac5.map((TagName, i) => <Tag key={i} isBgColorLight={theme.isBgColorLight} name={TagName}/>)}
-                        </ul>
-                    </ol>
-                    <ol className={'block-study'}>
-                        <h3>RNCP31678 Concepteur et Développeur d'application (Bac+3/4)</h3>
-                        <span>2iTech Academy by M2i</span>
-                        <ul>
-                            {tagsArrayBac3.map((TagName, i) => <Tag key={i} isBgColorLight={theme.isBgColorLight} name={TagName}/>)}
-                        </ul>
-                    </ol>
-                    <ol className={'block-study'}>
-                        <h3>L2 Informatique (Bac+2)</h3>
-                        <span>Paris Descartes</span>
-                        <ul>
-                            {tagsArrayBac2.map((TagName, i) => <Tag key={i} isBgColorLight={theme.isBgColorLight} name={TagName}/>)}
-                        </ul>
-                    </ol>
+                    {config.schoolExperiences.map((schoolExperience, i) =>
+                        <BlockStudy key={i} name={schoolExperience.name} schoolName={schoolExperience.schoolName} tags={schoolExperience.tags}/>)
+                    }
                 </ul>
             </StyledSectionStudy>
         </ThemeProvider>
