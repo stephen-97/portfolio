@@ -1,11 +1,11 @@
 import React, {Dispatch, ReactElement, SetStateAction, useEffect, useState} from 'react';
 import {css, styled, ThemeProvider} from "styled-components";
 import {connect} from "react-redux";
-import Tag from "../Tag";
 import constants from "../../utility/constants";
 import functions from "../../utility/functions";
 import {RootState} from "../../redux/redux";
 import config from "../../configs/config";
+import Tag from "../Tag";
 
 type ProjectContainerProps = {
     isBgColorLight: boolean,
