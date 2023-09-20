@@ -1,6 +1,6 @@
-import React, {useEffect, useRef} from "react";
+import React, {ReactElement, useEffect, useRef} from "react";
 import gsap from "gsap";
-import {css, styled} from "styled-components";
+import {styled} from "styled-components";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
 
 import Presentation from "./sections/Presentation";
@@ -19,8 +19,6 @@ import SocialMediaContainer from "./SocialMediaContainer";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const blockAnimationDelay = constants.duration_itemAnim;
-
 const StyledItemContainer = styled.main`
   position: relative;
   overflow: auto;
@@ -28,7 +26,7 @@ const StyledItemContainer = styled.main`
   min-height: 100vh;
   transition: none;
 `
-const Main = () => {
+const Main = (): ReactElement => {
 
     const refPresentation = useRef<null | HTMLDivElement>(null);
     const refExperience = useRef<null | HTMLDivElement>(null);
@@ -165,15 +163,15 @@ const Main = () => {
         <StyledItemContainer>
             <Item id={'wave-img-presentation'} isBgColorLight={false} keyItem={1} refProp={refPresentation}
                   icon={WaveIcon}
-                  component={<Presentation animationDelay={blockAnimationDelay}/>}/>
+                  component={<Presentation isBgColorLight={false}/>}/>
             <Item id={'briefCase-img'} isBgColorLight={true} keyItem={2} refProp={refExperience} icon={BriefCaseIcon}
-                  component={<Experience isBgColorLight={true} animationDelay={blockAnimationDelay}/>}/>
+                  component={<Experience isBgColorLight={true}/>}/>
             <Item id={'study-img'} isBgColorLight={false} keyItem={3} refProp={refStudy} icon={GraduationIcon}
-                  component={<Study isBgColorLight={false} animationDelay={blockAnimationDelay}/>}/>
+                  component={<Study isBgColorLight={false}/>}/>
             <Item id={'idea-img'} isBgColorLight={true} keyItem={4} refProp={refProjects} icon={IdeaIcon}
-                  component={<Projects isBgColorLight={true} animationDelay={blockAnimationDelay}/>}/>
+                  component={<Projects isBgColorLight={true}/>}/>
             <Item id={'skills-img'} isBgColorLight={false} keyItem={5} refProp={refContatcs} icon={LetterIcon}
-                  component={<Skills animationDelay={blockAnimationDelay}/>}/>
+                  component={<Skills isBgColorLight={false}/>}/>
             <SocialMediaContainer/>
         </StyledItemContainer>
     );

@@ -40,6 +40,7 @@ const StyledExperienceBlock = styled.section`
 
     .experience-date {
       width: 500px;
+      opacity: 0.8;
       font-size: ${constants.fontSize3};
       text-align: center;
       flex: 2;

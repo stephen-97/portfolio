@@ -10,7 +10,6 @@ import ExperienceBlock from "./experience/ExperienceBlock";
 
 type ExperienceProps = {
     ref: HTMLDivElement | undefined,
-    animationDelay: number,
     isBgColorLight: boolean,
 }
 
@@ -135,7 +134,7 @@ const StyledExperience = styled.section`
     
     > img {
       margin: 0;
-      filter:   ${props => props.theme.isBgColorLight ? constants.color4Filter : constants.color2Filter };
+      filter: ${props => props.theme.isBgColorLight ? constants.color4Filter : constants.color2Filter };
     }
     
     //SKILLS RIGHT

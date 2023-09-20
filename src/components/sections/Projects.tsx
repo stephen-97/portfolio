@@ -1,6 +1,6 @@
 import React, {Dispatch, ReactElement, SetStateAction, useEffect, useState} from 'react';
 import {css, styled, ThemeProvider} from "styled-components";
-import {connect } from "react-redux";
+import {connect} from "react-redux";
 import Tag from "../Tag";
 import constants from "../../utility/constants";
 import functions from "../../utility/functions";
@@ -8,7 +8,6 @@ import {RootState} from "../../redux/redux";
 import config from "../../configs/config";
 
 type ProjectContainerProps = {
-    animationDelay: number,
     isBgColorLight: boolean,
 }
 
@@ -22,8 +21,8 @@ type ProjectProps = {
 
 const loopProjectsContainer = () => {
     let style: string = '';
-    for(let i: number=1; i<= 5; i++){
-        style+= `
+    for (let i: number = 1; i <= 5; i++) {
+        style += `
             .active-project:nth-of-type(${i}) {
                 transform: translateX(-25%);
                 animation: contactBlockAnimation 0.3s ease-in-out 0.3s forwards;
@@ -45,6 +44,7 @@ const StyledProjectsContainer = styled.section`
   & {
     position: relative;
   }
+
   #project-container {
     display: flex;
     flex-wrap: wrap;
@@ -52,80 +52,80 @@ const StyledProjectsContainer = styled.section`
     padding: 0;
     justify-content: space-around;
   }
-  ${loopProjectsContainer()}
-`
 
-const StyledProject = styled.li`
-  & {
+  ${loopProjectsContainer()}
+  .project {
     height: 350px;
     width: 350px;
-    background-color: ${props => props.theme.bgColor === 'dark' ? constants.colorDark1 : constants.colorLight2 };
+    background-color: ${props => props.theme.isBgColorLight ? constants.colorLight2 : constants.colorDark1};
     list-style: none;
     border-radius: ${constants.borderRadius1}px;
     margin: 0 0 30px 0;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-  }
-  
-  header {
-    font-size: ${constants.fontSize1};
-    text-align: center;
-    padding: 20px;
-  }
-  
-  main{
-    flex: 1;
-    padding: 10px 20px;
-    p {
-      margin: 10px 0;
-      font-size: clamp(17px, 2vw, 18px);;
-    }
-    ul {
-      padding: 15px 0;
-      display: flex;
-      flex-wrap: wrap;
-    }
-  }
-  
-  footer {
-    height: 80px;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    a {
-      width: 30%;
-      height: 50px;
-      display: flex;
-      text-decoration: none;
-      justify-content: center;
-      align-items: center;
-      font-size: ${constants.fontSize4};
+
+    header {
+      font-size: ${constants.fontSize1};
+      text-align: center;
+      padding: 20px;
       font-weight: bolder;
-      background-color: ${props => props.theme.isBgColorLight ? constants.colorLight1 : constants.colorDark2 };
-      border-radius: ${constants.borderRadius1}px;
-      border: 2px ${props => props.theme.isBgColorLight ? constants.color4 : constants.color2 } solid;
-      cursor: pointer;
-      color: ${props => props.theme.isBgColorLight ? constants.colorDark2 : constants.colorLight1 };
-      &:hover {
-        background-color: ${props => props.theme.isBgColorLight ? constants.color4 : constants.color2 };
-        color: ${props => props.theme.isBgColorLight ? constants.colorDark2 : constants.colorLight1 };;
-        transition: 0.5s ease-in-out;
+    }
+
+    main {
+      flex: 1;
+      padding: 10px 20px;
+
+      p {
+        margin: 10px 0;
+        font-size: clamp(17px, 2vw, 18px);;
+      }
+
+      > ul {
+        padding: 15px 0;
+        display: flex;
+        flex-wrap: wrap;
+      }
+    }
+
+    footer {
+      height: 80px;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+
+      a {
+        width: 30%;
+        height: 50px;
+        display: flex;
+        text-decoration: none;
+        justify-content: center;
+        align-items: center;
+        font-size: ${constants.fontSize4};
+        font-weight: bolder;
+        background-color: ${props => props.theme.isBgColorLight ? constants.colorLight1 : constants.colorDark2};
+        border-radius: ${constants.borderRadius1}px;
+        border: 2px ${props => props.theme.isBgColorLight ? constants.color4 : constants.color2} solid;
+        cursor: pointer;
+        color: ${props => props.theme.isBgColorLight ? constants.colorDark2 : constants.colorLight1};
+
+        &:hover {
+          background-color: ${props => props.theme.isBgColorLight ? constants.color4 : constants.color2};
+          color: ${props => props.theme.isBgColorLight ? constants.colorLight1 : constants.colorDark1};;
+          transition: 0.5s ease-in-out;
+        }
       }
     }
   }
 `
 
-
-
-
-const ProjectsContainer = (props : ProjectContainerProps): ReactElement =>  {
+const ProjectsContainer = (props: ProjectContainerProps): ReactElement => {
 
     const [windowsWidth, setWindowsWidth]: [number, Dispatch<SetStateAction<number>>] = useState(window.innerWidth);
 
     useEffect(() => {
-        window.addEventListener("resize", () => setWindowsWidth(window.innerWidth) )
-        if(functions.detectWrap('project'))
+        window.addEventListener("resize", () => setWindowsWidth(window.innerWidth))
+        if (functions.detectWrap('project'))
             (document.getElementById('project-container') as HTMLElement).style.justifyContent = 'center'
         else
             (document.getElementById('project-container') as HTMLElement).style.justifyContent = 'space-around'
@@ -137,30 +137,33 @@ const ProjectsContainer = (props : ProjectContainerProps): ReactElement =>  {
 
     const Project = (props: ProjectProps): ReactElement => {
         return (
-            <StyledProject className={'project'}>
+            <li className={'project'}>
                 <header>
                     {props.title}
                 </header>
                 <main>
                     <p>{props.description}</p>
                     <ul>
-                        {props.tags.map((tagName, i) =>  <Tag isBgColorLight={theme.isBgColorLight} key={i} name={tagName} />)}
+                        {props.tags.map((tagName, i) => <Tag isBgColorLight={theme.isBgColorLight} key={i}
+                                                             name={tagName}/>)}
                     </ul>
                 </main>
                 <footer>
                     <a href={props.githubLink} target={'_blank'}>GITHUB</a>
                     {props.demoLink ? <a href={props.demoLink} target={'_blank'}>DEMO</a> : null}
                 </footer>
-            </StyledProject>
+            </li>
         )
     }
 
 
-    return(
+    return (
         <ThemeProvider theme={theme}>
             <StyledProjectsContainer>
                 <ul id={'project-container'}>
-                    {config.projects.map((e, i) => <Project key={i} title={e.title} description={e.description} tags={e.tags} githubLink={e.githubLink} demoLink={e.demoLink}/>)}
+                    {config.projects.map((e, i) => <Project key={i} title={e.title} description={e.description}
+                                                            tags={e.tags} githubLink={e.githubLink}
+                                                            demoLink={e.demoLink}/>)}
                 </ul>
             </StyledProjectsContainer>
         </ThemeProvider>

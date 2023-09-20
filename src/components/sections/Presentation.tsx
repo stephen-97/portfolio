@@ -1,11 +1,11 @@
 import React from 'react';
-import {styled} from "styled-components";
+import {styled, ThemeProvider} from "styled-components";
 import constants from "../../utility/constants";
 import Stephen_profile from "../../assets/Stephen-profile.jpg";
 import zeldaLogo from "../../assets/linkgif.gif"
 
 type PresentationProps = {
-    animationDelay: number,
+    isBgColorLight: boolean,
 }
 
 const borderRadiusImg: number = 30;
@@ -17,6 +17,7 @@ const StyledPresentation = styled.section`
   h1 {
     opacity: 0;
     margin: 0;
+    color:  ${props => props.theme.isBgColorLight ? constants.color4 : constants.color2};
     animation: animatePresentation 0.5s ease ${constants.headerAnim + constants.secondAnim / 5}s forwards;
   }
 
@@ -33,12 +34,15 @@ const StyledPresentation = styled.section`
 
   p {
     margin: 0;
-    color: ${constants.colorLight2};
+    opacity: 0.8;
+    
     > span {
-      color: ${constants.color2};
+      color: ${props => props.theme.isBgColorLight ? constants.color4 : constants.color2};;
+      opacity: 1;
     }
+
     > #switch-span {
-        cursor: url(${zeldaLogo}), pointer;
+      cursor: url(${zeldaLogo}), pointer;
       //lg:cursor-[url('/images/koroks/Elma.png'),_pointer]
     }
   }
@@ -76,7 +80,7 @@ const StyledPresentation = styled.section`
     max-width: 100%;
 
     &:hover {
-      background-color: ${constants.color2};
+      background-color: ${props => props.theme.isBgColorLight ? constants.color4 : constants.color2};
       transition: ease-in-out 0.5s;
     }
   }
@@ -121,16 +125,21 @@ const StyledPresentation = styled.section`
 
 const Presentation = (props: PresentationProps) => {
 
+    const theme = {
+        isBgColorLight: props.isBgColorLight,
+    }
+
     return (
-        <StyledPresentation>
-            <h1>STEPHEN LOIOLA BASTOS</h1>
-            <h2>Software Engineer - Team Typescript</h2>
-            <span className={'description_picture'}>
+        <ThemeProvider theme={theme}>
+            <StyledPresentation>
+                <h1>STEPHEN LOIOLA BASTOS</h1>
+                <h2>Software Engineer - Team Typescript</h2>
+                <span className={'description_picture'}>
                 <div className={'description'}>
                     <p>
                         Bonjour et bienvenu sur mon portefolio ! Je suis un jeune développeur
-                        <span> Javascript et Typescript Junior </span> ayant
-                        suivi des formations en alternance à Paris du bac <span>jusqu'au bac+5</span>.
+                        <span > Javascript et Typescript Junior </span> ayant
+                        suivi des formations en alternance à Paris du bac jusqu'au bac+5.
                         Je maîtrise plusieurs langages comme le HTML, CSS, TypeScript, PHP.. Je possède néanmoins une
                         grande préférence pour les langages Javascript & TypeScript, et les librairies comme
                         <span> React et React Native</span> !
@@ -152,7 +161,8 @@ const Presentation = (props: PresentationProps) => {
                     </div>
                 </picture>
             </span>
-        </StyledPresentation>
+            </StyledPresentation>
+        </ThemeProvider>
     );
 }
 

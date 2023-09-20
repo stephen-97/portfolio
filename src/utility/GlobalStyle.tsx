@@ -33,7 +33,6 @@ const GlobalStyle = createGlobalStyle`
   h1 {
     font-size:  clamp(${constants.h1_min}px, 7vw, ${constants.h1_max}px);
     font-weight: bolder;
-    color: ${constants.color1};
   }
   
   h2 {

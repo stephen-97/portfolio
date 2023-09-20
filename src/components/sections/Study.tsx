@@ -7,7 +7,6 @@ import constants from "../../utility/constants";
 import config from "../../configs/config";
 
 type StudyProps = {
-    animationDelay: number,
     isBgColorLight: boolean,
 }
 
@@ -80,6 +79,7 @@ const StyledSectionStudy = styled.section`
 
     > span {
       font-size: ${constants.fontSize4};
+      opacity: 0.8;
       font-weight: 200;
     }
   }
