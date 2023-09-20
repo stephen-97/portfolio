@@ -4,22 +4,22 @@ import constants from "../../utility/constants";
 
 type HeaderButtonProps = {
     name: string,
-    icon:  string,
+    icon: string,
     display: string,
     index?: number,
 }
 
 const loopButtonList = () => {
     let style: string = '';
-    for(let i: number=0; i<= 5; i++){
+    for (let i: number = 0; i <= 5; i++) {
         const animDuration: number = 0.5;
-        style+= `
+        style += `
             &:nth-of-type(${i}) > .button {
                 opacity: 0;
                 animation-name: example;
                 animation-fill-mode: forwards;
                 animation-duration: ${animDuration}s;
-                animation-delay:  ${constants.headerAnim*i/5}s;
+                animation-delay:  ${constants.headerAnim * i / 5}s;
             }
             @keyframes example {
                 from {opacity: 0; left: -100px}
@@ -32,21 +32,22 @@ const loopButtonList = () => {
 
 //${({firstAnimationIsFinished}) => !firstAnimationIsFinished && loopButtonList()}
 const StyledButton = styled.section`
-  
+
   .button {
     position: relative;
     display: ${props => props.theme.displayButton};
     line-height: 50px;
     margin: 0 clamp(10px, 2vw, 30px);
     overflow: hidden;
-    cursor:  pointer;
+    cursor: pointer;
     justify-content: center;
     align-items: center;
-    
+
     &:hover {
       span {
         color: ${constants.colorLightGreen}
       }
+
       .button-img {
         filter: ${constants.colorLightGreenFilter};
       }
@@ -54,19 +55,21 @@ const StyledButton = styled.section`
   }
 
   ${props => !props.theme.firstAnimationFinished && loopButtonList()}
-  
   span {
     color: ${constants.colorWhiteFilter}
   }
+
   .button-img {
     height: 30px;
     width: 30px;
     filter: ${constants.colorWhiteFilter};
     margin-left: 10px;
   }
+
   .button-img:hover {
     filter: ${constants.colorLightGreenFilter};
   }
+
   .titleButton {
     display: inline-block;
     vert-align: middle;
@@ -76,9 +79,9 @@ const StyledButton = styled.section`
     z-index: 1;
     transition: 0.3s ease;
   }
-  
+
   .buttonColorContainer {
-    top:0;
+    top: 0;
     left: 0;
     position: absolute;
     height: 100%;
@@ -92,11 +95,13 @@ const StyledButton = styled.section`
     span {
       color: ${constants.colorLightGreen}
     }
+
     .button-img {
       filter: ${constants.colorLightGreenFilter};
     }
+
     .buttonColorContainer {
-      top:0;
+      top: 0;
       left: 0;
       background-color: #4b4b4b;
       position: absolute;
@@ -104,7 +109,7 @@ const StyledButton = styled.section`
       width: 100%;
       animation: scalingBackgroundButton 0.3s ease forwards;
       transform-origin: 0;
-      
+
       @keyframes scalingBackgroundButton {
         from {
           transform: scaleX(0);
@@ -114,6 +119,7 @@ const StyledButton = styled.section`
         }
       }
     }
+
     .titleButton {
       filter: invert(1);
       transition: 0.3s ease;
@@ -122,26 +128,26 @@ const StyledButton = styled.section`
 `
 
 
-const HeaderButton = (props : HeaderButtonProps): ReactElement =>  {
+const HeaderButton = (props: HeaderButtonProps): ReactElement => {
 
     const [firstAnimationFinished, setFirstAnimationFinished] = useState(false);
 
     useEffect(() => {
         setTimeout(() => {
             setFirstAnimationFinished(true)
-        }, constants.headerAnim*1500);
+        }, constants.headerAnim * 1500);
     }, []);
 
     const theme = {
-        firstAnimationFinished : firstAnimationFinished,
-        displayButton : props.display
+        firstAnimationFinished: firstAnimationFinished,
+        displayButton: props.display
     }
-    return(
+    return (
         <ThemeProvider theme={theme}>
             <StyledButton>
-                <div className={`button  ${props.index ? `button${props.index}` : null }`}>
+                <div className={`button  ${props.index ? `button${props.index}` : null}`}>
                     <span>{props.name}</span>
-                    <img className={'button-img'} src={props.icon} alt="React Logo" />
+                    <img className={'button-img'} src={props.icon} alt="React Logo"/>
                 </div>
             </StyledButton>
         </ThemeProvider>

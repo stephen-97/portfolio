@@ -1,6 +1,5 @@
 import {styled} from "styled-components";
 import React, {ReactElement} from "react";
-import constants from "../utility/constants";
 import WaveIcon from "../assets/wave.svg";
 import BriefCaseIcon from "../assets/briefcase.svg"
 import GraduationIcon from "../assets/casquette-de-graduation.svg"

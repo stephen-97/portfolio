@@ -32,7 +32,7 @@ const Main = (): ReactElement => {
     const refExperience = useRef<null | HTMLDivElement>(null);
     const refProjects = useRef<null | HTMLDivElement>(null);
     const refStudy = useRef<null | HTMLDivElement>(null);
-    const refContatcs = useRef<null | HTMLDivElement>(null);
+    const refContacts = useRef<null | HTMLDivElement>(null);
 
     const observer: IntersectionObserver = new IntersectionObserver((entries: IntersectionObserverEntry[]) => {
         entries.forEach((entry: IntersectionObserverEntry, index: number) => {
@@ -174,7 +174,7 @@ const Main = (): ReactElement => {
                   component={<Study isBgColorLight={false}/>}/>
             <Item id={'idea-img'} isBgColorLight={true} keyItem={4} refProp={refProjects} icon={IdeaIcon}
                   component={<Projects isBgColorLight={true}/>}/>
-            <Item id={'skills-img'} isBgColorLight={false} keyItem={5} refProp={refContatcs} icon={LetterIcon}
+            <Item id={'skills-img'} isBgColorLight={false} keyItem={5} refProp={refContacts} icon={LetterIcon}
                   component={<Skills isBgColorLight={false}/>}/>
             <SocialMediaContainer/>
         </StyledItemContainer>

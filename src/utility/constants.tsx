@@ -15,9 +15,9 @@ export default {
     headerAnim: 1,
     secondAnim: 1.5,
     thirdAnim: 1,
-    headerSize:70,
+    headerSize: 70,
 
-    transitionButton : 0.4,
+    transitionButton: 0.4,
 
     // BORDER RADIUS
     borderRadius1: 10,

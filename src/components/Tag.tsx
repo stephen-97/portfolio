@@ -1,5 +1,5 @@
-import React, {ReactElement, useEffect, useState} from "react";
-import { styled } from "styled-components";
+import React, {ReactElement} from "react";
+import {styled} from "styled-components";
 import constants from "../utility/constants";
 
 type TagProps = {
@@ -18,14 +18,14 @@ const StyledTag = styled.li`
   }
 `
 
-const Tag = (props: TagProps): ReactElement =>  {
+const Tag = (props: TagProps): ReactElement => {
 
     const styleObject = {
         backgroundColor: props.isBgColorLight ? constants.colorLight1 : constants.colorDark1,
         color: props.isBgColorLight ? constants.colorDarkGreen : constants.colorLightGreen
     }
-    return(
-            <StyledTag style={styleObject}>{props.name}</StyledTag>
+    return (
+        <StyledTag style={styleObject}>{props.name}</StyledTag>
     );
 }
 

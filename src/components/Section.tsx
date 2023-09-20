@@ -1,5 +1,5 @@
 import {styled, ThemeProvider} from "styled-components";
-import React, {Component, JSX, LegacyRef} from "react";
+import React, {JSX, LegacyRef} from "react";
 import constants from '../utility/constants'
 
 
@@ -78,7 +78,7 @@ const StyledBockComponent = styled.section`
     > img {
       opacity: 0;
       animation: animateIconOpacity 500ms ease ${constants.headerAnim + 0.3}s forwards;
-      filter:${props => props.theme.isBgColorLight ? constants.colorDarkFilter : constants.colorWhiteFilter};
+      filter: ${props => props.theme.isBgColorLight ? constants.colorDarkFilter : constants.colorWhiteFilter};
       height: clamp(60px, 10vw, 100px);
     }
   }

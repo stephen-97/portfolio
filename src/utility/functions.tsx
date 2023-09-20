@@ -1,4 +1,3 @@
-
 export default {
     detectWrap: (className: string) => {
         let wrappedItems: Array<Element> = [];
@@ -6,9 +5,9 @@ export default {
         let currItem = {top: 0};
         let items: HTMLCollectionOf<Element> = document.getElementsByClassName(className);
 
-        for (let i: number=0; i < items.length; i++){
+        for (let i: number = 0; i < items.length; i++) {
             currItem = items[i].getBoundingClientRect();
-            if(prevItem && prevItem.top < currItem.top){
+            if (prevItem && prevItem.top < currItem.top) {
                 wrappedItems.push(items[i])
             }
             prevItem = currItem

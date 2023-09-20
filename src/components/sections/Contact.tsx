@@ -100,17 +100,18 @@ const StyledSkills = styled.section`
   }
 
   ${loopContactBlocks()}
-
   #ending-message {
     opacity: 0;
     margin-top: 50px;
     text-align: center;
+
     a {
       text-decoration: none;
       cursor: pointer;
       color: ${props => props.theme.isBgColorLight ? constants.colorDarkGreen : constants.colorLightGreen};;
     }
   }
+
   .active-ending-message {
     animation: animEndingMessage 0.5s ease-in-out 1s forwards;
     @keyframes animEndingMessage {
@@ -165,8 +166,10 @@ const Contact = (props: ContactProps) => {
                     <section id={'ending-message'}>
                         <p>
                             N'hésitez pas à me contacter pour toute opportunité.
-                            Si vous êtes développeur vous pouvez éventuellement me donner votre avis (Technique ou pas!)
-                            sur <a href={'https://github.com/stephen-97/portfolio'} target={'_blank'} aria-label="Lien du repository" data-balloon-pos="down">ce premier portfolio développé en React.</a>
+                            Si vous êtes développeur vous pouvez éventuellement me donner votre avis (technique ou non)
+                            sur <a href={'https://github.com/stephen-97/portfolio'} target={'_blank'}
+                                   aria-label="Lien du repository" data-balloon-pos="down">ce premier portfolio
+                            développé en React.</a>
                         </p>
                     </section>
                 </section>
