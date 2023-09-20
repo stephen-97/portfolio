@@ -21,6 +21,12 @@ const Head = (props: HeadProps): ReactElement => {
             <meta property="og:image" content={props.image} />
             <meta property="og:url" content={'a'} />
             <meta property="og:type" content="website" />
+
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:creator" content={'@LuciusAskeladd_'} />
+            <meta name="twitter:title" content={'LuciusAskeladd_'} />
+            <meta name="twitter:description" content={'Stephen Loiola - Software developper'} />
+
             <title>Stephen Loiola Bastos</title>
         </Helmet>
     );

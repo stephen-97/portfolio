@@ -33,7 +33,7 @@ interface SocialMediaInterface {
 const socialMediaLinks: Array<SocialMediaInterface> = [
     {name: 'GitHub', icon: GithubIcon, url: 'https://github.com/stephen-97', alt: 'Github Link'},
     {name: 'Linkedin', icon: LinkedinIcon, url: 'https://www.linkedin.com/in/stephen-loiola-bastos-04351814b/', alt: 'Linkedin Link'},
-    {name: 'Twiiter', icon: TwitterIcon, url: 'https://twitter.com/?lang=fr', alt: 'Twitter Link'},
+    {name: 'Twiiter', icon: TwitterIcon, url: 'https://twitter.com/LuciusAskeladd_', alt: 'Twitter Link'},
     {name: 'CV', icon: CVIcon, url: '/stephenCV', alt: 'CV Stephen Loiola Bastos Link'},
 ]
 

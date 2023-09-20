@@ -1,6 +1,6 @@
 import React, {ReactElement, useEffect, useState} from 'react';
 import anime from 'animejs';
-import {styled } from "styled-components";
+import {styled} from "styled-components";
 import constants from "../../utility/constants";
 import functions from "../../utility/functions";
 
@@ -23,19 +23,6 @@ const StyledLogo = styled.a`
   box-shadow: none;
   border: none;
   cursor: pointer;
-
-  .first-logo-animation {
-    background-color: red;
-    animation: entranceLogo ${firstAnimationLogoDuration}s ease-in-out;
-    @keyframes entranceLogo {
-      from {
-        transform: translateX(-100px);
-      }
-      to {
-        transform: translateX(0);
-      }
-    }
-  }
 
   &:hover {
     animation: ShakingLogoButton 0.8s ease forwards;
@@ -105,14 +92,14 @@ type LogoProps = {
     finishLoading: Function,
 }
 
-const HeaderLogo = (props : LogoProps): ReactElement =>  {
+const HeaderLogo = (props: LogoProps): ReactElement => {
 
     useEffect(() => {
         setTimeout(() => {
-        }, firstAnimationLogoDuration*1000 + 100);
+        }, firstAnimationLogoDuration * 1000 + 100);
     }, []);
-    return(
-        <StyledLogo href={'/'} id={'header-logo'} className={'first-logo-animation'}>
+    return (
+        <StyledLogo href={'/'} id={'header-logo'}>
             <span className={'first'}></span>
             <span className={'second'}></span>
             <span className={'third'}></span>
