@@ -1,4 +1,4 @@
-import React, {createRef, Dispatch, ReactElement, RefObject, SetStateAction, useEffect, useRef, useState} from 'react';
+import React, {createRef, Dispatch, ReactElement, RefObject, SetStateAction, useEffect, useState} from 'react';
 import { Helmet } from 'react-helmet';
 import {useOnClickOutside} from "usehooks-ts";
 import {styled } from "styled-components";
@@ -185,9 +185,11 @@ const HeaderSideMenu = (): ReactElement =>  {
 
     const [menuToggle, setMenuToggle]:  [boolean, Dispatch<SetStateAction<boolean>>] = useState(false)
 
+    const checkingWindowWidth: boolean = window.innerWidth > constants.maxWindowWidthForSideMenuButton
+
     useEffect((): void => {
         if(window.innerWidth > constants.maxWindowWidthForSideMenuButton) setMenuToggle(false);
-    }, [window.innerWidth > constants.maxWindowWidthForSideMenuButton]);
+    }, [checkingWindowWidth]);
 
     const StyledButtonMenuRef: RefObject<HTMLDivElement> = createRef<HTMLDivElement>();
     const handleClickOutside = (): void => {
@@ -216,9 +218,9 @@ const HeaderSideMenu = (): ReactElement =>  {
                         ))}
                     </ol>
                     <ol id={'socialMedia-links-container'}>
-                        {config.socialMediaLinks.map(({name, icon, alt, url}, index) => (
-                            <ul className={'side-menu-button-socialMedia'} key={index}>
-                                <a href={url} target={'_blank'} >
+                        {config.socialMediaLinks.map(({name, icon, alt, url}, i) => (
+                            <ul className={'side-menu-button-socialMedia'} key={i}>
+                                <a href={url} target={'_blank'} rel={'noreferrer'} content={name}>
                                     <img src={icon} alt={alt} height={50}  width={50}/>
                                 </a>
                             </ul>

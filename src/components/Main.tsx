@@ -91,14 +91,8 @@ const Main = (): ReactElement => {
     }, [])
 
 
-    useEffect(() => {
-        let e: HTMLElement | null = document.getElementById("box");
-
-    }, [])
 
     useEffect(() => {
-        /// TEST INSPIRATION DISCORD
-
         const buttonContainer: Element | null = document.querySelector('.buttonContainer')
         const buttonSideMenuContainer: Element | null = document.querySelector('#side-menu-button-container')
         const items: HTMLElement[] = gsap.utils.toArray<HTMLElement>('.item')

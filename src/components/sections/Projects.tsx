@@ -150,8 +150,8 @@ const ProjectsContainer = (props: ProjectContainerProps): ReactElement => {
                     </ul>
                 </main>
                 <footer>
-                    <a href={props.githubLink} target={'_blank'}>GITHUB</a>
-                    {props.demoLink ? <a href={props.demoLink} target={'_blank'}>DEMO</a> : null}
+                    <a href={props.githubLink} target={'_blank'} rel={'noreferrer'} content={'github link project'}>GITHUB</a>
+                    {props.demoLink ? <a href={props.demoLink} target={'_blank'}  rel={'noreferrer'} content={'demo link project'}>DEMO</a> : null}
                 </footer>
             </li>
         )

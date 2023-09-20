@@ -107,11 +107,9 @@ type LoaderProps = {
 }
 const Loader = (props: LoaderProps): ReactElement => {
 
-    useEffect(() => {
-        setTimeout(() => {
-            props.finishLoading(true);
-        }, animDuration * 1000 + 1000);
-    }, []);
+    setTimeout(() => {
+        props.finishLoading(true);
+    }, animDuration * 1000 + 1000);
 
     return (
         <StyledLogo>

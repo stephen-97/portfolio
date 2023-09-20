@@ -86,16 +86,9 @@ const StyledLogo = styled.a`
   }
 `
 
-type LogoProps = {
-    finishLoading: Function,
-}
 
-const HeaderLogo = (props: LogoProps): ReactElement => {
+const HeaderLogo = (): ReactElement => {
 
-    useEffect(() => {
-        setTimeout(() => {
-        }, firstAnimationLogoDuration * 1000 + 100);
-    }, []);
     return (
         <StyledLogo href={'/'} id={'header-logo'}>
             <span className={'first'}></span>

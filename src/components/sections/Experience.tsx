@@ -1,4 +1,4 @@
-import React, {Dispatch, ForwardedRef, forwardRef, useEffect, useState} from 'react';
+import React, {Dispatch, ForwardedRef, forwardRef, useState} from 'react';
 import {css, styled, ThemeProvider} from "styled-components";
 import {connect} from "react-redux";
 import computer from "../../assets/computer.svg"
@@ -310,17 +310,17 @@ const Experience = forwardRef<HTMLDivElement, ExperienceProps>((props: Experienc
                         <ul>
                             <ol onClick={() => setExperiencePattern('FrontEnd')}
                                 className={`${experiencePattern === 'FrontEnd' ? 'itemSelected' : ''}`}>
-                                <a key={'BackEnd-Item'}></a>
+                                <a key={'BackEnd-Item'} href={''} content={''}></a>
                                 <span>FrontEnd</span>
                             </ol>
                             <ol onClick={() => setExperiencePattern('BackEnd')}
                                 className={`${experiencePattern === 'BackEnd' ? 'itemSelected' : ''}`}>
-                                <a key={'FrontEnd-Item'}></a>
+                                <a key={'FrontEnd-Item'} href={''} content={''}></a>
                                 <span>BackEnd</span>
                             </ol>
                             <ol onClick={() => setExperiencePattern('Integration Tools')}
                                 className={`${experiencePattern === 'Integration Tools' ? 'itemSelected' : ''}`}>
-                                <a key={'DevOps-Item'}></a>
+                                <a key={'DevOps-Item'} href={''} content={''}></a>
                                 <span>Integration</span>
                             </ol>
                         </ul>

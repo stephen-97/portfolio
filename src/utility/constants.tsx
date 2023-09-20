@@ -1,4 +1,4 @@
-export default {
+const constants = {
     h1_max: 65,
     h1_min: 30,
 
@@ -49,3 +49,4 @@ export default {
     //WIDTH TOGGLE BUTTON MENU
     maxWindowWidthForSideMenuButton: 770,
 }
+export default constants

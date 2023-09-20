@@ -157,7 +157,7 @@ const Presentation = (props: PresentationProps) => {
                 </div>
                 <picture>
                     <div id={'img_Background'}>
-                        <img width={295} height={335} src={Stephen_profile} alt={""}/>
+                        <img width={295} height={335} src={Stephen_profile} alt={"profile Stephen"}/>
                     </div>
                 </picture>
             </span>
