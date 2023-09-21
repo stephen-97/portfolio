@@ -8,14 +8,12 @@ type TagProps = {
 }
 
 const StyledTag = styled.li`
-  & {
-    display: inline;
-    padding: 5px 10px 5px 10px;
-    border-radius: 10px;
-    margin: 10px 10px 0 0;
-    list-style-type: none;
-    font-weight: bolder;
-  }
+  font-size: clamp(15px, 2vw, 18px);
+  display: inline;
+  padding: 5px 10px 5px 10px;
+  border-radius: 10px;
+  margin: 10px 10px 0 0;
+  list-style-type: none;
 `
 
 const Tag = (props: TagProps): ReactElement => {
