@@ -188,7 +188,7 @@ const HeaderSideMenu = (): ReactElement =>  {
     const checkingWindowWidth: boolean = window.innerWidth > constants.maxWindowWidthForSideMenuButton
 
     useEffect((): void => {
-        if(window.innerWidth > constants.maxWindowWidthForSideMenuButton) setMenuToggle(false);
+        if(checkingWindowWidth) setMenuToggle(false);
     }, [checkingWindowWidth]);
 
     const StyledButtonMenuRef: RefObject<HTMLDivElement> = createRef<HTMLDivElement>();

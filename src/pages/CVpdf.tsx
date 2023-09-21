@@ -1,9 +1,9 @@
 import React, {ReactElement} from "react";
-import {IStyledComponent, styled} from "styled-components";
+import {styled} from "styled-components";
 // @ts-ignore
 import cv from '../assets/stephenLoiolaBastosCv.pdf'
 
-const StyledCVpdf  = styled.section`
+const StyledCVpdf = styled.section`
   position: fixed;
   top: 0;
   bottom: 0;

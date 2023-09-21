@@ -1,4 +1,4 @@
-import React, {ReactElement, useEffect} from 'react';
+import React, {ReactElement} from 'react';
 import {styled} from "styled-components";
 import constants from "../../utility/constants";
 
@@ -6,8 +6,6 @@ import constants from "../../utility/constants";
 const widthSpan: number = 50;
 const heightSpan: number = 4;
 const fontSizeLogo: number = 25;
-
-const firstAnimationLogoDuration: number = 0.4;
 
 const StyledLogo = styled.a`
   position: relative;

@@ -148,18 +148,18 @@ const Contact = (props: ContactProps) => {
             <StyledSkills>
                 <section id={'section-contact-block'}>
                     <a className={'contact-block'} href={"mailto:stephen@hotmail.com"} content={'mail link'}>
-                        <img height={50} width={50} src={EmailIcon} alt={'Email icon'}/>
+                        <img height={50} width={50} src={EmailIcon} alt={'Email'}/>
                         <h5>Email</h5>
                         <span>stephen.loiola@hotmail.com</span>
                     </a>
                     <a className={'contact-block'} href={"https://wa.me/33651662391"} content={'whatsapp link'}>
-                        <img height={50} width={50} src={WhatsAppIcon} alt={'Whatsapp Icon'}/>
+                        <img height={50} width={50} src={WhatsAppIcon} alt={'Whatsapp'}/>
                         <h5>Whatsapp</h5>
                         <span>+33651662391</span>
                     </a>
                     <a className={'contact-block'} href={"https://www.linkedin.com/in/stephen-loiola-bastos-04351814b/"}
                        target="_blank" rel={'noreferrer'} content={'linked link'}>
-                        <img height={50} width={50} src={LinkedinIcon} alt={'Linkedin image'}/>
+                        <img height={50} width={50} src={LinkedinIcon} alt={'Linkedin'}/>
                         <h5>Linkedin</h5>
                         <span>stephen-loiola-bastos-04351814b</span>
                     </a>

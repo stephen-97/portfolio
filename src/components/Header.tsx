@@ -40,9 +40,11 @@ const Header = (): ReactElement => {
 
     const [windowsWidth, setWindowsWidth]: [number, Dispatch<SetStateAction<number>>] = useState(window.innerWidth);
 
+    const checkingWindowWidth: boolean = window.innerWidth > constants.maxWindowWidthForSideMenuButton
+
     useEffect(() => {
         window.addEventListener("resize", () => setWindowsWidth(window.innerWidth))
-    }, [window.innerWidth > constants.maxWindowWidthForSideMenuButton]);
+    }, [checkingWindowWidth]);
 
     return (
         <StyledHeader>
