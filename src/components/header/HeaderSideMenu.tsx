@@ -33,6 +33,7 @@ const StyledMenu = styled.button<{$menuToggle: boolean}>`
     ol {
       text-align: left;
       margin: 0 35px;
+
       ul {
         display: table;
         padding: 0;
