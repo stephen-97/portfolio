@@ -88,8 +88,7 @@ const Main = (): ReactElement => {
         experienceBlocks.forEach((el: Element) => observer.observe((el)))
         experienceAnne.forEach((el: Element) => observer.observe((el)))
         projectsContainers.forEach((el: Element) => observer.observe((el)))
-    }, [])
-
+    },)
 
 
     useEffect(() => {
@@ -155,7 +154,7 @@ const Main = (): ReactElement => {
                 }
             });
         }
-    })
+    },)
 
     return (
         <StyledItemContainer>

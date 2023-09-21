@@ -195,7 +195,10 @@ const StyledExperience = styled.section`
     &:nth-of-type(1) {
       ul {
         ${loopBlockList()}
-        a {
+        button {
+          border: none;
+          cursor: pointer;
+          width: 100%;
           transition: ease-in-out .2s;
           transform: scaleX(0);
           height: 4px;
@@ -211,7 +214,7 @@ const StyledExperience = styled.section`
             color: ${constants.colorDarkGreen};
             transition: ease-in-out .2s;
 
-            a {
+            button {
               transition: inherit;
               transform: scaleX(1);
               transform-origin: left;
@@ -222,8 +225,7 @@ const StyledExperience = styled.section`
         .itemSelected {
           color: ${constants.colorDarkGreen};
           transition: ease-in-out .2s;
-
-          a {
+          button {
             transform: scaleX(1);
             transform-origin: left;
           }
@@ -305,22 +307,22 @@ const Experience = forwardRef<HTMLDivElement, ExperienceProps>((props: Experienc
             <StyledExperience>
                 <section id={'sectionBlock'}>
                     <div className={'experience-skills-block'}>
-                        <img height={80} width={80} src={computer} alt={'computer image'}/>
+                        <img height={80} width={80} src={computer} alt={'computer'}/>
                         <span className={'experience-skills-block-title'}>3 YEARS OF EXPERIENCE</span>
                         <ul>
                             <ol onClick={() => setExperiencePattern('FrontEnd')}
                                 className={`${experiencePattern === 'FrontEnd' ? 'itemSelected' : ''}`}>
-                                <a key={'BackEnd-Item'} href={''} content={''}></a>
+                                <button key={'BackEnd-Item'} content={''}></button>
                                 <span>FrontEnd</span>
                             </ol>
                             <ol onClick={() => setExperiencePattern('BackEnd')}
                                 className={`${experiencePattern === 'BackEnd' ? 'itemSelected' : ''}`}>
-                                <a key={'FrontEnd-Item'} href={''} content={''}></a>
+                                <button  key={'FrontEnd-Item'} content={''}></button>
                                 <span>BackEnd</span>
                             </ol>
                             <ol onClick={() => setExperiencePattern('Integration Tools')}
                                 className={`${experiencePattern === 'Integration Tools' ? 'itemSelected' : ''}`}>
-                                <a key={'DevOps-Item'} href={''} content={''}></a>
+                                <button key={'DevOps-Item'} content={''}></button>
                                 <span>Integration</span>
                             </ol>
                         </ul>
