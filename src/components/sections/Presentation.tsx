@@ -150,10 +150,6 @@ const Presentation = (props: PresentationProps) => {
                         le développement web et mobile.
                     </p>
                     <br/>
-                    <p>
-                        Lorsque je ne suis pas devant VSCODE ou Webstorm, j'aime beaucoup
-                        voyager, <span id={'switch-span'}>jouer à la switch</span> et assister à des orchestres.
-                    </p>
                 </div>
                 <picture>
                     <div id={'img_Background'}>
