@@ -5,7 +5,7 @@
 <strong>PC Screen </strong> : <br>
 <img alt="Web screenshot" src="./src/assets/siteWebScreenShot.png" />
 <strong>Mobile screenshot</strong> : <br>
-<img alt="Web screenshot" width="250" src="./src/assets/siteMobileScreenshot.png" />
+<img alt="Mobile screenshot" width="250" src="./src/assets/siteMobileScreenshot.png" />
 
 
 <h2>Build with</h2>
