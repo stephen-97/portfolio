@@ -3,7 +3,7 @@
 <strong>Owner</strong> : Stephen Loiola Bastos <br>
 <strong>Link</strong> : https://stephen-loiola-bastos-v1.netlify.app/ <br>
 <strong>PC Screen </strong> : <br>
-<img alt="Web screenshot" src="./src/assets/siteWebScreenShot.png" />
+<img alt="Web screenshot" src="./src/assets/siteWebScreenshot.png" />
 <strong>Mobile screenshot</strong> : <br>
 <img alt="Mobile screenshot" width="250" src="./src/assets/siteMobileScreenshot.png" />
 
