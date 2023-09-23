@@ -95,7 +95,7 @@ const SocialMediaContainer = (): ReactElement => {
                 <nav>
                     <ol id={'socialMedia-links-container'}>
                         {config.socialMediaLinks.map(({name, icon, alt, url}, i) => (
-                            <a key={i} href={url} target={'_blank'}>
+                            <a key={i} href={url} target={'_blank'} rel={'noreferrer'}>
                                 <img className={'social-media-logo'} height={40} src={icon} alt={alt}/>
                             </a>
                         ))}

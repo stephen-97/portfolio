@@ -147,19 +147,19 @@ const Contact = (props: ContactProps) => {
         <ThemeProvider theme={theme}>
             <StyledSkills>
                 <section id={'section-contact-block'}>
-                    <a className={'contact-block'} href={"mailto:stephen@hotmail.com"}>
-                        <img height={50} width={50} src={EmailIcon} alt={'Email icon'}/>
+                    <a className={'contact-block'} href={"mailto:stephen@hotmail.com"} content={'mail link'}>
+                        <img height={50} width={50} src={EmailIcon} alt={'Email'}/>
                         <h5>Email</h5>
                         <span>stephen.loiola@hotmail.com</span>
                     </a>
-                    <a className={'contact-block'} href={"https://wa.me/33651662391"}>
-                        <img height={50} width={50} src={WhatsAppIcon} alt={'Whatsapp Icon'}/>
+                    <a className={'contact-block'} href={"https://wa.me/33651662391"} content={'whatsapp link'}>
+                        <img height={50} width={50} src={WhatsAppIcon} alt={'Whatsapp'}/>
                         <h5>Whatsapp</h5>
                         <span>+33651662391</span>
                     </a>
                     <a className={'contact-block'} href={"https://www.linkedin.com/in/stephen-loiola-bastos-04351814b/"}
-                       target="_blank">
-                        <img height={50} width={50} src={LinkedinIcon} alt={'Linkedin image'}/>
+                       target="_blank" rel={'noreferrer'} content={'linked link'}>
+                        <img height={50} width={50} src={LinkedinIcon} alt={'Linkedin'}/>
                         <h5>Linkedin</h5>
                         <span>stephen-loiola-bastos-04351814b</span>
                     </a>
@@ -167,7 +167,7 @@ const Contact = (props: ContactProps) => {
                         <p>
                             N'hésitez pas à me contacter pour toute opportunité.
                             Si vous êtes développeur vous pouvez éventuellement me donner votre avis (technique ou non)
-                            sur <a href={'https://github.com/stephen-97/portfolio'} target={'_blank'}
+                            sur <a href={'https://github.com/stephen-97/portfolio'} target={'_blank'} rel={'noreferrer'}
                                    aria-label="Lien du repository" data-balloon-pos="down">ce premier portfolio
                             développé en React.</a>
                         </p>

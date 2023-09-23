@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "typeRoots": "types/index.d.ts",
+    "typeRoots": ["types/index.d.ts"],
     "target": "es5",
     "lib": [
       "dom",
@@ -20,6 +20,9 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
+    "types": [
+      "@types/jest"
+    ]
   },
   "include": [
     "src"

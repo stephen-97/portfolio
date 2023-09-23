@@ -1,4 +1,4 @@
-import React, {createRef, Dispatch, ReactElement, RefObject, SetStateAction, useEffect, useRef, useState} from 'react';
+import React, {createRef, Dispatch, ReactElement, RefObject, SetStateAction, useEffect, useState} from 'react';
 import { Helmet } from 'react-helmet';
 import {useOnClickOutside} from "usehooks-ts";
 import {styled } from "styled-components";
@@ -15,8 +15,8 @@ const StyledMenu = styled.button<{$menuToggle: boolean}>`
     background-color: ${constants.colorDark2};
     border: none;
     z-index: 1;
-    min-width: min(70vw, 400px);
-    padding: 0 50px;
+    min-width: min(75vw, 400px);
+    padding: 0;
     height: 100vh;
     top: 0;
     right: 0;
@@ -32,12 +32,13 @@ const StyledMenu = styled.button<{$menuToggle: boolean}>`
 
     ol {
       text-align: left;
+      margin: 0 35px;
 
       ul {
         display: table;
-        padding: 0 20px;
+        padding: 0;
         vertical-align: center;
-        margin: 40px 0;
+        margin: 25px 0;
         font-size: ${constants.fontSize2};
         cursor: pointer;
         color: ${constants.colorLight1};
@@ -54,10 +55,11 @@ const StyledMenu = styled.button<{$menuToggle: boolean}>`
           filter: ${constants.colorWhiteFilter}
         }
 
-        span {
+        .side-menu-button-name {
           display: table-cell;
           vertical-align: middle;
           padding: 0 20px;
+          font-size: 17px;
         }
       }
     }
@@ -67,9 +69,9 @@ const StyledMenu = styled.button<{$menuToggle: boolean}>`
       flex-direction: row;
       padding: 0;
       justify-content: space-around;
-      margin-top: 120px;
+      margin-top: 70px;
 
-      ul {
+      #side-menu-button-socialMedia {
         padding: 0;
         margin: 0;
       }
@@ -185,9 +187,11 @@ const HeaderSideMenu = (): ReactElement =>  {
 
     const [menuToggle, setMenuToggle]:  [boolean, Dispatch<SetStateAction<boolean>>] = useState(false)
 
+    const checkingWindowWidth: boolean = window.innerWidth > constants.maxWindowWidthForSideMenuButton
+
     useEffect((): void => {
-        if(window.innerWidth > constants.maxWindowWidthForSideMenuButton) setMenuToggle(false);
-    }, [window.innerWidth > constants.maxWindowWidthForSideMenuButton]);
+        if(checkingWindowWidth) setMenuToggle(false);
+    }, [checkingWindowWidth]);
 
     const StyledButtonMenuRef: RefObject<HTMLDivElement> = createRef<HTMLDivElement>();
     const handleClickOutside = (): void => {
@@ -211,15 +215,15 @@ const HeaderSideMenu = (): ReactElement =>  {
                         {config.navLinks.map(({name, icon, alt}, index) => (
                             <ul className={'side-menu-button'} onClick={() => setMenuToggle(false)} key={index}>
                                 <img src={icon} alt={alt} height={40}  width={40}/>
-                                <span>{name}</span>
+                                <span className={'side-menu-button-name'}>{name}</span>
                             </ul>
                         ))}
                     </ol>
                     <ol id={'socialMedia-links-container'}>
-                        {config.socialMediaLinks.map(({name, icon, alt, url}, index) => (
-                            <ul className={'side-menu-button-socialMedia'} key={index}>
-                                <a href={url} target={'_blank'} >
-                                    <img src={icon} alt={alt} height={50}  width={50}/>
+                        {config.socialMediaLinks.map(({name, icon, alt, url}, i) => (
+                            <ul id={'side-menu-button-socialMedia'} key={i}>
+                                <a href={url} target={'_blank'} rel={'noreferrer'} content={name}>
+                                    <img src={icon} alt={alt} height={30}/>
                                 </a>
                             </ul>
                         ))}

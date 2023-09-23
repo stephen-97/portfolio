@@ -147,7 +147,7 @@ const HeaderButton = (props: HeaderButtonProps): ReactElement => {
             <StyledButton>
                 <div className={`button  ${props.index ? `button${props.index}` : null}`}>
                     <span>{props.name}</span>
-                    <img className={'button-img'} src={props.icon} alt="React Logo"/>
+                    <img className={'button-img'} src={props.icon} alt={props.name}/>
                 </div>
             </StyledButton>
         </ThemeProvider>

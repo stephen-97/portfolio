@@ -1,4 +1,4 @@
-export default {
+const functions = {
     detectWrap: (className: string) => {
         let wrappedItems: Array<Element> = [];
         let prevItem = {top: 0};
@@ -15,3 +15,4 @@ export default {
         return wrappedItems.length === document.getElementsByClassName(className)!.length
     }
 }
+export default functions

@@ -1,4 +1,4 @@
-import React, {Dispatch, ForwardedRef, forwardRef, useEffect, useState} from 'react';
+import React, {Dispatch, ForwardedRef, forwardRef, useState} from 'react';
 import {css, styled, ThemeProvider} from "styled-components";
 import {connect} from "react-redux";
 import computer from "../../assets/computer.svg"
@@ -195,7 +195,10 @@ const StyledExperience = styled.section`
     &:nth-of-type(1) {
       ul {
         ${loopBlockList()}
-        a {
+        button {
+          border: none;
+          cursor: pointer;
+          width: 100%;
           transition: ease-in-out .2s;
           transform: scaleX(0);
           height: 4px;
@@ -211,7 +214,7 @@ const StyledExperience = styled.section`
             color: ${constants.colorDarkGreen};
             transition: ease-in-out .2s;
 
-            a {
+            button {
               transition: inherit;
               transform: scaleX(1);
               transform-origin: left;
@@ -222,8 +225,7 @@ const StyledExperience = styled.section`
         .itemSelected {
           color: ${constants.colorDarkGreen};
           transition: ease-in-out .2s;
-
-          a {
+          button {
             transform: scaleX(1);
             transform-origin: left;
           }
@@ -283,11 +285,13 @@ const backEndSkills: Array<Skill> =
     ]
 
 
-const othersToolsSkills: Array<Skill> =
+const devopsSkills: Array<Skill> =
     [
-        {name: 'Ansible', level: Level.Intermediate},
-        {name: 'Docker', level: Level.Intermediate},
+        {name: 'Ansible', level: Level.Confirmed},
+        {name: 'Docker', level: Level.Confirmed},
         {name: 'Terraform', level: Level.Intermediate},
+        {name: 'OpenStack', level: Level.Basic},
+        {name: 'CICD', level: Level.Intermediate},
     ]
 
 
@@ -305,23 +309,23 @@ const Experience = forwardRef<HTMLDivElement, ExperienceProps>((props: Experienc
             <StyledExperience>
                 <section id={'sectionBlock'}>
                     <div className={'experience-skills-block'}>
-                        <img height={80} width={80} src={computer} alt={'computer image'}/>
+                        <img height={80} width={80} src={computer} alt={'computer'}/>
                         <span className={'experience-skills-block-title'}>3 YEARS OF EXPERIENCE</span>
                         <ul>
                             <ol onClick={() => setExperiencePattern('FrontEnd')}
                                 className={`${experiencePattern === 'FrontEnd' ? 'itemSelected' : ''}`}>
-                                <a key={'BackEnd-Item'}></a>
+                                <button key={'BackEnd-Item'} content={''}></button>
                                 <span>FrontEnd</span>
                             </ol>
                             <ol onClick={() => setExperiencePattern('BackEnd')}
                                 className={`${experiencePattern === 'BackEnd' ? 'itemSelected' : ''}`}>
-                                <a key={'FrontEnd-Item'}></a>
+                                <button  key={'FrontEnd-Item'} content={''}></button>
                                 <span>BackEnd</span>
                             </ol>
-                            <ol onClick={() => setExperiencePattern('Integration Tools')}
-                                className={`${experiencePattern === 'Integration Tools' ? 'itemSelected' : ''}`}>
-                                <a key={'DevOps-Item'}></a>
-                                <span>Integration</span>
+                            <ol onClick={() => setExperiencePattern('DevOps')}
+                                className={`${experiencePattern === 'DevOps' ? 'itemSelected' : ''}`}>
+                                <button key={'DevOps-Item'} content={''}></button>
+                                <span>DevOps</span>
                             </ol>
                         </ul>
                     </div>
@@ -340,9 +344,9 @@ const Experience = forwardRef<HTMLDivElement, ExperienceProps>((props: Experienc
                                             {backEndSkills.map((e, i) => <span
                                                 key={i}>{e.name}<span>{e.level}</span></span>)}
                                         </>,
-                                    'Integration Tools':
+                                    'DevOps':
                                         <>
-                                            {othersToolsSkills.map((e, i) => <span
+                                            {devopsSkills.map((e, i) => <span
                                                 key={i}>{e.name}<span>{e.level}</span></span>)}
                                         </>
                                 }[experiencePattern]

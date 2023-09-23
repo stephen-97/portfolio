@@ -7,8 +7,3 @@ declare module "*.png" {
     const path: string;
     export default path;
 }
-
-declare module "*.pdf" {
-    const path: string;
-    export default path;
-}

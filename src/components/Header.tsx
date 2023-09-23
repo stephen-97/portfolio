@@ -6,8 +6,7 @@ import HeaderButton from "./header/HeaderButton";
 import constants from "../utility/constants";
 import config from "../configs/config";
 import HeaderSideMenu from "./header/HeaderSideMenu";
-import Logo from "./header/HeaderLogo";
-
+import HeaderLogo from "./header/HeaderLogo";
 
 const StyledButtonContainer = styled.section`
   .buttonContainer {
@@ -41,16 +40,16 @@ const Header = (): ReactElement => {
 
     const [windowsWidth, setWindowsWidth]: [number, Dispatch<SetStateAction<number>>] = useState(window.innerWidth);
 
+    const checkingWindowWidth: boolean = window.innerWidth > constants.maxWindowWidthForSideMenuButton
+
     useEffect(() => {
         window.addEventListener("resize", () => setWindowsWidth(window.innerWidth))
-    }, [window.innerWidth > constants.maxWindowWidthForSideMenuButton]);
-
-    const [isLoading, setIsLoading] = useState(true);
+    }, [checkingWindowWidth]);
 
     return (
         <StyledHeader>
             <nav className={"header-nav"}>
-                <Logo finishLoading={() => setIsLoading(false)}/>
+                <HeaderLogo />
                 <StyledButtonContainer>
                     <div className={"buttonContainer"}>
                         {config.navLinks.map(({name, icon}, index) => (

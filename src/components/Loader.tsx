@@ -1,4 +1,4 @@
-import React, {ReactElement, useEffect} from 'react';
+import React, {ReactElement} from 'react';
 import {styled} from "styled-components";
 import constants from "../utility/constants";
 
@@ -107,11 +107,9 @@ type LoaderProps = {
 }
 const Loader = (props: LoaderProps): ReactElement => {
 
-    useEffect(() => {
-        setTimeout(() => {
-            props.finishLoading(true);
-        }, animDuration * 1000 + 1000);
-    }, []);
+    setTimeout(() => {
+        props.finishLoading(true);
+    }, animDuration * 1000 + 1000);
 
     return (
         <StyledLogo>

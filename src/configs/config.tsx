@@ -90,11 +90,10 @@ const schoolExperiences: Array<ISchoolExperience> = [
     }
 ]
 
-export default {
-
-    // Data
+const config  = {
     navLinks,
     socialMediaLinks,
     projects,
     schoolExperiences,
-};
+}
+export default config

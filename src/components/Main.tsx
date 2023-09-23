@@ -88,17 +88,10 @@ const Main = (): ReactElement => {
         experienceBlocks.forEach((el: Element) => observer.observe((el)))
         experienceAnne.forEach((el: Element) => observer.observe((el)))
         projectsContainers.forEach((el: Element) => observer.observe((el)))
-    }, [])
+    },)
 
 
     useEffect(() => {
-        let e: HTMLElement | null = document.getElementById("box");
-
-    }, [])
-
-    useEffect(() => {
-        /// TEST INSPIRATION DISCORD
-
         const buttonContainer: Element | null = document.querySelector('.buttonContainer')
         const buttonSideMenuContainer: Element | null = document.querySelector('#side-menu-button-container')
         const items: HTMLElement[] = gsap.utils.toArray<HTMLElement>('.item')
@@ -161,7 +154,7 @@ const Main = (): ReactElement => {
                 }
             });
         }
-    })
+    },)
 
     return (
         <StyledItemContainer>

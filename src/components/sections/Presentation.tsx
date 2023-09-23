@@ -138,7 +138,7 @@ const Presentation = (props: PresentationProps) => {
                 <div className={'description'}>
                     <p>
                         Bonjour et bienvenu sur mon portefolio ! Je suis un jeune développeur
-                        <span> Javascript et Typescript Junior </span> ayant
+                        <span> Javascript et Typescript avec 3 ans d'expériences </span> ayant
                         suivi des formations en alternance à Paris du bac au bac+5.
                         Je maîtrise plusieurs langages comme le HTML, CSS, Javascript et TypeScript, PHP.. Je possède néanmoins
                         plus d'expertise et une grande préférence pour les langages Javascript & TypeScript, et les librairies comme
@@ -150,14 +150,10 @@ const Presentation = (props: PresentationProps) => {
                         le développement web et mobile.
                     </p>
                     <br/>
-                    <p>
-                        Lorsque je ne suis pas devant VSCODE ou Webstorm, j'aime beaucoup
-                        voyager, <span id={'switch-span'}>jouer à la switch</span> et assister à des orchestres.
-                    </p>
                 </div>
                 <picture>
                     <div id={'img_Background'}>
-                        <img width={295} height={335} src={Stephen_profile} alt={""}/>
+                        <img width={295} height={335} src={Stephen_profile} alt={"profile Stephen"}/>
                     </div>
                 </picture>
             </span>
