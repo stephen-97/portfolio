@@ -285,11 +285,13 @@ const backEndSkills: Array<Skill> =
     ]
 
 
-const othersToolsSkills: Array<Skill> =
+const devopsSkills: Array<Skill> =
     [
-        {name: 'Ansible', level: Level.Intermediate},
-        {name: 'Docker', level: Level.Intermediate},
+        {name: 'Ansible', level: Level.Confirmed},
+        {name: 'Docker', level: Level.Confirmed},
         {name: 'Terraform', level: Level.Intermediate},
+        {name: 'OpenStack', level: Level.Basic},
+        {name: 'CICD', level: Level.Intermediate},
     ]
 
 
@@ -320,10 +322,10 @@ const Experience = forwardRef<HTMLDivElement, ExperienceProps>((props: Experienc
                                 <button  key={'FrontEnd-Item'} content={''}></button>
                                 <span>BackEnd</span>
                             </ol>
-                            <ol onClick={() => setExperiencePattern('Integration Tools')}
-                                className={`${experiencePattern === 'Integration Tools' ? 'itemSelected' : ''}`}>
+                            <ol onClick={() => setExperiencePattern('DevOps')}
+                                className={`${experiencePattern === 'DevOps' ? 'itemSelected' : ''}`}>
                                 <button key={'DevOps-Item'} content={''}></button>
-                                <span>Integration</span>
+                                <span>DevOps</span>
                             </ol>
                         </ul>
                     </div>
@@ -342,9 +344,9 @@ const Experience = forwardRef<HTMLDivElement, ExperienceProps>((props: Experienc
                                             {backEndSkills.map((e, i) => <span
                                                 key={i}>{e.name}<span>{e.level}</span></span>)}
                                         </>,
-                                    'Integration Tools':
+                                    'DevOps':
                                         <>
-                                            {othersToolsSkills.map((e, i) => <span
+                                            {devopsSkills.map((e, i) => <span
                                                 key={i}>{e.name}<span>{e.level}</span></span>)}
                                         </>
                                 }[experiencePattern]
