@@ -2,10 +2,10 @@
 
 <strong>Owner</strong> : Stephen Loiola Bastos <br> 
 <strong>Link</strong> : https://stephen-loiola-bastos-v1.netlify.app/ <br>
-<strong>PC Screen </strong> :
+<strong>PC Screen </strong> : <br>
 <img alt="Web screenshot" src="./src/assets/siteWebScreenShot.png" />
-<strong>Mobile screenshot</strong><br> :
-<img alt="Web screenshot" width="250" src="./src/assets/siteMobileScreenshot.jpeg" />
+<strong>Mobile screenshot</strong> : <br>
+<img alt="Web screenshot" width="250" src="./src/assets/siteMobileScreenshot.png" />
 
 
 <h2>Build with</h2>
